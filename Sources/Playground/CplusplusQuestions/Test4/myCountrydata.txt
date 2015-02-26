@@ -1,0 +1,6 @@
+ohaio 250 20
+ohaio2 300000 500
+ohaio3 250 20
+ohaio4 250 20
+ohaio5 250 20
+ohaio6 250 20

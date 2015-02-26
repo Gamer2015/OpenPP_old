@@ -1,0 +1,23 @@
+#-------------------------------------
+# Currently used CMake Version
+#-------------------------------------
+cmake_minimum_required(VERSION 3.0)
+
+#-------------------------------------
+# Compiler Paths
+#-------------------------------------
+SET(BASE_PATH "C:/Users/Stefan/Documents/GitHub/Librepp/Sources")
+
+
+#-------------------------------------
+# Librepp Compiler Paths
+#-------------------------------------
+INCLUDE_DIRECTORIES(${BASE_PATH}/include)
+LINK_DIRECTORIES(${BASE_PATH}/lib)
+
+
+#-------------------------------------
+# 3rdParty Compiler Paths
+#-------------------------------------
+SET(3RD_PARTY_PATH ${BASE_PATH}/3rdParty)
+include(${3RD_PARTY_PATH}/3rdParties.txt)
