@@ -1,6 +1,6 @@
 #include "Char.h"
 
-namespace Librepp
+namespace Openpp
 {
 namespace Utility
 {
@@ -32,4 +32,4 @@ bool Char::IsNumber(char Character)
 }
 
 } // namespace Types
-} // namespace Librepp
+} // namespace Openpp

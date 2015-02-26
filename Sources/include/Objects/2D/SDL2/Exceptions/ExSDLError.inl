@@ -1,6 +1,6 @@
 #include "ExSDLError.hpp"
 
-namespace Librepp
+namespace Openpp
 {
 namespace Objects
 {
@@ -25,4 +25,4 @@ const char* ExSDLError::what() const noexcept
 } // SDL2
 } // Objects2D
 } // Objects
-} // Librepp
+} // Openpp

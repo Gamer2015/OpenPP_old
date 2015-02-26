@@ -2,7 +2,7 @@
 #include <Timer/Timer.h>
 
 template <typename T>
-class LType
+class OType
 {
 
 private:
@@ -20,11 +20,11 @@ public:
 		_mValue(std::move(_rcValue))
 	{
 	}
-	LType(const LType<T>& _rcType) noexcept :
+	LType(const OType<T>& _rcType) noexcept :
 		_mValue(_rcType._mValue)
 	{
 	}
-	LType(const LType<T>&& _rrcType) noexcept :
+	LType(const OType<T>&& _rrcType) noexcept :
 		 _mValue(std::move(_rrcType._mValue))
 	{
 	}
@@ -37,7 +37,7 @@ public:
 		return _mValue;
 	}
 
-	T operator=(const LType<T>& _rcType)
+	T operator=(const OType<T>& _rcType)
 	{
 		std::cout << "op1" << std::endl;
 		return _mValue = _rcType();
@@ -49,7 +49,7 @@ public:
 		return (U)_mValue;
 	}
 	template <typename U>
-	operator LType<U>() const
+	operator OType<U>() const
 	{
 		return (U)_mValue;
 	}
@@ -57,8 +57,8 @@ public:
 
 int main(int argc, char* argv[])
 {
-	LType<float> somefloat = 15.3;
-	LType<float> somefloat2 = 23.3;
+	OType<float> somefloat = 15.3;
+	OType<float> somefloat2 = 23.3;
 	const int count = 10000;
 
 
@@ -76,25 +76,25 @@ int main(int argc, char* argv[])
 	Timer t2;
 	t2.start();
 	for(int i = 0; i < count; i++)
-		LType<float> someFloat = 22.5;
+		OType<float> someFloat = 22.5;
 	t2.stop();
 
 	Timer t3;
 	t3.start();
 	for(int i = 0; i < count; i++)
-		LType<float> someOtherFloat = std::move_if_noexcept(somefloat);
+		OType<float> someOtherFloat = std::move_if_noexcept(somefloat);
 	t3.stop();
 
 	Timer t4;
 	t4.start();
 	for(int i = 0; i < count; i++)
-		LType<float> someOtherFloat = somefloat;
+		OType<float> someOtherFloat = somefloat;
 	t4.stop();
 
 	Timer t5;
 	t5.start();
 	for(int i = 0; i < count; i++)
-		LType<float> someOtherFloat = (float)somefloat;
+		OType<float> someOtherFloat = (float)somefloat;
 	t5.stop();
 
 	Timer t6;
@@ -112,13 +112,13 @@ int main(int argc, char* argv[])
 	std::cout << "\n\n" << std::endl;
 
 	std::cout << "Timer: " << t1.getElapsedTimeInMicroSec() << std::endl;
-	LType<float> someFloat = 22.5;
+	OType<float> someFloat = 22.5;
 	std::cout << "Move 1: " << t2.getElapsedTimeInMicroSec() << '\n' << std::endl;
-	LType<float> someOtherMotherfuckingrandomFloat = std::move_if_noexcept(somefloat);
+	OType<float> someOtherMotherfuckingrandomFloat = std::move_if_noexcept(somefloat);
 	std::cout << "Move 2: " << t3.getElapsedTimeInMicroSec() << '\n' << std::endl;
-	LType<float> someherFloat = somefloat;
+	OType<float> someherFloat = somefloat;
 	std::cout << "Copy 2: " << t4.getElapsedTimeInMicroSec() << '\n' << std::endl;
-	LType<float> someOherFloat = (float)somefloat;
+	OType<float> someOherFloat = (float)somefloat;
 	std::cout << "Move 1: " << t5.getElapsedTimeInMicroSec() << '\n' << std::endl;
 
 	somefloat = 20.5;

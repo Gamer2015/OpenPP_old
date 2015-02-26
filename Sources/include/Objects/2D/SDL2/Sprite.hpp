@@ -1,5 +1,5 @@
-#ifndef LIBREPP_OBJECTS_2D_SDL2_SPRITE_H_
-#define LIBREPP_OBJECTS_2D_SDL2_SPRITE_H_
+#ifndef OPENPP_OBJECTS_2D_SDL2_SPRITE_H_
+#define OPENPP_OBJECTS_2D_SDL2_SPRITE_H_
 
 /********************************************\
  * Date: 18.01.2015
@@ -21,9 +21,9 @@
 #include "Globals.hpp"
 #include <cmath>
 
-namespace LO = Librepp::Objects;
+namespace OO = Openpp::Objects;
 
-namespace Librepp
+namespace Openpp
 {
 namespace Objects
 {
@@ -36,7 +36,7 @@ template <typename T>
 class Sprite : public SDL_Rectangle<T>
 {
 public:
-	Sprite(LO::LObject* const _pParent = nullptr);
+    Sprite(LO::OObject* const _pParent = nullptr);
 
 	/// Set Texture
 	void set(const std::shared_ptr<SDL_Texture> pTexture);
@@ -57,8 +57,8 @@ protected:
 } // SDL2
 } // Objects2D
 } // Objects
-} // Librepp
+} // Openpp
 
 #include "Sprite.inl"
 
-#endif // LIBREPP_OBJECTS_2D_SDL2_SPRITE_H_
+#endif // OPENPP_OBJECTS_2D_SDL2_SPRITE_H_

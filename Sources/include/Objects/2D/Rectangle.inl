@@ -1,6 +1,6 @@
 #include "Rectangle.hpp"
 
-namespace Librepp
+namespace Openpp
 {
 namespace Objects
 {
@@ -16,4 +16,4 @@ Rectangle<T>::Rectangle(LObject* _pParent) :
 
 } // Objects2D
 } // Objects
-} // Librepp
+} // Openpp

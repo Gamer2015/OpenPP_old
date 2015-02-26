@@ -4,7 +4,7 @@
 #include <boost/filesystem.hpp>
 #include <Utility/String.hpp>
 
-namespace LUS = Librepp::Utility::String;
+namespace LUS = Openpp::Utility::String;
 namespace BF = boost::filesystem;
 
 enum TestState

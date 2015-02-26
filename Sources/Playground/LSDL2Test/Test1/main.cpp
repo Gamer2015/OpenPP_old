@@ -6,7 +6,7 @@
 
 #include <iostream>
 
-namespace LO = Librepp::Objects;
+namespace OO = Openpp::Objects;
 namespace LO2 = LO::Objects2D;
 namespace LSDL2 = LO2::SDL2;
 typedef LSDL2::Globals LSG;
@@ -19,7 +19,7 @@ void close()
 class TWrapper : public LSDL2::Text
 {
 public:
-	TWrapper(LO::LObject* const _pParent = nullptr) :
+	TWrapper(LO::OObject* const _pParent = nullptr) :
 		LSDL2::Text(_pParent)
 	{}
 
@@ -59,7 +59,7 @@ public:
 class SWrapper : public LSDL2::Sprite<float>
 {
 public:
-	SWrapper(LO::LObject* const _pParent = nullptr) :
+	SWrapper(LO::OObject* const _pParent = nullptr) :
 		LSDL2::Sprite<float>(_pParent)
 	{}
 
@@ -95,7 +95,7 @@ public:
 class BWrapper : public LSDL2::Button
 {
 public:
-	BWrapper(LO::LObject* const _pParent = nullptr) :
+	BWrapper(LO::OObject* const _pParent = nullptr) :
 		LSDL2::Button(_pParent)
 	{}
 

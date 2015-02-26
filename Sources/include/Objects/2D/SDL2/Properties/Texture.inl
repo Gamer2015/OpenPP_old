@@ -1,6 +1,6 @@
 #include "Texture.hpp"
 
-namespace Librepp
+namespace Openpp
 {
 namespace Objects
 {
@@ -12,12 +12,12 @@ namespace Properties
 {
 
 Texture::Texture(LObject* _pParent) :
-	LO::LObject(_pParent)
+	LO::OObject(_pParent)
 {}
 
 void Texture::set(const std::string& _rcPath)
 {
-	_mpTexture = Librepp::Objects::Objects2D::SDL2::Texture::Get(_rcPath);
+	_mpTexture = Openpp::Objects::Objects2D::SDL2::Texture::Get(_rcPath);
 
 	LO::LObject::ChildChanged();
 }
@@ -41,4 +41,4 @@ void Texture::operator=(const Texture& _rcTexture)
 } // SDL2
 } // Objects2D
 } // Objects
-} // Librepp
+} // Openpp

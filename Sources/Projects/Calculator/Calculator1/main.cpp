@@ -5,8 +5,8 @@
 #include <Utility/String.hpp>
 #include <Container/Tree.h>
 
-namespace LUS = Librepp::Utility::String;
-namespace LC = Librepp::Container;
+namespace LUS = Openpp::Utility::String;
+namespace LC = Openpp::Container;
 
 void CreateErrorMsg(std::string Error)
 {

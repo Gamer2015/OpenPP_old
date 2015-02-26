@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-namespace Librepp
+namespace Openpp
 {
 namespace Objects
 {
@@ -11,7 +11,7 @@ namespace Objects2D
 namespace SDL2
 {
 
-Button::Button(LObject* const _pParent) :
+Button::Button(OObject* const _pParent) :
 	SDL_Rectangle<float>(_pParent),
 	text(this),
 	textures(2, this)
@@ -76,4 +76,4 @@ void Button::ChildChanged(int _childId)
 } // SDL2
 } // Objects2D
 } // Objects
-} // Librepp
+} // Openpp

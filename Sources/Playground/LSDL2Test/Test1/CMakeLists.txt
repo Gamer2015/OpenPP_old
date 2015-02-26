@@ -30,7 +30,7 @@ string(REPLACE "/" "" ProjectName ${CMAKE_CURRENT_SOURCE_DIR})
 string(REPLACE ":" "" ProjectName ${ProjectName})
 string(REPLACE "." "" ProjectName ${ProjectName})
 string(REPLACE "_" "" ProjectName ${ProjectName})
-string(REPLACE "CUsersStefanDocumentsGitHubLibreppSources" "" ProjectName ${ProjectName})
+string(REPLACE "CUsersStefanDocumentsGitHubOpenppSources" "" ProjectName ${ProjectName})
 
 project(${ProjectName})
 SET(VERSION_MAJOR "1")
@@ -47,7 +47,7 @@ add_definitions(-DCMAKE_BUILD_TYPE=Debug)
 #-------------------------------------
 # Get Compiler Paths
 #-------------------------------------
-INCLUDE(${CMAKE_CURRENT_SOURCE_DIR}/../../../LibreppConfig.txt)
+INCLUDE(${CMAKE_CURRENT_SOURCE_DIR}/../../../OpenppConfig.txt)
 
 #-------------------------------------
 # Sources and Headers

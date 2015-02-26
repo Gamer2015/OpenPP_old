@@ -1,5 +1,5 @@
-#ifndef ___GAME__H___
-#define ___GAME__H___
+#ifndef OPENPP_PROJECTS_THESIS_GAME_GAME_H_
+#define OPENPP_PROJECTS_THESIS_GAME_GAME_H_
 
 /********************************************\
  * Date: 18.01.2015
@@ -14,7 +14,7 @@
 
 #include <SDL2/SDL.h>
 #include "Globals.h"
-#include "../../Core/Globals.h"
+#include <Objects/2D/SDL2/Globals.hpp>
 #include "../../Core/Input.h"
 
 namespace Game
@@ -23,4 +23,4 @@ namespace Game
     void StartGameRoutine();
 }
 
-#endif // ___GAME__H___
+#endif // OPENPP_PROJECTS_THESIS_GAME_GAME_H_

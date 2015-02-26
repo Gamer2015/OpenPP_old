@@ -1,6 +1,6 @@
 #include "Texture.hpp"
 
-namespace Librepp
+namespace Openpp
 {
 namespace Objects
 {
@@ -95,4 +95,4 @@ SDL_Color Texture::Color = {0, 0, 0};
 } // SDL2
 } // Objects2D
 } // Objects
-} // Librepp
+} // Openpp

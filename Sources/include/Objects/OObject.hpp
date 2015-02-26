@@ -1,5 +1,5 @@
-#ifndef LIBREPP_OBJECTS_LOBJECT_H_
-#define LIBREPP_OBJECTS_LOBJECT_H_
+#ifndef OPENPP_OBJECTS_LOBJECT_H_
+#define OPENPP_OBJECTS_LOBJECT_H_
 
 /********************************************\
  * usage: base class for all objects
@@ -12,15 +12,15 @@
  *
 \********************************************/
 
-namespace Librepp
+namespace Openpp
 {
 namespace Objects
 {
 
-class LObject
+class OObject
 {
 public:
-	LObject(LObject* const _pParent = nullptr) :
+    OObject(OObject* const _pParent = nullptr) :
 		_mpParent(_pParent),
 		_mChildrenCount(0),
 		_mChildId(-1) // id() with no parent
@@ -32,7 +32,7 @@ public:
 	int id() const { return _mChildId; }
 
 protected:
-	LObject* const parent() const { return _mpParent; }
+    OObject* const parent() const { return _mpParent; }
 	int selfId() const { return 0; }
 	int GenerateChildId() const { return ++_mChildrenCount; }
 
@@ -48,12 +48,12 @@ protected:
 	}
 
 private:
-	LObject* const _mpParent;
+    OObject* const _mpParent;
 	int _mChildId;
 	mutable int _mChildrenCount;
 };
 
 } // Objects
-} // Librepp
+} // Openpp
 
-#endif // LIBREPP_OBJECTS_LOBJECT_H_
+#endif // OPENPP_OBJECTS_LOBJECT_H_

@@ -1,5 +1,5 @@
-#ifndef ___LIBREPP_AUDIO_RING_BUFFER__H___
-#define ___LIBREPP_AUDIO_RING_BUFFER__H___
+#ifndef ___OPENPP_AUDIO_RING_BUFFER__H___
+#define ___OPENPP_AUDIO_RING_BUFFER__H___
 
 /******************************************************\
  * Usage: Platform independent RingBuffer Class
@@ -15,7 +15,7 @@
 
 #include <vector>
 
-namespace Librepp
+namespace Openpp
 {
 namespace Audio
 {
@@ -64,8 +64,8 @@ private:
 };
 
 } // Audio
-} // Librepp
+} // Openpp
 
 #include "RingBuffer.inl"
 
-#endif // ___LIBREPP_AUDIO_RING_BUFFER__H___
+#endif // ___OPENPP_AUDIO_RING_BUFFER__H___

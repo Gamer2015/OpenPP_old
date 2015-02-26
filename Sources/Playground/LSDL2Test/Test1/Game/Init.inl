@@ -1,6 +1,6 @@
 #include "Init.h"
 
-namespace LSDL2 = Librepp::Objects::Objects2D::SDL2;
+namespace LSDL2 = Openpp::Objects::Objects2D::SDL2;
 namespace LSDL2E = LSDL2::Exceptions;
 typedef Game::Globals GG;
 

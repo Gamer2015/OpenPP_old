@@ -1,5 +1,5 @@
-#ifndef LIBREPP_OBJECTS_2D_SDL2_BUTTON_H_
-#define LIBREPP_OBJECTS_2D_SDL2_BUTTON_H_
+#ifndef OPENPP_OBJECTS_2D_SDL2_BUTTON_H_
+#define OPENPP_OBJECTS_2D_SDL2_BUTTON_H_
 
 /********************************************\
  * Date: 18.01.2015
@@ -12,7 +12,7 @@
  *
 \********************************************/
 
-#include <Objects/LObject.hpp>
+#include <Objects/OObject.hpp>
 
 #include <SDL2/SDL.h>
 #include <memory>
@@ -25,7 +25,7 @@
 
 #include <cmath>
 
-namespace LO = Librepp::Objects;
+namespace OO = Openpp::Objects;
 namespace LOP = LO::Properties;
 
 namespace LSDL2 = LO::Objects2D::SDL2;
@@ -33,7 +33,7 @@ typedef LSDL2::Globals LSG;
 typedef LSDL2::Texture LST;
 typedef void (*FunctionPointer)();
 
-namespace Librepp
+namespace Openpp
 {
 namespace Objects
 {
@@ -45,7 +45,7 @@ namespace SDL2
 class Button : public SDL_Rectangle<float>
 {
 public:
-	Button(LO::LObject* const _pParent = nullptr);
+	Button(LO::OObject* const _pParent = nullptr);
 
 
 	/// properties
@@ -82,8 +82,8 @@ private:
 } // SDL2
 } // Objects2D
 } // Objects
-} // Librepp
+} // Openpp
 
 #include "Button.inl"
 
-#endif // LIBREPP_OBJECTS_2D_SDL2_BUTTON_H_
+#endif // OPENPP_OBJECTS_2D_SDL2_BUTTON_H_

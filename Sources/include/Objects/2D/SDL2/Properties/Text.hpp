@@ -1,5 +1,5 @@
-#ifndef LIBREPP_OBJECTS_2D_SDL2_PROPERTIES_TEXT_H_
-#define LIBREPP_OBJECTS_2D_SDL2_PROPERTIES_TEXT_H_
+#ifndef OPENPP_OBJECTS_2D_SDL2_PROPERTIES_TEXT_H_
+#define OPENPP_OBJECTS_2D_SDL2_PROPERTIES_TEXT_H_
 
 /********************************************\
  * Date: 17th February 2015
@@ -12,8 +12,8 @@
  *
 \********************************************/
 
-#include <Objects/LObject.hpp>
-#include <Objects/Properties/LType.hpp>
+#include <Objects/OObject.hpp>
+#include <Objects/Properties/OType.hpp>
 #include <Objects/2D/Vector2.hpp>
 
 #include "../Texture.hpp"
@@ -21,12 +21,12 @@
 #include <SDL2/SDL.h>
 
 
-namespace LO = Librepp::Objects;
+namespace OO = Openpp::Objects;
 namespace LOP = LO::Properties;
 
 namespace LO2 = LO::Objects2D;
 
-namespace Librepp
+namespace Openpp
 {
 namespace Objects
 {
@@ -40,12 +40,12 @@ namespace Properties
 class Text : public LO::LObject
 {
 public:
-	Text(LO::LObject* const _pParent = nullptr);
-	Text(const std::string& _rctext, LObject* const _pParent = nullptr);
+	Text(LO::OObject* const _pParent = nullptr);
+	Text(const std::string& _rctext, OObject* const _pParent = nullptr);
 
 
 	/// properties
-	LOP::LType<int> height;
+	LOP::OType<int> height;
 	LO2::Vector2<float> origin;
 
 
@@ -75,8 +75,8 @@ private:
 } // Objects2D
 } // Objects
 } // SDL2
-} // Librepp
+} // Openpp
 
 #include "Text.inl"
 
-#endif // LIBREPP_OBJECTS_2D_SDL2_PROPERTIES_TEXT_H_
+#endif // OPENPP_OBJECTS_2D_SDL2_PROPERTIES_TEXT_H_

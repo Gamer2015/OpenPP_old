@@ -31,7 +31,7 @@ public:
 	}
 
 protected:
-	LObject* const parent() const { return _mParent; }
+	OObject* const parent() const { return _mParent; }
 	int id() const { return _mId; }
 
 private:
@@ -125,7 +125,7 @@ private:
 };
 
 template <typename T>
-class BaseObject2D : public LObject
+class BaseObject2D : public OObject
 {
 public:
 	BaseObject2D() :

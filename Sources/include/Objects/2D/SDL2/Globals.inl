@@ -1,6 +1,6 @@
 #include "Globals.hpp"
 
-namespace Librepp
+namespace Openpp
 {
 namespace Objects
 {
@@ -43,4 +43,4 @@ std::shared_ptr<SDL_Renderer> Globals::pRenderer = NULL;
 } // SDL2
 } // Objects2D
 } // Objects
-} // Librepp
+} // Openpp

@@ -1,12 +1,12 @@
-#ifndef LIBREPP_OBJECTS_PROPERTIES_TEST_LTYPE_HPP_
-#define LIBREPP_OBJECTS_PROPERTIES_TEST_LTYPE_HPP_
+#ifndef OPENPP_OBJECTS_PROPERTIES_TEST_LTYPE_HPP_
+#define OPENPP_OBJECTS_PROPERTIES_TEST_LTYPE_HPP_
 
-#include "../LType.hpp"
+#include "../OType.hpp"
 #include <string>
 #include <vector>
 #include <iostream>
 
-namespace Librepp
+namespace Openpp
 {
 namespace Objects
 {
@@ -16,17 +16,17 @@ namespace Test
 {
 
 template <typename T>
-class Object : public LObject
+class Object : public OObject
 {
 public:
-	Object(LObject* const _pParent=nullptr):
-		LObject(_pParent),
+	Object(OObject* const _pParent=nullptr):
+		OObject(_pParent),
 		property(this),
 		changed(false),
 		success(true)
 	{}
 
-	LType<T> property;
+    OType<T> property;
 	bool changed;
 	bool success;
 
@@ -35,7 +35,7 @@ protected:
 	{
 		changed = true;
 
-		LObject::ChildChanged(); // should do nothing
+        OObject::ChildChanged(); // should do nothing
 	}
 };
 
@@ -47,7 +47,7 @@ void Test(bool& success, std::string name, bool term, Object<T>& obj, bool plann
 	obj.success &= (obj.changed==plannedResult);
 	obj.changed = false;
 }
-bool LTypeAndPropertyTest()
+bool OTypeAndPropertyTest()
 {
 	std::cout << "LTypeAndPropertyTest:\n";
 	bool success = true;
@@ -108,14 +108,14 @@ bool LTypeAndPropertyTest()
 	return success && obj.success;
 }
 
-bool LTypeTest(std::string& rString)
+bool OTypeTest(std::string& rString)
 {
 	rString = "Sources/include/Objects/Properties/LType.hpp";
 	bool success = true;
 	std::cout << "Testing: " << rString << std::endl;
 	std::vector< bool (*)() > functions;
 
-	functions.push_back(&LTypeAndPropertyTest);
+    functions.push_back(&OTypeAndPropertyTest);
 
 	for(int i = 0; i < functions.size(); i++)
 	{
@@ -129,4 +129,4 @@ bool LTypeTest(std::string& rString)
 }
 }
 
-#endif // LIBREPP_OBJECTS_PROPERTIES_TEST_LVECTOR_HPP_
+#endif // OPENPP_OBJECTS_PROPERTIES_TEST_LVECTOR_HPP_

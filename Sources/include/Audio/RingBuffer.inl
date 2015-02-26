@@ -4,7 +4,7 @@
 #include <string>
 #include <typeinfo>
 
-namespace Librepp
+namespace Openpp
 {
 namespace Audio
 {
@@ -85,4 +85,4 @@ int RingBuffer<T>::GetElementCount() const
 }
 
 } // Audio
-} // Librepp
+} // Openpp

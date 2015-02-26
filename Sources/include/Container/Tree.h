@@ -1,9 +1,9 @@
-#ifndef ___LIBREPP_CONTAINER_TREE__H___
-#define ___LIBREPP_CONTAINER_TREE__H___
+#ifndef ___OPENPP_CONTAINER_TREE__H___
+#define ___OPENPP_CONTAINER_TREE__H___
 
 #include <map>
 
-namespace Librepp
+namespace Openpp
 {
 namespace Container
 {
@@ -24,6 +24,6 @@ private:
 };
 
 } // Container
-} // Librepp
+} // Openpp
 
-#endif // ___LIBREPP_CONTAINER_TREE__H___
+#endif // ___OPENPP_CONTAINER_TREE__H___

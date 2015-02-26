@@ -1,8 +1,8 @@
-#include "LObject.hpp"
+#include "OObject.hpp"
 #include <vector>
 #include <iostream>
 
-namespace LOT = Librepp::Objects::Test;
+namespace LOT = Openpp::Objects::Test;
 
 int main(void)
 {

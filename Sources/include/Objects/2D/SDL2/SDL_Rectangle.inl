@@ -1,6 +1,6 @@
 #include "SDL_Rectangle.hpp"
 
-namespace Librepp
+namespace Openpp
 {
 namespace Objects
 {
@@ -10,7 +10,7 @@ namespace SDL2
 {
 
 template <typename T>
-SDL_Rectangle<T>::SDL_Rectangle(LO::LObject* const _pParent) :
+SDL_Rectangle<T>::SDL_Rectangle(LO::OObject* const _pParent) :
 	LO2::Rectangle<T>(_pParent)
 { }
 
@@ -46,4 +46,4 @@ void SDL_Rectangle<T>::ChildChanged(int _childId)
 } // SDL2
 } // Objects2D
 } // Objects
-} // Librepp
+} // Openpp

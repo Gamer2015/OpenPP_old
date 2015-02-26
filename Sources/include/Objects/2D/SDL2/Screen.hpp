@@ -1,5 +1,5 @@
-#ifndef LIBREPP_OBJECTS_2D_SDL2_SCREEN_H_
-#define LIBREPP_OBJECTS_2D_SDL2_SCREEN_H_
+#ifndef OPENPP_OBJECTS_2D_SDL2_SCREEN_H_
+#define OPENPP_OBJECTS_2D_SDL2_SCREEN_H_
 
 /********************************************\
  * Date: 18.01.2015
@@ -12,7 +12,7 @@
  *
 \********************************************/
 
-namespace Librepp
+namespace Openpp
 {
 namespace Objects
 {
@@ -40,8 +40,8 @@ public:
 } // SDL2
 } // Objects2D
 } // Objects
-} // Librepp
+} // Openpp
 
 #include "Screen.inl"
 
-#endif // LIBREPP_OBJECTS_2D_SDL2_SCREEN_H_
+#endif // OPENPP_OBJECTS_2D_SDL2_SCREEN_H_

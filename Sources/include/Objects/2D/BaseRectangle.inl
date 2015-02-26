@@ -1,6 +1,6 @@
 #include "BaseRectangle.hpp"
 
-namespace Librepp
+namespace Openpp
 {
 namespace Objects
 {
@@ -15,4 +15,4 @@ BaseRectangle<T>::BaseRectangle(LObject* _pParent) :
 
 } // Objects2D
 } // Objects
-} // Librepp
+} // Openpp

@@ -1,5 +1,5 @@
-#ifndef LIBREPP_UTILITY_STRING_H_
-#define LIBREPP_UTILITY_STRING_H_
+#ifndef OPENPP_UTILITY_STRING_H_
+#define OPENPP_UTILITY_STRING_H_
 
 /***************************\
  * Usage: Platform independent Expansion of std::string
@@ -16,7 +16,7 @@
 #include <vector>
 #include "Char.h"
 
-namespace Librepp
+namespace Openpp
 {
 namespace Utility
 {
@@ -122,8 +122,8 @@ static bool HasNumbers(const std::string& rString);
 
 } // namespace String
 } // namespace Types
-} // namespace Librepp
+} // namespace Openpp
 
 #include "String.inl"
 
-#endif /// LIBREPP_UTILITY_STRING_H_
+#endif /// OPENPP_UTILITY_STRING_H_

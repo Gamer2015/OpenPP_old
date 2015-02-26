@@ -1,5 +1,5 @@
-#ifndef LIBREPP_OBJECTS_3D_VECTOR3_H_
-#define LIBREPP_OBJECTS_3D_VECTOR3_H_
+#ifndef OPENPP_OBJECTS_3D_VECTOR3_H_
+#define OPENPP_OBJECTS_3D_VECTOR3_H_
 
 /******************************************
  *  Usage: 3D vector property for LObjects
@@ -20,15 +20,15 @@
  *
  *******************************************/
 
-#include <Objects/LObject.hpp>
-#include <Objects/Properties/LType.hpp>
+#include <Objects/OObject.hpp>
+#include <Objects/Properties/OType.hpp>
 
-namespace LO = Librepp::Objects;
+namespace OO = Openpp::Objects;
 namespace LOP = LO::Properties;
 
 #include <cmath>
 
-namespace Librepp
+namespace Openpp
 {
 namespace Objects
 {
@@ -36,19 +36,19 @@ namespace Objects3D
 {
 
 template <typename T>
-class Vector3 : public LObject
+class Vector3 : public OObject
 {
 public:
 	/// constructors
-	Vector3(LObject* const _pParent);
-	Vector3(T _x, T _y, T _z, LObject* const _pParent);
-	Vector3(const Vector3<T>& _rcVector, LObject* const _pParent);
+	Vector3(OObject* const _pParent);
+	Vector3(T _x, T _y, T _z, OObject* const _pParent);
+	Vector3(const Vector3<T>& _rcVector, OObject* const _pParent);
 
 
 	/// properties
-	LOP::LType<T> x;
-	LOP::LType<T> y;
-	LOP::LType<T> z;
+	LOP::OType<T> x;
+	LOP::OType<T> y;
+	LOP::OType<T> z;
 
 
 	/// setter
@@ -98,8 +98,8 @@ public:
 
 } // Objects3D
 } // Objects
-} // Librepp
+} // Openpp
 
 #include "Vector3.inl"
 
-#endif // LIBREPP_OBJECTS_3D_VECTOR3_H_
+#endif // OPENPP_OBJECTS_3D_VECTOR3_H_

@@ -1,5 +1,5 @@
-#ifndef LIBREPP_OBJECTS_2D_SDL2_PROPERTIES_TEXTURE_H_
-#define LIBREPP_OBJECTS_2D_SDL2_PROPERTIES_TEXTURE_H_
+#ifndef OPENPP_OBJECTS_2D_SDL2_PROPERTIES_TEXTURE_H_
+#define OPENPP_OBJECTS_2D_SDL2_PROPERTIES_TEXTURE_H_
 
 /********************************************\
  * Date: 17th February 2015
@@ -12,16 +12,16 @@
  *
 \********************************************/
 
-#include <Objects/LObject.hpp>
+#include <Objects/OObject.hpp>
 #include "../Texture.hpp"
 
 
 #include <SDL2/SDL.h>
 #include <string>
 
-namespace LO = Librepp::Objects;
+namespace OO = Openpp::Objects;
 
-namespace Librepp
+namespace Openpp
 {
 namespace Objects
 {
@@ -35,7 +35,7 @@ namespace Properties
 class Texture : public LO::LObject
 {
 public:
-	Texture(LO::LObject* const _pParent = nullptr);
+	Texture(LO::OObject* const _pParent = nullptr);
 
 	/// set the text
 	void set(const std::string& _rcPath);
@@ -54,8 +54,8 @@ private:
 } // SDL2
 } // Objects2D
 } // Objects
-} // Librepp
+} // Openpp
 
 #include "Texture.inl"
 
-#endif // LIBREPP_OBJECTS_2D_SDL2_PROPERTIES_TEXTURE_H_
+#endif // OPENPP_OBJECTS_2D_SDL2_PROPERTIES_TEXTURE_H_

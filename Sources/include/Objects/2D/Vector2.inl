@@ -1,6 +1,6 @@
 #include "Vector2.hpp"
 
-namespace Librepp
+namespace Openpp
 {
 namespace Objects
 {
@@ -12,19 +12,19 @@ namespace Objects2D
 ///// constructors
 /////
 template <typename T>
-Vector2<T>::Vector2(LObject* const _pParent) :
-	LObject(_pParent),
+Vector2<T>::Vector2(OObject* const _pParent) :
+	OObject(_pParent),
 	x(this),
 	y(this)
 {}
 template <typename T>
-Vector2<T>::Vector2(T _x, T _y, LObject* const _pParent) :
-	LObject(_pParent),
+Vector2<T>::Vector2(T _x, T _y, OObject* const _pParent) :
+	OObject(_pParent),
 	x(_x, this),
 	y(_y, this)
 {}
 template <typename T>
-Vector2<T>::Vector2(const Vector2<T>& _rcVector, LObject* const _pParent) :
+Vector2<T>::Vector2(const Vector2<T>& _rcVector, OObject* const _pParent) :
 	Vector2(_rcVector.x(), _rcVector.y(), _pParent)
 {}
 
@@ -209,4 +209,4 @@ Vector2<T>& Vector2<T>::operator/=(const Vector2<T>& _rcVector)
 
 } // Objects2D
 } // Objects
-} // Librepp
+} // Openpp

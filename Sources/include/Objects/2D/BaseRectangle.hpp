@@ -1,5 +1,5 @@
-#ifndef LIBREPP_OBJECTS_2D_BASE_RECTANGLE_H_
-#define LIBREPP_OBJECTS_2D_BASE_RECTANGLE_H_
+#ifndef OPENPP_OBJECTS_2D_BASE_RECTANGLE_H_
+#define OPENPP_OBJECTS_2D_BASE_RECTANGLE_H_
 
 /********************************************\
  * Date: 18.01.2015
@@ -15,7 +15,7 @@
 #include "BaseObject2D.hpp"
 #include "Vector2.hpp"
 
-namespace Librepp
+namespace Openpp
 {
 namespace Objects
 {
@@ -33,8 +33,8 @@ public:
 
 } // Objects2D
 } // Objects
-} // Librepp
+} // Openpp
 
 #include "BaseRectangle.inl"
 
-#endif // LIBREPP_OBJECTS_2D_BASE_RECTANGLE_H_
+#endif // OPENPP_OBJECTS_2D_BASE_RECTANGLE_H_

@@ -5,7 +5,7 @@
 #include <vector>
 
 
-namespace Librepp
+namespace Openpp
 {
 namespace Utility
 {
@@ -316,4 +316,4 @@ bool String::HasNumbers(const std::string& rString)
 }
 
 } // namespace Types
-} // namespace Librepp
+} // namespace Openpp

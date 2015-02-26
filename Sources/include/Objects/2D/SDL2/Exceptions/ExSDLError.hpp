@@ -1,5 +1,5 @@
-#ifndef LIBREPP_OBJECTS_2D_SDL2_EXCEPTIONS_SDL_ERROR_H_
-#define LIBREPP_OBJECTS_2D_SDL2_EXCEPTIONS_SDL_ERROR_H_
+#ifndef OPENPP_OBJECTS_2D_SDL2_EXCEPTIONS_SDL_ERROR_H_
+#define OPENPP_OBJECTS_2D_SDL2_EXCEPTIONS_SDL_ERROR_H_
 
 /********************************************\
  * Date: 18.01.2015
@@ -15,7 +15,7 @@
 #include <exception>
 #include <string>
 
-namespace Librepp
+namespace Openpp
 {
 namespace Objects
 {
@@ -40,8 +40,8 @@ private:
 } // SDL2
 } // Objects2D
 } // Objects
-} // Librepp
+} // Openpp
 
 #include "ExSDLError.inl"
 
-#endif // LIBREPP_OBJECTS_2D_SDL2_EXCEPTIONS_SDL_ERROR_H_
+#endif // OPENPP_OBJECTS_2D_SDL2_EXCEPTIONS_SDL_ERROR_H_

@@ -1,5 +1,5 @@
-#ifndef LIBREPP_OBJECTS_2D_SDL2_GLOBALS_HPP_
-#define LIBREPP_OBJECTS_2D_SDL2_GLOBALS_HPP_
+#ifndef OPENPP_OBJECTS_2D_SDL2_GLOBALS_HPP_
+#define OPENPP_OBJECTS_2D_SDL2_GLOBALS_HPP_
 
 /********************************************\
  * Date: 18.01.2015
@@ -17,7 +17,7 @@
 #include "Exceptions/ExSDLError.hpp"
 #include "Screen.hpp"
 
-namespace Librepp
+namespace Openpp
 {
 namespace Objects
 {
@@ -48,8 +48,8 @@ private:
 } // SDL2
 } // Objects2D
 } // Objects
-} // Librepp
+} // Openpp
 
 #include "Globals.inl"
 
-#endif // LIBREPP_OBJECTS_2D_SDL2_GLOBALS_HPP_
+#endif // OPENPP_OBJECTS_2D_SDL2_GLOBALS_HPP_

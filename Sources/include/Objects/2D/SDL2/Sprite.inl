@@ -1,6 +1,6 @@
 #include "Sprite.hpp"
 
-namespace Librepp
+namespace Openpp
 {
 namespace Objects
 {
@@ -10,7 +10,7 @@ namespace SDL2
 {
 
 template <typename T>
-Sprite<T>::Sprite(LO::LObject* const _pParent) :
+Sprite<T>::Sprite(LO::OObject* const _pParent) :
 	SDL_Rectangle<T>(_pParent)
 { }
 
@@ -41,4 +41,4 @@ void Sprite<T>::render() const
 } // SDL2
 } // Objects2D
 } // Objects
-} // Librepp
+} // Openpp

@@ -17,7 +17,7 @@ SET(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
 #-------------------------------------
 # Get Compiler Paths
 #-------------------------------------
-INCLUDE(${CMAKE_CURRENT_SOURCE_DIR}/../../../LibreppConfig.txt)
+INCLUDE(${CMAKE_CURRENT_SOURCE_DIR}/../../../OpenppConfig.txt)
 
 #-------------------------------------
 # Sources and Headers

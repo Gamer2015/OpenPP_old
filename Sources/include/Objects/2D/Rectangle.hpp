@@ -1,5 +1,5 @@
-#ifndef LIBREPP_OBJECTS_2D_RECTANGLE_H_
-#define LIBREPP_OBJECTS_2D_RECTANGLE_H_
+#ifndef OPENPP_OBJECTS_2D_RECTANGLE_H_
+#define OPENPP_OBJECTS_2D_RECTANGLE_H_
 
 /********************************************\
  * Usage: 2D rectangle LObject
@@ -15,7 +15,7 @@
 #include "BaseRectangle.hpp"
 #include "Vector2.hpp"
 
-namespace Librepp
+namespace Openpp
 {
 namespace Objects
 {
@@ -29,13 +29,13 @@ public:
 	Rectangle(LObject* _pParent = nullptr);
 
 	Vector2<T> origin;
-	Objects::Properties::LType<float> angle;
+	Objects::Properties::OType<float> angle;
 };
 
 } // Objects2D
 } // Objects
-} // Librepp
+} // Openpp
 
 #include "Rectangle.inl"
 
-#endif // LIBREPP_OBJECTS_2D_RECTANGLE_H_
+#endif // OPENPP_OBJECTS_2D_RECTANGLE_H_

@@ -2,7 +2,7 @@
 #include <Utility/String.hpp>
 #include <Timer/Timer.h>
 
-namespace LUS = Librepp::Utility::String;
+namespace LUS = Openpp::Utility::String;
 
 int main(void)
 {

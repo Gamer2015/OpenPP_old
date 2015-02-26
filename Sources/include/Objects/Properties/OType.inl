@@ -1,6 +1,6 @@
-#include "LType.hpp"
+#include "OType.hpp"
 
-namespace Librepp
+namespace Openpp
 {
 namespace Objects
 {
@@ -11,28 +11,28 @@ namespace Properties
 ///// constructors
 /////
 template <typename T>
-LType<T>::LType(LObject* const _pParent) noexcept :
-	LObject(_pParent),
+LType<T>::LType(OObject* const _pParent) noexcept :
+	OObject(_pParent),
 	_mValue()
 {}
 template <typename T>
-LType<T>::LType(const T& _rcValue, LObject* const _pParent) noexcept :
-	LObject(_pParent),
+LType<T>::LType(const T& _rcValue, OObject* const _pParent) noexcept :
+	OObject(_pParent),
 	_mValue(_rcValue)
 {}
 template <typename T>
-LType<T>::LType(const T&& _rrcValue, LObject* const _pParent) noexcept :
-	LObject(_pParent),
+LType<T>::LType(const T&& _rrcValue, OObject* const _pParent) noexcept :
+	OObject(_pParent),
 	_mValue(std::move(_rrcValue))
 {}
 template <typename T>
-LType<T>::LType(const LType<T>& _rcType, LObject* const _pParent) noexcept :
-	LObject(_pParent),
+LType<T>::LType(const LType<T>& _rcType, OObject* const _pParent) noexcept :
+	OObject(_pParent),
 	_mValue(_rcType())
 {}
 template <typename T>
-LType<T>::LType(const LType<T>&& _rrcType, LObject* const _pParent) noexcept :
-	LObject(_pParent),
+LType<T>::LType(const LType<T>&& _rrcType, OObject* const _pParent) noexcept :
+	OObject(_pParent),
 	_mValue(std::move(_rrcType()))
 {}
 
@@ -607,4 +607,4 @@ LType<T>& operator>>=(LType<T>& _rcLeftType, const U& _rcValue)
 
 } // Properties
 } // Objects
-} // Librepp
+} // Openpp

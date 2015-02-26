@@ -1,5 +1,5 @@
-#ifndef ___LIBREPP_TYPES_CHAR_EXPANSION__H___
-#define ___LIBREPP_TYPES_CHAR_EXPANSION__H___
+#ifndef ___OPENPP_TYPES_CHAR_EXPANSION__H___
+#define ___OPENPP_TYPES_CHAR_EXPANSION__H___
 
 /***************************\
  * Usage: Platform independent Expansion of char
@@ -12,7 +12,7 @@
  *
 \**************************/
 
-namespace Librepp
+namespace Openpp
 {
 namespace Utility
 {
@@ -33,8 +33,8 @@ static bool IsNumber(char Character);
 
 } // namespace Char
 } // namespace Types
-} // namespace Librepp
+} // namespace Openpp
 
 #include "Char.inl"
 
-#endif /// ___LIBREPP_TYPES_CHAR_EXPANSION__H___
+#endif /// ___OPENPP_TYPES_CHAR_EXPANSION__H___

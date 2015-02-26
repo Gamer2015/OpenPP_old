@@ -1,6 +1,6 @@
 #include "BaseObject2D.hpp"
 
-namespace Librepp
+namespace Openpp
 {
 namespace Objects
 {
@@ -9,7 +9,7 @@ namespace Objects2D
 
 template <typename T>
 BaseObject2<T>::BaseObject2(LObject* _pParent) :
-	LObject(_pParent),
+	OObject(_pParent),
 	position(this)
 {
 
@@ -17,4 +17,4 @@ BaseObject2<T>::BaseObject2(LObject* _pParent) :
 
 } // Objects2D
 } // Objects
-} // Librepp
+} // Openpp

@@ -1,5 +1,5 @@
-#ifndef LIBREPP_OBJECTS_PROPERTIES_LTYPE_HPP_
-#define LIBREPP_OBJECTS_PROPERTIES_LTYPE_HPP_
+#ifndef OPENPP_OBJECTS_PROPERTIES_LTYPE_HPP_
+#define OPENPP_OBJECTS_PROPERTIES_LTYPE_HPP_
 
 /********************************************\
  * usage: type property for primitive types in LObjects
@@ -13,10 +13,11 @@
  *
 \********************************************/
 
-#include "../LObject.hpp"
+#include "../OObject.hpp"
 #include <utility>
+#include <iostream>
 
-namespace Librepp
+namespace Openpp
 {
 namespace Objects
 {
@@ -24,15 +25,15 @@ namespace Properties
 {
 
 template <typename T>
-class LType : public LObject
+class LType : public OObject
 {
 public:
 	///// constructors
-	LType(LObject* const _pParent=nullptr) noexcept;
-	LType(const T&, LObject* const _pParent=nullptr) noexcept;
-	LType(const T&&, LObject* const _pParent=nullptr) noexcept;
-	LType(const LType<T>& _rcType, LObject* const _pParent=nullptr) noexcept;
-	LType(const LType<T>&& _rrcType, LObject* const _pParent=nullptr) noexcept;
+	LType(OObject* const _pParent=nullptr) noexcept;
+	LType(const T&, OObject* const _pParent=nullptr) noexcept;
+	LType(const T&&, OObject* const _pParent=nullptr) noexcept;
+	LType(const LType<T>& _rcType, OObject* const _pParent=nullptr) noexcept;
+	LType(const LType<T>&& _rrcType, OObject* const _pParent=nullptr) noexcept;
 
 
 	///// template type
@@ -208,8 +209,8 @@ template <typename T, typename U> LType<T>& operator>>=(LType<T>&, const U&);
 
 } // Properties
 } // Objects
-} // Librepp
+} // Openpp
 
-#include "LType.inl"
+#include "OType.inl"
 
-#endif // LIBREPP_OBJECTS_PROPERTIES_LTYPE_H_
+#endif // OPENPP_OBJECTS_PROPERTIES_LTYPE_H_

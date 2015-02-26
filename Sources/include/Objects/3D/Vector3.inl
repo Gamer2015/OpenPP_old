@@ -1,6 +1,6 @@
 #include "Vector3.hpp"
 
-namespace Librepp
+namespace Openpp
 {
 namespace Objects
 {
@@ -12,21 +12,21 @@ namespace Objects3D
 ///// constructors
 /////
 template <typename T>
-Vector3<T>::Vector3(LObject* const _pParent) :
-	LObject(_pParent),
+Vector3<T>::Vector3(OObject* const _pParent) :
+	OObject(_pParent),
 	x(this),
 	y(this),
 	z(this)
 {}
 template <typename T>
-Vector3<T>::Vector3(T _x, T _y, T _z, LObject* const _pParent) :
-	LObject(_pParent),
+Vector3<T>::Vector3(T _x, T _y, T _z, OObject* const _pParent) :
+	OObject(_pParent),
 	x(_x, this),
 	y(_y, this),
 	z(_z, this)
 {}
 template <typename T>
-Vector3<T>::Vector3(const Vector3<T>& _rcVector, LObject* const _pParent) :
+Vector3<T>::Vector3(const Vector3<T>& _rcVector, OObject* const _pParent) :
 	Vector3(_rcVector.x(), _rcVector.y(), _rcVector.z(), _pParent)
 {}
 
@@ -219,4 +219,4 @@ Vector3<T>& Vector3<T>::operator/=(DT _divisor)
 
 } // Objects3D
 } // Objects
-} // Librepp
+} // Openpp

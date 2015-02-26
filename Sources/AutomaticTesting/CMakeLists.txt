@@ -31,7 +31,7 @@ string(REPLACE "/" "" ProjectName ${CMAKE_CURRENT_SOURCE_DIR})
 string(REPLACE ":" "" ProjectName ${ProjectName})
 string(REPLACE "." "" ProjectName ${ProjectName})
 string(REPLACE "_" "" ProjectName ${ProjectName})
-string(REPLACE "CUsersStefanDocumentsGitHubLibreppSources" "" ProjectName ${ProjectName})
+string(REPLACE "CUsersStefanDocumentsGitHubOpenppSources" "" ProjectName ${ProjectName})
 project(${ProjectName})
 
 FILE(GLOB ${PROJECT_NAME}_FOLDER "*.c" "*.cpp" "*.h" "*.hpp" "*.inl" "*.dll" "*.a" "*.pc" "*.cmake")

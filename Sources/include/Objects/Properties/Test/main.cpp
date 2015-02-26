@@ -1,8 +1,8 @@
-#include "LType.hpp"
+#include "OType.hpp"
 #include <vector>
 #include <iostream>
 
-namespace LOPT = Librepp::Objects::Properties::Test;
+namespace LOPT = Openpp::Objects::Properties::Test;
 
 int main(void)
 {

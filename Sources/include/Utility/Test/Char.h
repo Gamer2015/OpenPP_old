@@ -1,14 +1,14 @@
-#ifndef LIBREPP_INCLUDE_UTILITY_TEST_CHAR_H_
-#define LIBREPP_INCLUDE_UTILITY_TEST_CHAR_H_
+#ifndef OPENPP_INCLUDE_UTILITY_TEST_CHAR_H_
+#define OPENPP_INCLUDE_UTILITY_TEST_CHAR_H_
 
 #include "../Char.h"
 #include <iostream>
 #include <string>
 #include <vector>
 
-namespace LUC = Librepp::Utility::Char;
+namespace LUC = Openpp::Utility::Char;
 
-namespace Librepp
+namespace Openpp
 {
 namespace Utility
 {
@@ -107,6 +107,6 @@ bool Test(std::string& rString)
 } // Test
 } // Char
 } // Utility
-} // Librepp
+} // Openpp
 
-#endif // LIBREPP_INCLUDE_UTILITY_TEST_CHAR_H_
+#endif // OPENPP_INCLUDE_UTILITY_TEST_CHAR_H_

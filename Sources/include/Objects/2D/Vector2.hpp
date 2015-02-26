@@ -1,5 +1,5 @@
-#ifndef LIBREPP_OBJECTS_2D_VECTOR2_H_
-#define LIBREPP_OBJECTS_2D_VECTOR2_H_
+#ifndef OPENPP_OBJECTS_2D_VECTOR2_H_
+#define OPENPP_OBJECTS_2D_VECTOR2_H_
 
 /******************************************
  *  Usage: 2D vector property for LObjects
@@ -17,12 +17,12 @@
  *
  *******************************************/
 
-#include "../LObject.hpp"
-#include "../Properties/LType.hpp"
+#include "../OObject.hpp"
+#include "../Properties/OType.hpp"
 
-namespace LOP = Librepp::Objects::Properties;
+namespace LOP = Openpp::Objects::Properties;
 
-namespace Librepp
+namespace Openpp
 {
 namespace Objects
 {
@@ -30,18 +30,18 @@ namespace Objects2D
 {
 
 template <typename T>
-class Vector2 : public LObject
+class Vector2 : public OObject
 {
 public:
 	/// constructors
-	Vector2(LObject* const _pParent = nullptr);
-	Vector2(T _x, T _y, LObject* const _pParent = nullptr);
-	Vector2(const Vector2<T>& _rcVector, LObject* const _pParent = nullptr);
+	Vector2(OObject* const _pParent = nullptr);
+	Vector2(T _x, T _y, OObject* const _pParent = nullptr);
+	Vector2(const Vector2<T>& _rcVector, OObject* const _pParent = nullptr);
 
 
 	/// properties
-	LOP::LType<T> x;
-	LOP::LType<T> y;
+	LOP::OType<T> x;
+	LOP::OType<T> y;
 
 
 	/// setter
@@ -92,8 +92,8 @@ public:
 
 } // Objects2D
 } // Objects
-} // Librepp
+} // Openpp
 
 #include "Vector2.inl"
 
-#endif // LIBREPP_OBJECTS_2D_VECTOR2_H_
+#endif // OPENPP_OBJECTS_2D_VECTOR2_H_

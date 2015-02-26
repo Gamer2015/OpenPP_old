@@ -7,7 +7,7 @@
 
 #include <Utility/String.hpp>
 
-namespace LUS = Librepp::Utility::String;
+namespace LUS = Openpp::Utility::String;
 
 MainWindow::MainWindow(QWidget *parent) :
 	QMainWindow(parent),

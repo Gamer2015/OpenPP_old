@@ -30,7 +30,7 @@ string(REPLACE "/" "" ProjectName ${CMAKE_CURRENT_SOURCE_DIR})
 string(REPLACE ":" "" ProjectName ${ProjectName})
 string(REPLACE "." "" ProjectName ${ProjectName})
 string(REPLACE "_" "" ProjectName ${ProjectName})
-string(REPLACE "CUsersStefanDocumentsGitHubLibreppSources" "" ProjectName ${ProjectName})
+string(REPLACE "CUsersStefanDocumentsGitHubOpenppSources" "" ProjectName ${ProjectName})
 
 project(${ProjectName})
 SET(VERSION_MAJOR "1")
@@ -45,7 +45,7 @@ SET(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
 #-------------------------------------
 # Get Compiler Paths
 #-------------------------------------
-INCLUDE(${CMAKE_CURRENT_SOURCE_DIR}/../../../LibreppConfig.txt)
+INCLUDE(${CMAKE_CURRENT_SOURCE_DIR}/../../../OpenppConfig.txt)
 
 #-------------------------------------
 # Sources and Headers
@@ -56,7 +56,7 @@ SET(${PROJECT_NAME}_SOURCES
 )
 SET(${PROJECT_NAME}_HEADERS
 
-  LObject.hpp
+  OObject.hpp
 )
 
 #-------------------------------------

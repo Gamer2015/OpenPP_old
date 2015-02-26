@@ -1,23 +1,23 @@
-#ifndef LIBREPP_OBJECTS_TEST_LOBJECT_HPP_
-#define LIBREPP_OBJECTS_TEST_LOBJECT_HPP_
+#ifndef OPENPP_OBJECTS_TEST_LOBJECT_HPP_
+#define OPENPP_OBJECTS_TEST_LOBJECT_HPP_
 
-#include "../LObject.hpp"
+#include "../OObject.hpp"
 #include <iostream>
 #include <string>
 #include <vector>
 
-namespace Librepp
+namespace Openpp
 {
 namespace Objects
 {
 namespace Test
 {
 
-class Object : public LObject
+class Object : public OObject
 {
 public:
-	Object(LObject* const _pParent=nullptr) :
-		LObject(_pParent),
+	Object(OObject* const _pParent=nullptr) :
+		OObject(_pParent),
 		count(0),
 		selfcount(0)
 	{
@@ -42,11 +42,11 @@ protected:
 		}
 	}
 };
-class Object2 : public LObject
+class Object2 : public OObject
 {
 public:
-	Object2(LObject* const _pParent=nullptr) :
-		LObject(_pParent),
+	Object2(OObject* const _pParent=nullptr) :
+		OObject(_pParent),
 		count(0),
 		selfcount(0),
 		obj(this)
@@ -121,7 +121,7 @@ bool IdAndselfIdTest()
 
 bool Test(std::string& rString)
 {
-	rString = "Sources/include/Objects/LObject.hpp";
+	rString = "Sources/include/Objects/OObject.hpp";
 	bool success = true;
 	std::cout << "Testing " << rString << std::endl;
 	std::vector< bool (*)() > functions;
@@ -138,7 +138,7 @@ bool Test(std::string& rString)
 
 } // Test
 } // Objects
-} // Librepp
+} // Openpp
 
 
 #endif

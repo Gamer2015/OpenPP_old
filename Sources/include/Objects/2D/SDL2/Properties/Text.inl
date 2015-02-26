@@ -1,6 +1,6 @@
 #include "Text.hpp"
 
-namespace Librepp
+namespace Openpp
 {
 namespace Objects
 {
@@ -11,11 +11,11 @@ namespace SDL2
 namespace Properties
 {
 
-Text::Text(LObject* const _pParent) :
+Text::Text(OObject* const _pParent) :
 	Text("", _pParent)
 {}
-Text::Text(const std::string& _rctext, LObject* const _pParent) :
-	LObject(_pParent),
+Text::Text(const std::string& _rctext, OObject* const _pParent) :
+	OObject(_pParent),
 	_mText(_rctext),
 	height(this),
 	origin(this),
@@ -74,4 +74,4 @@ void Text::ChildChanged(int _childId)
 } // SDL2
 } // Objects2D
 } // Objects
-} // Librepp
+} // Openpp

@@ -1,5 +1,5 @@
-#ifndef LIBREPP_OBJECTS_2D_SDL2_TEXTURE_H_
-#define LIBREPP_OBJECTS_2D_SDL2_TEXTURE_H_
+#ifndef OPENPP_OBJECTS_2D_SDL2_TEXTURE_H_
+#define OPENPP_OBJECTS_2D_SDL2_TEXTURE_H_
 
 /********************************************\
  * Date: 18.01.2015
@@ -21,7 +21,7 @@
 #include "Exceptions/ExSDLError.hpp"
 #include "Globals.hpp"
 
-namespace Librepp
+namespace Openpp
 {
 namespace Objects
 {
@@ -61,8 +61,8 @@ private:
 } // SDL2
 } // Objects2D
 } // Objects
-} // Librepp
+} // Openpp
 
 #include "Texture.inl"
 
-#endif // LIBREPP_OBJECTS_2D_SDL2_TEXTURE_H_
+#endif // OPENPP_OBJECTS_2D_SDL2_TEXTURE_H_

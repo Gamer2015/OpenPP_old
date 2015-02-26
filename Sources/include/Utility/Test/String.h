@@ -1,14 +1,14 @@
-#ifndef LIBREPP_INCLUDE_UTILITY_TEST_STRING_H_
-#define LIBREPP_INCLUDE_UTILITY_TEST_STRING_H_
+#ifndef OPENPP_INCLUDE_UTILITY_TEST_STRING_H_
+#define OPENPP_INCLUDE_UTILITY_TEST_STRING_H_
 
 #include "../String.hpp"
 #include <iostream>
 #include <string>
 #include <vector>
 
-namespace LUS = Librepp::Utility::String;
+namespace LUS = Openpp::Utility::String;
 
-namespace Librepp
+namespace Openpp
 {
 namespace Utility
 {
@@ -329,6 +329,6 @@ bool Test(std::string& rString)
 } // Test
 } // String
 } // Utility
-} // Librepp
+} // Openpp
 
-#endif // LIBREPP_INCLUDE_UTILITY_TEST_STRING_H_
+#endif // OPENPP_INCLUDE_UTILITY_TEST_STRING_H_

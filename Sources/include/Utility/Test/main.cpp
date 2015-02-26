@@ -3,8 +3,8 @@
 #include <vector>
 #include <iostream>
 
-namespace LUCT = Librepp::Utility::Char::Test;
-namespace LUST = Librepp::Utility::String::Test;
+namespace LUCT = Openpp::Utility::Char::Test;
+namespace LUST = Openpp::Utility::String::Test;
 
 int main(void)
 {

@@ -18,7 +18,7 @@ SET(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
 #-------------------------------------
 # Get Compiler Paths
 #-------------------------------------
-INCLUDE(${CMAKE_CURRENT_SOURCE_DIR}/../../../LibreppConfig.txt)
+INCLUDE(${CMAKE_CURRENT_SOURCE_DIR}/../../../OpenppConfig.txt)
 
 #-------------------------------------
 # Sources and Headers
@@ -34,7 +34,7 @@ add_executable(${PROJECT_NAME} ${${PROJECT_NAME}_headers} ${${PROJECT_NAME}_FILE
 #-------------------------------------
 # Link Binaries to Libs
 #-------------------------------------
-target_link_libraries(${PROJECT_NAME} SDL2 SDL2main SDL2_image SDL2_ttf Box2D Core)
+target_link_libraries(${PROJECT_NAME} SDL2 SDL2main SDL2_image SDL2_ttf Box2D)
 
 #-------------------------------------
 # Configure install

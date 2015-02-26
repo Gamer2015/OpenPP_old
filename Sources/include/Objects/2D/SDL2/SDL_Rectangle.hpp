@@ -1,5 +1,5 @@
-#ifndef LIBREPP_OBJECTS_2D_SDL2_SDL_RECTANGLE_H_
-#define LIBREPP_OBJECTS_2D_SDL2_SDL_RECTANGLE_H_
+#ifndef OPENPP_OBJECTS_2D_SDL2_SDL_RECTANGLE_H_
+#define OPENPP_OBJECTS_2D_SDL2_SDL_RECTANGLE_H_
 
 /********************************************\
  * Usage: base class for renderable SDLObjects
@@ -15,10 +15,10 @@
 #include <SDL2/SDL.h>
 #include <Objects/2D/Rectangle.hpp>
 
-namespace LO = Librepp::Objects;
+namespace OO = Openpp::Objects;
 namespace LO2 = LO::Objects2D;
 
-namespace Librepp
+namespace Openpp
 {
 namespace Objects
 {
@@ -31,7 +31,7 @@ template <typename T>
 class SDL_Rectangle : public LO2::Rectangle<T>
 {
 public:
-	SDL_Rectangle(LO::LObject* const _pParent = nullptr);
+	SDL_Rectangle(LO::OObject* const _pParent = nullptr);
 
 	/// rendered rect
 	const SDL_Rect& rect() const;
@@ -48,8 +48,8 @@ protected:
 } // SDL2
 } // Objects2D
 } // Objects
-} // Librepp
+} // Openpp
 
 #include "SDL_Rectangle.inl"
 
-#endif // LIBREPP_OBJECTS_2D_SDL2_SDL_RECTANGLE_H_
+#endif // OPENPP_OBJECTS_2D_SDL2_SDL_RECTANGLE_H_

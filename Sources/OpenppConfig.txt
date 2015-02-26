@@ -6,11 +6,11 @@ cmake_minimum_required(VERSION 3.0)
 #-------------------------------------
 # Compiler Paths
 #-------------------------------------
-SET(BASE_PATH "C:/Users/Stefan/Documents/GitHub/Librepp/Sources")
+SET(BASE_PATH "C:/Users/Stefan/Documents/GitHub/Openpp/Sources")
 
 
 #-------------------------------------
-# Librepp Compiler Paths
+# Openpp Compiler Paths
 #-------------------------------------
 INCLUDE_DIRECTORIES(${BASE_PATH}/include)
 LINK_DIRECTORIES(${BASE_PATH}/lib)

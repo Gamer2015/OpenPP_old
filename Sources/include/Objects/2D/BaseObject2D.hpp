@@ -1,5 +1,5 @@
-#ifndef LIBREPP_OBJECTS_2D_BASE_OBJECT_H_
-#define LIBREPP_OBJECTS_2D_BASE_OBJECT_H_
+#ifndef OPENPP_OBJECTS_2D_BASE_OBJECT_H_
+#define OPENPP_OBJECTS_2D_BASE_OBJECT_H_
 
 /********************************************\
  * Date: 18.01.2015
@@ -12,11 +12,11 @@
  *
 \********************************************/
 
-#include <Objects/LObject.hpp>
+#include <Objects/OObject.hpp>
 
 #include "Vector2.hpp"
 
-namespace Librepp
+namespace Openpp
 {
 namespace Objects
 {
@@ -35,8 +35,8 @@ public:
 
 } // Objects2D
 } // Objects
-} // Librepp
+} // Openpp
 
 #include "BaseObject2D.inl"
 
-#endif // LIBREPP_OBJECTS_2D_BASE_OBJECT_H_
+#endif // OPENPP_OBJECTS_2D_BASE_OBJECT_H_
