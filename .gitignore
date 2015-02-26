@@ -52,13 +52,12 @@ Builds/
 # 3rd Party Libraries
 Sources/3rdParty/*/
 
-# CMake User Files
+# temporary or user-dependend CMake Files
 *.user
 *.user.*
 *.autosave
 
-# 3rd Party and Scanned Tests File 
-Sources/3rdParty/*/
+# Automatic Test Tests.txt File 
 Sources/AutomaticTesting/Tests.txt
 
 # Applications
