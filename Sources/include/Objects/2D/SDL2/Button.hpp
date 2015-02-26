@@ -26,9 +26,9 @@
 #include <cmath>
 
 namespace OO = Openpp::Objects;
-namespace LOP = LO::Properties;
+namespace LOP = OO::Properties;
 
-namespace LSDL2 = LO::Objects2D::SDL2;
+namespace LSDL2 = OO::Objects2D::SDL2;
 typedef LSDL2::Globals LSG;
 typedef LSDL2::Texture LST;
 typedef void (*FunctionPointer)();
@@ -45,7 +45,7 @@ namespace SDL2
 class Button : public SDL_Rectangle<float>
 {
 public:
-	Button(LO::OObject* const _pParent = nullptr);
+	Button(OO::OObject* const _pParent = nullptr);
 
 
 	/// properties
@@ -66,7 +66,7 @@ public:
 	bool PointIsInside(float X, float Y) const;
 
 	/// Render the Button
-	void render(int Index = 0) const;
+    void Render(int Index = 0) const;
 
 protected:
 	virtual void ChildChanged(int _childId);

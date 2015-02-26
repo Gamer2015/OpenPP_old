@@ -10,7 +10,7 @@ namespace SDL2
 {
 
 template <typename T>
-Sprite<T>::Sprite(LO::OObject* const _pParent) :
+Sprite<T>::Sprite(OO::OObject* const _pParent) :
 	SDL_Rectangle<T>(_pParent)
 { }
 
@@ -32,7 +32,7 @@ std::shared_ptr<SDL_Texture> Sprite<T>::operator()() const
 }
 
 template <typename T>
-void Sprite<T>::render() const
+void Sprite<T>::Render() const
 {
 	if(mpTexture != nullptr)
 		SDL_RenderCopyEx( Globals::Renderer(), mpTexture.get(), NULL, &(this->rect()), 180 / M_PI * (this->angle()), &(this->rectOrigin()), SDL_FLIP_NONE);

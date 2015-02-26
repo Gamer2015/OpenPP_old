@@ -35,9 +35,10 @@ public:
 	static void Init(const std::string& rTitle, int Width, int Height);
 	static bool WindowIsOpen;
 
+    /// Global Renderer
 	static SDL_Renderer* Renderer();
 
-	// Global Screen Pointer
+    /// Current Screen
 	static Screen* gpCurrentScreen;
 
 private:

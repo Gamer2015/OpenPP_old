@@ -32,10 +32,10 @@ namespace SDL2
 namespace Properties
 {
 
-class Texture : public LO::LObject
+class Texture : public OO::OObject
 {
 public:
-	Texture(LO::OObject* const _pParent = nullptr);
+	Texture(OO::OObject* const _pParent = nullptr);
 
 	/// set the text
 	void set(const std::string& _rcPath);

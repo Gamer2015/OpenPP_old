@@ -24,7 +24,7 @@
 #include <Objects/Properties/OType.hpp>
 
 namespace OO = Openpp::Objects;
-namespace LOP = LO::Properties;
+namespace LOP = OO::Properties;
 
 #include <cmath>
 

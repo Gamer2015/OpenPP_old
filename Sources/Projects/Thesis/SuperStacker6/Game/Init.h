@@ -1,5 +1,5 @@
-#ifndef ___GAME_INIT__H___
-#define ___GAME_INIT__H___
+#ifndef OPENPP_PROJECTS_THESIS_GAME_INIT_H_
+#define OPENPP_PROJECTS_THESIS_GAME_INIT_H_
 
 /********************************************\
  * Date: 18.01.2015
@@ -17,15 +17,19 @@
 #include <SDL2/SDL_ttf.h>
 #include <memory>
 #include <stdio.h>
-#include "../../Core/Globals.h"
-#include "../../Core/Exceptions/ExSDLError.h"
-#include "../../Core/Texture.h"
+#include <Objects/2D/SDL2/Globals.hpp>
+#include <Objects/2D/SDL2/Exceptions/ExSDLError.hpp>
+#include <Objects/2D/SDL2/Texture.hpp>
 #include "Globals.h"
 #include "LevelScreen.h"
 #include "StartScreen.h"
 #include "GameScreen.h"
 #include "WinScreen.h"
 #include "LostScreen.h"
+
+namespace OO2 = Openpp::Objects::Objects2D;
+namespace SDL = OO2::SDL2;
+typedef SDL::Globals SDLG;
 
 namespace Game
 {
@@ -45,4 +49,4 @@ namespace Game
     }
 }
 
-#endif // ___GAME_INIT__H___
+#endif // OPENPP_PROJECTS_THESIS_GAME_INIT_H_

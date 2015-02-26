@@ -3,8 +3,8 @@
 
 #include <SDL2/SDL.h>
 #include <memory>
-#include <Objects/2D/LSDL2/Globals.hpp>
-#include <Objects/2D/LSDL2/Screen.hpp>
+#include <Objects/2D/SDL2/Globals.hpp>
+#include <Objects/2D/SDL2/Screen.hpp>
 
 namespace Game
 {

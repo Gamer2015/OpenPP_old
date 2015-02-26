@@ -1,5 +1,5 @@
-#ifndef ___RASPBERRY_IO__H___
-#define ___RASPBERRY_IO__H___
+#ifndef OPENPP_PROJECTS_THESIS_CORE_RASPIO_H_
+#define OPENPP_PROJECTS_THESIS_CORE_RASPIO_H_
 
 namespace Raspberry
 {
@@ -41,4 +41,6 @@ namespace Raspberry
 	}
 }
 
-#endif // ___RASPBERRY_IO__H___
+#include "RaspIO.inl"
+
+#endif // OPENPP_PROJECTS_THESIS_CORE_RASPIO_H_

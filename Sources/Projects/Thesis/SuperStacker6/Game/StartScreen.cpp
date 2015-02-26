@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include "Globals.h"
 
-typedef Core::Globals CG;
 typedef Game::Globals GG;
 namespace CI = Core::Input;
 namespace BUTTONS = Game::Screens::StartScreenButtons;
@@ -16,11 +15,11 @@ namespace Game
             void BTN_START()
             {
 //                GG::gGameScreen.LoadWorld("Levels/Level 1");
-                CG::gpCurrentScreen = &(GG::gLevelScreen);
+                SDLG::gpCurrentScreen = &(GG::gLevelScreen);
             }
             void BTN_QUIT()
             {
-                CG::WindowIsOpen = false;
+                SDLG::WindowIsOpen = false;
             }
         }
 
@@ -102,7 +101,7 @@ namespace Game
 
         void StartScreen::Render()
         {
-            SDL_RenderCopy( CG::gpRenderer, mpBackground.get(), NULL, NULL);
+            SDL_RenderCopy( SDLG::Renderer(), mpBackground.get(), NULL, NULL);
 
             for( char iter = 0; iter < mButtons.size(); iter++ )
             {

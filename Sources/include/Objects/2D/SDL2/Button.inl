@@ -43,7 +43,7 @@ bool Button::PointIsInside(float X, float Y) const
 	return true;
 }
 
-void Button::render(int Index) const
+void Button::Render(int Index) const
 {
 	if(Index < textures.size())
 	{

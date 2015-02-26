@@ -1,7 +1,8 @@
 #include "Game.h"
 
+namespace SDL = Openpp::Objects::Objects2D::SDL2;
+typedef SDL::Globals SDLG;
 typedef Game::Globals GG;
-typedef Core::Globals CG;
 namespace CI = Core::Input;
 
 namespace Game
@@ -10,18 +11,18 @@ namespace Game
     {
         unsigned int Time;
 
-        while( CG::WindowIsOpen )
+        while( SDLG::WindowIsOpen )
         {
             Time = SDL_GetTicks();
 
             CI::Read();
-            CG::gpCurrentScreen->HandleInputs();
+            SDLG::gpCurrentScreen->HandleInputs();
 
-            CG::gpCurrentScreen->Update();
+            SDLG::gpCurrentScreen->Update();
 
-            SDL_RenderClear( CG::GetRenderer() );
-            CG::gpCurrentScreen->Render();
-            SDL_RenderPresent( CG::GetRenderer() );
+            SDL_RenderClear( SDLG::Renderer() );
+            SDLG::gpCurrentScreen->Render();
+            SDL_RenderPresent( SDLG::Renderer() );
 
             while(SDL_GetTicks() - Time < 1000.0/GG::FPS);
         }
@@ -29,7 +30,7 @@ namespace Game
 
     void StartGameRoutine()
     {
-        CG::gpCurrentScreen = &(GG::gStartScreen);
+        SDLG::gpCurrentScreen = &(GG::gStartScreen);
 
         GameRoutine();
     }

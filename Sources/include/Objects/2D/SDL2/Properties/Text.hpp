@@ -22,9 +22,10 @@
 
 
 namespace OO = Openpp::Objects;
-namespace LOP = LO::Properties;
+namespace OO2 = OO::Objects2D;
+namespace SDL = OO2::SDL2;
+namespace OOP = OO::Properties;
 
-namespace LO2 = LO::Objects2D;
 
 namespace Openpp
 {
@@ -37,23 +38,23 @@ namespace SDL2
 namespace Properties
 {
 
-class Text : public LO::LObject
+class Text : public OO::OObject
 {
 public:
-	Text(LO::OObject* const _pParent = nullptr);
+	Text(OO::OObject* const _pParent = nullptr);
 	Text(const std::string& _rctext, OObject* const _pParent = nullptr);
 
 
 	/// properties
-	LOP::OType<int> height;
-	LO2::Vector2<float> origin;
+    OOP::OType<int> height;
+	OO2::Vector2<float> origin;
 
 
 	/// set the text
 	void set(const std::string& _rctext);
 	void set(const Text& _rctext);
 
-	const LO2::Vector2<int>& size() const;
+	const OO2::Vector2<int>& size() const;
 
 	/// getter
 	SDL_Texture* texture() const;
@@ -66,7 +67,7 @@ protected:
 
 private:
 	std::shared_ptr< SDL_Texture > mpTexture;
-	LO2::Vector2<int> Size;
+	OO2::Vector2<int> Size;
 
 	std::string _mText;
 };

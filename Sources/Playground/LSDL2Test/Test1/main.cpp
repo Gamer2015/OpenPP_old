@@ -7,8 +7,8 @@
 #include <iostream>
 
 namespace OO = Openpp::Objects;
-namespace LO2 = LO::Objects2D;
-namespace LSDL2 = LO2::SDL2;
+namespace OO2 = OO::Objects2D;
+namespace LSDL2 = OO2::SDL2;
 typedef LSDL2::Globals LSG;
 
 void close()
@@ -19,7 +19,7 @@ void close()
 class TWrapper : public LSDL2::Text
 {
 public:
-	TWrapper(LO::OObject* const _pParent = nullptr) :
+	TWrapper(OO::OObject* const _pParent = nullptr) :
 		LSDL2::Text(_pParent)
 	{}
 
@@ -59,7 +59,7 @@ public:
 class SWrapper : public LSDL2::Sprite<float>
 {
 public:
-	SWrapper(LO::OObject* const _pParent = nullptr) :
+	SWrapper(OO::OObject* const _pParent = nullptr) :
 		LSDL2::Sprite<float>(_pParent)
 	{}
 
@@ -95,7 +95,7 @@ public:
 class BWrapper : public LSDL2::Button
 {
 public:
-	BWrapper(LO::OObject* const _pParent = nullptr) :
+	BWrapper(OO::OObject* const _pParent = nullptr) :
 		LSDL2::Button(_pParent)
 	{}
 
@@ -188,9 +188,9 @@ int main(int argc, char* argv[])
 		SDL_RenderClear( LSG::Renderer() );
 
 
-		button.render();
-		sprite.render();
-		text.render();
+		button.Render();
+		sprite.Render();
+		text.Render();
 
 //		text.angle += 0.05;
 //		sprite.angle += 0.05;

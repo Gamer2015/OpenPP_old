@@ -17,9 +17,9 @@
 #include <SDL2/SDL_ttf.h>
 #include <memory>
 #include <stdio.h>
-#include <Objects/2D/LSDL2/Globals.hpp>
-#include <Objects/2D/LSDL2/Exceptions/ExSDLError.hpp>
-#include <Objects/2D/LSDL2/Texture.hpp>
+#include <Objects/2D/SDL2/Globals.hpp>
+#include <Objects/2D/SDL2/Exceptions/ExSDLError.hpp>
+#include <Objects/2D/SDL2/Texture.hpp>
 #include "Globals.h"
 
 namespace Game

@@ -1,21 +1,25 @@
-#ifndef ___GAME_GAME_SCREEN__H___
-#define ___GAME_GAME_SCREEN__H___
+#ifndef OPENPP_PROJECTS_THESIS_GAME_GAME_SCREEN_H_
+#define OPENPP_PROJECTS_THESIS_GAME_GAME_SCREEN_H_
 
 #include <SDL2/SDL.h>
 #include <vector>
 #include <memory>
 #include "Data.h"
-#include "../../Core/Globals.h"
-#include "../../Core/Screen.h"
-#include "../../Core/Sprite.h"
-#include "../../Core/Texture.h"
 #include "../../Core/Input.h"
+#include <Objects/2D/SDL2/Globals.hpp>
+#include <Objects/2D/SDL2/Screen.hpp>
+#include <Objects/2D/SDL2/Sprite.hpp>
+#include <Objects/2D/SDL2/Texture.hpp>
+
+namespace OO2 = Openpp::Objects::Objects2D;
+namespace SDL = OO2::SDL2;
+typedef SDL::Globals SDLG;
 
 namespace Game
 {
     namespace Screens
     {
-        class GameScreen : public Core::Screen
+        class GameScreen : public SDL::Screen
         {
         public:
             GameScreen();
@@ -43,9 +47,9 @@ namespace Game
 
             std::vector< std::string > mPaths;
             std::shared_ptr< SDL_Texture > mBackground;
-            Core::Sprite mMouse;
+            SDL::Sprite<float> mMouse;
 
-            Core::Sprite mWhiteBox;
+            SDL::Sprite<int> mWhiteBox;
 
             float MOUSE_SPEED;
             float SPEED_FACTOR;
@@ -55,4 +59,4 @@ namespace Game
     }
 }
 
-#endif // ___GAME_GAME_SCREEN__H___
+#endif // OPENPP_PROJECTS_THESIS_GAME_GAME_SCREEN_H_

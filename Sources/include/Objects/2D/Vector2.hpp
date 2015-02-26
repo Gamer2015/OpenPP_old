@@ -20,7 +20,7 @@
 #include "../OObject.hpp"
 #include "../Properties/OType.hpp"
 
-namespace LOP = Openpp::Objects::Properties;
+namespace OOP = Openpp::Objects::Properties;
 
 namespace Openpp
 {
@@ -40,8 +40,8 @@ public:
 
 
 	/// properties
-	LOP::OType<T> x;
-	LOP::OType<T> y;
+    OOP::OType<T> x;
+    OOP::OType<T> y;
 
 
 	/// setter

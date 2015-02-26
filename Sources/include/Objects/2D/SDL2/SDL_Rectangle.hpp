@@ -14,9 +14,10 @@
 
 #include <SDL2/SDL.h>
 #include <Objects/2D/Rectangle.hpp>
+#include <cmath>
 
 namespace OO = Openpp::Objects;
-namespace LO2 = LO::Objects2D;
+namespace OO2 = OO::Objects2D;
 
 namespace Openpp
 {
@@ -28,10 +29,10 @@ namespace SDL2
 {
 
 template <typename T>
-class SDL_Rectangle : public LO2::Rectangle<T>
+class SDL_Rectangle : public OO2::Rectangle<T>
 {
 public:
-	SDL_Rectangle(LO::OObject* const _pParent = nullptr);
+    SDL_Rectangle(OO::OObject* const _pParent = nullptr);
 
 	/// rendered rect
 	const SDL_Rect& rect() const;

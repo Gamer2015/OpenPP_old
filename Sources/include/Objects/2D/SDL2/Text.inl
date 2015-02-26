@@ -28,7 +28,7 @@ const SDL_Point& Text::rectOrigin() const
 	return mRectOrigin;
 }
 
-void Text::render() const
+void Text::Render() const
 {
 	if(texture())
 		SDL_RenderCopyEx( Globals::Renderer(), texture(), NULL, &(rect()), 57.295779513082320876798154814105 * angle(), &(rectOrigin()), SDL_FLIP_NONE);

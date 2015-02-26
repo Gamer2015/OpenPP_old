@@ -1,19 +1,23 @@
-#ifndef ___GAME_LOST_SCREEN__H___
-#define ___GAME_LOST_SCREEN__H___
+#ifndef OPENPP_PROJECTS_THESIS_GAME_LOST_SCREEN_H_
+#define OPENPP_PROJECTS_THESIS_GAME_LOST_SCREEN_H_
 
 #include <SDL2/SDL.h>
 #include <vector>
 #include <memory>
-#include "../../Core/Globals.h"
-#include "../../Core/Screen.h"
 #include "../../Core/Input.h"
-#include "../../Core/Button.h"
+#include <Objects/2D/SDL2/Globals.hpp>
+#include <Objects/2D/SDL2/Screen.hpp>
+#include <Objects/2D/SDL2/Button.hpp>
+#include <Objects/2D/SDL2/Text.hpp>
+
+namespace SDL = Openpp::Objects::Objects2D::SDL2;
+typedef SDL::Globals SDLG;
 
 namespace Game
 {
     namespace Screens
     {
-		class LostScreen : public Core::Screen
+        class LostScreen : public SDL::Screen
         {
         public:
 			LostScreen();
@@ -31,11 +35,11 @@ namespace Game
             std::vector< std::string > mPaths;
 			std::shared_ptr< SDL_Texture > mBackground;
 
-			std::vector< Core::Button > mButtons;
-			Core::Button mButtonDummy;
+            std::vector< SDL::Button > mButtons;
+            SDL::Button mButtonDummy;
 			int mCurrentButton;
 
-			Core::Text mText;
+            SDL::Text mText;
 			char mBuffer[64];
 
 			void BUTTON_Up();
@@ -44,4 +48,4 @@ namespace Game
     }
 }
 
-#endif // ___GAME_LOST_SCREEN__H___
+#endif // OPENPP_PROJECTS_THESIS_GAME_LOST_SCREEN_H_

@@ -2,7 +2,6 @@
 #include "Globals.h"
 #include <stdlib.h>
 
-typedef Core::Globals CG;
 typedef Game::Globals GG;
 namespace CI = Core::Input;
 
@@ -17,11 +16,11 @@ namespace Game
 				char buffer[16];
 				sprintf(buffer, "%d", atoi(GG::gGameScreen.GetCurrentLevel().c_str()) + 1);
 				GG::gGameScreen.LoadLevel(buffer);
-				CG::gpCurrentScreen = &(GG::gGameScreen);
+                SDLG::gpCurrentScreen = &(GG::gGameScreen);
 			}
 			void ChangeLevel()
 			{
-				CG::gpCurrentScreen = &(GG::gLevelScreen);
+                SDLG::gpCurrentScreen = &(GG::gLevelScreen);
 			}
 		}
 
@@ -83,7 +82,7 @@ namespace Game
 
 		void WinScreen::Render()
 		{
-			SDL_RenderCopy(CG::GetRenderer(), mBackground.get(), NULL, NULL);
+            SDL_RenderCopy(SDLG::Renderer(), mBackground.get(), NULL, NULL);
 
 			for( int i = 0; i < mButtons.size(); i++ )
 			{
@@ -92,7 +91,7 @@ namespace Game
 				else
 					mButtons[i].Render(DEFAULT);
 			}
-			mText.Render();
+            mText.Render();
 		}
 
 		void WinScreen::BUTTON_Up()

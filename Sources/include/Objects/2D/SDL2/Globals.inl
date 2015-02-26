@@ -32,9 +32,10 @@ void Globals::Init(const std::string &rTitle, int Width, int Height)
 }
 bool Globals::WindowIsOpen = false;
 
+/// Global Renderer
 SDL_Renderer* Globals::Renderer() { return pRenderer.get(); }
 
-// Choose current Screen
+/// Current Screen
 Screen* Globals::gpCurrentScreen = NULL;
 
 SDL_Window* Globals::pWindow = NULL;

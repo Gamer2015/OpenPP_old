@@ -27,8 +27,8 @@
 #include <cmath>
 
 namespace OO = Openpp::Objects;
-namespace LOP = LO::Properties;
-namespace LO2 = LO::Objects2D;
+namespace LOP = OO::Properties;
+namespace OO2 = OO::Objects2D;
 
 
 namespace Openpp
@@ -43,12 +43,12 @@ namespace SDL2
 class Text : public Properties::Text
 {
 public:
-	Text(LO::OObject* const _pParent = nullptr);
-	Text(std::string _text, LO::OObject* const _pParent = nullptr);
+	Text(OO::OObject* const _pParent = nullptr);
+	Text(std::string _text, OO::OObject* const _pParent = nullptr);
 
 
 	/// properties
-	LO2::Vector2<int> position;
+	OO2::Vector2<int> position;
 	LOP::OType<float> angle;
 
 
@@ -56,7 +56,7 @@ public:
 	const SDL_Rect& rect() const;
 
 	/// render
-	void render() const;
+    void Render() const;
 
 protected:
 	virtual void ChildChanged(int _childId);

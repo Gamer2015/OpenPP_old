@@ -8,7 +8,7 @@ namespace Objects2D
 {
 
 template <typename T>
-Rectangle<T>::Rectangle(LObject* _pParent) :
+Rectangle<T>::Rectangle(OObject* const _pParent) :
 	BaseRectangle<T>(_pParent),
 	origin(this),
 	angle(this)

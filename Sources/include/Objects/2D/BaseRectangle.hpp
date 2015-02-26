@@ -26,7 +26,7 @@ template <typename T>
 class BaseRectangle : public BaseObject2<T>
 {
 public:
-	BaseRectangle(LObject* _pParent = nullptr);
+    BaseRectangle(OObject* const _pParent = nullptr);
 
 	Vector2<T> size;
 };

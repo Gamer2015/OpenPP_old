@@ -1,5 +1,5 @@
-#ifndef OPENPP_OBJECTS_PROPERTIES_LTYPE_HPP_
-#define OPENPP_OBJECTS_PROPERTIES_LTYPE_HPP_
+#ifndef OPENPP_OBJECTS_PROPERTIES_OTYPE_HPP_
+#define OPENPP_OBJECTS_PROPERTIES_OTYPE_HPP_
 
 /********************************************\
  * usage: type property for primitive types in LObjects
@@ -25,15 +25,15 @@ namespace Properties
 {
 
 template <typename T>
-class LType : public OObject
+class OType : public OObject
 {
 public:
 	///// constructors
-	LType(OObject* const _pParent=nullptr) noexcept;
-	LType(const T&, OObject* const _pParent=nullptr) noexcept;
-	LType(const T&&, OObject* const _pParent=nullptr) noexcept;
-	LType(const LType<T>& _rcType, OObject* const _pParent=nullptr) noexcept;
-	LType(const LType<T>&& _rrcType, OObject* const _pParent=nullptr) noexcept;
+    OType(OObject* const _pParent=nullptr) noexcept;
+    OType(const T&, OObject* const _pParent=nullptr) noexcept;
+    OType(const T&&, OObject* const _pParent=nullptr) noexcept;
+    OType(const OType<T>& _rcType, OObject* const _pParent=nullptr) noexcept;
+    OType(const OType<T>&& _rrcType, OObject* const _pParent=nullptr) noexcept;
 
 
 	///// template type
@@ -44,7 +44,7 @@ public:
 	template <typename U>
 	void set(const U&, bool _notifyParent=true);
 	template <typename U>
-	void set(const LType<U>&, bool _notifyParent=true);
+    void set(const OType<U>&, bool _notifyParent=true);
 
 	///// get data
 	T operator()() const;
@@ -54,7 +54,7 @@ public:
 
 	///// conversation
 	template <typename U>
-	operator LType<U>() const;
+    operator OType<U>() const;
 	template <typename U>
 	operator U() const;
 
@@ -62,8 +62,8 @@ public:
 	///// operators
 	/// assignment
 	template <typename U>
-	T operator=(const LType<U>& _rcType);
-	T operator=(const LType<T>& _rcType);
+    T operator=(const OType<U>& _rcType);
+    T operator=(const OType<T>& _rcType);
 
 	template <typename U>
 	T operator=(const U&);
@@ -79,133 +79,133 @@ private:
 ///
 /// streams
 ///
-template <typename T> std::ostream& operator<<(std::ostream&, const LType<T>&);
+template <typename T> std::ostream& operator<<(std::ostream&, const OType<T>&);
 
 ///
 /// arithmetic
 ///
-template <typename T, typename U> T operator+(const LType<T>&, const LType<U>&);
-template <typename T, typename U> T operator+(const LType<T>&, const U&);
-template <typename T, typename U> T operator+(const T&, const LType<U>&);
+template <typename T, typename U> T operator+(const OType<T>&, const OType<U>&);
+template <typename T, typename U> T operator+(const OType<T>&, const U&);
+template <typename T, typename U> T operator+(const T&, const OType<U>&);
 
-template <typename T, typename U> T operator-(const LType<T>&, const LType<U>&);
-template <typename T, typename U> T operator-(const LType<T>&, const U&);
-template <typename T, typename U> T operator-(const T&, const LType<U>&);
+template <typename T, typename U> T operator-(const OType<T>&, const OType<U>&);
+template <typename T, typename U> T operator-(const OType<T>&, const U&);
+template <typename T, typename U> T operator-(const T&, const OType<U>&);
 
-template <typename T, typename U> T operator*(const LType<T>&, const LType<U>&);
-template <typename T, typename U> T operator*(const LType<T>&, const U&);
-template <typename T, typename U> T operator*(const T&, const LType<U>&);
+template <typename T, typename U> T operator*(const OType<T>&, const OType<U>&);
+template <typename T, typename U> T operator*(const OType<T>&, const U&);
+template <typename T, typename U> T operator*(const T&, const OType<U>&);
 
-template <typename T, typename U> T operator/(const LType<T>&, const LType<U>&);
-template <typename T, typename U> T operator/(const LType<T>&, const U&);
-template <typename T, typename U> T operator/(const T&, const LType<U>&);
+template <typename T, typename U> T operator/(const OType<T>&, const OType<U>&);
+template <typename T, typename U> T operator/(const OType<T>&, const U&);
+template <typename T, typename U> T operator/(const T&, const OType<U>&);
 
-template <typename T, typename U> T operator%(const LType<T>&, const LType<U>&);
-template <typename T, typename U> T operator%(const LType<T>&, const U&);
-template <typename T, typename U> T operator%(const T&, const LType<U>&);
+template <typename T, typename U> T operator%(const OType<T>&, const OType<U>&);
+template <typename T, typename U> T operator%(const OType<T>&, const U&);
+template <typename T, typename U> T operator%(const T&, const OType<U>&);
 
-template <typename T> T operator++(LType<T>&);
-template <typename T> T operator++(LType<T>&, int);
-template <typename T> T operator--(LType<T>&);
-template <typename T> T operator--(LType<T>&, int);
+template <typename T> T operator++(OType<T>&);
+template <typename T> T operator++(OType<T>&, int);
+template <typename T> T operator--(OType<T>&);
+template <typename T> T operator--(OType<T>&, int);
 
 ///
 /// comparison
 ///
-template <typename T, typename U> bool operator==(const LType<T>&, const LType<U>&);
-template <typename T, typename U> bool operator==(const LType<T>&, const U&);
-template <typename T, typename U> bool operator==(const T&, const LType<U>&);
+template <typename T, typename U> bool operator==(const OType<T>&, const OType<U>&);
+template <typename T, typename U> bool operator==(const OType<T>&, const U&);
+template <typename T, typename U> bool operator==(const T&, const OType<U>&);
 
-template <typename T, typename U> bool operator!=(const LType<T>&, const LType<U>&);
-template <typename T, typename U> bool operator!=(const LType<T>&, const U&);
-template <typename T, typename U> bool operator!=(const T&, const LType<U>&);
+template <typename T, typename U> bool operator!=(const OType<T>&, const OType<U>&);
+template <typename T, typename U> bool operator!=(const OType<T>&, const U&);
+template <typename T, typename U> bool operator!=(const T&, const OType<U>&);
 
-template <typename T, typename U> bool operator<(const LType<T>&, const LType<U>&);
-template <typename T, typename U> bool operator<(const LType<T>&, const U&);
-template <typename T, typename U> bool operator<(const T&, const LType<U>&);
+template <typename T, typename U> bool operator<(const OType<T>&, const OType<U>&);
+template <typename T, typename U> bool operator<(const OType<T>&, const U&);
+template <typename T, typename U> bool operator<(const T&, const OType<U>&);
 
-template <typename T, typename U> bool operator>(const LType<T>&, const LType<U>&);
-template <typename T, typename U> bool operator>(const LType<T>&, const U&);
-template <typename T, typename U> bool operator>(const T&, const LType<U>&);
+template <typename T, typename U> bool operator>(const OType<T>&, const OType<U>&);
+template <typename T, typename U> bool operator>(const OType<T>&, const U&);
+template <typename T, typename U> bool operator>(const T&, const OType<U>&);
 
-template <typename T, typename U> bool operator<=(const LType<T>&, const LType<U>&);
-template <typename T, typename U> bool operator<=(const LType<T>&, const U&);
-template <typename T, typename U> bool operator<=(const T&, const LType<U>&);
+template <typename T, typename U> bool operator<=(const OType<T>&, const OType<U>&);
+template <typename T, typename U> bool operator<=(const OType<T>&, const U&);
+template <typename T, typename U> bool operator<=(const T&, const OType<U>&);
 
-template <typename T, typename U> bool operator>=(const LType<T>&, const LType<U>&);
-template <typename T, typename U> bool operator>=(const LType<T>&, const U&);
-template <typename T, typename U> bool operator>=(const T&, const LType<U>&);
+template <typename T, typename U> bool operator>=(const OType<T>&, const OType<U>&);
+template <typename T, typename U> bool operator>=(const OType<T>&, const U&);
+template <typename T, typename U> bool operator>=(const T&, const OType<U>&);
 
 ///
 /// logic
 ///
-template <typename T> bool operator!(const LType<T>&);
+template <typename T> bool operator!(const OType<T>&);
 
-template <typename T, typename U> bool operator&&(const LType<T>&, const LType<U>&);
-template <typename T, typename U> bool operator&&(const LType<T>&, const U&);
-template <typename T, typename U> bool operator&&(const T&, const LType<U>&);
+template <typename T, typename U> bool operator&&(const OType<T>&, const OType<U>&);
+template <typename T, typename U> bool operator&&(const OType<T>&, const U&);
+template <typename T, typename U> bool operator&&(const T&, const OType<U>&);
 
-template <typename T, typename U> bool operator||(const LType<T>&, const LType<U>&);
-template <typename T, typename U> bool operator||(const LType<T>&, const U&);
-template <typename T, typename U> bool operator||(const T&, const LType<U>&);
+template <typename T, typename U> bool operator||(const OType<T>&, const OType<U>&);
+template <typename T, typename U> bool operator||(const OType<T>&, const U&);
+template <typename T, typename U> bool operator||(const T&, const OType<U>&);
 
 ///
 /// bit operations
 ///
-template <typename T> T operator~(const LType<T>&);
+template <typename T> T operator~(const OType<T>&);
 
-template <typename T, typename U> T operator&(const LType<T>&, const LType<U>&);
-template <typename T, typename U> T operator&(const LType<T>&, const U&);
-template <typename T, typename U> T operator&(const T&, const LType<U>&);
+template <typename T, typename U> T operator&(const OType<T>&, const OType<U>&);
+template <typename T, typename U> T operator&(const OType<T>&, const U&);
+template <typename T, typename U> T operator&(const T&, const OType<U>&);
 
-template <typename T, typename U> T operator|(const LType<T>&, const LType<U>&);
-template <typename T, typename U> T operator|(const LType<T>&, const U&);
-template <typename T, typename U> T operator|(const T&, const LType<U>&);
+template <typename T, typename U> T operator|(const OType<T>&, const OType<U>&);
+template <typename T, typename U> T operator|(const OType<T>&, const U&);
+template <typename T, typename U> T operator|(const T&, const OType<U>&);
 
-template <typename T, typename U> T operator^(const LType<T>&, const LType<U>&);
-template <typename T, typename U> T operator^(const LType<T>&, const U&);
-template <typename T, typename U> T operator^(const T&, const LType<U>&);
+template <typename T, typename U> T operator^(const OType<T>&, const OType<U>&);
+template <typename T, typename U> T operator^(const OType<T>&, const U&);
+template <typename T, typename U> T operator^(const T&, const OType<U>&);
 
-template <typename T, typename U> T operator<<(const LType<T>&, const LType<U>&);
-template <typename T, typename U> T operator<<(const LType<T>&, const U&);
-template <typename T, typename U> T operator<<(const T&, const LType<U>&);
+template <typename T, typename U> T operator<<(const OType<T>&, const OType<U>&);
+template <typename T, typename U> T operator<<(const OType<T>&, const U&);
+template <typename T, typename U> T operator<<(const T&, const OType<U>&);
 
-template <typename T, typename U> T operator>>(const LType<T>&, const LType<U>&);
-template <typename T, typename U> T operator>>(const LType<T>&, const U&);
-template <typename T, typename U> T operator>>(const T&, const LType<U>&);
+template <typename T, typename U> T operator>>(const OType<T>&, const OType<U>&);
+template <typename T, typename U> T operator>>(const OType<T>&, const U&);
+template <typename T, typename U> T operator>>(const T&, const OType<U>&);
 
 ///
 /// compound assignment
 ///
-template <typename T, typename U> LType<T>& operator+=(LType<T>&, const LType<U>&);
-template <typename T, typename U> LType<T>& operator+=(LType<T>&, const U&);
+template <typename T, typename U> OType<T>& operator+=(OType<T>&, const OType<U>&);
+template <typename T, typename U> OType<T>& operator+=(OType<T>&, const U&);
 
-template <typename T, typename U> LType<T>& operator-=(LType<T>&, const LType<U>&);
-template <typename T, typename U> LType<T>& operator-=(LType<T>&, const U&);
+template <typename T, typename U> OType<T>& operator-=(OType<T>&, const OType<U>&);
+template <typename T, typename U> OType<T>& operator-=(OType<T>&, const U&);
 
-template <typename T, typename U> LType<T>& operator*=(LType<T>&, const LType<U>&);
-template <typename T, typename U> LType<T>& operator*=(LType<T>&, const U&);
+template <typename T, typename U> OType<T>& operator*=(OType<T>&, const OType<U>&);
+template <typename T, typename U> OType<T>& operator*=(OType<T>&, const U&);
 
-template <typename T, typename U> LType<T>& operator/=(LType<T>&, const LType<U>&);
-template <typename T, typename U> LType<T>& operator/=(LType<T>&, const U&);
+template <typename T, typename U> OType<T>& operator/=(OType<T>&, const OType<U>&);
+template <typename T, typename U> OType<T>& operator/=(OType<T>&, const U&);
 
-template <typename T, typename U> LType<T>& operator%=(LType<T>&, const LType<U>&);
-template <typename T, typename U> LType<T>& operator%=(LType<T>&, const U&);
+template <typename T, typename U> OType<T>& operator%=(OType<T>&, const OType<U>&);
+template <typename T, typename U> OType<T>& operator%=(OType<T>&, const U&);
 
-template <typename T, typename U> LType<T>& operator&=(LType<T>&, const LType<U>&);
-template <typename T, typename U> LType<T>& operator&=(LType<T>&, const U&);
+template <typename T, typename U> OType<T>& operator&=(OType<T>&, const OType<U>&);
+template <typename T, typename U> OType<T>& operator&=(OType<T>&, const U&);
 
-template <typename T, typename U> LType<T>& operator|=(LType<T>&, const LType<U>&);
-template <typename T, typename U> LType<T>& operator|=(LType<T>&, const U&);
+template <typename T, typename U> OType<T>& operator|=(OType<T>&, const OType<U>&);
+template <typename T, typename U> OType<T>& operator|=(OType<T>&, const U&);
 
-template <typename T, typename U> LType<T>& operator^=(LType<T>&, const LType<U>&);
-template <typename T, typename U> LType<T>& operator^=(LType<T>&, const U&);
+template <typename T, typename U> OType<T>& operator^=(OType<T>&, const OType<U>&);
+template <typename T, typename U> OType<T>& operator^=(OType<T>&, const U&);
 
-template <typename T, typename U> LType<T>& operator<<=(LType<T>&, const LType<U>&);
-template <typename T, typename U> LType<T>& operator<<=(LType<T>&, const U&);
+template <typename T, typename U> OType<T>& operator<<=(OType<T>&, const OType<U>&);
+template <typename T, typename U> OType<T>& operator<<=(OType<T>&, const U&);
 
-template <typename T, typename U> LType<T>& operator>>=(LType<T>&, const LType<U>&);
-template <typename T, typename U> LType<T>& operator>>=(LType<T>&, const U&);
+template <typename T, typename U> OType<T>& operator>>=(OType<T>&, const OType<U>&);
+template <typename T, typename U> OType<T>& operator>>=(OType<T>&, const U&);
 
 } // Properties
 } // Objects
@@ -213,4 +213,4 @@ template <typename T, typename U> LType<T>& operator>>=(LType<T>&, const U&);
 
 #include "OType.inl"
 
-#endif // OPENPP_OBJECTS_PROPERTIES_LTYPE_H_
+#endif // OPENPP_OBJECTS_PROPERTIES_OType_H_

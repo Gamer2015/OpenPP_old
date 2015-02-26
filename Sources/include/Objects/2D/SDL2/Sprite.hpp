@@ -36,7 +36,7 @@ template <typename T>
 class Sprite : public SDL_Rectangle<T>
 {
 public:
-    Sprite(LO::OObject* const _pParent = nullptr);
+    Sprite(OO::OObject* const _pParent = nullptr);
 
 	/// Set Texture
 	void set(const std::shared_ptr<SDL_Texture> pTexture);
@@ -48,7 +48,7 @@ public:
 	std::shared_ptr<SDL_Texture> operator()() const;
 
 	/// Render Sprite
-	void render() const;
+    void Render() const;
 
 protected:
 	std::shared_ptr< SDL_Texture > mpTexture;

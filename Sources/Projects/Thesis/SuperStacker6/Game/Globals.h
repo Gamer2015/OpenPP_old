@@ -1,10 +1,10 @@
-#ifndef ___GAME_GLOBALS__H___
-#define ___GAME_GLOBALS__H___
+#ifndef OPENPP_PROJECTS_THESIS_GAME_GLOBALS_H_
+#define OPENPP_PROJECTS_THESIS_GAME_GLOBALS_H_
 
 #include <SDL2/SDL.h>
 #include <memory>
-#include "../../Core/Globals.h"
-#include "../../Core/Screen.h"
+#include <Objects/2D/SDL2/Globals.hpp>
+#include <Objects/2D/SDL2/Screen.hpp>
 #include "StartScreen.h"
 #include "LevelScreen.h"
 #include "GameScreen.h"

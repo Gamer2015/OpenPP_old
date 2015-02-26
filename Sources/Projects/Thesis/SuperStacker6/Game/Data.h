@@ -1,14 +1,18 @@
-#ifndef ___GAME_DATA__H___
-#define ___GAME_DATA__H___
+#ifndef OPENPP_PROJECTS_THESIS_GAME_DATA_H_
+#define OPENPP_PROJECTS_THESIS_GAME_DATA_H_
 
 #include <SDL2/SDL.h>
 #include <Box2D/Box2D.h>
 #include <vector>
 #include <string>
-#include "../../Core/Globals.h"
-#include "../../Core/Math/Vector2.h"
-#include "../../Core/Text.h"
-#include "../../Core/Sprite.h"
+#include <Objects/2D/Vector2.hpp>
+#include <Objects/2D/SDL2/Globals.hpp>
+#include <Objects/2D/SDL2/Text.hpp>
+#include <Objects/2D/SDL2/Sprite.hpp>
+
+namespace OO2 = Openpp::Objects::Objects2D;
+namespace SDL = OO2::SDL2;
+typedef SDL::Globals SDLG;
 
 namespace Game
 {
@@ -86,22 +90,22 @@ namespace Game
 
         std::vector< std::shared_ptr< SDL_Texture > > mTextures;
 
-        Core::Sprite mObject;
+        SDL::Sprite<float> mObject;
 		float mDiameter;
 		std::vector<b2Vec2> mVertices;
         b2Vec2 mVertex;
 		int mVertexCount;
 
 		char mBuffer[64];
-		Core::Text mTextObjectCount;
-        Core::Text mTextObjectInfo;
+        SDL::Text mTextObjectCount;
+        SDL::Text mTextObjectInfo;
 
 		unsigned int mLastElementClock;
 		unsigned int mNoMoveClock;
-		Core::Sprite mClock;
+        SDL::Sprite<int> mClock;
 
-		std::vector< Vector2f > NewPositions;
-		std::vector< Vector2f > OldPositions;
+        std::vector< OO2::Vector2<float> > NewPositions;
+        std::vector< OO2::Vector2<float> > OldPositions;
 		bool NoBodyMoves();
 /*
         sf::ConvexShape mPolygon;
@@ -115,4 +119,4 @@ namespace Game
     };
 }
 
-#endif // ___GAME_DATA__H___
+#endif // OPENPP_PROJECTS_THESIS_GAME_DATA_H_

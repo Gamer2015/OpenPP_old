@@ -8,7 +8,7 @@ namespace Objects2D
 {
 
 template <typename T>
-BaseRectangle<T>::BaseRectangle(LObject* _pParent) :
+BaseRectangle<T>::BaseRectangle(OObject* const _pParent) :
 	BaseObject2<T>(_pParent),
 	size(this)
 { }

@@ -24,10 +24,10 @@ namespace Objects2D
 {
 
 template <typename T>
-class BaseObject2 : protected LObject
+class BaseObject2 : public OObject
 {
 protected:
-	BaseObject2(LObject* _pParent = nullptr);
+    BaseObject2(OObject* const _pParent = nullptr);
 
 public:
 	Vector2<T> position;

@@ -1,5 +1,5 @@
-#ifndef ___START_SCREEN__H___
-#define ___START_SCREEN__H___
+#ifndef OPENPP_PROJECTS_THESIS_GAME_START_SCREEN_H_
+#define OPENPP_PROJECTS_THESIS_GAME_START_SCREEN_H_
 
 /********************************************\
  * Date: 18.01.2015
@@ -16,11 +16,14 @@
 
 #include <SDL2/SDL.h>
 #include "../../Core/Input.h"
-#include "../../Core/Globals.h"
-#include "../../Core/Screen.h"
-#include "../../Core/Button.h"
-#include "../../Core/Texture.h"
+#include <Objects/2D/SDL2/Globals.hpp>
+#include <Objects/2D/SDL2/Screen.hpp>
+#include <Objects/2D/SDL2/Button.hpp>
+#include <Objects/2D/SDL2/Texture.hpp>
 #include <vector>
+
+namespace SDL = Openpp::Objects::Objects2D::SDL2;
+typedef SDL::Globals SDLG;
 
 namespace Game
 {
@@ -32,7 +35,7 @@ namespace Game
             void BTN_QUIT();
         }
 
-        class StartScreen : public Core::Screen
+        class StartScreen : public SDL::Screen
         {
         public:
             StartScreen();
@@ -47,8 +50,8 @@ namespace Game
         private:
             std::vector< std::string > mPaths;
 
-            std::vector< Core::Button > mButtons;
-            Core::Button mButtonDummy;
+            std::vector< SDL::Button > mButtons;
+            SDL::Button mButtonDummy;
             char mCurrentButton;
 
             std::shared_ptr< SDL_Texture > mpBackground;
@@ -60,4 +63,4 @@ namespace Game
     }
 }
 
-#endif // ___GAME_START_SCREEN__H___
+#endif // OPENPP_PROJECTS_THESIS_GAME_START_SCREEN_H_

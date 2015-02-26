@@ -11,27 +11,27 @@ namespace Properties
 ///// constructors
 /////
 template <typename T>
-LType<T>::LType(OObject* const _pParent) noexcept :
+OType<T>::OType(OObject* const _pParent) noexcept :
 	OObject(_pParent),
 	_mValue()
 {}
 template <typename T>
-LType<T>::LType(const T& _rcValue, OObject* const _pParent) noexcept :
+OType<T>::OType(const T& _rcValue, OObject* const _pParent) noexcept :
 	OObject(_pParent),
 	_mValue(_rcValue)
 {}
 template <typename T>
-LType<T>::LType(const T&& _rrcValue, OObject* const _pParent) noexcept :
+OType<T>::OType(const T&& _rrcValue, OObject* const _pParent) noexcept :
 	OObject(_pParent),
 	_mValue(std::move(_rrcValue))
 {}
 template <typename T>
-LType<T>::LType(const LType<T>& _rcType, OObject* const _pParent) noexcept :
+OType<T>::OType(const OType<T>& _rcType, OObject* const _pParent) noexcept :
 	OObject(_pParent),
 	_mValue(_rcType())
 {}
 template <typename T>
-LType<T>::LType(const LType<T>&& _rrcType, OObject* const _pParent) noexcept :
+OType<T>::OType(const OType<T>&& _rrcType, OObject* const _pParent) noexcept :
 	OObject(_pParent),
 	_mValue(std::move(_rrcType()))
 {}
@@ -42,7 +42,7 @@ LType<T>::LType(const LType<T>&& _rrcType, OObject* const _pParent) noexcept :
 /////
 template <typename T>
 template <typename U>
-void LType<T>::set(const U& _rcValue, bool _notifyParent)
+void OType<T>::set(const U& _rcValue, bool _notifyParent)
 {
 	_mValue = _rcValue;
 
@@ -51,7 +51,7 @@ void LType<T>::set(const U& _rcValue, bool _notifyParent)
 }
 template <typename T>
 template <typename U>
-void LType<T>::set(const LType<U>& _rcType, bool _notifyParent)
+void OType<T>::set(const OType<U>& _rcType, bool _notifyParent)
 {
 	set(_rcType(), _notifyParent);
 }
@@ -60,17 +60,17 @@ void LType<T>::set(const LType<U>& _rcType, bool _notifyParent)
 ///// get data
 /////
 template <typename T>
-T LType<T>::operator()() const
+T OType<T>::operator()() const
 {
 	return _mValue;
 }
 template <typename T>
-T LType<T>::operator-() const
+T OType<T>::operator-() const
 {
 	return -(*this)();
 }
 template <typename T>
-T LType<T>::operator+() const
+T OType<T>::operator+() const
 {
 	return (*this)();
 }
@@ -81,13 +81,13 @@ T LType<T>::operator+() const
 /////
 template <typename T>
 template <typename U>
-LType<T>::operator LType<U>() const
+OType<T>::operator OType<U>() const
 {
-return LType<U>((U)(*this)());
+return OType<U>((U)(*this)());
 }
 template <typename T>
 template <typename U>
-LType<T>::operator U() const
+OType<T>::operator U() const
 {
 return (U)(*this)();
 }
@@ -99,7 +99,7 @@ return (U)(*this)();
 /// streams
 ///
 template <typename T>
-std::ostream& operator<<(std::ostream& _rOutputStream, const LType<T>& _rcType)
+std::ostream& operator<<(std::ostream& _rOutputStream, const OType<T>& _rcType)
 {
 	_rOutputStream << _rcType();
 	return _rOutputStream;
@@ -110,132 +110,132 @@ std::ostream& operator<<(std::ostream& _rOutputStream, const LType<T>& _rcType)
 ///
 template <typename T>
 template <typename U>
-T LType<T>::operator=(const LType<U>& _rcType)
+T OType<T>::operator=(const OType<U>& _rcType)
 {
 	set(_rcType);
 	return (*this);
 }
 template <typename T>
 template <typename U>
-T LType<T>::operator=(const U& _rcValue)
+T OType<T>::operator=(const U& _rcValue)
 {
 	set(_rcValue);
 	return (*this);
 }
 template <typename T>
-T LType<T>::operator=(const LType<T>& _rcType)
+T OType<T>::operator=(const OType<T>& _rcType)
 {
 	set(_rcType);
 	return (*this);
 }
 template <typename T>
-T LType<T>::operator=(const T& _rcValue)
+T OType<T>::operator=(const T& _rcValue)
 {
 	set(_rcValue);
 	return (*this);
 }
 
 template <typename T, typename U>
-T operator+(const LType<T>& _rcLeftType, const LType<U>& _rcRightType)
+T operator+(const OType<T>& _rcLeftType, const OType<U>& _rcRightType)
 {
 	return _rcLeftType() + _rcRightType();
 }
 template <typename T, typename U>
-T operator+(const LType<T>& _rcLeftType, const U& _rcValue)
+T operator+(const OType<T>& _rcLeftType, const U& _rcValue)
 {
 	return _rcLeftType() + _rcValue;
 }
 template <typename T, typename U>
-T operator+(const T& _rcValue, const LType<U>& _rcRightType)
+T operator+(const T& _rcValue, const OType<U>& _rcRightType)
 {
 	return _rcValue + _rcRightType();
 }
 
 template <typename T, typename U>
-T operator-(const LType<T>& _rcLeftType, const LType<U>& _rcRightType)
+T operator-(const OType<T>& _rcLeftType, const OType<U>& _rcRightType)
 {
 	return _rcLeftType() - _rcRightType();
 }
 template <typename T, typename U>
-T operator-(const LType<T>& _rcLeftType, const U& _rcValue)
+T operator-(const OType<T>& _rcLeftType, const U& _rcValue)
 {
 	return _rcLeftType() - _rcValue;
 }
 template <typename T, typename U>
-T operator-(const T& _rcValue, const LType<U>& _rcRightType)
+T operator-(const T& _rcValue, const OType<U>& _rcRightType)
 {
 	return _rcValue - _rcRightType();
 }
 
 template <typename T, typename U>
-T operator*(const LType<T>& _rcLeftType, const LType<U>& _rcRightType)
+T operator*(const OType<T>& _rcLeftType, const OType<U>& _rcRightType)
 {
 	return _rcLeftType() * _rcRightType();
 }
 template <typename T, typename U>
-T operator*(const LType<T>& _rcLeftType, const U& _rcValue)
+T operator*(const OType<T>& _rcLeftType, const U& _rcValue)
 {
 	return _rcLeftType() * _rcValue;
 }
 template <typename T, typename U>
-T operator*(const T& _rcValue, const LType<U>& _rcRightType)
+T operator*(const T& _rcValue, const OType<U>& _rcRightType)
 {
 	return _rcValue * _rcRightType();
 }
 
 template <typename T, typename U>
-T operator/(const LType<T>& _rcLeftType, const LType<U>& _rcRightType)
+T operator/(const OType<T>& _rcLeftType, const OType<U>& _rcRightType)
 {
 	return _rcLeftType() / _rcRightType();
 }
 template <typename T, typename U>
-T operator/(const LType<T>& _rcLeftType, const U& _rcValue)
+T operator/(const OType<T>& _rcLeftType, const U& _rcValue)
 {
 	return _rcLeftType() / _rcValue;
 }
 template <typename T, typename U>
-T operator/(const T& _rcValue, const LType<U>& _rcRightType)
+T operator/(const T& _rcValue, const OType<U>& _rcRightType)
 {
 	return _rcValue / _rcRightType();
 }
 
 template <typename T, typename U>
-T operator%(const LType<T>& _rcLeftType, const LType<U>& _rcRightType)
+T operator%(const OType<T>& _rcLeftType, const OType<U>& _rcRightType)
 {
 	return _rcLeftType() % _rcRightType();
 }
 template <typename T, typename U>
-T operator%(const LType<T>& _rcLeftType, const U& _rcValue)
+T operator%(const OType<T>& _rcLeftType, const U& _rcValue)
 {
 	return _rcLeftType() % _rcValue;
 }
 template <typename T, typename U>
-T operator%(const T& _rcValue, const LType<U>& _rcRightType)
+T operator%(const T& _rcValue, const OType<U>& _rcRightType)
 {
 	return _rcValue % _rcRightType();
 }
 
 template <typename T>
-T operator++(LType<T>& _rcType)
+T operator++(OType<T>& _rcType)
 {
 	_rcType.set(_rcType() + 1);
 	return _rcType;
 }
 template <typename T>
-T operator++(LType<T>& _rcType, int)
+T operator++(OType<T>& _rcType, int)
 {
 	T result(_rcType());
 	++_rcType;
 	return result;
 }
 template <typename T>
-T operator--(LType<T>& _rcType)
+T operator--(OType<T>& _rcType)
 {
 	_rcType.set(_rcType() - 1);
 	return _rcType;
 }
 template <typename T>
-T operator--(LType<T>& _rcType, int)
+T operator--(OType<T>& _rcType, int)
 {
 	T result(_rcType());
 	--_rcType;
@@ -246,97 +246,97 @@ T operator--(LType<T>& _rcType, int)
 /// comparison
 ///
 template <typename T, typename U>
-bool operator==(const LType<T>& _rcLeftType, const LType<U>& _rcRightType)
+bool operator==(const OType<T>& _rcLeftType, const OType<U>& _rcRightType)
 {
 	return _rcLeftType() == _rcRightType();
 }
 template <typename T, typename U>
-bool operator==(const LType<T>& _rcLeftType, const U& _rcValue)
+bool operator==(const OType<T>& _rcLeftType, const U& _rcValue)
 {
 	return _rcLeftType() == _rcValue;
 }
 template <typename T, typename U>
-bool operator==(const T& _rcValue, const LType<U>& _rcRightType)
+bool operator==(const T& _rcValue, const OType<U>& _rcRightType)
 {
 	return _rcValue == _rcRightType();
 }
 
 template <typename T, typename U>
-bool operator!=(const LType<T>& _rcLeftType, const LType<U>& _rcRightType)
+bool operator!=(const OType<T>& _rcLeftType, const OType<U>& _rcRightType)
 {
 	return _rcLeftType() != _rcRightType();
 }
 template <typename T, typename U>
-bool operator!=(const LType<T>& _rcLeftType, const U& _rcValue)
+bool operator!=(const OType<T>& _rcLeftType, const U& _rcValue)
 {
 	return _rcLeftType() != _rcValue;
 }
 template <typename T, typename U>
-bool operator!=(const T& _rcValue, const LType<U>& _rcRightType)
+bool operator!=(const T& _rcValue, const OType<U>& _rcRightType)
 {
 	return _rcValue != _rcRightType();
 }
 
 template <typename T, typename U>
-bool operator<(const LType<T>& _rcLeftType, const LType<U>& _rcRightType)
+bool operator<(const OType<T>& _rcLeftType, const OType<U>& _rcRightType)
 {
 	return _rcLeftType() < _rcRightType();
 }
 template <typename T, typename U>
-bool operator<(const LType<T>& _rcLeftType, const U& _rcValue)
+bool operator<(const OType<T>& _rcLeftType, const U& _rcValue)
 {
 	return _rcLeftType() < _rcValue;
 }
 template <typename T, typename U>
-bool operator<(const T& _rcValue, const LType<U>& _rcRightType)
+bool operator<(const T& _rcValue, const OType<U>& _rcRightType)
 {
 	return _rcValue < _rcRightType();
 }
 
 template <typename T, typename U>
-bool operator>(const LType<T>& _rcLeftType, const LType<U>& _rcRightType)
+bool operator>(const OType<T>& _rcLeftType, const OType<U>& _rcRightType)
 {
 	return _rcLeftType() > _rcRightType();
 }
 template <typename T, typename U>
-bool operator>(const LType<T>& _rcLeftType, const U& _rcValue)
+bool operator>(const OType<T>& _rcLeftType, const U& _rcValue)
 {
 	return _rcLeftType() > _rcValue;
 }
 template <typename T, typename U>
-bool operator>(const T& _rcValue, const LType<U>& _rcRightType)
+bool operator>(const T& _rcValue, const OType<U>& _rcRightType)
 {
 	return _rcValue > _rcRightType();
 }
 
 template <typename T, typename U>
-bool operator<=(const LType<T>& _rcLeftType, const LType<U>& _rcRightType)
+bool operator<=(const OType<T>& _rcLeftType, const OType<U>& _rcRightType)
 {
 	return _rcLeftType() <= _rcRightType();
 }
 template <typename T, typename U>
-bool operator<=(const LType<T>& _rcLeftType, const U& _rcValue)
+bool operator<=(const OType<T>& _rcLeftType, const U& _rcValue)
 {
 	return _rcLeftType() <= _rcValue;
 }
 template <typename T, typename U>
-bool operator<=(const T& _rcValue, const LType<U>& _rcRightType)
+bool operator<=(const T& _rcValue, const OType<U>& _rcRightType)
 {
 	return _rcValue <= _rcRightType();
 }
 
 template <typename T, typename U>
-bool operator>=(const LType<T>& _rcLeftType, const LType<U>& _rcRightType)
+bool operator>=(const OType<T>& _rcLeftType, const OType<U>& _rcRightType)
 {
 	return _rcLeftType() >= _rcRightType();
 }
 template <typename T, typename U>
-bool operator>=(const LType<T>& _rcLeftType, const U& _rcValue)
+bool operator>=(const OType<T>& _rcLeftType, const U& _rcValue)
 {
 	return _rcLeftType() >= _rcValue;
 }
 template <typename T, typename U>
-bool operator>=(const T& _rcValue, const LType<U>& _rcRightType)
+bool operator>=(const T& _rcValue, const OType<U>& _rcRightType)
 {
 	return _rcValue >= _rcRightType();
 }
@@ -345,39 +345,39 @@ bool operator>=(const T& _rcValue, const LType<U>& _rcRightType)
 /// logic
 ///
 template <typename T>
-bool operator!(const LType<T>& _rcType)
+bool operator!(const OType<T>& _rcType)
 {
 	return !(_rcType());
 }
 
 template <typename T, typename U>
-bool operator&&(const LType<T>& _rcLeftType, const LType<U>& _rcRightType)
+bool operator&&(const OType<T>& _rcLeftType, const OType<U>& _rcRightType)
 {
 	return _rcLeftType() && _rcRightType();
 }
 template <typename T, typename U>
-bool operator&&(const LType<T>& _rcLeftType, const U& _rcValue)
+bool operator&&(const OType<T>& _rcLeftType, const U& _rcValue)
 {
 	return _rcLeftType() && _rcValue;
 }
 template <typename T, typename U>
-bool operator&&(const T& _rcValue, const LType<U>& _rcRightType)
+bool operator&&(const T& _rcValue, const OType<U>& _rcRightType)
 {
 	return _rcValue && _rcRightType();
 }
 
 template <typename T, typename U>
-bool operator||(const LType<T>& _rcLeftType, const LType<U>& _rcRightType)
+bool operator||(const OType<T>& _rcLeftType, const OType<U>& _rcRightType)
 {
 	return _rcLeftType() || _rcRightType();
 }
 template <typename T, typename U>
-bool operator||(const LType<T>& _rcLeftType, const U& _rcValue)
+bool operator||(const OType<T>& _rcLeftType, const U& _rcValue)
 {
 	return _rcLeftType() || _rcValue;
 }
 template <typename T, typename U>
-bool operator||(const T& _rcValue, const LType<U>& _rcRightType)
+bool operator||(const T& _rcValue, const OType<U>& _rcRightType)
 {
 	return _rcValue || _rcRightType();
 }
@@ -386,87 +386,87 @@ bool operator||(const T& _rcValue, const LType<U>& _rcRightType)
 /// bit operations
 ///
 template <typename T>
-T operator~(const LType<T>& _rcType)
+T operator~(const OType<T>& _rcType)
 {
 	return ~(_rcType());
 }
 
 template <typename T, typename U>
-T operator&(const LType<T>& _rcLeftType, const LType<U>& _rcRightType)
+T operator&(const OType<T>& _rcLeftType, const OType<U>& _rcRightType)
 {
 	return _rcLeftType() & _rcRightType();
 }
 template <typename T, typename U>
-T operator&(const LType<T>& _rcLeftType, const U& _rcValue)
+T operator&(const OType<T>& _rcLeftType, const U& _rcValue)
 {
 	return _rcLeftType() & _rcValue;
 }
 template <typename T, typename U>
-T operator&(const T& _rcValue, const LType<U>& _rcRightType)
+T operator&(const T& _rcValue, const OType<U>& _rcRightType)
 {
 	return _rcValue & _rcRightType();
 }
 
 template <typename T, typename U>
-T operator|(const LType<T>& _rcLeftType, const LType<U>& _rcRightType)
+T operator|(const OType<T>& _rcLeftType, const OType<U>& _rcRightType)
 {
 	return _rcLeftType() | _rcRightType();
 }
 template <typename T, typename U>
-T operator|(const LType<T>& _rcLeftType, const U& _rcValue)
+T operator|(const OType<T>& _rcLeftType, const U& _rcValue)
 {
 	return _rcLeftType() | _rcValue;
 }
 template <typename T, typename U>
-T operator|(const T& _rcValue, const LType<U>& _rcRightType)
+T operator|(const T& _rcValue, const OType<U>& _rcRightType)
 {
 	return _rcValue | _rcRightType();
 }
 
 template <typename T, typename U>
-T operator^(const LType<T>& _rcLeftType, const LType<U>& _rcRightType)
+T operator^(const OType<T>& _rcLeftType, const OType<U>& _rcRightType)
 {
 	return _rcLeftType() ^ _rcRightType();
 }
 template <typename T, typename U>
-T operator^(const LType<T>& _rcLeftType, const U& _rcValue)
+T operator^(const OType<T>& _rcLeftType, const U& _rcValue)
 {
 	return _rcLeftType() ^ _rcValue;
 }
 template <typename T, typename U>
-T operator^(const T& _rcValue, const LType<U>& _rcRightType)
+T operator^(const T& _rcValue, const OType<U>& _rcRightType)
 {
 	return _rcValue ^ _rcRightType();
 }
 
 template <typename T, typename U>
-T operator<<(const LType<T>& _rcLeftType, const LType<U>& _rcRightType)
+T operator<<(const OType<T>& _rcLeftType, const OType<U>& _rcRightType)
 {
 	return _rcLeftType() << _rcRightType();
 }
 template <typename T, typename U>
-T operator<<(const LType<T>& _rcLeftType, const U& _rcValue)
+T operator<<(const OType<T>& _rcLeftType, const U& _rcValue)
 {
 	return _rcLeftType() << _rcValue;
 }
 template <typename T, typename U>
-T operator<<(const T& _rcValue, const LType<U>& _rcRightType)
+T operator<<(const T& _rcValue, const OType<U>& _rcRightType)
 {
 	return _rcValue << _rcRightType();
 }
 
 template <typename T, typename U>
-T operator>>(const LType<T>& _rcLeftType, const LType<U>& _rcRightType)
+T operator>>(const OType<T>& _rcLeftType, const OType<U>& _rcRightType)
 {
 	return _rcLeftType() >> _rcRightType();
 }
 template <typename T, typename U>
-T operator>>(const LType<T>& _rcLeftType, const U& _rcValue)
+T operator>>(const OType<T>& _rcLeftType, const U& _rcValue)
 {
 	return _rcLeftType() >> _rcValue;
 }
 template <typename T, typename U>
-T operator>>(const T& _rcValue, const LType<U>& _rcRightType)
+T operator>>(const T& _rcValue, const OType<U>& _rcRightType)
 {
 	return _rcValue >> _rcRightType();
 }
@@ -475,130 +475,130 @@ T operator>>(const T& _rcValue, const LType<U>& _rcRightType)
 /// compound assignment
 ///
 template <typename T, typename U>
-LType<T>& operator+=(LType<T>& _rcLeftType, const LType<U>& _rcRightType)
+OType<T>& operator+=(OType<T>& _rcLeftType, const OType<U>& _rcRightType)
 {
 	_rcLeftType = _rcLeftType() + _rcRightType();
 	return _rcLeftType;
 }
 template <typename T, typename U>
-LType<T>& operator+=(LType<T>& _rcLeftType, const U& _rcValue)
+OType<T>& operator+=(OType<T>& _rcLeftType, const U& _rcValue)
 {
 	_rcLeftType = _rcLeftType() + _rcValue;
 	return _rcLeftType;
 }
 
 template <typename T, typename U>
-LType<T>& operator-=(LType<T>& _rcLeftType, const LType<U>& _rcRightType)
+OType<T>& operator-=(OType<T>& _rcLeftType, const OType<U>& _rcRightType)
 {
 	_rcLeftType = _rcLeftType() - _rcRightType();
 	return _rcLeftType;
 }
 template <typename T, typename U>
-LType<T>& operator-=(LType<T>& _rcLeftType, const U& _rcValue)
+OType<T>& operator-=(OType<T>& _rcLeftType, const U& _rcValue)
 {
 	_rcLeftType = _rcLeftType() - _rcValue;
 	return _rcLeftType;
 }
 
 template <typename T, typename U>
-LType<T>& operator*=(LType<T>& _rcLeftType, const LType<U>& _rcRightType)
+OType<T>& operator*=(OType<T>& _rcLeftType, const OType<U>& _rcRightType)
 {
 	_rcLeftType = _rcLeftType() * _rcRightType();
 	return _rcLeftType;
 }
 template <typename T, typename U>
-LType<T>& operator*=(LType<T>& _rcLeftType, const U& _rcValue)
+OType<T>& operator*=(OType<T>& _rcLeftType, const U& _rcValue)
 {
 	_rcLeftType = _rcLeftType() * _rcValue;
 	return _rcLeftType;
 }
 
 template <typename T, typename U>
-LType<T>& operator/=(LType<T>& _rcLeftType, const LType<U>& _rcRightType)
+OType<T>& operator/=(OType<T>& _rcLeftType, const OType<U>& _rcRightType)
 {
 	_rcLeftType = _rcLeftType() / _rcRightType();
 	return _rcLeftType;
 }
 template <typename T, typename U>
-LType<T>& operator/=(LType<T>& _rcLeftType, const U& _rcValue)
+OType<T>& operator/=(OType<T>& _rcLeftType, const U& _rcValue)
 {
 	_rcLeftType = _rcLeftType() / _rcValue;
 	return _rcLeftType;
 }
 
 template <typename T, typename U>
-LType<T>& operator%=(LType<T>& _rcLeftType, const LType<U>& _rcRightType)
+OType<T>& operator%=(OType<T>& _rcLeftType, const OType<U>& _rcRightType)
 {
 	_rcLeftType = _rcLeftType() % _rcRightType();
 	return _rcLeftType;
 }
 template <typename T, typename U>
-LType<T>& operator%=(LType<T>& _rcLeftType, const U& _rcValue)
+OType<T>& operator%=(OType<T>& _rcLeftType, const U& _rcValue)
 {
 	_rcLeftType = _rcLeftType() % _rcValue;
 	return _rcLeftType;
 }
 
 template <typename T, typename U>
-LType<T>& operator&=(LType<T>& _rcLeftType, const LType<U>& _rcRightType)
+OType<T>& operator&=(OType<T>& _rcLeftType, const OType<U>& _rcRightType)
 {
 	_rcLeftType = _rcLeftType() & _rcRightType();
 	return _rcLeftType;
 }
 template <typename T, typename U>
-LType<T>& operator&=(LType<T>& _rcLeftType, const U& _rcValue)
+OType<T>& operator&=(OType<T>& _rcLeftType, const U& _rcValue)
 {
 	_rcLeftType = _rcLeftType() & _rcValue;
 	return _rcLeftType;
 }
 
 template <typename T, typename U>
-LType<T>& operator|=(LType<T>& _rcLeftType, const LType<U>& _rcRightType)
+OType<T>& operator|=(OType<T>& _rcLeftType, const OType<U>& _rcRightType)
 {
 	_rcLeftType = _rcLeftType() | _rcRightType();
 	return _rcLeftType;
 }
 template <typename T, typename U>
-LType<T>& operator|=(LType<T>& _rcLeftType, const U& _rcValue)
+OType<T>& operator|=(OType<T>& _rcLeftType, const U& _rcValue)
 {
 	_rcLeftType = _rcLeftType() | _rcValue;
 	return _rcLeftType;
 }
 
 template <typename T, typename U>
-LType<T>& operator^=(LType<T>& _rcLeftType, const LType<U>& _rcRightType)
+OType<T>& operator^=(OType<T>& _rcLeftType, const OType<U>& _rcRightType)
 {
 	_rcLeftType = _rcLeftType() ^ _rcRightType();
 	return _rcLeftType;
 }
 template <typename T, typename U>
-LType<T>& operator^=(LType<T>& _rcLeftType, const U& _rcValue)
+OType<T>& operator^=(OType<T>& _rcLeftType, const U& _rcValue)
 {
 	_rcLeftType = _rcLeftType() ^ _rcValue;
 	return _rcLeftType;
 }
 
 template <typename T, typename U>
-LType<T>& operator<<=(LType<T>& _rcLeftType, const LType<U>& _rcRightType)
+OType<T>& operator<<=(OType<T>& _rcLeftType, const OType<U>& _rcRightType)
 {
 	_rcLeftType = _rcLeftType() << _rcRightType();
 	return _rcLeftType;
 }
 template <typename T, typename U>
-LType<T>& operator<<=(LType<T>& _rcLeftType, const U& _rcValue)
+OType<T>& operator<<=(OType<T>& _rcLeftType, const U& _rcValue)
 {
 	_rcLeftType = _rcLeftType() << _rcValue;
 	return _rcLeftType;
 }
 
 template <typename T, typename U>
-LType<T>& operator>>=(LType<T>& _rcLeftType, const LType<U>& _rcRightType)
+OType<T>& operator>>=(OType<T>& _rcLeftType, const OType<U>& _rcRightType)
 {
 	_rcLeftType = _rcLeftType() >> _rcRightType();
 	return _rcLeftType;
 }
 template <typename T, typename U>
-LType<T>& operator>>=(LType<T>& _rcLeftType, const U& _rcValue)
+OType<T>& operator>>=(OType<T>& _rcLeftType, const U& _rcValue)
 {
 	_rcLeftType = _rcLeftType() >> _rcValue;
 	return _rcLeftType;

@@ -50,6 +50,7 @@ Temporary Items
 Builds/
 
 # 3rd Party Libraries
+Sources/3rdParty/*/
 
 # temporary or user-dependend CMake Files
 *.user

@@ -39,7 +39,7 @@ void Vector2<T>::set(T _x, T _y, bool _notifyParent)
 	y.set(_y, false);
 
 	if(_notifyParent == true)
-		LObject::ChildChanged();
+        OObject::ChildChanged();
 }
 template <typename T>
 void Vector2<T>::set(const Vector2<T>& _rcVector, bool _notifyParent)

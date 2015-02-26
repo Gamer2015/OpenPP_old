@@ -26,7 +26,7 @@ template <typename T>
 class Rectangle : public BaseRectangle<T>
 {
 public:
-	Rectangle(LObject* _pParent = nullptr);
+    Rectangle(OObject* const _pParent = nullptr);
 
 	Vector2<T> origin;
 	Objects::Properties::OType<float> angle;

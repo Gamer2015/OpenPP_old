@@ -1,5 +1,5 @@
-#ifndef ___LEVEL_SCREEN__H___
-#define ___LEVEL_SCREEN__H___
+#ifndef OPENPP_PROJECTS_THESIS_GAME_LEVEL_SCREEN_H_
+#define OPENPP_PROJECTS_THESIS_GAME_LEVEL_SCREEN_H_
 
 /********************************************\
  * Date: 18.01.2015
@@ -16,13 +16,17 @@
 
 #include <SDL2/SDL.h>
 #include "../../Core/Input.h"
-#include "../../Core/Globals.h"
-#include "../../Core/Screen.h"
-#include "../../Core/Button.h"
-#include "../../Core/Text.h"
-#include "../../Core/Texture.h"
-#include "../../Core/Math/Vector2.h"
+#include <Objects/2D/SDL2/Globals.hpp>
+#include <Objects/2D/SDL2/Screen.hpp>
+#include <Objects/2D/SDL2/Button.hpp>
+#include <Objects/2D/SDL2/Texture.hpp>
+#include <Objects/2D/SDL2/Text.hpp>
+#include <Objects/2D/Vector2.hpp>
 #include <vector>
+
+namespace OO2 = Openpp::Objects::Objects2D;
+namespace SDL = OO2::SDL2;
+typedef SDL::Globals SDLG;
 
 namespace Game
 {
@@ -34,7 +38,7 @@ namespace Game
             void BTN_QUIT();
         }
 
-        class LevelScreen : public Core::Screen
+        class LevelScreen : public SDL::Screen
         {
         public:
             LevelScreen();
@@ -56,18 +60,18 @@ namespace Game
             int mHighestLevel;
             std::vector< std::string > mPaths;
 
-            std::vector< std::vector< Core::Button > > mButtons;
-            std::vector< Core::Button > mButtonRow;
-            Core::Button mButtonDummy;
-            Vector2<int> mCurrentButton;
+            std::vector< std::vector< SDL::Button > > mButtons;
+            std::vector< SDL::Button > mButtonRow;
+            SDL::Button mButtonDummy;
+            OO2::Vector2<int> mCurrentButton;
             int mSpace;
 
             int mButtons_Row_System;
             int mRows_System;
-            Vector2<int> mSystems;
+            OO2::Vector2<int> mSystems;
 
-            std::vector< Core::Text > mTexts;
-            Core::Text mTextDummy;
+            std::vector< SDL::Text > mTexts;
+            SDL::Text mTextDummy;
             char mBuffer[64];
 
             std::shared_ptr< SDL_Texture > mpBackground;
@@ -80,4 +84,4 @@ namespace Game
     }
 }
 
-#endif // ___GAME_START_SCREEN__H___
+#endif // OPENPP_PROJECTS_THESIS_GAME_LEVEL_SCREEN_H_

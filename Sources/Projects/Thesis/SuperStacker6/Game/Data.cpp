@@ -47,12 +47,12 @@ namespace Game
         mFixtureDef.friction = 0.5f;
         mFixtureDef.restitution = 0.2f;
 
-        mTextObjectCount.SetTextHeight(20);
-        mTextObjectCount.SetPosition(0, GG::WINDOW_Y);
-        mTextObjectCount.SetTextOrigin(-1, 1);
+        mTextObjectCount.height = 20;
+        mTextObjectCount.position.y = GG::WINDOW_Y;
+        mTextObjectCount.origin.set(-1, 1);
 
-        mTextObjectInfo.SetTextHeight(12);
-        mTextObjectInfo.SetTextOrigin(0, -1);
+        mTextObjectInfo.height = 12;
+        mTextObjectInfo.origin.set(0, -1);
 
 		mPaths.push_back("Media/Red.png");
 		mPaths.push_back("Media/Circle.png");
@@ -62,21 +62,21 @@ namespace Game
 
     void Data::Init()
     {
-		mTextures.push_back(Core::Texture::LoadFromFile(mPaths[0]));
-		mTextures.push_back(Core::Texture::LoadFromFile(mPaths[1]));
-		mTextures.push_back(Core::Texture::LoadFromFile(mPaths[2]));
+        mTextures.push_back(SDL::Texture::Get(mPaths[0]));
+        mTextures.push_back(SDL::Texture::Get(mPaths[1]));
+        mTextures.push_back(SDL::Texture::Get(mPaths[2]));
 
-		mClock.SetTexture(mPaths[3]);
-		mClock.SetPosition(40, 40);
-		mClock.SetSize(70, 70);
+        mClock.set(mPaths[3]);
+        mClock.position.set(40, 40);
+        mClock.size.set(70, 70);
     }
 
     void Data::ThrowObject(int PositionX, int PositionY)
     {
         if( mData.size() > 0)
         {
-            mBodyDef.position.Set( UNSCALE(PositionX - OffsetX), UNSCALE(GG::WINDOW_Y - PositionY) - mData[0].HalfSize.y );
-			mBodyDef.angle = -mData[0].Angle;
+            mBodyDef.position.Set(UNSCALE(PositionX - OffsetX), UNSCALE(GG::WINDOW_Y - PositionY) - mData[0].HalfSize.y );
+            mBodyDef.angle = -mData[0].Angle;
 
             switch( mData[0].GeometryType )
             {
@@ -111,6 +111,7 @@ namespace Game
 			if(mData.size() == 0)
 			{
 				mLastElementClock = SDL_GetTicks();
+                mNoMoveClock = SDL_GetTicks();
 			}
         }
     }
@@ -122,52 +123,52 @@ namespace Game
 
     void Data::Render()
     {
-        Vector2i Position(OffsetX / 2, OffsetX / 2);
-		Vector2i HalfSize(OffsetX / 2 - 16, OffsetX / 2 - 16);
+        OO2::Vector2<int> Position(OffsetX / 2, OffsetX / 2);
+        OO2::Vector2<int> HalfSize(OffsetX / 2 - 16, OffsetX / 2 - 16);
 
-        mObject.SetSize(2 * HalfSize.x, 2 * HalfSize.y);
+        mObject.size.set(2 * HalfSize.x, 2 * HalfSize.y);
 
         for(mIndex = 0; mIndex < mData.size(); ++mIndex)
         {
-            mObject.SetSize(SCALE(mData[mIndex].HalfSize.x * 2), SCALE(mData[mIndex].HalfSize.y * 2));
+            mObject.size.set(SCALE(mData[mIndex].HalfSize.x * 2), SCALE(mData[mIndex].HalfSize.y * 2));
 
-            sprintf(mBuffer, "%.0f x %.0f", mObject.GetSize().x, mObject.GetSize().y);
-            mTextObjectInfo.SetPosition( Position.x, Position.y + HalfSize.y + 2 );
-            mTextObjectInfo.SetText(mBuffer);
+            sprintf(mBuffer, "%.0f x %.0f", mObject.size.x(), mObject.size.y());
+            mTextObjectInfo.position.set( Position.x(), Position.y + HalfSize.y + 2 );
+            mTextObjectInfo.set(mBuffer);
             mTextObjectInfo.Render();
 
-            if(mObject.GetSize().x > mObject.GetSize().y)
+            if(mObject.size.x > mObject.size.y)
             {
-				mObject.SetSize(2 * HalfSize.x, 2 * HalfSize.y * mObject.GetSize().y/mObject.GetSize().x);
+                mObject.size.set(2 * HalfSize.x, 2 * HalfSize.y * mObject.size.y / mObject.size.x);
             }
-			else if(mObject.GetSize().y > mObject.GetSize().x)
+            else if(mObject.size.x < mObject.size.y)
             {
-                mObject.SetSize(2 * HalfSize.x * mObject.GetSize().x/mObject.GetSize().y, 2 * HalfSize.y);
+                mObject.size.set(2 * HalfSize.x * mObject.size.x/mObject.size.y, 2 * HalfSize.y);
             }
             else
             {
-                mObject.SetSize(2 * HalfSize.x, 2 * HalfSize.y);
+                mObject.size.set(2 * HalfSize.x, 2 * HalfSize.y);
             }
 
-			mObject.SetAngle(-mData[mIndex].Angle);
-            mObject.SetPosition(Position.x, Position.y);
+            mObject.angle = -mData[mIndex].Angle;
+            mObject.position = Position;
 
             switch( mData[mIndex].GeometryType )
             {
             case e_circle:
-				mObject.SetTexture(mTextures[Circle]);
+                mObject.set(mTextures[Circle]);
                 break;
             case e_rectangle:
-                mObject.SetTexture(mTextures[Rectangle]);
+                mObject.set(mTextures[Rectangle]);
                 break;
             case e_triangle:
-				mObject.SetTexture(mTextures[Triangle]);
+                mObject.set(mTextures[Triangle]);
 				break;
 
             default:
                 break;
             }
-			mObject.Render();
+            mObject.Render();
 
 			Position.y += OffsetX;
         }
@@ -181,7 +182,7 @@ namespace Game
 			static b2Vec2 b2Pos;
 			b2Pos = mpBody->GetPosition();
 
-			static Vector2f position;
+            static OO2::Vector2<float> position;
 			position.x = SCALE(b2Pos.x);
 			position.y = SCALE(b2Pos.y);
 
@@ -190,16 +191,16 @@ namespace Game
             for(mpFixture = mpBody->GetFixtureList(); mpFixture != NULL; mpFixture = mpFixture->GetNext())
             {
                 b2Shape::Type shapeType = mpFixture->GetType();
-                mObject.SetPosition(OffsetX + position.x, GG::WINDOW_Y - position.y);
-				mObject.SetAngle(-mpBody->GetAngle());
+                mObject.position.set(OffsetX + position.x, GG::WINDOW_Y - position.y);
+                mObject.angle = -mpBody->GetAngle();
 
                 if ( shapeType == b2Shape::e_circle )
                 {
                     mpCircleShape = (b2CircleShape*)mpFixture->GetShape();
 
                     mDiameter = 2 * SCALE(mpCircleShape->m_radius);
-                    mObject.SetSize(mDiameter, mDiameter);
-					mObject.SetTexture(mTextures[Circle]);
+                    mObject.size.set(mDiameter, mDiameter);
+                    mObject.set(mTextures[Circle]);
                 }
                 else if ( shapeType == b2Shape::e_polygon )
                 {
@@ -207,19 +208,19 @@ namespace Game
                     mVertexCount = mpPolygonShape->GetVertexCount();
 
 					mVertex = mpPolygonShape->GetVertex(0);
-					mObject.SetSize(std::abs(2 * SCALE(mVertex.x)), std::abs(2 * SCALE(mVertex.y)));
+                    mObject.size.set(std::abs(2 * SCALE(mVertex.x)), std::abs(2 * SCALE(mVertex.y)));
 
 					if(mVertexCount == 4)
                     {
-						mObject.SetTexture(mTextures[Rectangle]);
+                        mObject.set(mTextures[Rectangle]);
                     }
 					if(mVertexCount == 3)
 					{
-						mObject.SetTexture(mTextures[Triangle]);
+                        mObject.set(mTextures[Triangle]);
 					}
                 }
 
-				if(mObject.GetRenderRect().y - std::max(mObject.GetRenderRect().h, mObject.GetRenderRect().w) > GG::WINDOW_Y)
+                if(mObject.rect().y - std::max(mObject.rect().h, mObject.rect().w) > GG::WINDOW_Y)
                 {
 					if(mpBody->GetType() == b2_dynamicBody)
 					{
@@ -237,7 +238,7 @@ namespace Game
 		if(NoBodyMoves() == false)
 			mNoMoveClock = SDL_GetTicks();
 
-		if((SDL_GetTicks() - mLastElementClock > 10*1000 ||  SDL_GetTicks() - mNoMoveClock > 2*1000) && mData.size() == 0)
+        if((SDL_GetTicks() - mLastElementClock > 10*1000 ||  SDL_GetTicks() - mNoMoveClock > 2*1000) && mData.size() == 0)
 		{
 			GG::gGameScreen.WinLevel();
 
@@ -249,13 +250,13 @@ namespace Game
 
 		sprintf(mBuffer, "%d", count);
 
-		mTextObjectCount.SetText(mBuffer);
-		mTextObjectCount.Render();
+        mTextObjectCount.set(mBuffer);
+        mTextObjectCount.Render();
 
 		if(mData.size() == 0)
 		{
-			mClock.SetAngle(2*M_PI / (10*1000) * (SDL_GetTicks() - mLastElementClock));
-			mClock.Render();
+            mClock.angle.set(2*M_PI / (10*1000) * (SDL_GetTicks() - mLastElementClock));
+            mClock.Render();
 		}
 	}
 	bool Data::NoBodyMoves()
