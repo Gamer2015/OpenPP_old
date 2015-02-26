@@ -1,0 +1,57 @@
+# Listing all 3rdParty Libraries
+# Place the root directory of each library here 
+# 
+#
+# Libraries: 
+#  - boost # version 1.57.0
+#  - Box2D # version 2.3.0
+#  - SDL2 # version 2.0.3
+#  - SFML # version 2.1.0
+#  - Qt # version 5.2.0
+
+#-------------------------------------
+# Path to this File
+#-------------------------------------
+SET(3RD_PARTY_PATH ${BASE_PATH}/3rdParty)
+
+
+#-------------------------------------
+# Boost Paths
+#-------------------------------------
+SET(BOOST_PATH ${3RD_PARTY_PATH}/boost)
+include_directories(${BOOST_PATH}/)
+link_directories(${BOOST_PATH}/stage/lib)
+
+
+#-------------------------------------
+# Box2D 
+#-------------------------------------
+SET(BOX2D_PATH ${3RD_PARTY_PATH}/Box2D)
+include_directories(${BOX2D_PATH}/)
+link_directories(${BOX2D_PATH}/Box2D)
+
+
+#-------------------------------------
+# Qt
+#-------------------------------------
+SET(QT_PATH ${3RD_PARTY_PATH}/QT/5.2.0/mingw48_32)
+include_directories(${QT_PATH}/include)
+link_directories(${QT_PATH}/lib)
+
+
+#-------------------------------------
+# SDL
+#-------------------------------------
+SET(SDL_PATH ${3RD_PARTY_PATH}/SDL2)
+include_directories(${SDL_PATH}/include)
+link_directories(${SDL_PATH}/lib)
+
+
+#-------------------------------------
+# SFML
+#-------------------------------------
+SET(SFML_PATH ${3RD_PARTY_PATH}/SFML)
+include_directories(${SFML_PATH}/include)
+link_directories(${SFML_PATH}/lib)
+
+
