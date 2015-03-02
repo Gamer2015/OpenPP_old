@@ -21,3 +21,10 @@ LINK_DIRECTORIES(${BASE_PATH}/lib)
 #-------------------------------------
 SET(3RD_PARTY_PATH ${BASE_PATH}/3rdParty)
 include(${3RD_PARTY_PATH}/3rdParties.txt)
+
+
+#-------------------------------------
+# Output Directories
+#-------------------------------------
+SET(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${BASE_PATH}/lib)
+SET(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${BASE_PATH}/bin)
