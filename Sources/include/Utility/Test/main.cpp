@@ -1,9 +1,7 @@
-#include "Char.h"
 #include "String.h"
 #include <vector>
 #include <iostream>
 
-namespace LUCT = Openpp::Utility::Char::Test;
 namespace LUST = Openpp::Utility::String::Test;
 
 int main(void)
@@ -11,7 +9,6 @@ int main(void)
 	bool success = true;
 	std::cout << "Testing: Sources/include/Utility" << std::endl;
 	std::vector< bool (*)(std::string&) > functions;
-	functions.push_back(&LUCT::Test);
 	functions.push_back(&LUST::Test);
 
 	std::vector<std::string> Names;
