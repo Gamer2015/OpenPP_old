@@ -1,5 +1,4 @@
 #include "String.hpp"
-#include "Char.h"
 
 #include <string>
 #include <vector>
@@ -261,25 +260,6 @@ bool String::HasPatternAtPosition(const std::string& rString, const std::string&
 
 	return (rString.substr(position, rPattern.length()).compare(rPattern) == 0);
 }
-/*
-void ToUpper(std::string& rString)
-{
-}
-std::string ToUpper(const std::string& rString)
-{
-
-}
-
-
-void ToLower(std::string& rString)
-{
-
-}
-std::string ToLower(const std::string& rString)
-{
-
-}
-*/
 
 
 bool String::HasOnlyLetters(const std::string& rString)

@@ -98,15 +98,6 @@ static bool StartsWith(const std::string& rString, const std::string& rStart);
 //// Returns true if rString starts with rStart
 static bool HasPatternAtPosition(const std::string& rString, const std::string& rPattern, unsigned int position);
 
-/*
-/// Modifies the rString, all lowercase letters are uppercase afterwards
-static void ToUpper(std::string& rString);
-static std::string ToUpper(const std::string& rString);
-
-/// Modifies the rString, all uppercase letters are lowercase afterwards
-static void ToLower(std::string& rString);
-static std::string ToLower(const std::string& rString);
-*/
 
 //// Returns true if there are Only Letters in the String
 static bool HasOnlyLetters(const std::string& rString);
