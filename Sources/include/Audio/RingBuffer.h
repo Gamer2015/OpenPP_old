@@ -1,5 +1,5 @@
-#ifndef ___OPENPP_AUDIO_RING_BUFFER__H___
-#define ___OPENPP_AUDIO_RING_BUFFER__H___
+#ifndef OPENPP_AUDIO_RING_BUFFER_H_
+#define OPENPP_AUDIO_RING_BUFFER_H_
 
 /******************************************************\
  * Usage: Platform independent RingBuffer Class
