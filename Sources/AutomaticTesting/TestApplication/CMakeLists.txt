@@ -17,12 +17,12 @@ SET(VERSION_MINOR "0")
 SET(VERSION_PATCH "0")
 SET(VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH})
 
-SET(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/..)
-
 #-------------------------------------
 # Get Compiler Paths
 #-------------------------------------
 INCLUDE(${CMAKE_CURRENT_SOURCE_DIR}/../../OpenppConfig.txt)
+
+SET(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/..)
 
 #-------------------------------------
 # Additional Compiler Settings

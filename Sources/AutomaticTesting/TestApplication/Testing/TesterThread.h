@@ -5,6 +5,7 @@
 #include <QMutex>
 #include <QString>
 #include <vector>
+#include <atomic>
 #include "../Commands.h"
 
 
@@ -80,8 +81,7 @@ private:
 
 
 	QMutex mMutex;
-	int mCommand;
-	int mPrevCommand;
+	std::atomic<int> mCommand;
 	int mBegin;
 	int mEnd;
 

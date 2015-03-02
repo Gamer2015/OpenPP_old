@@ -49,14 +49,7 @@ void TesterThread::GetCommand(int Command, int begin, int end)
 }
 bool TesterThread::NewCommand()
 {
-	mMutex.lock();
-	if(mCommand & NEW_COMMAND)
-	{
-		mMutex.unlock();
-		return true;
-	}
-	mMutex.unlock();
-	return false;
+	return(mCommand & NEW_COMMAND);
 }
 
 void TesterThread::RunTest(int TestID)
@@ -91,9 +84,9 @@ void TesterThread::RunTests()
 			if(NewCommand() == true)
 				return;
 
-			if(((mPrevCommand & TEST_SUCCESSFUL_TESTS) && (mTests[index].GetSuccess() == SUCCESS)) ||
-				((mPrevCommand & TEST_FAILED_TESTS) && (mTests[index].GetSuccess() == FAILED)) ||
-				((mPrevCommand & TEST_UNTESTED_TESTS) && (mTests[index].GetSuccess() == UNTESTED))	)
+			if(((mCommand & TEST_SUCCESSFUL_TESTS) && (mTests[index].GetSuccess() == SUCCESS)) ||
+				((mCommand & TEST_FAILED_TESTS) && (mTests[index].GetSuccess() == FAILED)) ||
+				((mCommand & TEST_UNTESTED_TESTS) && (mTests[index].GetSuccess() == UNTESTED))	)
 			{
 				RunTest(index);
 
@@ -103,7 +96,7 @@ void TesterThread::RunTests()
 		if(TestedSomething == false)
 			return;
 	}
-	while(mPrevCommand & TEST_FOREVER);
+	while(mCommand & TEST_FOREVER);
 }
 
 void TesterThread::ReadFile()
@@ -132,7 +125,7 @@ std::vector<TesterThread::Test> TesterThread::ScanTests(const std::string& rRoot
 	Test mDummyTest;
 
     if(NewCommand() == true)
-        return Tests;
+		return Tests;
 
 	// list all files in current directory.
 	//You could put any file path in here, e.g. "/home/me/mwah" to list that directory
@@ -170,24 +163,20 @@ std::vector<TesterThread::Test> TesterThread::ScanTests(const std::string& rRoot
 
 void TesterThread::run()
 {
-	mMutex.lock();
 	while(mCommand & NEW_COMMAND)
 	{
 		mCommand &= ~NEW_COMMAND;
-		mPrevCommand = mCommand;
 
-		mMutex.unlock();
-
-		if(mPrevCommand & SCANNING)
+		if(mCommand & SCANNING)
 		{
-			mPrevCommand &= ~SCANNING;
+			mCommand &= ~SCANNING;
 
 			emit StartedScanning();
 
 #if defined(_WIN16)||defined(_WIN32)||defined(_WIN64) // i hate Windows Backslashes ...
-            mTests = ScanTests("..\\..\\Sources");
+			mTests = ScanTests("..\\..\\Sources");
 #else
-            mTests = ScanTests("../../Sources");
+			mTests = ScanTests("../../Sources");
 #endif
 
             /// Save the found Tests in a File to prevent the need from scanning every time
@@ -198,23 +187,20 @@ void TesterThread::run()
 
             emit FinishedScanning();
         }
-        else if(mPrevCommand == READ_FILE)
-        {
+		else if(mCommand == READ_FILE)
+		{
             ReadFile();
         }
 
-        else if(mPrevCommand & TESTING)
-        {
-            mPrevCommand &= ~TESTING;
+		else if(mCommand & TESTING)
+		{
+			mCommand &= ~TESTING;
 
             emit StartedTesting();
 
             RunTests();
 
             emit FinishedTesting();
-        }
-
-		mMutex.lock();
+		}
 	}
-	mMutex.unlock();
 }
