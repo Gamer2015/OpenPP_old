@@ -162,6 +162,86 @@ bool ValuePlusStringTest(std::string& rString)
 
 	return success;
 }
+bool StringCompoundAssignTest(std::string& rString)
+{
+	rString = "StringCompoundAssignTest: ";
+	std::cout << rString << std::endl;
+	bool success = true;
+
+	std::string base("Value = ");
+	std::string str(base);
+	std::string result;
+
+	std::cout << "uint8_t Test: ";
+	uint8_t u8 = 8;
+	result = base + "8";
+	success &= Test(result, str += u8);
+	str = base;
+
+	std::cout << "uint16_t Test: ";
+	uint16_t u16 = 16;
+	result = base + "16";
+	success &= Test(result, str += u16);
+	str = base;
+
+	std::cout << "uint32_t Test: ";
+	uint32_t u32 = 32;
+	result = base + "32";
+	success &= Test(result, str += u32);
+	str = base;
+
+	std::cout << "uint64_t Test: ";
+	uint64_t u64 = 64;
+	result = base + "64";
+	success &= Test(result, str += u64);
+	str = base;
+
+
+	std::cout << "int8_t Test: ";
+	int8_t i8 = -8;
+	result = base + "-8";
+	success &= Test(result, str += i8);
+	str = base;
+
+	std::cout << "int16_t Test: ";
+	int16_t i16 = -16;
+	result = base + "-16";
+	success &= Test(result, str += i16);
+	str = base;
+
+	std::cout << "int32_t Test: ";
+	int32_t i32 = -32;
+	result = base + "-32";
+	success &= Test(result, str += i32);
+	str = base;
+
+	std::cout << "int64_t Test: ";
+	int64_t i64 = -64;
+	result = base + "-64";
+	success &= Test(result, str += i64);
+	str = base;
+
+
+	std::cout << "float Test: ";
+	float f = 0.18634;
+	result = base + "0.186340";
+	success &= Test(result, str += f);
+	str = base;
+
+	std::cout << "double Test: ";
+	double d = 1.18634;
+	result = base + "1.186340";
+	success &= Test(result, str += d);
+	str = base;
+
+	std::cout << "long double Test: ";
+	long double ld = 2.18634;
+	result = base + "2.186340";
+	success &= Test(result, str += ld);
+	str = base;
+
+	return success;
+}
 
 bool StringTest(std::string& rString)
 {
@@ -172,6 +252,7 @@ bool StringTest(std::string& rString)
 	std::vector< bool (*)(std::string&) > functions;
 	functions.push_back(&StringPlusValueTest);
 	functions.push_back(&ValuePlusStringTest);
+	functions.push_back(&StringCompoundAssignTest);
 
 	std::vector<std::string> Names;
 	std::string Name;
