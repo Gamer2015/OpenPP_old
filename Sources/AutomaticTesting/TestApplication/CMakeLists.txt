@@ -34,7 +34,8 @@ set(CMAKE_AUTOMOC ON)
 #-------------------------------------
 # Set up QT
 #-------------------------------------
-FIND_PACKAGE(Qt5Widgets PATHS ${Base_Path}/3rdPart/lib/cmake)
+list(APPEND CMAKE_MODULE_PATH "${QT_PATH}/lib/cmake")
+FIND_PACKAGE(Qt5Widgets)
 
 add_definitions(${Qt5Widgets_DEFINITIONS})
 

@@ -139,7 +139,7 @@ std::vector<TesterThread::Test> TesterThread::ScanTests(const std::string& rRoot
             return Tests;
 
         /// If it is a Directory
-        if (BF::is_directory(itr->path()))
+		if(BF::is_directory(itr->path()) && !(LUS::EndsWith(itr->path().string(), "3rdParty")))
         {
             FolderTests = ScanTests(itr->path().string()); /// recursivly search all Folders for Tests
 
