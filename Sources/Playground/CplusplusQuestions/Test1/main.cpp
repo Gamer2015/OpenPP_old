@@ -1,38 +1,27 @@
 #include <exception>
 #include <iostream>
 #include <string>
+#include <cstdint>
+#include <std/string>
 
 int main()
 {
-	int NumberOfInputs = 20;
-	int Number;
-	char Letters[21];
-	Letters[20] = 0; // End of String character
+	std::string hi ("Hallo1");
+	std::string hi2 ("Hallo2");
 
-	for(int i = 0; i < NumberOfInputs; ++i)
-	{
-		std::cout << "Input " << i + 1 << ": ";
-		try
-		{
-			if(std::cin >> Number)
-			{
-				if(Number < 1 || Number > 26)
-					throw std::exception();
-				else
-					Letters[i] = (char)(Number + 64);
-			}
-			else
-				throw std::exception();
-		}
-		catch(...)
-		{
-			Letters[i] = '#';
+	int number = 32;
+	double someDouble = 53.4353256346454;
+	char h = 'h';
 
-			std::cin.clear();
-			fflush(stdin);
-		}
-	}
-	std::cout << Letters;
+	std::cout << hi + number << std::endl;
+	std::cout << (hi + hi2) << std::endl;
+	std::cout << (hi + someDouble) << std::endl;
+	std::cout << (hi + h) << '\n' << std::endl;
 
-	return 0;
+	std::cout << number + hi<< std::endl;
+	std::cout << (hi2 + hi) << std::endl;
+	std::cout << (someDouble + hi) << std::endl;
+	std::cout << (h + hi) << std::endl;
+
+	return EXIT_SUCCESS;
 }
