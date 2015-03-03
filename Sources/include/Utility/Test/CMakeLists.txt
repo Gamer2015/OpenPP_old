@@ -56,7 +56,6 @@ SET(${PROJECT_NAME}_SOURCES
 )
 SET(${PROJECT_NAME}_HEADERS
 
-    Char.h
     String.h
 )
 
