@@ -14,7 +14,6 @@
 
 #include <string>
 #include <vector>
-#include "Char.h"
 
 namespace Openpp
 {
