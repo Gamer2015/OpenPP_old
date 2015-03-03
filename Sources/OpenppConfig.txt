@@ -4,9 +4,10 @@
 cmake_minimum_required(VERSION 3.0)
 
 #-------------------------------------
-# Compiler Paths
+# Base Settings
 #-------------------------------------
-SET(BASE_PATH "C:/Users/Stefan/Documents/GitHub/Openpp/Sources")
+set(BASE_PATH "C:/Users/Stefan/Documents/GitHub/Openpp/Sources")
+set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} "-std=c++11")
 
 
 #-------------------------------------
@@ -19,12 +20,13 @@ LINK_DIRECTORIES(${BASE_PATH}/lib)
 #-------------------------------------
 # 3rdParty Compiler Paths
 #-------------------------------------
-SET(3RD_PARTY_PATH ${BASE_PATH}/3rdParty)
+set(3RD_PARTY_PATH ${BASE_PATH}/3rdParty)
 include(${3RD_PARTY_PATH}/3rdParties.txt)
 
 
 #-------------------------------------
 # Output Directories
 #-------------------------------------
-SET(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${BASE_PATH}/lib)
-SET(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${BASE_PATH}/bin)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${BASE_PATH}/lib)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${BASE_PATH}/bin)
