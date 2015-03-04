@@ -5,8 +5,10 @@
 #include <fstream>
 #include <stdlib.h>
 
+namespace SDL = Openpp::Objects::Objects2D::SDL2;
+namespace SDLE = SDL::Exceptions;
+typedef SDL::Globals SDLG;
 
-typedef Core::Globals CG;
 typedef Game::Globals GG;
 namespace CI = Core::Input;
 namespace BUTTONS = Game::Screens::LevelScreenButtons;
@@ -19,14 +21,14 @@ namespace Game
         {
             void Back()
             {
-                CG::gpCurrentScreen = &(GG::gStartScreen);
+                SDLG::gpCurrentScreen = &(GG::gStartScreen);
             }
             void StartLevel()
 			{
                 if(GG::gLevelScreen.CurrentButtonText().compare("?"))
 				{
                     GG::gGameScreen.LoadLevel(GG::gLevelScreen.CurrentButtonText());
-                    CG::gpCurrentScreen = &(GG::gGameScreen);
+                    SDLG::gpCurrentScreen = &(GG::gGameScreen);
                 }
             }
         }
@@ -55,7 +57,7 @@ namespace Game
 
         std::string LevelScreen::CurrentButtonText()
         {
-            return mButtons[mCurrentButton.y][mCurrentButton.x].GetText();
+            return mButtons[mCurrentButton.y][mCurrentButton.x].text;
         }
 
         enum TextureLayer
@@ -80,7 +82,7 @@ namespace Game
         }
         void LevelScreen::Init()
         {
-            mpBackground = Core::Texture::LoadFromFile( mPaths[0] );
+            mpBackground = SDL::Texture::Get( mPaths[0] );
 
 /// Get Highest Level Reached
 
@@ -97,34 +99,34 @@ namespace Game
 
 /// Set the Texts
 
-            mTextDummy.SetTextOrigin(0, -1);
-            mTextDummy.SetTextHeight(64);
+            mTextDummy.origin.set(0, -1);
+            mTextDummy.height.set(64);
 
-            mTextDummy.SetText("Easy");
-            mTextDummy.SetPosition(GG::WINDOW_X / 4.0, 10);
+            mTextDummy.set("Easy");
+            mTextDummy.position.set(GG::WINDOW_X / 4.0, 10);
             mTexts.push_back(mTextDummy);
 
-            mTextDummy.SetText("Normal");
-            mTextDummy.Move(GG::WINDOW_X / 2.0, 0);
+            mTextDummy.set("Normal");
+            mTextDummy.position.add(GG::WINDOW_X / 2.0, 0);
             mTexts.push_back(mTextDummy);
 
-            mTextDummy.SetText("Impossible");
-            mTextDummy.Move(0, GG::WINDOW_Y / 2.0);
+            mTextDummy.set("Impossible");
+            mTextDummy.position.add(0, GG::WINDOW_Y / 2.0);
             mTexts.push_back(mTextDummy);
 
-            mTextDummy.SetText("Hard");
-            mTextDummy.Move(-GG::WINDOW_X / 2.0, 0);
+            mTextDummy.set("Hard");
+            mTextDummy.position.add(-GG::WINDOW_X / 2.0, 0);
             mTexts.push_back(mTextDummy);
 
 /// Set the Buttons
 
-            mButtonDummy.SetSize(48, 48);
-            mButtonDummy.SetTextHeight(36);
-            mButtonDummy.SetOrigin(-1, -1);
+            mButtonDummy.size.set(48, 48);
+            mButtonDummy.text.height.set(36);
+            mButtonDummy.origin.set(-1, -1);
             mButtonDummy.SetFunction(&(BUTTONS::StartLevel));
 
             for(int i = 1; i < mPaths.size(); ++i)
-                mButtonDummy.AddTexture( mPaths[i] );
+                mButtonDummy.textures.push_back(mPaths[i]);
 
             int Level;
             int Y, y;
@@ -132,13 +134,13 @@ namespace Game
 
             for(Y = 0; Y < mSystems.y; Y++)
             {
-                mButtonDummy.SetPosition(0, mTexts[2*Y].GetTextRect().y + mTexts[2*Y].GetTextRect().h + mSpace);
+                mButtonDummy.position.set(0, mTexts[2*Y].GetTextRect().y + mTexts[2*Y].GetTextRect().h + mSpace);
 
                 for(y = 0; y < mRows_System; y++)
                 {
                     for(X = 0; X < mSystems.x; X++)
                     {
-                        mButtonDummy.SetPosition((mTexts[X].GetTextRect().x + mTexts[X].GetTextRect().w / 2.0) - mButtons_Row_System/2.0*(mSpace + mButtonDummy.GetSize().x), mButtonDummy.GetPosition().y);
+                        mButtonDummy.position.set((mTexts[X].GetTextRect().x + mTexts[X].GetTextRect().w / 2.0) - mButtons_Row_System/2.0*(mSpace + mButtonDummy.GetSize().x), mButtonDummy.GetPosition().y);
 
                         for(x = 0; x < mButtons_Row_System; x++)
                         {
@@ -153,13 +155,13 @@ namespace Game
                                 sprintf(mBuffer, "%d", mButtons_Row_System*mRows_System*mSystems.x*Y + mButtons_Row_System*mRows_System*X + mButtons_Row_System*y + x + 1);
                             }
 
-                            mButtonDummy.SetText(mBuffer);
+                            mButtonDummy.text.set(mBuffer);
                             mButtonRow.push_back(mButtonDummy);
-                            mButtonDummy.Move(mButtonDummy.GetSize().x + mSpace, 0);
+                            mButtonDummy.position.add(mButtonDummy.GetSize().x + mSpace, 0);
                         }
                     }
 
-                    mButtonDummy.Move(0, mSpace + mButtonDummy.GetSize().y);
+                    mButtonDummy.position.add(0, mSpace + mButtonDummy.GetSize().y);
                     mButtons.push_back(mButtonRow);
                     mButtonRow.clear();
                 }
@@ -191,7 +193,7 @@ namespace Game
 
         void LevelScreen::Render()
         {
-            SDL_RenderCopy( CG::gpRenderer, mpBackground.get(), NULL, NULL);
+            SDL_RenderCopy( SDLG::gpRenderer, mpBackground.get(), NULL, NULL);
 
             for( int y = 0; y < mButtons.size(); y++ )
             {
@@ -237,7 +239,7 @@ namespace Game
                                 {
                                     std::cout << "New Level unlocked!" << std::endl;
                                     sprintf(mBuffer, "%d", Level);
-                                    mButtons[mRows_System*Y+y][mButtons_Row_System*X+x].SetText(mBuffer);
+                                    mButtons[mRows_System*Y+y][mButtons_Row_System*X+x].text.set(mBuffer);
                                 }
                             }
                         }

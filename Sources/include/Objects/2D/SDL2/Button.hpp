@@ -84,6 +84,4 @@ private:
 } // Objects
 } // Openpp
 
-#include "Button.inl"
-
 #endif // OPENPP_OBJECTS_2D_SDL2_BUTTON_H_

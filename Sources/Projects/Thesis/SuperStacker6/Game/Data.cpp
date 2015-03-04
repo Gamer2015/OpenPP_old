@@ -132,8 +132,8 @@ namespace Game
         {
             mObject.size.set(SCALE(mData[mIndex].HalfSize.x * 2), SCALE(mData[mIndex].HalfSize.y * 2));
 
-            sprintf(mBuffer, "%.0f x %.0f", mObject.size.x(), mObject.size.y());
-            mTextObjectInfo.position.set( Position.x(), Position.y + HalfSize.y + 2 );
+            sprintf(mBuffer, "%.0f x %.0f", (float)mObject.size.x, (float)mObject.size.y);
+            mTextObjectInfo.position.set( Position.x, Position.y + HalfSize.y + 2 );
             mTextObjectInfo.set(mBuffer);
             mTextObjectInfo.Render();
 
@@ -235,15 +235,15 @@ namespace Game
             }
 		}
 
-		if(NoBodyMoves() == false)
-			mNoMoveClock = SDL_GetTicks();
+        if(NoBodyMoves() == false)
+            mNoMoveClock = SDL_GetTicks();
 
         if((SDL_GetTicks() - mLastElementClock > 10*1000 ||  SDL_GetTicks() - mNoMoveClock > 2*1000) && mData.size() == 0)
 		{
 			GG::gGameScreen.WinLevel();
 
 			std::cout << "LastElementClock: " << SDL_GetTicks() - mLastElementClock << std::endl
-					  << "NoMoveClock: " << SDL_GetTicks() - mNoMoveClock << std::endl;
+                      << "Noposition.addClock: " << SDL_GetTicks() - mNoMoveClock << std::endl;
 		}
 
 		OldPositions = NewPositions;
@@ -259,7 +259,7 @@ namespace Game
             mClock.Render();
 		}
 	}
-	bool Data::NoBodyMoves()
+    bool Data::NoBodyMoves()
 	{
 		if(OldPositions.size() != NewPositions.size())
 			return false;
@@ -275,7 +275,7 @@ namespace Game
 
     void Data::LoadData( std::string path )
 	{
-		mNoMoveClock = SDL_GetTicks();
+        mNoMoveClock = SDL_GetTicks();
 		mLastElementClock = SDL_GetTicks();
 
         NewWorld();

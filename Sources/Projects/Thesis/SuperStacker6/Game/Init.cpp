@@ -1,8 +1,10 @@
 #include "Init.h"
 
-typedef Core::Globals CG;
+namespace SDL = Openpp::Objects::Objects2D::SDL2;
+namespace SDLE = SDL::Exceptions;
+typedef SDLG SDLG;
+
 typedef Game::Globals GG;
-namespace CE = Core::Exceptions;
 
 namespace Game
 {
@@ -12,32 +14,32 @@ namespace Init
 /// Initializes SDL2
 void InitSDL2()
 {
-    SDL::Globals::Init(GG::TITLE, GG::WINDOW_X, GG::WINDOW_Y);
+    SDLG::Init(GG::TITLE, GG::WINDOW_X, GG::WINDOW_Y);
 
     /// Initialize SDL_image
     int imgFlags = IMG_INIT_PNG | IMG_INIT_JPG;
     if( !(IMG_Init(imgFlags) & imgFlags) )
     {
-        throw CE::ExSDLError( "SDL_image could not initialize", IMG_GetError() );
+        throw SDLE::ExSDLError( "SDL_image could not initialize", IMG_GetError() );
     }
 
     /// Initialize SDL_ttf
     if( TTF_Init() == -1 )
     {
-        throw CE::ExSDLError( "SDL_ttf could not initialize", TTF_GetError() );
+        throw SDLE::ExSDLError( "SDL_ttf could not initialize", TTF_GetError() );
     }
 
-    SDL::Texture::LoadTextFont("Media/Font.ttf");
+    SDL::Texture::Get("Media/Font.ttf");
 }
 
 /// Set the Loading Screen
 void SetLoadingScreen()
 {
-    GG::gpLoadingTexture = Core::Texture::LoadFromFile( "Media/Loading.jpg" );
+    GG::gpLoadingTexture = SDL::Texture::Get( "Media/Loading.jpg" );
 
-    SDL_RenderClear( SDLG::gpRenderer );
-    SDL_RenderCopy( SDLG::gpRenderer, GG::gpLoadingTexture.get(), NULL, NULL);
-    SDL_RenderPresent( SDLG::gpRenderer );
+    SDL_RenderClear( SDLG::Renderer() );
+    SDL_RenderCopy( SDLG::Renderer(), GG::gpLoadingTexture.get(), NULL, NULL);
+    SDL_RenderPresent( SDLG::Renderer() );
 }
 
 /// Loads Media (images etc.)

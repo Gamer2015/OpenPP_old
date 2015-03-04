@@ -49,13 +49,13 @@ void Button::Render(int Index) const
 	{
 		if(textures[Index]() != nullptr)
 		{
-			SDL_RenderCopyEx(LSG::Renderer(), textures[Index](), NULL, &rect(), 180 / M_PI * angle(), &rectOrigin(), SDL_FLIP_NONE);
+            SDL_RenderCopyEx(LSG::Renderer(), textures[Index](), NULL, &rect(), 180 / M_PI * angle, &rectOrigin(), SDL_FLIP_NONE);
 		}
 	}
 
 	if(text.texture() != nullptr)
 	{
-		SDL_RenderCopyEx(LSG::Renderer(), text.texture(), NULL, &mTextRect, 180 / M_PI *(angle()), &mTextOrigin, SDL_FLIP_NONE);
+        SDL_RenderCopyEx(LSG::Renderer(), text.texture(), NULL, &mTextRect, 180 / M_PI *(angle), &mTextOrigin, SDL_FLIP_NONE);
 	}
 }
 
@@ -63,11 +63,11 @@ void Button::ChildChanged(int _childId)
 {
 	SDL_Rectangle::ChildChanged(_childId);
 
-	mTextRect.w = text.size().x();
-	mTextRect.h = text.size().y();
+    mTextRect.w = text.size().x;
+    mTextRect.h = text.size().y;
 
-	mTextRect.x = rect().x + rect().w / 2.0 *(text.origin.x() + 1) - text.size().x() / 2.0 * (text.origin.x() + 1);
-	mTextRect.y = rect().y + rect().h / 2.0 *(text.origin.y() + 1) - text.size().y() / 2.0 * (text.origin.y() + 1);
+    mTextRect.x = rect().x + rect().w / 2.0 *(text.origin.x + 1) - text.size().x / 2.0 * (text.origin.x + 1);
+    mTextRect.y = rect().y + rect().h / 2.0 *(text.origin.y + 1) - text.size().y / 2.0 * (text.origin.y + 1);
 
 	mTextOrigin.x = (rect().x + rectOrigin().x) - mTextRect.x;
 	mTextOrigin.y = (rect().y + rectOrigin().y) - mTextRect.y;

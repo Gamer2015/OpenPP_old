@@ -1,7 +1,6 @@
 #include "Globals.h"
 
 typedef Game::Globals GG;
-typedef Core::Globals CG;
 
 namespace Game
 {

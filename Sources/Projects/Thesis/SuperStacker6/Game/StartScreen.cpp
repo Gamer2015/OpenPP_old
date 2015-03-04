@@ -58,24 +58,24 @@ namespace Game
             for(int i = 1; i < mPaths.size(); ++i)
                 mButtonDummy.AddTexture( mPaths[i]);
 
-            mButtonDummy.SetSize(320, 64);
-            mButtonDummy.SetOrigin(-1, -1);
-            mButtonDummy.SetTextOrigin(-1, 0);
-            mButtonDummy.SetTextHeight(48);
+            mButtonDummy.size.set(320, 64);
+            mButtonDummy.origin.set(-1, -1);
+            mButtonDummy.text.origin.set(-1, 0);
+            mButtonDummy.text.height.set(48);
 
-            mButtonDummy.SetPosition(0, 20);
+            mButtonDummy.position.set(0, 20);
             mButtonDummy.SetFunction(&(BUTTONS::BTN_START));
-            mButtonDummy.SetText("Start");
+            mButtonDummy.text.set("Start");
             mButtons.push_back(mButtonDummy);
 
-            mButtonDummy.Move(0, 64);
+            mButtonDummy.position.add(0, 64);
             mButtonDummy.SetFunction();
-            mButtonDummy.SetText("Options");
+            mButtonDummy.text.set("Options");
             mButtons.push_back(mButtonDummy);
 
-            mButtonDummy.Move(0, 64);
+            mButtonDummy.position.add(0, 64);
             mButtonDummy.SetFunction(&(BUTTONS::BTN_QUIT));
-            mButtonDummy.SetText("Quit");
+            mButtonDummy.text.set("Quit");
             mButtons.push_back(mButtonDummy);
         }
 

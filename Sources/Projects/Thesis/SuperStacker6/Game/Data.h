@@ -101,12 +101,12 @@ namespace Game
         SDL::Text mTextObjectInfo;
 
 		unsigned int mLastElementClock;
-		unsigned int mNoMoveClock;
+        unsigned int mNoMoveClock;
         SDL::Sprite<int> mClock;
 
         std::vector< OO2::Vector2<float> > NewPositions;
         std::vector< OO2::Vector2<float> > OldPositions;
-		bool NoBodyMoves();
+        bool NoBodyMoves();
 /*
         sf::ConvexShape mPolygon;
         float mAngle;

@@ -35,7 +35,7 @@ template <typename T>
 void Sprite<T>::Render() const
 {
 	if(mpTexture != nullptr)
-		SDL_RenderCopyEx( Globals::Renderer(), mpTexture.get(), NULL, &(this->rect()), 180 / M_PI * (this->angle()), &(this->rectOrigin()), SDL_FLIP_NONE);
+        SDL_RenderCopyEx( Globals::Renderer(), mpTexture.get(), NULL, &(this->rect()), 180 / M_PI * (this->angle), &(this->rectOrigin()), SDL_FLIP_NONE);
 }
 
 } // SDL2

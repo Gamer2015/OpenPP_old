@@ -60,7 +60,7 @@ public:
 	SDL_Texture* texture() const;
 
 	/// get the text
-	const std::string& operator()() const;
+    operator std::string() const;
 
 protected:
 	virtual void ChildChanged(int _childId);
@@ -77,7 +77,5 @@ private:
 } // Objects
 } // SDL2
 } // Openpp
-
-#include "Text.inl"
 
 #endif // OPENPP_OBJECTS_2D_SDL2_PROPERTIES_TEXT_H_

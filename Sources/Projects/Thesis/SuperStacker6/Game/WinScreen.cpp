@@ -42,24 +42,24 @@ namespace Game
 		{
 			mBackground = Core::Texture::LoadFromFile( mPaths[0] );
 
-			mText.SetText("You Win! :D");
-			mText.SetPosition(GG::WINDOW_X / 2.0, GG::WINDOW_Y / 4.0);
-			mText.SetTextHeight(GG::WINDOW_Y / 4.0);
+			mText.text.set("You Win! :D");
+			mText.position.set(GG::WINDOW_X / 2.0, GG::WINDOW_Y / 4.0);
+			mText.text.height.set(GG::WINDOW_Y / 4.0);
 
 			for(int i = 1; i < mPaths.size(); ++i)
 				mButtonDummy.AddTexture(mPaths[i]);
 
-			mButtonDummy.SetSize(GG::WINDOW_X * 3.0/ 4.0, GG::WINDOW_Y / 4.0 );
-			mButtonDummy.SetTextHeight(GG::WINDOW_Y / 4.0);
-			mButtonDummy.SetOrigin(0, -1);
+			mButtonDummy.size.set(GG::WINDOW_X * 3.0/ 4.0, GG::WINDOW_Y / 4.0 );
+			mButtonDummy.text.height.set(GG::WINDOW_Y / 4.0);
+			mButtonDummy.origin.set(0, -1);
 
-			mButtonDummy.SetPosition(GG::WINDOW_X / 2.0, GG::WINDOW_Y * 3/7.0);
-			mButtonDummy.SetText("Next Level");
+			mButtonDummy.position.set(GG::WINDOW_X / 2.0, GG::WINDOW_Y * 3/7.0);
+			mButtonDummy.text.set("Next Level");
 			mButtonDummy.SetFunction(&(WinScreenButtons::NextLevel));
 			mButtons.push_back(mButtonDummy);
 
-			mButtonDummy.Move(0, GG::WINDOW_Y / 4.0);
-			mButtonDummy.SetText("Back");
+			mButtonDummy.position.add(0, GG::WINDOW_Y / 4.0);
+			mButtonDummy.text.set("Back");
 			mButtonDummy.SetFunction(&(WinScreenButtons::ChangeLevel));
 			mButtons.push_back(mButtonDummy);
 		}

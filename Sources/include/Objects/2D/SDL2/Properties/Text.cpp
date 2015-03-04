@@ -44,9 +44,9 @@ SDL_Texture* Text::texture() const
 	return mpTexture.get();
 }
 
-const std::string& Text::operator()() const
+Text::operator std::string() const
 {
-	return _mText;
+    return _mText;
 }
 
 void Text::ChildChanged(int _childId)
@@ -62,9 +62,9 @@ void Text::ChildChanged(int _childId)
 	}
 	else if(_childId == height.id())
 	{
-		if(height() != 0 && size().x() != 0 && size().y() != 0)
+        if(height != 0 && size().x != 0 && size().y != 0)
 		{
-			Size.set(size().x() * height() / size().y(), height());
+            Size.set(size().x * height / size().y, height);
 		}
 	}
 	OO::OObject::ChildChanged();

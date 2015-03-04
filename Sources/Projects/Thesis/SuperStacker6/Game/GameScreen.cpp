@@ -40,7 +40,7 @@ namespace Game
         void GameScreen::HandleInputs()
         {
             if( CI::KeyDown(CI::BUTTON_A))
-                mGameData.ThrowObject(mMouse.GetRenderRect().x + mMouse.GetSize().x / 2.0, mMouse.GetRenderRect().y + mMouse.GetRenderRect().h + 5);
+                mGameData.ThrowObject(mMouse.rect().x + mMouse.size.x / 2.0, mMouse.rect().y + mMouse.rect().h + 5);
 
             if( CI::KeyIsPressed(CI::BUTTON_RIGHT) )
             {

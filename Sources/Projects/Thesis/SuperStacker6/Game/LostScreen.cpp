@@ -39,24 +39,24 @@ namespace Game
         {
             mBackground = Core::Texture::LoadFromFile( mPaths[0] );
 
-			mText.SetText("You Lost! :(");
-			mText.SetPosition(GG::WINDOW_X / 2.0, GG::WINDOW_Y / 4.0);
-			mText.SetTextHeight(GG::WINDOW_Y / 4.0);
+			mText.text.set("You Lost! :(");
+			mText.position.set(GG::WINDOW_X / 2.0, GG::WINDOW_Y / 4.0);
+			mText.text.height.set(GG::WINDOW_Y / 4.0);
 
 			for(int i = 1; i < mPaths.size(); ++i)
 				mButtonDummy.AddTexture(mPaths[i]);
 
-			mButtonDummy.SetSize(GG::WINDOW_X * 3.0/ 4.0, GG::WINDOW_Y / 4.0 );
-			mButtonDummy.SetTextHeight(GG::WINDOW_Y / 4.0);
-			mButtonDummy.SetOrigin(0, -1);
+			mButtonDummy.size.set(GG::WINDOW_X * 3.0/ 4.0, GG::WINDOW_Y / 4.0 );
+			mButtonDummy.text.height.set(GG::WINDOW_Y / 4.0);
+			mButtonDummy.origin.set(0, -1);
 
-			mButtonDummy.SetPosition(GG::WINDOW_X / 2.0, GG::WINDOW_Y * 3 / 7.0);
-			mButtonDummy.SetText("Retry");
+			mButtonDummy.position.set(GG::WINDOW_X / 2.0, GG::WINDOW_Y * 3 / 7.0);
+			mButtonDummy.text.set("Retry");
 			mButtonDummy.SetFunction(&(LostScreenButtons::Retry));
 			mButtons.push_back(mButtonDummy);
 
-			mButtonDummy.Move(0, GG::WINDOW_Y / 4.0);
-			mButtonDummy.SetText("Back");
+			mButtonDummy.position.add(0, GG::WINDOW_Y / 4.0);
+			mButtonDummy.text.set("Back");
 			mButtonDummy.SetFunction(&(LostScreenButtons::ChangeLevel));
 			mButtons.push_back(mButtonDummy);
         }

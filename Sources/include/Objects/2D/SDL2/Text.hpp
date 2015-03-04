@@ -72,6 +72,4 @@ private:
 } // Objects
 } // Openpp
 
-#include "Text.inl"
-
 #endif // OPENPP_OBJECTS_2D_SDL2_TEXT_H_

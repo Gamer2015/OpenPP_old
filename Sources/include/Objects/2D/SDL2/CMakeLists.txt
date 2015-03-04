@@ -1,38 +1,31 @@
 #-------------------------------------
-# Currently used CMake Version
+# Minimum Required CMake Version
 #-------------------------------------
 cmake_minimum_required(VERSION 3.0)
 
 #-------------------------------------
-# Subdirectories (please add in alphabetical Order)
+# Information about the Project
 #-------------------------------------
-MACRO(SUBDIRLIST result curdir)
-  FILE(GLOB children RELATIVE ${curdir} ${curdir}/*)
-  SET(dirlist "")
-  FOREACH(child ${children})
-    IF(IS_DIRECTORY ${curdir}/${child})
-	LIST(APPEND dirlist ${child})
-    ENDIF()
-  ENDFOREACH()
-  SET(${result} ${dirlist})
-ENDMACRO()
-
-SUBDIRLIST(SUBDIRS ${CMAKE_CURRENT_SOURCE_DIR})
-
-FOREACH(subdir ${SUBDIRS})
-    ADD_SUBDIRECTORY(${subdir})
-ENDFOREACH()
+project(openpp_sdl2)
+SET(VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH})
 
 #-------------------------------------
-# Get Files in Project Hirachie
+# Get Compiler Paths
 #-------------------------------------
+INCLUDE(${CMAKE_CURRENT_SOURCE_DIR}/../../../../OpenppConfig.txt)
 
-string(REPLACE "/" "" ProjectName ${CMAKE_CURRENT_SOURCE_DIR})
-string(REPLACE ":" "" ProjectName ${ProjectName})
-string(REPLACE "." "" ProjectName ${ProjectName})
-string(REPLACE "_" "" ProjectName ${ProjectName})
-string(REPLACE "CUsersStefanDocumentsGitHubOpenppSources" "" ProjectName ${ProjectName})
-project(${ProjectName})
+#-------------------------------------
+# Sources and Headers
+#-------------------------------------
+FILE(GLOB ${PROJECT_NAME}_FOLDER "*.cpp" "*.h" "*.hpp")
+FILE(GLOB ${PROJECT_NAME}_PROPERTIES "Properties/*.cpp" "Properties/*.h" "Properties/*.hpp")
 
-FILE(GLOB ${ProjectName}_FOLDER "*.c" "*.cpp" "*.h" "*.hpp" "*.inl" "*.dll" "*.a" "*.pc" "*.cmake")
-add_custom_target(${ProjectName} SOURCES ${${ProjectName}_FOLDER})
+#-------------------------------------
+# Create Binary
+#-------------------------------------
+add_library (${PROJECT_NAME} STATIC ${${PROJECT_NAME}_FOLDER} ${${PROJECT_NAME}_PROPERTIES})
+
+INSTALL(TARGETS ${PROJECT_NAME}
+	RUNTIME DESTINATION bin
+	LIBRARY DESTINATION lib
+	ARCHIVE DESTINATION lib/static)

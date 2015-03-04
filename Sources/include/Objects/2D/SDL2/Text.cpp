@@ -31,7 +31,7 @@ const SDL_Point& Text::rectOrigin() const
 void Text::Render() const
 {
 	if(texture())
-		SDL_RenderCopyEx( Globals::Renderer(), texture(), NULL, &(rect()), 57.295779513082320876798154814105 * angle(), &(rectOrigin()), SDL_FLIP_NONE);
+        SDL_RenderCopyEx( Globals::Renderer(), texture(), NULL, &(rect()), 57.295779513082320876798154814105 * angle, &(rectOrigin()), SDL_FLIP_NONE);
 }
 
 void Text::ChildChanged(int _childId)
@@ -40,14 +40,14 @@ void Text::ChildChanged(int _childId)
 
 	if(_childId != angle.id())
 	{
-		mRect.w = size().x();
-		mRect.h = size().y();
+        mRect.w = size().x;
+        mRect.h = size().y;
 
-		mRectOrigin.x = ceil(mRect.w / 2.0 * (origin.x() + 1));
-		mRectOrigin.y = ceil(mRect.h / 2.0 * (origin.y() + 1));
+        mRectOrigin.x = ceil(mRect.w / 2.0 * (origin.x + 1));
+        mRectOrigin.y = ceil(mRect.h / 2.0 * (origin.y + 1));
 
-		mRect.x = position.x() - mRectOrigin.x;
-		mRect.y = position.y() - mRectOrigin.y;
+        mRect.x = position.x - mRectOrigin.x;
+        mRect.y = position.y - mRectOrigin.y;
 	}
 }
 

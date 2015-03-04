@@ -51,6 +51,4 @@ private:
 } // Objects
 } // Openpp
 
-#include "Globals.inl"
-
 #endif // OPENPP_OBJECTS_2D_SDL2_GLOBALS_HPP_

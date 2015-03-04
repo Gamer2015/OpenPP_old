@@ -56,6 +56,4 @@ private:
 } // Objects
 } // Openpp
 
-#include "Texture.inl"
-
 #endif // OPENPP_OBJECTS_2D_SDL2_PROPERTIES_TEXTURE_H_

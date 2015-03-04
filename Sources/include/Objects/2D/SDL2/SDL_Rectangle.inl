@@ -32,14 +32,14 @@ void SDL_Rectangle<T>::ChildChanged(int _childId)
 
     if(_childId != OO2::Rectangle<T>::angle.id());
 	{
-		mRect.w = this->size.x();
-		mRect.h = this->size.y();
+        mRect.w = this->size.x;
+        mRect.h = this->size.y;
 
-		mRectOrigin.x = ceil(mRect.w / 2.0 * (this->origin.x() + 1));
-		mRectOrigin.y = ceil(mRect.h / 2.0 * (this->origin.y() + 1));
+        mRectOrigin.x = ceil(mRect.w / 2.0 * (this->origin.x + 1));
+        mRectOrigin.y = ceil(mRect.h / 2.0 * (this->origin.y + 1));
 
-		mRect.x = this->position.x() - mRectOrigin.x;
-		mRect.y = this->position.y() - mRectOrigin.y;
+        mRect.x = this->position.x - mRectOrigin.x;
+        mRect.y = this->position.y - mRectOrigin.y;
 	}
 }
 

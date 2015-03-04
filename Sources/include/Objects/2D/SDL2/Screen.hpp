@@ -23,9 +23,6 @@ namespace SDL2
 
 class Screen
 {
-private:
-	Screen() = delete;
-
 public:
 	/// Handle inputs of Screen
 	virtual void HandleInputs() = 0;
@@ -41,7 +38,5 @@ public:
 } // Objects2D
 } // Objects
 } // Openpp
-
-#include "Screen.inl"
 
 #endif // OPENPP_OBJECTS_2D_SDL2_SCREEN_H_
