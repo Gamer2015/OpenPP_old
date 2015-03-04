@@ -1,7 +1,7 @@
 #ifndef OPENPP_OBJECTS_PROPERTIES_TEST_LTYPE_HPP_
 #define OPENPP_OBJECTS_PROPERTIES_TEST_LTYPE_HPP_
 
-#include "../OType.hpp"
+#include "../OType.tpp"
 #include <string>
 #include <vector>
 #include <iostream>
@@ -43,13 +43,14 @@ template <typename T>
 void Test(bool& success, std::string name, bool term, Object<T>& obj, bool plannedResult)
 {
     success &= term;
-    std::cout << name << " Test: " << ((term)?"1":"ERROR") << std::endl;
+	std::cout << name << " Test: " << ((term)?"success":"ERROR") << std::endl;
     obj.success &= (obj.changed==plannedResult);
     obj.changed = false;
 }
-bool OTypeAndPropertyTest()
+bool OTypeAndPropertyTest(std::string& rString)
 {
-    std::cout << "OTypeAndPropertyTest: " << std::endl;
+	rString = "OTypeAndPropertyTest: ";
+	std::cout << rString << std::endl;
 	bool success = true;
 	Object<int> obj;
 
@@ -103,23 +104,42 @@ bool OTypeAndPropertyTest()
 	Test(success, "operator<<=", (obj.property <<= 2) == (5 << 2), obj, true);
 	Test(success, "operator>>=", (obj.property >>= 2) == ((5<<2) >> 2), obj, true);
 
-	std::cout << "ChildChangedTest: " << (obj.success?"1":"ERROR")<< std::endl;
+	std::cout << "ChildChangedTest: " << (obj.success?"success":"ERROR")<< std::endl;
 
 	return success && obj.success;
 }
 
 bool OTypeTest(std::string& rString)
 {
-    rString = "Sources/include/Objects/Properties/OType.hpp";
+	rString = "Sources/include/Objects/Properties/OType.tpp";
 	bool success = true;
-	std::cout << "Testing: " << rString << std::endl;
-	std::vector< bool (*)() > functions;
 
-    functions.push_back(&OTypeAndPropertyTest);
+	std::cout << "Testing: " << rString << std::endl;
+	std::vector< bool (*)(std::string&) > functions;
+	functions.push_back(&OTypeAndPropertyTest);
+
+	std::vector<std::string> Names;
+	std::string Name;
+	std::vector< bool > Results;
 
 	for(int i = 0; i < functions.size(); i++)
 	{
-		success = success & functions[i]();
+		Results.push_back(functions[i](Name));
+		Names.push_back(Name);
+		success &= Results.back();
+
+		std::cout << std::endl;
+	}
+
+	std::cout << "Function Summary:" << std::endl;
+	for(int i = 0; i < Results.size(); ++i)
+	{
+		std::cout << Names[i];
+		if(Results[i])
+			std::cout << "success";
+		else
+			std::cout << "ERROR!";
+		std::cout << std::endl;
 	}
 	return success;
 }

@@ -16,7 +16,7 @@
 #include <SDL.h>
 #include <memory>
 #include <string>
-#include "SDL_Rectangle.hpp"
+#include "SDL_Rectangle.tpp"
 #include "Texture.hpp"
 #include "Globals.hpp"
 #include <cmath>

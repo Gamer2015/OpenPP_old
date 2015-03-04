@@ -13,8 +13,8 @@
 \********************************************/
 
 #include <Objects/OObject.hpp>
-#include <Objects/Properties/OType.hpp>
-#include <Objects/2D/Vector2.hpp>
+#include <Objects/Properties/OType.tpp>
+#include <Objects/2D/Vector2.tpp>
 
 #include "../Texture.hpp"
 #include <string>
