@@ -2,14 +2,14 @@
 #include <vector>
 #include <iostream>
 
-namespace LOPT = Openpp::Objects::Properties::Test;
+namespace OOPT = Openpp::Objects::Properties::Test;
 
 int main(void)
 {
 	bool success = true;
 	std::cout << "Testing: Sources/include/Objects/Properties" << std::endl;
 	std::vector< bool (*)(std::string&) > functions;
-	functions.push_back(&LOPT::LTypeTest);
+    functions.push_back(&OOPT::OTypeTest);
 
 	std::vector<std::string> Names;
 	std::string Name;

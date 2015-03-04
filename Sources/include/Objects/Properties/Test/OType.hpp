@@ -42,22 +42,22 @@ protected:
 template <typename T>
 void Test(bool& success, std::string name, bool term, Object<T>& obj, bool plannedResult)
 {
-	success &= term;
-	std::cout << name << " Test: " << ((term)?"1":"ERROR") << std::endl;
-	obj.success &= (obj.changed==plannedResult);
-	obj.changed = false;
+    success &= term;
+    std::cout << name << " Test: " << ((term)?"1":"ERROR") << std::endl;
+    obj.success &= (obj.changed==plannedResult);
+    obj.changed = false;
 }
 bool OTypeAndPropertyTest()
 {
-	std::cout << "LTypeAndPropertyTest:\n";
+    std::cout << "OTypeAndPropertyTest: " << std::endl;
 	bool success = true;
 	Object<int> obj;
 
 	/// set
-	obj.property.set(5, false);
-	Test(success, "set", (obj.property()==5), obj, false);
+    obj.property.set(5, false);
+    Test(success, "set", (obj.property==5), obj, false);
 
-	Test(success, "operator()", (obj.property()==5), obj, false);
+    Test(success, "operator()", (obj.property==5), obj, false);
 	Test(success, "operator-", (+obj.property==5), obj, false);
 	Test(success, "operator+", (-obj.property==-5), obj, false);
 	Test(success, "operatorU()", ((float)obj.property==5.0), obj, false);
@@ -110,7 +110,7 @@ bool OTypeAndPropertyTest()
 
 bool OTypeTest(std::string& rString)
 {
-	rString = "Sources/include/Objects/Properties/LType.hpp";
+    rString = "Sources/include/Objects/Properties/OType.hpp";
 	bool success = true;
 	std::cout << "Testing: " << rString << std::endl;
 	std::vector< bool (*)() > functions;
