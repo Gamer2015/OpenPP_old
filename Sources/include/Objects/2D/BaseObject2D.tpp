@@ -14,7 +14,7 @@
 
 #include <Objects/OObject.hpp>
 
-#include "Vector2.hpp"
+#include "Vector2.tpp"
 
 namespace Openpp
 {

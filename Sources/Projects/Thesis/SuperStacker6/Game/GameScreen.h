@@ -8,7 +8,7 @@
 #include "../../Core/Input.h"
 #include <Objects/2D/SDL2/Globals.hpp>
 #include <Objects/2D/SDL2/Screen.hpp>
-#include <Objects/2D/SDL2/Sprite.hpp>
+#include <Objects/2D/SDL2/Sprite.tpp>
 #include <Objects/2D/SDL2/Texture.hpp>
 
 namespace OO2 = Openpp::Objects::Objects2D;

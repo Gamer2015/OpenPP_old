@@ -34,5 +34,5 @@ string(REPLACE "_" "" ProjectName ${ProjectName})
 string(REPLACE "CUsersStefanDocumentsGitHubOpenppSources" "" ProjectName ${ProjectName})
 project(${ProjectName})
 
-FILE(GLOB ${ProjectName}_FOLDER "*.c" "*.cpp" "*.h" "*.hpp" "*.inl" "*.dll" "*.a" "*.pc" "*.cmake")
+FILE(GLOB ${ProjectName}_FOLDER "*.c" "*.cpp" "*.h" "*.hpp" "*.tpp" "*.inl" "*.dll" "*.a" "*.pc" "*.cmake")
 add_custom_target(${ProjectName} SOURCES ${${ProjectName}_FOLDER})

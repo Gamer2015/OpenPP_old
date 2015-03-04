@@ -1,4 +1,4 @@
-#include "SDL_Rectangle.hpp"
+#include "SDL_Rectangle.tpp"
 
 namespace Openpp
 {

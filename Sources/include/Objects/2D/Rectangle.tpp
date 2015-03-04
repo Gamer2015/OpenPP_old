@@ -12,8 +12,8 @@
  *
 \********************************************/
 
-#include "BaseRectangle.hpp"
-#include "Vector2.hpp"
+#include "BaseRectangle.tpp"
+#include "Vector2.tpp"
 
 namespace Openpp
 {

@@ -1,6 +1,6 @@
 #include "Game/Init.h"
 #include <Objects/2D/LSDL2/Text.hpp>
-#include <Objects/2D/LSDL2/Sprite.hpp>
+#include <Objects/2D/LSDL2/Sprite.tpp>
 #include <Objects/2D/LSDL2/Button.hpp>
 #include <Objects/2D/LSDL2/Globals.hpp>
 

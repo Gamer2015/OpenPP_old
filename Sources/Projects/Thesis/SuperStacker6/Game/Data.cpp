@@ -241,9 +241,6 @@ namespace Game
         if((SDL_GetTicks() - mLastElementClock > 10*1000 ||  SDL_GetTicks() - mNoMoveClock > 2*1000) && mData.size() == 0)
 		{
 			GG::gGameScreen.WinLevel();
-
-			std::cout << "LastElementClock: " << SDL_GetTicks() - mLastElementClock << std::endl
-                      << "Noposition.addClock: " << SDL_GetTicks() - mNoMoveClock << std::endl;
 		}
 
 		OldPositions = NewPositions;

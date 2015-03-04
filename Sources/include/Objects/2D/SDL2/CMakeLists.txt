@@ -21,6 +21,9 @@ FILE(GLOB ${PROJECT_NAME}_FOLDER "*.cpp" "*.h" "*.hpp")
 FILE(GLOB ${PROJECT_NAME}_PROPERTIES "Properties/*.cpp" "Properties/*.h" "Properties/*.hpp")
 FILE(GLOB ${PROJECT_NAME}_EXCEPTIONS "Exceptions/*.cpp" "Exceptions/*.h" "Exceptions/*.hpp")
 
+FILE(GLOB ${PROJECT_NAME}_TEMPLATES "*.tpp" "*.inl" "Properties/*.tpp" "Properties/*.inl" "Exceptions/*.tpp" "Exceptions/*.inl")
+add_custom_target(${PROJECT_NAME}_CUSTOM_TARGET SOURCES ${${PROJECT_NAME}_TEMPLATES})
+
 #-------------------------------------
 # Create Binary
 #-------------------------------------
