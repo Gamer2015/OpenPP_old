@@ -21,7 +21,7 @@
 #include <Objects/2D/SDL2/Button.hpp>
 #include <Objects/2D/SDL2/Texture.hpp>
 #include <Objects/2D/SDL2/Text.hpp>
-#include <Objects/2D/Vector2.hpp>
+#include <Objects/2D/Vector2.tpp>
 #include <vector>
 
 namespace OO2 = Openpp::Objects::Objects2D;

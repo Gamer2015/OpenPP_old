@@ -18,7 +18,7 @@
  *******************************************/
 
 #include "../OObject.hpp"
-#include "../Properties/OType.hpp"
+#include "../Properties/OType.tpp"
 
 namespace OOP = Openpp::Objects::Properties;
 

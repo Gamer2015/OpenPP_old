@@ -1,4 +1,4 @@
-#include "BaseObject2D.hpp"
+#include "BaseObject2D.tpp"
 
 namespace Openpp
 {
