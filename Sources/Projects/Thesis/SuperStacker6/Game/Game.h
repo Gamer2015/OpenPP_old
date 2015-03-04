@@ -12,7 +12,7 @@
  *
 \********************************************/
 
-#include <SDL2/SDL.h>
+#include <SDL.h>
 #include "Globals.h"
 #include <Objects/2D/SDL2/Globals.hpp>
 #include "../../Core/Input.h"

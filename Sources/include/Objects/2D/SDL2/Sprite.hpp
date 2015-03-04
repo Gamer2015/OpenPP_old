@@ -13,7 +13,7 @@
  *
 \********************************************/
 
-#include <SDL2/SDL.h>
+#include <SDL.h>
 #include <memory>
 #include <string>
 #include "SDL_Rectangle.hpp"

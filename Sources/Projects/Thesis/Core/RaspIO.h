@@ -41,6 +41,4 @@ namespace Raspberry
 	}
 }
 
-#include "RaspIO.inl"
-
 #endif // OPENPP_PROJECTS_THESIS_CORE_RASPIO_H_

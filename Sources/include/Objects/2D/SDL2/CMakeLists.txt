@@ -19,11 +19,17 @@ INCLUDE(${CMAKE_CURRENT_SOURCE_DIR}/../../../../OpenppConfig.txt)
 #-------------------------------------
 FILE(GLOB ${PROJECT_NAME}_FOLDER "*.cpp" "*.h" "*.hpp")
 FILE(GLOB ${PROJECT_NAME}_PROPERTIES "Properties/*.cpp" "Properties/*.h" "Properties/*.hpp")
+FILE(GLOB ${PROJECT_NAME}_EXCEPTIONS "Exceptions/*.cpp" "Exceptions/*.h" "Exceptions/*.hpp")
 
 #-------------------------------------
 # Create Binary
 #-------------------------------------
-add_library (${PROJECT_NAME} STATIC ${${PROJECT_NAME}_FOLDER} ${${PROJECT_NAME}_PROPERTIES})
+add_library (${PROJECT_NAME} STATIC ${${PROJECT_NAME}_FOLDER} ${${PROJECT_NAME}_PROPERTIES} ${${PROJECT_NAME}_EXCEPTIONS})
+
+#-------------------------------------
+# Link Binaries to Libs
+#-------------------------------------
+target_link_libraries(${PROJECT_NAME} SDL2 SDL2main SDL2_image SDL2_ttf)
 
 INSTALL(TARGETS ${PROJECT_NAME}
 	RUNTIME DESTINATION bin

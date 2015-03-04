@@ -12,7 +12,7 @@
  *
 \********************************************/
 
-#include <SDL2/SDL.h>
+#include <SDL.h>
 #include <memory>
 #include "Exceptions/ExSDLError.hpp"
 #include "Screen.hpp"

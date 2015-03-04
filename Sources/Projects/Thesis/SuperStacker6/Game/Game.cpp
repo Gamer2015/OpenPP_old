@@ -3,7 +3,7 @@
 namespace SDL = Openpp::Objects::Objects2D::SDL2;
 typedef SDL::Globals SDLG;
 typedef Game::Globals GG;
-namespace CI = Core::Input;
+typedef Core::Input CI;
 
 namespace Game
 {

@@ -18,7 +18,7 @@
 
 #include "../Texture.hpp"
 #include <string>
-#include <SDL2/SDL.h>
+#include <SDL.h>
 
 
 namespace OO = Openpp::Objects;

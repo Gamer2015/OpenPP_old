@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 typedef Game::Globals GG;
-namespace CI = Core::Input;
+typedef Core::Input CI;
 
 namespace Game
 {
@@ -40,14 +40,14 @@ namespace Game
 		}
 		void WinScreen::Init()
 		{
-			mBackground = Core::Texture::LoadFromFile( mPaths[0] );
+			mBackground = SDL::Texture::Get( mPaths[0] );
 
-			mText.text.set("You Win! :D");
+			mText.set("You Win! :D");
 			mText.position.set(GG::WINDOW_X / 2.0, GG::WINDOW_Y / 4.0);
-			mText.text.height.set(GG::WINDOW_Y / 4.0);
+			mText.height.set(GG::WINDOW_Y / 4.0);
 
 			for(int i = 1; i < mPaths.size(); ++i)
-				mButtonDummy.AddTexture(mPaths[i]);
+				mButtonDummy.textures[i-1].set(SDL::Texture::Get(mPaths[i]));
 
 			mButtonDummy.size.set(GG::WINDOW_X * 3.0/ 4.0, GG::WINDOW_Y / 4.0 );
 			mButtonDummy.text.height.set(GG::WINDOW_Y / 4.0);
@@ -67,7 +67,7 @@ namespace Game
 		void WinScreen::HandleInputs()
 		{
 			if( CI::KeyDown(CI::BUTTON_A) )
-				mButtons[mCurrentButton].CallFunction();
+				mButtons[mCurrentButton].call();
 
 			if( CI::KeyDown(CI::BUTTON_UP) )
 				BUTTON_Up();

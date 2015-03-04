@@ -1,7 +1,7 @@
 #ifndef OPENPP_PROJECTS_THESIS_GAME_GLOBALS_H_
 #define OPENPP_PROJECTS_THESIS_GAME_GLOBALS_H_
 
-#include <SDL2/SDL.h>
+#include <SDL.h>
 #include <memory>
 #include <Objects/2D/SDL2/Globals.hpp>
 #include <Objects/2D/SDL2/Screen.hpp>

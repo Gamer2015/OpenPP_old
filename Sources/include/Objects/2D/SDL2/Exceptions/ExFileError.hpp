@@ -44,6 +44,4 @@ private:
 } // Objects
 } // Openpp
 
-#include "ExFileError.inl"
-
 #endif // OPENPP_OBJECTS_2D_SDL2_EXCEPTIONS_FILE_ERROR_H_

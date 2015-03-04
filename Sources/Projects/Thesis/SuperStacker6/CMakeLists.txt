@@ -23,6 +23,8 @@ INCLUDE(${CMAKE_CURRENT_SOURCE_DIR}/../../../OpenppConfig.txt)
 AUX_SOURCE_DIRECTORY(${CMAKE_CURRENT_SOURCE_DIR} ${PROJECT_NAME}_FILES)
 AUX_SOURCE_DIRECTORY(${CMAKE_CURRENT_SOURCE_DIR}/Game ${PROJECT_NAME}_FILES)
 
+link_directories(${CMAKE_CURRENT_SOURCE_DIR}/..)
+
 #-------------------------------------
 # Create Binary
 #-------------------------------------
@@ -31,7 +33,7 @@ add_executable(${PROJECT_NAME} ${${PROJECT_NAME}_headers} ${${PROJECT_NAME}_FILE
 #-------------------------------------
 # Link Binaries to Libs
 #-------------------------------------
-target_link_libraries(${PROJECT_NAME} SDL2 SDL2main SDL2_image SDL2_ttf openpp_sdl2 Box2D)
+target_link_libraries(${PROJECT_NAME} thesis_core openpp_sdl2 SDL2 SDL2main SDL2_image SDL2_ttf Box2D)
 
 #-------------------------------------
 # Configure install

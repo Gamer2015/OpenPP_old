@@ -13,8 +13,8 @@
  *
 \********************************************/
 
-#include <SDL2/SDL_image.h>
-#include <SDL2/SDL_ttf.h>
+#include <SDL_image.h>
+#include <SDL_ttf.h>
 #include <memory>
 #include <stdio.h>
 #include <Objects/2D/SDL2/Globals.hpp>
@@ -33,20 +33,22 @@ typedef SDL::Globals SDLG;
 
 namespace Game
 {
-    namespace Init
-    {
-        /// Initialize SDL
-        void InitSDL2();
+namespace Init
+{
 
-        /// Loads the Loading-Screen
-        void SetLoadingScreen();
+/// Initialize SDL
+void InitSDL2();
 
-        /// Loads Media
-        void LoadMedia();
+/// Loads the Loading-Screen
+void SetLoadingScreen();
 
-        /// Initializes all Components
-        void Init();
-    }
-}
+/// Loads Media
+void LoadMedia();
+
+/// Initializes all Components
+void Init();
+
+} // Init
+} // Game
 
 #endif // OPENPP_PROJECTS_THESIS_GAME_INIT_H_

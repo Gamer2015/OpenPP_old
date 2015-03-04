@@ -29,7 +29,7 @@ void InitSDL2()
         throw SDLE::ExSDLError( "SDL_ttf could not initialize", TTF_GetError() );
     }
 
-    SDL::Texture::Get("Media/Font.ttf");
+	SDL::Texture::LoadFont("Media/Font.ttf");
 }
 
 /// Set the Loading Screen
@@ -60,5 +60,5 @@ void Init()
     LoadMedia();
 }
 
-}
-}
+} // Init
+} // Game

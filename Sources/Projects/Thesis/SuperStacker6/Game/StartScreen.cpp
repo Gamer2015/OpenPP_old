@@ -3,7 +3,7 @@
 #include "Globals.h"
 
 typedef Game::Globals GG;
-namespace CI = Core::Input;
+typedef Core::Input CI;
 namespace BUTTONS = Game::Screens::StartScreenButtons;
 
 namespace Game
@@ -13,8 +13,7 @@ namespace Game
         namespace StartScreenButtons
         {
             void BTN_START()
-            {
-//                GG::gGameScreen.LoadWorld("Levels/Level 1");
+			{
                 SDLG::gpCurrentScreen = &(GG::gLevelScreen);
             }
             void BTN_QUIT()
@@ -53,10 +52,10 @@ namespace Game
         }
         void StartScreen::Init()
         {
-            mpBackground = Core::Texture::LoadFromFile( mPaths[0] );
+			mpBackground = SDL::Texture::Get( mPaths[0] );
 
-            for(int i = 1; i < mPaths.size(); ++i)
-                mButtonDummy.AddTexture( mPaths[i]);
+			for(int i = 1; i < mPaths.size(); ++i)
+				mButtonDummy.textures[i-1].set(SDL::Texture::Get(mPaths[i]));
 
             mButtonDummy.size.set(320, 64);
             mButtonDummy.origin.set(-1, -1);
@@ -82,7 +81,7 @@ namespace Game
         void StartScreen::HandleInputs()
         {
             if( CI::KeyDown(CI::BUTTON_A) )
-                mButtons[mCurrentButton].CallFunction();
+				mButtons[mCurrentButton].call();
 
             if( CI::KeyDown(CI::BUTTON_UP) )
                 BUTTON_UP();

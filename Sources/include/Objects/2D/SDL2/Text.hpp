@@ -15,7 +15,7 @@
 
 #include <Objects/OObject.hpp>
 
-#include <SDL2/SDL.h>
+#include <SDL.h>
 #include <memory>
 #include <string>
 #include "Texture.hpp"

@@ -335,7 +335,7 @@ namespace Game
         std::string Line;
         std::vector<std::string> LineData;
 
-        std::ifstream myFile( std::string("Levels/Level "+path+".lvl").c_str() );
+		std::ifstream myFile( std::string("Levels/Level " + path + ".lvl").c_str() );
         if (myFile.is_open())
         {
             while ( std::getline(myFile, Line) )

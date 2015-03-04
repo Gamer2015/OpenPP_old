@@ -14,7 +14,7 @@
 
 #include <Objects/OObject.hpp>
 
-#include <SDL2/SDL.h>
+#include <SDL.h>
 #include <memory>
 #include <vector>
 #include "Globals.hpp"
@@ -59,7 +59,6 @@ public:
 	/// Calls the Function the Button points to
 	void call() const;
 
-
 	/// Checks if the Point (X, Y) is inside the Button
 	/// @returns true if it is inside
 	/// Not supported for tilted buttons
@@ -67,6 +66,9 @@ public:
 
 	/// Render the Button
     void Render(int Index = 0) const;
+
+	/// Applies all changes to the button
+	void Refresh();
 
 protected:
 	virtual void ChildChanged(int _childId);

@@ -59,6 +59,11 @@ void Button::Render(int Index) const
 	}
 }
 
+void Button::Refresh()
+{
+	ChildChanged(selfId());
+}
+
 void Button::ChildChanged(int _childId)
 {
 	SDL_Rectangle::ChildChanged(_childId);

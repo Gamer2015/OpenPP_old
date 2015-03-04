@@ -1,7 +1,7 @@
 #ifndef OPENPP_PROJECTS_THESIS_GAME_DATA_H_
 #define OPENPP_PROJECTS_THESIS_GAME_DATA_H_
 
-#include <SDL2/SDL.h>
+#include <SDL.h>
 #include <Box2D/Box2D.h>
 #include <vector>
 #include <string>

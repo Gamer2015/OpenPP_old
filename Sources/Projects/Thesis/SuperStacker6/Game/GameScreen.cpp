@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 typedef Game::Globals GG;
-namespace CI = Core::Input;
+typedef Core::Input CI;
 
 #define GRAD_RAD 0.01745329251994329576923690768489
 #define RAD_GRAD 57.295779513082320876798154814105
@@ -106,9 +106,9 @@ namespace Game
 
 		void GameScreen::WinLevel()
 		{
-			if(atoi(this->GetCurrentLevel().c_str()) > GG::gLevelScreen.GetHighestLevel())
+			if(atoi(this->GetCurrentLevel().c_str()) >= GG::gLevelScreen.GetHighestLevel())
 			{
-				GG::gLevelScreen.SetHighestLevel(atoi(this->GetCurrentLevel().c_str()));
+				GG::gLevelScreen.SetHighestLevel(atoi(this->GetCurrentLevel().c_str()) + 1);
 			}
 			mGameRunning = false;
             SDLG::gpCurrentScreen = &(GG::gWinScreen);

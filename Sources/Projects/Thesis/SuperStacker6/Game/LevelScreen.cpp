@@ -10,7 +10,7 @@ namespace SDLE = SDL::Exceptions;
 typedef SDL::Globals SDLG;
 
 typedef Game::Globals GG;
-namespace CI = Core::Input;
+typedef Core::Input CI;
 namespace BUTTONS = Game::Screens::LevelScreenButtons;
 
 namespace Game
@@ -125,8 +125,8 @@ namespace Game
             mButtonDummy.origin.set(-1, -1);
             mButtonDummy.SetFunction(&(BUTTONS::StartLevel));
 
-            for(int i = 1; i < mPaths.size(); ++i)
-                mButtonDummy.textures.push_back(mPaths[i]);
+			for(int i = 1; i < mPaths.size(); ++i)
+				mButtonDummy.textures[i-1].set(SDL::Texture::Get(mPaths[i]));
 
             int Level;
             int Y, y;
@@ -134,13 +134,13 @@ namespace Game
 
             for(Y = 0; Y < mSystems.y; Y++)
             {
-                mButtonDummy.position.set(0, mTexts[2*Y].GetTextRect().y + mTexts[2*Y].GetTextRect().h + mSpace);
+				mButtonDummy.position.set(0, mTexts[2*Y].rect().y + mTexts[2*Y].rect().h + mSpace);
 
                 for(y = 0; y < mRows_System; y++)
                 {
                     for(X = 0; X < mSystems.x; X++)
                     {
-                        mButtonDummy.position.set((mTexts[X].GetTextRect().x + mTexts[X].GetTextRect().w / 2.0) - mButtons_Row_System/2.0*(mSpace + mButtonDummy.GetSize().x), mButtonDummy.GetPosition().y);
+						mButtonDummy.position.set((mTexts[X].rect().x + mTexts[X].rect().w / 2.0) - mButtons_Row_System/2.0*(mSpace + mButtonDummy.size.x), mButtonDummy.position.y);
 
                         for(x = 0; x < mButtons_Row_System; x++)
                         {
@@ -157,11 +157,11 @@ namespace Game
 
                             mButtonDummy.text.set(mBuffer);
                             mButtonRow.push_back(mButtonDummy);
-                            mButtonDummy.position.add(mButtonDummy.GetSize().x + mSpace, 0);
+							mButtonDummy.position.add(mButtonDummy.size.x + mSpace, 0);
                         }
                     }
 
-                    mButtonDummy.position.add(0, mSpace + mButtonDummy.GetSize().y);
+					mButtonDummy.position.add(0, mSpace + mButtonDummy.size.y);
                     mButtons.push_back(mButtonRow);
                     mButtonRow.clear();
                 }
@@ -171,7 +171,7 @@ namespace Game
         void LevelScreen::HandleInputs()
         {
             if( CI::KeyDown(CI::BUTTON_A) )
-                mButtons[mCurrentButton.y][mCurrentButton.x].CallFunction();
+				mButtons[mCurrentButton.y][mCurrentButton.x].call();
 
             if( CI::KeyDown(CI::BUTTON_UP) )
                 BUTTON_Up();
@@ -193,7 +193,7 @@ namespace Game
 
         void LevelScreen::Render()
         {
-            SDL_RenderCopy( SDLG::gpRenderer, mpBackground.get(), NULL, NULL);
+			SDL_RenderCopy( SDLG::Renderer(), mpBackground.get(), NULL, NULL);
 
             for( int y = 0; y < mButtons.size(); y++ )
             {
@@ -209,44 +209,47 @@ namespace Game
             {
                 mTexts[i].Render();
             }
-        }
+		}
 
-        void LevelScreen::SetHighestLevel(int Level)
-        {
-            mHighestLevel = Level;
-            sprintf(mBuffer, "%d", Level);
+		void LevelScreen::SetHighestLevel(int Level)
+		{
+			mHighestLevel = Level;
+			sprintf(mBuffer, "%d", Level);
 
-            std::ofstream HighscoreFile("Levels/HighestLevel.txt", std::ofstream::out | std::ofstream::trunc );
-            HighscoreFile << Level;
-            HighscoreFile.close();
+			std::ofstream HighscoreFile("Levels/HighestLevel.txt", std::ofstream::out | std::ofstream::trunc );
+			HighscoreFile << Level;
+			HighscoreFile.close();
 
-            int Y, y;
-            int X, x;
+			int Y, y;
+			int X, x;
 
-            for(Y = 0; Y < mSystems.y; Y++)
-            {
-                for(y = 0; y < mRows_System; y++)
-                {
-                    for(X = 0; X < mSystems.x; X++)
-                    {
-                        for(x = 0; x < mButtons_Row_System; x++)
-                        {
-                            if(!mButtons[mRows_System*Y+y][mButtons_Row_System*X+x].GetText().compare("?")) // is a ?-sign
-                            {
-                                Level = mButtons_Row_System*mRows_System*mSystems.x*Y + mButtons_Row_System*mRows_System*X + mButtons_Row_System*y + x + 1;
+			for(Y = 0; Y < mSystems.y; Y++)
+			{
+				for(X = 0; X < mSystems.x; X++)
+				{
+					for(y = 0; y < mRows_System; y++)
+					{
+						for(x = 0; x < mButtons_Row_System; x++)
+						{
+							if(!((std::string)mButtons[mRows_System*Y+y][mButtons_Row_System*X+x].text).compare("?")) // is a ?-sign
+							{
+								Level = mButtons_Row_System*mRows_System*mSystems.x*Y + mButtons_Row_System*mRows_System*X + mButtons_Row_System*y + x + 1;
+								if(Level <= mHighestLevel)
+								{
+									std::cout << "New Level unlocked!" << std::endl;
+									sprintf(mBuffer, "%d", Level);
+									mButtons[mRows_System*Y+y][mButtons_Row_System*X+x].text.set(mBuffer);
+									mButtons[mRows_System*Y+y][mButtons_Row_System*X+x].Refresh();
+								}
+								else
+									break;
+							}
+						}
+					}
+				}
+			}
+		}
 
-                                if(Level <= mHighestLevel)
-                                {
-                                    std::cout << "New Level unlocked!" << std::endl;
-                                    sprintf(mBuffer, "%d", Level);
-                                    mButtons[mRows_System*Y+y][mButtons_Row_System*X+x].text.set(mBuffer);
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
         int LevelScreen::GetHighestLevel()
         {
             return mHighestLevel;

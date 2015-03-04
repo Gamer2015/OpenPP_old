@@ -12,7 +12,7 @@
  *
 \********************************************/
 
-#include <SDL2/SDL.h>
+#include <SDL.h>
 #include <Objects/2D/Rectangle.hpp>
 #include <cmath>
 

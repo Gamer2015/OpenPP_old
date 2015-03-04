@@ -1,13 +1,14 @@
 #ifndef OPENPP_PROJECTS_THESIS_GAME_WIN_SCREEN_H_
 #define OPENPP_PROJECTS_THESIS_GAME_WIN_SCREEN_H_
 
-#include <SDL2/SDL.h>
+#include <SDL.h>
 #include <vector>
 #include <memory>
 #include "../../Core/Input.h"
 #include <Objects/2D/SDL2/Globals.hpp>
 #include <Objects/2D/SDL2/Screen.hpp>
 #include <Objects/2D/SDL2/Button.hpp>
+#include <Objects/2D/SDL2/Text.hpp>
 
 namespace SDL = Openpp::Objects::Objects2D::SDL2;
 typedef SDL::Globals SDLG;

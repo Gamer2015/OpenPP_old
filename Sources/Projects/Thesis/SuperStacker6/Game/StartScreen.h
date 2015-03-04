@@ -14,7 +14,7 @@
  *
 \********************************************/
 
-#include <SDL2/SDL.h>
+#include <SDL.h>
 #include "../../Core/Input.h"
 #include <Objects/2D/SDL2/Globals.hpp>
 #include <Objects/2D/SDL2/Screen.hpp>

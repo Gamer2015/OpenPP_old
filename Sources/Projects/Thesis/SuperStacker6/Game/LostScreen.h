@@ -1,7 +1,7 @@
 #ifndef OPENPP_PROJECTS_THESIS_GAME_LOST_SCREEN_H_
 #define OPENPP_PROJECTS_THESIS_GAME_LOST_SCREEN_H_
 
-#include <SDL2/SDL.h>
+#include <SDL.h>
 #include <vector>
 #include <memory>
 #include "../../Core/Input.h"

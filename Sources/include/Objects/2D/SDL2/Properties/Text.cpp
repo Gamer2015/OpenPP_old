@@ -30,7 +30,7 @@ void Text::set(const std::string& _rcText)
 }
 void Text::set(const Text& _rcText)
 {
-	_mText = _rcText();
+	_mText = _rcText;
 
 	ChildChanged(selfId());
 }
@@ -53,9 +53,8 @@ void Text::ChildChanged(int _childId)
 {
 	if(_childId == selfId())
 	{
-		std::cout << (*this)() << std::endl;
-        Size.set(SDL::Texture::GetSize((*this)()));
-        mpTexture = SDL::Texture::GetText((*this)());
+		Size.set(SDL::Texture::GetSize((*this)));
+		mpTexture = SDL::Texture::GetText((*this));
 
 		ChildChanged(height.id());
 		return;
