@@ -1,4 +1,4 @@
-#include "OType.tpp"
+#include "OType.hpp"
 
 namespace Openpp
 {

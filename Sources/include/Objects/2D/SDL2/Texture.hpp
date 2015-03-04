@@ -17,7 +17,7 @@
 #include <SDL_image.h>
 #include <SDL_ttf.h>
 #include <memory>
-#include <Objects/2D/Vector2.tpp>
+#include <Objects/2D/Vector2.hpp>
 #include "Exceptions/ExSDLError.hpp"
 #include "Globals.hpp"
 

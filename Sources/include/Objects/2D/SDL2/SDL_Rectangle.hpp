@@ -13,7 +13,7 @@
 \********************************************/
 
 #include <SDL.h>
-#include <Objects/2D/Rectangle.tpp>
+#include <Objects/2D/Rectangle.hpp>
 #include <cmath>
 
 namespace OO = Openpp::Objects;

@@ -5,7 +5,7 @@
 #include <Box2D/Box2D.h>
 #include <vector>
 #include <string>
-#include <Objects/2D/Vector2.tpp>
+#include <Objects/2D/Vector2.hpp>
 #include <Objects/2D/SDL2/Globals.hpp>
 #include <Objects/2D/SDL2/Text.hpp>
 #include <Objects/2D/SDL2/Sprite.hpp>

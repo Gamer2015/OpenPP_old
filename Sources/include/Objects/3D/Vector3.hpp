@@ -21,7 +21,7 @@
  *******************************************/
 
 #include <Objects/OObject.hpp>
-#include <Objects/Properties/OType.tpp>
+#include <Objects/Properties/OType.hpp>
 
 namespace OO = Openpp::Objects;
 namespace LOP = OO::Properties;

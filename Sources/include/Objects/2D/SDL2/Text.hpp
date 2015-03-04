@@ -22,8 +22,8 @@
 #include "Globals.hpp"
 #include "Properties/Text.hpp"
 
-#include <Objects/Properties/OType.tpp>
-#include <Objects/2D/Vector2.tpp>
+#include <Objects/Properties/OType.hpp>
+#include <Objects/2D/Vector2.hpp>
 #include <cmath>
 
 namespace OO = Openpp::Objects;

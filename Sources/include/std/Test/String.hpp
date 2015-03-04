@@ -35,16 +35,6 @@ bool StringPlusValueTest(std::string& rString)
 	std::string str("Value = ");
 	std::string result;
 
-	std::cout << "string Test: ";
-	std::string string = "string";
-	result = str + "string";
-	success &= Test(result, str + string);
-
-	std::cout << "char Test: ";
-	char c = 'c';
-	result = str + "c";
-	success &= Test(result, str + c);
-
 	std::cout << "uint8_t Test: ";
 	uint8_t u8 = 8;
 	result = str + "8";
@@ -112,16 +102,6 @@ bool ValuePlusStringTest(std::string& rString)
 
 	std::string str(" = Value");
 	std::string result;
-
-	std::cout << "string Test: ";
-	std::string string = "string";
-	result = "string" + str;
-	success &= Test(result, string + str);
-
-	std::cout << "char Test: ";
-	char c = 'c';
-	result = "c" + str;
-	success &= Test(result, c + str);
 
 	std::cout << "uint8_t Test: ";
 	uint8_t u8 = 8;
@@ -191,18 +171,6 @@ bool StringCompoundAssignTest(std::string& rString)
 	std::string base("Value = ");
 	std::string str(base);
 	std::string result;
-
-	std::cout << "string Test: ";
-	std::string string = "string";
-	result = str + "string";
-	success &= Test(result, str += string);
-	str = base;
-
-	std::cout << "char Test: ";
-	char c = 'c';
-	result = str + "c";
-	success &= Test(result, str += c);
-	str = base;
 
 	std::cout << "uint8_t Test: ";
 	uint8_t u8 = 8;

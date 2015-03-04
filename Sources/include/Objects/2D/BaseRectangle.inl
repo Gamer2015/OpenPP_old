@@ -1,4 +1,4 @@
-#include "BaseRectangle.tpp"
+#include "BaseRectangle.hpp"
 
 namespace Openpp
 {
