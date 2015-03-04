@@ -25,7 +25,7 @@ Vector2<T>::Vector2(T _x, T _y, OObject* const _pParent) :
 {}
 template <typename T>
 Vector2<T>::Vector2(const Vector2<T>& _rcVector, OObject* const _pParent) :
-	Vector2(_rcVector.x(), _rcVector.y(), _pParent)
+    Vector2(_rcVector.x, _rcVector.y, _pParent)
 {}
 
 
@@ -44,7 +44,7 @@ void Vector2<T>::set(T _x, T _y, bool _notifyParent)
 template <typename T>
 void Vector2<T>::set(const Vector2<T>& _rcVector, bool _notifyParent)
 {
-	set(_rcVector.x(), _rcVector.y, _notifyParent);
+    set(_rcVector.x, _rcVector.y, _notifyParent);
 }
 template <typename T>
 void Vector2<T>::add(T _x, T _y, bool _notifyParent)
@@ -77,7 +77,7 @@ template <typename T>
 template <typename U>
 Vector2<T>::operator Vector2<U>() const
 {
-	return Vector2<U>((U)x(), (U)y());
+    return Vector2<U>((U)x, (U)y);
 }
 
 ///
@@ -86,45 +86,45 @@ Vector2<T>::operator Vector2<U>() const
 template <typename T>
 Vector2<T> Vector2<T>::operator-() const
 {
-	return Vector2<T>(-x(), -y());
+    return Vector2<T>(-x, -y);
 }
 template <typename T>
 Vector2<T> Vector2<T>::operator+(const Vector2<T>& _rcVector) const
 {
-	return Vector2<T>(x() + _rcVector.x(),
-					  y() + _rcVector.y());
+    return Vector2<T>(x + _rcVector.x,
+                      y + _rcVector.y);
 }
 template <typename T>
 Vector2<T> Vector2<T>::operator-(const Vector2<T>& _rcVector) const
 {
-	return Vector2<T>(x() - _rcVector.x(),
-					  y() - _rcVector.y());
+    return Vector2<T>(x - _rcVector.x,
+                      y - _rcVector.y);
 }
 template <typename T>
 template <typename FT>
 Vector2<T> Vector2<T>::operator*(FT _factor) const
 {
-	return Vector2<T>(x() * _factor,
-					  y() * _factor);
+    return Vector2<T>(x * _factor,
+                      y * _factor);
 }
 template <typename T>
 Vector2<T> Vector2<T>::operator*(const Vector2<T>& _rcVector) const
 {
-	return Vector2<T>(x() * _rcVector.x() - y() * _rcVector.y(),
-					  x() * _rcVector.y() + y() * _rcVector.x());
+    return Vector2<T>(x * _rcVector.x - y * _rcVector.y,
+                      x * _rcVector.y + y * _rcVector.x);
 }
 template <typename T>
 template <typename D>
 Vector2<T> Vector2<T>::operator/(D _divisor) const
 {
-	return Vector2<T>(x() / _divisor,
-					  y() / _divisor);
+    return Vector2<T>(x / _divisor,
+                      y / _divisor);
 }
 template <typename T>
 Vector2<T> Vector2<T>::operator/(const Vector2<T>& _rcVector) const
 {
-	return Vector2<T>((x() * _rcVector.x() + y() * _rcVector.y())/(_rcVector.lengthSquared()),
-					  (y() * _rcVector.x() - x() * _rcVector.y())/(_rcVector.lengthSquared()));
+    return Vector2<T>((x * _rcVector.x + y * _rcVector.y)/(_rcVector.lengthSquared()),
+                      (y * _rcVector.x - x * _rcVector.y)/(_rcVector.lengthSquared()));
 }
 
 ///
@@ -133,8 +133,8 @@ Vector2<T> Vector2<T>::operator/(const Vector2<T>& _rcVector) const
 template <typename T>
 bool Vector2<T>::operator==(const Vector2<T>& _rcVector) const
 {
-	return ((x() == _rcVector.x())&&
-			(y() == _rcVector.y()));
+    return ((x == _rcVector.x)&&
+            (y == _rcVector.y));
 }
 template <typename T>
 bool Vector2<T>::operator!=(const Vector2<T>& _rcVector) const
@@ -144,14 +144,14 @@ bool Vector2<T>::operator!=(const Vector2<T>& _rcVector) const
 template <typename T>
 bool Vector2<T>::operator>(const Vector2<T>& _rcVector) const
 {
-	return ((x() > _rcVector.x())&&
-			(y() > _rcVector.y()));
+    return ((x > _rcVector.x)&&
+            (y > _rcVector.y));
 }
 template <typename T>
 bool Vector2<T>::operator<(const Vector2<T>& _rcVector) const
 {
-	return ((x() < _rcVector.x()) &&
-			(y() < _rcVector.y()));
+    return ((x < _rcVector.x) &&
+            (y < _rcVector.y));
 }
 template <typename T>
 bool Vector2<T>::operator>=(const Vector2<T>& _rcVector) const
