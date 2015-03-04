@@ -1,5 +1,5 @@
-#ifndef OPENPP_OBJECTS_LOBJECT_H_
-#define OPENPP_OBJECTS_LOBJECT_H_
+#ifndef OPENPP_OBJECTS_LOBJECT_HPP_
+#define OPENPP_OBJECTS_LOBJECT_HPP_
 
 /********************************************\
  * usage: base class for all objects
@@ -34,7 +34,7 @@ public:
 protected:
     OObject* const parent() const { return _mpParent; }
 	int selfId() const { return 0; }
-	int GenerateChildId() const { return ++_mChildrenCount; }
+    int GenerateChildId() { return ++_mChildrenCount; }
 
 	virtual void ChildChanged(int _childId)
 	{
@@ -50,10 +50,10 @@ protected:
 private:
     OObject* const _mpParent;
 	int _mChildId;
-	mutable int _mChildrenCount;
+    int _mChildrenCount;
 };
 
 } // Objects
 } // Openpp
 
-#endif // OPENPP_OBJECTS_LOBJECT_H_
+#endif // OPENPP_OBJECTS_LOBJECT_HPP_
