@@ -46,7 +46,11 @@ SDL_Texture* Text::texture() const
 
 Text::operator std::string() const
 {
-    return _mText;
+	return _mText.c_str();
+}
+Text::operator const char* const() const
+{
+	return _mText.c_str();
 }
 
 void Text::ChildChanged(int _childId)

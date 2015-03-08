@@ -60,7 +60,8 @@ public:
 	SDL_Texture* texture() const;
 
 	/// get the text
-    operator std::string() const;
+	operator std::string() const;
+	operator const char* const() const;
 
 protected:
 	virtual void ChildChanged(int _childId);

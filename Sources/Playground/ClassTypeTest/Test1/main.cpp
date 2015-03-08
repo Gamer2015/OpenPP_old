@@ -4,25 +4,35 @@ template <typename T>
 class Type
 {
 public:
-    Type() : _mData() {}
-    Type(T a) : _mData(a) {}
+	Type() : _mData() {}
+	Type(T a) : _mData(a) {}
 
-    operator T() {return _mData;}
+	operator T() {return _mData;}
+	operator const char* const() { return _mData.c_str();}
 
 private:
-    T _mData;
+	T _mData;
+};
+
+class Text
+{
+public:
+	Text() : _mData() {}
+	Text(std::string a) : _mData(a) {}
+
+	operator std::string() {return _mData;}
+	operator const char* const() { return _mData.c_str();}
+
+private:
+	std::string _mData;
 };
 
 int main(void)
 {
-    Type<float> i(20);
-    i = 25;
-    i = 25.4;
-    i = 25.3 + i;
+	Text i("Hi");
+	std::string text = i;
 
-    i = 20;
-
-    std::cout << (i == 20.0) << std::endl;
+	std::cout << text << std::endl;
 
     return 0;
 }
