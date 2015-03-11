@@ -38,6 +38,8 @@ SET(VERSION_MINOR "0")
 SET(VERSION_PATCH "0")
 SET(VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH})
 
+add_definitions(-DSDL_MAIN_HANDLED)
+
 #-------------------------------------
 # Get Compiler Paths
 #-------------------------------------
@@ -46,19 +48,14 @@ INCLUDE(${CMAKE_CURRENT_SOURCE_DIR}/../../../OpenppConfig.txt)
 #-------------------------------------
 # Sources and Headers
 #-------------------------------------
-SET(${PROJECT_NAME}_SOURCES
-
+SET(${PROJECT_NAME}_FILES
     main.cpp
-)
-SET(${PROJECT_NAME}_HEADERS
-
-    String.hpp
 )
 
 #-------------------------------------
 # Create Binary
 #-------------------------------------
-add_executable(${PROJECT_NAME} ${${PROJECT_NAME}_SOURCES} ${${PROJECT_NAME}_HEADERS})
+add_executable(${PROJECT_NAME} ${${PROJECT_NAME}_FILES} ${${PROJECT_NAME}_HEADERS})
 
 #-------------------------------------
 # Configure install

@@ -1,6 +1,0 @@
-#ifndef OPENPP_STD_STRING_
-#define OPENPP_STD_STRING_
-
-#include "String.tpp"
-
-#endif // OPENPP_STD_STRING_

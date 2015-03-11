@@ -1,0 +1,6 @@
+#ifndef OPENPP_TYPES_STRING_
+#define OPENPP_TYPES_STRING_
+
+#include "String.hpp"
+
+#endif // OPENPP_TYPES_STRING_

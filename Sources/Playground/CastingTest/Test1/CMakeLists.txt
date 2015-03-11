@@ -24,15 +24,43 @@ FOREACH(subdir ${SUBDIRS})
 ENDFOREACH()
 
 #-------------------------------------
-# Get Files in Project Hirachie
+# Information about the Project
 #-------------------------------------
-
 string(REPLACE "/" "" ProjectName ${CMAKE_CURRENT_SOURCE_DIR})
 string(REPLACE ":" "" ProjectName ${ProjectName})
 string(REPLACE "." "" ProjectName ${ProjectName})
 string(REPLACE "_" "" ProjectName ${ProjectName})
 string(REPLACE "CUsersStefanDocumentsGitHubOpenppSources" "" ProjectName ${ProjectName})
-project(${ProjectName})
 
-FILE(GLOB ${ProjectName}_FOLDER "*.c" "*.cpp" "*.h" "*.hpp" "*.tpp" "*.inl" "*.dll" "*.a" "*.pc" "*.cmake")
-add_custom_target(${ProjectName} SOURCES ${${ProjectName}_FOLDER})
+project(${ProjectName})
+SET(VERSION_MAJOR "1")
+SET(VERSION_MINOR "0")
+SET(VERSION_PATCH "0")
+SET(VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH})
+
+add_definitions(-DSDL_MAIN_HANDLED)
+
+#-------------------------------------
+# Get Compiler Paths
+#-------------------------------------
+INCLUDE(${CMAKE_CURRENT_SOURCE_DIR}/../../../OpenppConfig.txt)
+
+#-------------------------------------
+# Sources and Headers
+#-------------------------------------
+SET(${PROJECT_NAME}_FILES
+    main.cpp
+)
+
+#-------------------------------------
+# Create Binary
+#-------------------------------------
+add_executable(${PROJECT_NAME} ${${PROJECT_NAME}_FILES} ${${PROJECT_NAME}_HEADERS})
+
+#-------------------------------------
+# Configure install
+#-------------------------------------
+install(TARGETS ${PROJECT_NAME}
+	RUNTIME DESTINATION bin
+	LIBRARY DESTINATION lib
+	ARCHIVE DESTINATION lib/static)
