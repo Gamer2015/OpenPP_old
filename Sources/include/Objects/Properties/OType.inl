@@ -123,6 +123,16 @@ T OType<T>::operator=(const OType<T>& _rcType)
 }
 
 ///
+/// stream
+///
+template <typename T>
+std::ostream& operator<<(std::ostream& cout, const OType<T>& _rcType)
+{
+    cout << (T)_rcType;
+    return cout;
+}
+
+///
 /// arithmetic
 ///
 template <typename T>

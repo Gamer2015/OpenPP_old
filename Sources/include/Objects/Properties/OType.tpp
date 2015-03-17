@@ -14,8 +14,8 @@
 \********************************************/
 
 #include "../OObject.hpp"
-#include <utility>
 #include <iostream>
+#include <utility>
 #include <stdexcept>
 
 namespace Openpp
@@ -65,6 +65,11 @@ private:
 /////
 ///// operators
 /////
+///
+/// stream
+///
+template <typename T> std::ostream& operator<<(std::ostream& cout, const OType<T>& _rcType);
+
 ///
 /// arithmetic
 ///
