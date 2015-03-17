@@ -9,6 +9,11 @@ namespace Objects2D
 namespace SDL2
 {
 
+inline float RAD_GRAD(float _radiant)
+{
+	return 180/M_PI * _radiant;
+}
+
 Text::Text(OObject* const _pParent) :
 	Text("", _pParent)
 {}
@@ -31,7 +36,7 @@ const SDL_Point& Text::rectOrigin() const
 void Text::Render() const
 {
 	if(texture())
-        SDL_RenderCopyEx( Globals::Renderer(), texture(), NULL, &(rect()), 57.295779513082320876798154814105 * angle, &(rectOrigin()), SDL_FLIP_NONE);
+		SDL_RenderCopyEx(Globals::Renderer(), texture(), NULL, &(rect()), RAD_GRAD(angle), &(rectOrigin()), SDL_FLIP_NONE);
 }
 
 void Text::ChildChanged(int _childId)

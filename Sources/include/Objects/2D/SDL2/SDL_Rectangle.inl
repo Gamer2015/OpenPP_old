@@ -10,8 +10,8 @@ namespace SDL2
 {
 
 template <typename T>
-SDL_Rectangle<T>::SDL_Rectangle(OO::OObject* const _pParent) :
-    OO2::Rectangle<T>(_pParent)
+SDL_Rectangle<T>::SDL_Rectangle(OObject* const _pParent) :
+	Rectangle<T>(_pParent)
 { }
 
 template <typename T>
@@ -28,9 +28,9 @@ const SDL_Point& SDL_Rectangle<T>::rectOrigin() const
 template <typename T>
 void SDL_Rectangle<T>::ChildChanged(int _childId)
 {
-    OO::OObject::ChildChanged();
+	Rectangle<T>::ChildChanged();
 
-    if(_childId != OO2::Rectangle<T>::angle.id());
+	if(_childId != Rectangle<T>::angle.id());
 	{
         mRect.w = this->size.x;
         mRect.h = this->size.y;

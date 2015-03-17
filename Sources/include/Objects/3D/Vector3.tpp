@@ -20,8 +20,8 @@
  *
  *******************************************/
 
-#include <Objects/OObject.hpp>
-#include <Objects/Properties/OType.tpp>
+#include "../OObject.hpp"
+#include "../Properties/OType.tpp"
 
 namespace OO = Openpp::Objects;
 namespace LOP = OO::Properties;

@@ -35,7 +35,7 @@ void Text::set(const Text& _rcText)
 	ChildChanged(selfId());
 }
 
-const OO2::Vector2<int>& Text::size() const
+const Vector2<int>& Text::size() const
 {
 	return Size;
 }
@@ -46,19 +46,15 @@ SDL_Texture* Text::texture() const
 
 Text::operator std::string() const
 {
-	return _mText.c_str();
-}
-Text::operator const char* const() const
-{
-	return _mText.c_str();
+	return _mText;
 }
 
 void Text::ChildChanged(int _childId)
 {
 	if(_childId == selfId())
 	{
-		Size.set(SDL::Texture::GetSize((*this)));
-		mpTexture = SDL::Texture::GetText((*this));
+		Size.set(Texture::GetSize((*this)));
+		mpTexture = Texture::GetText((*this));
 
 		ChildChanged(height.id());
 		return;
@@ -70,7 +66,7 @@ void Text::ChildChanged(int _childId)
             Size.set(size().x * height / size().y, height);
 		}
 	}
-	OO::OObject::ChildChanged();
+	OObject::ChildChanged();
 }
 
 } // Properties

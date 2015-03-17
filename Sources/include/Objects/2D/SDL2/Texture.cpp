@@ -78,9 +78,9 @@ Vector2<int> Texture::GetSize(const std::string& Text)
 	return Size;
 }
 
-void Texture::LoadFont(const std::string Path)
+void Texture::LoadFont(const std::string Path, size_t _height)
 {
-	pFont.reset( TTF_OpenFont( Path.c_str(), 128 ), TTF_CloseFont );
+	pFont.reset( TTF_OpenFont( Path.c_str(), _height ), TTF_CloseFont );
 	if( pFont == nullptr )
 	{
 		throw Exceptions::ExSDLError( std::string("Unable to load Font " + Path), SDL_GetError() );

@@ -4,7 +4,7 @@
 #include <SDL.h>
 #include <memory>
 #include <Objects/2D/SDL2/Globals.hpp>
-#include <Objects/2D/SDL2/Screen.hpp>
+#include <Objects/IScreen.hpp>
 #include "StartScreen.h"
 #include "LevelScreen.h"
 #include "GameScreen.h"
@@ -12,6 +12,9 @@
 #include "LostScreen.h"
 
 namespace GS = Game::Screens;
+namespace OO = Openpp::Objects;
+namespace O2D = OO::Objects2D;
+namespace SDL = O2D::SDL2;
 
 namespace Game
 {
@@ -20,8 +23,7 @@ namespace Game
         // Window Dimensions
     public:
         static const char TITLE[16];
-        static const int WINDOW_X;
-        static const int WINDOW_Y; // 4:3 Screen
+		static const O2D::Vector2<int> WINDOW; // 4:3 Screen
 
         static const int SCREEN_WIDTH;
         static const int SCREEN_HEIGHT;
@@ -40,9 +42,11 @@ namespace Game
 		static GS::WinScreen gWinScreen;
 		static GS::LostScreen gLostScreen;
 
+		static OO::ScreenPointer gpCurrentScreen;
+
         // Media
     public:
         static std::shared_ptr< SDL_Texture > gpLoadingTexture;
     };
 }
-#endif // ___GAME_GLOBALS__H___
+#endif // OPENPP_PROJECTS_THESIS_GAME_GLOBALS_H_

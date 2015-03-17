@@ -17,12 +17,13 @@
 #include <SDL.h>
 #include "../../Core/Input.h"
 #include <Objects/2D/SDL2/Globals.hpp>
-#include <Objects/2D/SDL2/Screen.hpp>
+#include <Objects/IScreen.hpp>
 #include <Objects/2D/SDL2/Button.hpp>
 #include <Objects/2D/SDL2/Texture.hpp>
 #include <vector>
 
-namespace SDL = Openpp::Objects::Objects2D::SDL2;
+namespace OO = Openpp::Objects;
+namespace SDL = OO::Objects2D::SDL2;
 typedef SDL::Globals SDLG;
 
 namespace Game
@@ -35,7 +36,7 @@ namespace Game
             void BTN_QUIT();
         }
 
-        class StartScreen : public SDL::Screen
+		class StartScreen : public OO::IScreen
         {
         public:
             StartScreen();
@@ -46,6 +47,10 @@ namespace Game
             void Update();
 
             void Render();
+
+		protected:
+			void Leave() {}
+			void Enter() {}
 
         private:
             std::vector< std::string > mPaths;

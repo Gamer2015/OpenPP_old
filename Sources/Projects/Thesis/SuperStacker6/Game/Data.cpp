@@ -37,7 +37,7 @@ namespace Game
     };
 
     Data::Data() :
-        OffsetX(GG::WINDOW_X / 8)
+		OffsetX(GG::WINDOW.x / 8)
     {
         mGravity.Set(0.0f, -9.81f);
 
@@ -48,11 +48,11 @@ namespace Game
         mFixtureDef.restitution = 0.2f;
 
         mTextObjectCount.height = 20;
-        mTextObjectCount.position.y = GG::WINDOW_Y;
+		mTextObjectCount.position.y = GG::WINDOW.y;
         mTextObjectCount.origin.set(-1, 1);
 
-        mTextObjectInfo.height = 12;
-        mTextObjectInfo.origin.set(0, -1);
+		mTextObjectInfo.height = 18;
+		mTextObjectInfo.origin.set(0, -1);
 
 		mPaths.push_back("Media/Red.png");
 		mPaths.push_back("Media/Circle.png");
@@ -75,7 +75,7 @@ namespace Game
     {
         if( mData.size() > 0)
         {
-            mBodyDef.position.Set(UNSCALE(PositionX - OffsetX), UNSCALE(GG::WINDOW_Y - PositionY) - mData[0].HalfSize.y );
+			mBodyDef.position.Set(UNSCALE(PositionX - OffsetX), UNSCALE(GG::WINDOW.y - PositionY) - mData[0].HalfSize.y );
             mBodyDef.angle = -mData[0].Angle;
 
             switch( mData[0].GeometryType )
@@ -123,17 +123,15 @@ namespace Game
 
     void Data::Render()
     {
-        OO2::Vector2<int> Position(OffsetX / 2, OffsetX / 2);
-        OO2::Vector2<int> HalfSize(OffsetX / 2 - 16, OffsetX / 2 - 16);
-
-        mObject.size.set(2 * HalfSize.x, 2 * HalfSize.y);
+		OO2::Vector2<int> Position(OffsetX / 2, OffsetX / 2 - 8);
+		OO2::Vector2<int> HalfSize(OffsetX / 2 - 16, OffsetX / 2 - 16);
 
         for(mIndex = 0; mIndex < mData.size(); ++mIndex)
         {
             mObject.size.set(SCALE(mData[mIndex].HalfSize.x * 2), SCALE(mData[mIndex].HalfSize.y * 2));
 
             sprintf(mBuffer, "%.0f x %.0f", (float)mObject.size.x, (float)mObject.size.y);
-            mTextObjectInfo.position.set( Position.x, Position.y + HalfSize.y + 2 );
+			mTextObjectInfo.position.set( Position.x, Position.y + HalfSize.y + 2 );
             mTextObjectInfo.set(mBuffer);
             mTextObjectInfo.Render();
 
@@ -150,7 +148,7 @@ namespace Game
                 mObject.size.set(2 * HalfSize.x, 2 * HalfSize.y);
             }
 
-            mObject.angle = -mData[mIndex].Angle;
+			mObject.angle = mData[mIndex].Angle;
             mObject.position = Position;
 
             switch( mData[mIndex].GeometryType )
@@ -191,7 +189,7 @@ namespace Game
             for(mpFixture = mpBody->GetFixtureList(); mpFixture != NULL; mpFixture = mpFixture->GetNext())
             {
                 b2Shape::Type shapeType = mpFixture->GetType();
-                mObject.position.set(OffsetX + position.x, GG::WINDOW_Y - position.y);
+				mObject.position.set(OffsetX + position.x, GG::WINDOW.y - position.y);
                 mObject.angle = -mpBody->GetAngle();
 
                 if ( shapeType == b2Shape::e_circle )
@@ -220,7 +218,7 @@ namespace Game
 					}
                 }
 
-                if(mObject.rect().y - std::max(mObject.rect().h, mObject.rect().w) > GG::WINDOW_Y)
+				if(mObject.rect().y - std::max(mObject.rect().h, mObject.rect().w) > GG::WINDOW.y)
                 {
 					if(mpBody->GetType() == b2_dynamicBody)
 					{
@@ -385,11 +383,11 @@ namespace Game
 
 	float Data::UNSCALE(float pix)
     {
-        return pix * 10.0f / GG::WINDOW_X;
+		return pix * 10.0f / GG::WINDOW.x;
     }
 	float Data::SCALE(float size)
     {
-        return (int)(size / 10.0f * GG::WINDOW_X);
+		return (int)(size / 10.0f * GG::WINDOW.x);
     }
     float Data::RAD_GRAD(float rad)
     {

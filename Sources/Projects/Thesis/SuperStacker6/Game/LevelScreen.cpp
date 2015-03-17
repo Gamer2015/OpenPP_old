@@ -21,14 +21,14 @@ namespace Game
         {
             void Back()
             {
-                SDLG::gpCurrentScreen = &(GG::gStartScreen);
+				GG::gpCurrentScreen = &(GG::gStartScreen);
             }
             void StartLevel()
 			{
                 if(GG::gLevelScreen.CurrentButtonText().compare("?"))
 				{
                     GG::gGameScreen.LoadLevel(GG::gLevelScreen.CurrentButtonText());
-                    SDLG::gpCurrentScreen = &(GG::gGameScreen);
+					GG::gpCurrentScreen = &(GG::gGameScreen);
                 }
             }
         }
@@ -103,19 +103,19 @@ namespace Game
             mTextDummy.height.set(64);
 
             mTextDummy.set("Easy");
-            mTextDummy.position.set(GG::WINDOW_X / 4.0, 10);
+			mTextDummy.position.set(GG::WINDOW.x / 4.0, 10);
             mTexts.push_back(mTextDummy);
 
             mTextDummy.set("Normal");
-            mTextDummy.position.add(GG::WINDOW_X / 2.0, 0);
+			mTextDummy.position.add(GG::WINDOW.x / 2.0, 0);
             mTexts.push_back(mTextDummy);
 
             mTextDummy.set("Impossible");
-            mTextDummy.position.add(0, GG::WINDOW_Y / 2.0);
+			mTextDummy.position.add(0, GG::WINDOW.y / 2.0);
             mTexts.push_back(mTextDummy);
 
             mTextDummy.set("Hard");
-            mTextDummy.position.add(-GG::WINDOW_X / 2.0, 0);
+			mTextDummy.position.add(-GG::WINDOW.x / 2.0, 0);
             mTexts.push_back(mTextDummy);
 
 /// Set the Buttons

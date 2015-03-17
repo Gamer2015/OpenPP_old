@@ -12,19 +12,13 @@
  *
 \********************************************/
 
-#include <Objects/OObject.hpp>
-#include <Objects/Properties/OType.tpp>
-#include <Objects/2D/Vector2.tpp>
+#include "../../../OObject.hpp"
+#include "../../../Properties/OType.tpp"
+#include "../../Vector2.tpp"
 
 #include "../Texture.hpp"
 #include <string>
 #include <SDL.h>
-
-
-namespace OO = Openpp::Objects;
-namespace OO2 = OO::Objects2D;
-namespace SDL = OO2::SDL2;
-namespace OOP = OO::Properties;
 
 
 namespace Openpp
@@ -38,37 +32,36 @@ namespace SDL2
 namespace Properties
 {
 
-class Text : public OO::OObject
+class Text : public OObject
 {
 public:
-	Text(OO::OObject* const _pParent = nullptr);
+	Text(OObject* const _pParent = nullptr);
 	Text(const std::string& _rctext, OObject* const _pParent = nullptr);
 
 
 	/// properties
-    OOP::OType<int> height;
-	OO2::Vector2<float> origin;
+	Objects::Properties::OType<int> height;
+	Vector2<float> origin;
 
 
 	/// set the text
 	void set(const std::string& _rctext);
 	void set(const Text& _rctext);
 
-	const OO2::Vector2<int>& size() const;
+	const Vector2<int>& size() const;
 
 	/// getter
 	SDL_Texture* texture() const;
 
 	/// get the text
 	operator std::string() const;
-	operator const char* const() const;
 
 protected:
 	virtual void ChildChanged(int _childId);
 
 private:
 	std::shared_ptr< SDL_Texture > mpTexture;
-	OO2::Vector2<int> Size;
+	Vector2<int> Size;
 
 	std::string _mText;
 };

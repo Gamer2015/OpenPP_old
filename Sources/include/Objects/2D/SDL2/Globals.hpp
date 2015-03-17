@@ -13,9 +13,12 @@
 \********************************************/
 
 #include <SDL.h>
+#include <SDL_ttf.h>
+#include <SDL_image.h>
 #include <memory>
 #include "Exceptions/ExSDLError.hpp"
-#include "Screen.hpp"
+#include "../../IScreen.hpp"
+#include "../Vector2.tpp"
 
 namespace Openpp
 {
@@ -32,14 +35,14 @@ private:
 	Globals() = delete;
 
 public:
-	static void Init(const std::string& rTitle, int Width, int Height);
+	static void Init(const std::string& rTitle, Vector2<int> _window, unsigned int _image_flags = IMG_INIT_PNG | IMG_INIT_JPG);
 	static bool WindowIsOpen;
 
     /// Global Renderer
 	static SDL_Renderer* Renderer();
 
-    /// Current Screen
-	static Screen* gpCurrentScreen;
+	/// Current Screen
+	// static Screen* gpCurrentScreen;
 
 private:
 	static SDL_Window* pWindow;

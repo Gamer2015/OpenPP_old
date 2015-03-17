@@ -17,7 +17,7 @@
 #include <SDL_image.h>
 #include <SDL_ttf.h>
 #include <memory>
-#include <Objects/2D/Vector2.tpp>
+#include "../Vector2.tpp"
 #include "Exceptions/ExSDLError.hpp"
 #include "Globals.hpp"
 
@@ -49,7 +49,7 @@ public:
 	static Vector2<int> GetSize(const std::string& Text);
 
 	/// Set the Font used by LoadText
-	static void LoadFont(const std::string Path);
+	static void LoadFont(const std::string Path, size_t _height);
 
 private:
 	static std::shared_ptr< TTF_Font > pFont;

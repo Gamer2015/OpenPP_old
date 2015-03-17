@@ -22,13 +22,9 @@
 #include "Globals.hpp"
 #include "Properties/Text.hpp"
 
-#include <Objects/Properties/OType.tpp>
-#include <Objects/2D/Vector2.tpp>
+#include "../../Properties/OType.tpp"
+#include "../Vector2.tpp"
 #include <cmath>
-
-namespace OO = Openpp::Objects;
-namespace LOP = OO::Properties;
-namespace OO2 = OO::Objects2D;
 
 
 namespace Openpp
@@ -43,13 +39,13 @@ namespace SDL2
 class Text : public Properties::Text
 {
 public:
-	Text(OO::OObject* const _pParent = nullptr);
-	Text(std::string _text, OO::OObject* const _pParent = nullptr);
+	Text(OObject* const _pParent = nullptr);
+	Text(std::string _text, OObject* const _pParent = nullptr);
 
 
 	/// properties
-	OO2::Vector2<int> position;
-	LOP::OType<float> angle;
+	Vector2<int> position;
+	Objects::Properties::OType<float> angle;
 
 
 	/// rendered rect

@@ -19,8 +19,7 @@
 
 #include "../OObject.hpp"
 #include "../Properties/OType.tpp"
-
-namespace OOP = Openpp::Objects::Properties;
+#include <cmath>
 
 namespace Openpp
 {
@@ -40,9 +39,9 @@ public:
 
 
 	/// properties
-    OOP::OType<T> x;
-    OOP::OType<T> y;
-
+	Objects::Properties::OType<T> x;
+	Objects::Properties::OType<T> y;
+	Objects::Properties::OType<float> angle;
 
 	/// setter
 	void set(T _x, T _y, bool _notifyParent=true);
@@ -50,6 +49,18 @@ public:
 
 	void add(T _x, T _y, bool _notifyParent=true);
 	void add(const Vector2<T>& _rcVector, bool _notifyParent=true);
+	void subtract(T _x, T _y, bool _notifyParent=true);
+	void subtract(const Vector2<T>& _rcVector, bool _notifyParent=true);
+	void multiply(T _x, T _y, bool _notifyParent=true);
+	void multiply(const Vector2<T>& _rcVector, bool _notifyParent=true);
+	void divide(T _x, T _y, bool _notifyParent=true);
+	void divide(const Vector2<T>& _rcVector, bool _notifyParent=true);
+
+
+	/// other methods
+	float length() const;
+	float length2() const; // length squared
+	Vector2<T> normalize() const;
 
 
 	///// operators
@@ -62,14 +73,14 @@ public:
 
 	/// arithmetic
 	Vector2<T> operator-() const;
-	Vector2<T> operator+(const Vector2<T>& _rcVector) const;
-	Vector2<T> operator-(const Vector2<T>& _rcVector) const;
+	Vector2<T> operator+(const Vector2<T> _rcVector) const;
+	Vector2<T> operator-(const Vector2<T> _rcVector) const;
 	template <typename FT>
 	Vector2<T> operator*(FT _factor) const;
-	Vector2<T> operator*(const Vector2<T>& _rcVector) const;
+	Vector2<T> operator*(const Vector2<T> _rcVector) const;
 	template <typename DT>
 	Vector2<T> operator/(DT _divisor) const;
-	Vector2<T> operator/(const Vector2<T>& _rcVector) const;
+	Vector2<T> operator/(const Vector2<T> _rcVector) const;
 
 	/// comparison
 	bool operator==(const Vector2<T>& _rcVector) const;
@@ -88,6 +99,9 @@ public:
 	template <typename DT>
 	Vector2<T> &operator/=(DT divisor);
 	Vector2<T> &operator/=(const Vector2<T>& _rcVector);
+
+protected:
+	virtual void ChildChanged(int _childId);
 };
 
 } // Objects2D

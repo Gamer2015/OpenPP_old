@@ -6,12 +6,13 @@
 #include <memory>
 #include "Data.h"
 #include "../../Core/Input.h"
+#include <Objects/IScreen.hpp>
 #include <Objects/2D/SDL2/Globals.hpp>
-#include <Objects/2D/SDL2/Screen.hpp>
 #include <Objects/2D/SDL2/Sprite.tpp>
 #include <Objects/2D/SDL2/Texture.hpp>
 
-namespace OO2 = Openpp::Objects::Objects2D;
+namespace OO = Openpp::Objects;
+namespace OO2 = OO::Objects2D;
 namespace SDL = OO2::SDL2;
 typedef SDL::Globals SDLG;
 
@@ -19,7 +20,7 @@ namespace Game
 {
     namespace Screens
     {
-        class GameScreen : public SDL::Screen
+		class GameScreen : public OO::IScreen
         {
         public:
             GameScreen();
@@ -39,7 +40,9 @@ namespace Game
 			void WinLevel();
 			void LostLevel();
 
-        protected:
+		protected:
+			void Leave() {}
+			void Enter() {}
 
         private:
             Game::Data mGameData;

@@ -16,6 +16,7 @@
 #include "../OObject.hpp"
 #include <utility>
 #include <iostream>
+#include <stdexcept>
 
 namespace Openpp
 {
@@ -40,8 +41,13 @@ public:
 	typedef T size_type;
 
 
-    ///// modify data
-    T set(const T&, bool _notifyParent=true);
+	///// modify data
+	T set(const T&, bool _notifyParent=true);
+
+	T add(const T&, bool _notifyParent=true);
+	T subtract(const T&, bool _notifyParent=true);
+	T multiply(const T&, bool _notifyParent=true);
+	T divide(const T&, bool _notifyParent=true, const char* const _file=__FILE__, int _line=__LINE__);
 
 
     ///// operators
@@ -50,6 +56,7 @@ public:
 
     /// assignment
     T operator=(const T& _rcValue);
+    T operator=(const OType<T>& _rcType);
 
 private:
 	T _mValue;

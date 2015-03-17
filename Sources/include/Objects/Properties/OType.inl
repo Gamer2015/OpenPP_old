@@ -48,7 +48,51 @@ T OType<T>::set(const T& _rcValue, bool _notifyParent)
 	if(_notifyParent == true)
 		ChildChanged();
 
-    return *this;
+	return _mValue;
+}
+
+template <typename T>
+T OType<T>::add(const T& _rcValue, bool _notifyParent)
+{
+	_mValue += _rcValue;
+
+	if(_notifyParent == true)
+		ChildChanged();
+
+	return _mValue;
+}
+template <typename T>
+T OType<T>::subtract(const T& _rcValue, bool _notifyParent)
+{
+	_mValue -= _rcValue;
+
+	if(_notifyParent == true)
+		ChildChanged();
+
+	return _mValue;
+}
+template <typename T>
+T OType<T>::multiply(const T& _rcValue, bool _notifyParent)
+{
+	_mValue *= _rcValue;
+
+	if(_notifyParent == true)
+		ChildChanged();
+
+	return _mValue;
+}
+template <typename T>
+T OType<T>::divide(const T& _rcValue, bool _notifyParent, const char* const _file, int _line)
+{
+	if(_rcValue == 0)
+		throw std::overflow_error(std::string("zero_division in File ") + _file + " in line " + std::to_string(_line).c_str());
+
+	_mValue /= _rcValue;
+
+	if(_notifyParent == true)
+		ChildChanged();
+
+	return _mValue;
 }
 
 
@@ -70,7 +114,12 @@ OType<T>::operator T() const
 template <typename T>
 T OType<T>::operator=(const T& _rcValue)
 {
-    return set(_rcValue);
+	return set(_rcValue);
+}
+template <typename T>
+T OType<T>::operator=(const OType<T>& _rcType)
+{
+	return set(_rcType);
 }
 
 ///
@@ -79,28 +128,22 @@ T OType<T>::operator=(const T& _rcValue)
 template <typename T>
 T operator++(OType<T>& _rcType)
 {
-    _rcType.set(_rcType + 1);
-	return _rcType;
+	return _rcType.add(1) - 1;
 }
 template <typename T>
 T operator++(OType<T>& _rcType, int)
 {
-    T result(_rcType);
-	++_rcType;
-	return result;
+	return _rcType.add(1);
 }
 template <typename T>
 T operator--(OType<T>& _rcType)
 {
-    _rcType.set(_rcType - 1);
-	return _rcType;
+	return _rcType.subtract(1) + 1;
 }
 template <typename T>
 T operator--(OType<T>& _rcType, int)
 {
-    T result(_rcType);
-	--_rcType;
-	return result;
+	return _rcType.subtract(1);
 }
 
 ///
@@ -109,26 +152,26 @@ T operator--(OType<T>& _rcType, int)
 template <typename T, typename U>
 OType<T>& operator+=(OType<T>& _rcLeftType, const U& _rcValue)
 {
-    _rcLeftType = _rcLeftType + _rcValue;
-    return _rcLeftType;
+	_rcLeftType.add(_rcValue);
+	return _rcLeftType;
 }
 template <typename T, typename U>
 OType<T>& operator-=(OType<T>& _rcLeftType, const U& _rcValue)
 {
-    _rcLeftType = _rcLeftType - _rcValue;
-    return _rcLeftType;
+	_rcLeftType.subtract(_rcValue);
+	return _rcLeftType;
 }
 template <typename T, typename U>
 OType<T>& operator*=(OType<T>& _rcLeftType, const U& _rcValue)
 {
-    _rcLeftType = _rcLeftType * _rcValue;
-    return _rcLeftType;
+	_rcLeftType.multiply(_rcValue);
+	return _rcLeftType;
 }
 template <typename T, typename U>
 OType<T>& operator/=(OType<T>& _rcLeftType, const U& _rcValue)
 {
-    _rcLeftType = _rcLeftType / _rcValue;
-    return _rcLeftType;
+	_rcLeftType.divide(_rcValue);
+	return _rcLeftType;
 }
 template <typename T, typename U>
 OType<T>& operator%=(OType<T>& _rcLeftType, const U& _rcValue)

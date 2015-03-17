@@ -21,8 +21,6 @@
 #include "Globals.hpp"
 #include <cmath>
 
-namespace OO = Openpp::Objects;
-
 namespace Openpp
 {
 namespace Objects
@@ -36,7 +34,7 @@ template <typename T>
 class Sprite : public SDL_Rectangle<T>
 {
 public:
-    Sprite(OO::OObject* const _pParent = nullptr);
+	Sprite(OObject* const _pParent = nullptr);
 
 	/// Set Texture
 	void set(const std::shared_ptr<SDL_Texture> pTexture);

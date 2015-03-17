@@ -27,10 +27,6 @@
 #include "WinScreen.h"
 #include "LostScreen.h"
 
-namespace OO2 = Openpp::Objects::Objects2D;
-namespace SDL = OO2::SDL2;
-typedef SDL::Globals SDLG;
-
 namespace Game
 {
 namespace Init

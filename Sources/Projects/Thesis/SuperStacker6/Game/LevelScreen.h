@@ -16,15 +16,16 @@
 
 #include <SDL.h>
 #include "../../Core/Input.h"
+#include <Objects/IScreen.hpp>
 #include <Objects/2D/SDL2/Globals.hpp>
-#include <Objects/2D/SDL2/Screen.hpp>
 #include <Objects/2D/SDL2/Button.hpp>
 #include <Objects/2D/SDL2/Texture.hpp>
 #include <Objects/2D/SDL2/Text.hpp>
 #include <Objects/2D/Vector2.tpp>
 #include <vector>
 
-namespace OO2 = Openpp::Objects::Objects2D;
+namespace OO = Openpp::Objects;
+namespace OO2 = OO::Objects2D;
 namespace SDL = OO2::SDL2;
 typedef SDL::Globals SDLG;
 
@@ -38,7 +39,7 @@ namespace Game
             void BTN_QUIT();
         }
 
-        class LevelScreen : public SDL::Screen
+		class LevelScreen : public OO::IScreen
         {
         public:
             LevelScreen();
@@ -55,6 +56,10 @@ namespace Game
             int GetHighestLevel();
 
             std::string CurrentButtonText();
+
+		protected:
+			void Leave() {}
+			void Enter() {}
 
         private:
             int mHighestLevel;

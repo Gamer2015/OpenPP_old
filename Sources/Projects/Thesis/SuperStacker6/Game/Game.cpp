@@ -16,12 +16,12 @@ namespace Game
             Time = SDL_GetTicks();
 
             CI::Read();
-            SDLG::gpCurrentScreen->HandleInputs();
+			GG::gpCurrentScreen->HandleInputs();
 
-            SDLG::gpCurrentScreen->Update();
+			GG::gpCurrentScreen->Update();
 
             SDL_RenderClear( SDLG::Renderer() );
-            SDLG::gpCurrentScreen->Render();
+			GG::gpCurrentScreen->Render();
             SDL_RenderPresent( SDLG::Renderer() );
 
             while(SDL_GetTicks() - Time < 1000.0/GG::FPS);
@@ -30,7 +30,7 @@ namespace Game
 
     void StartGameRoutine()
     {
-        SDLG::gpCurrentScreen = &(GG::gStartScreen);
+		GG::gpCurrentScreen = &(GG::gStartScreen);
 
         GameRoutine();
     }

@@ -9,14 +9,28 @@ namespace Objects2D
 namespace SDL2
 {
 
-void Globals::Init(const std::string &rTitle, int Width, int Height)
+void Globals::Init(const std::string &rTitle, Vector2<int> _window, unsigned int _image_flags)
 {
+	/// Initialize SDL2
 	if( SDL_Init(SDL_INIT_VIDEO) < 0 )
 	{
 		throw Exceptions::ExSDLError( "SDL could not initialize", SDL_GetError() );
 	}
 
-	pWindow = SDL_CreateWindow(rTitle.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, Width, Height, SDL_WINDOW_SHOWN);
+	/// Initialize SDL_image
+	if( !(IMG_Init(_image_flags) ))
+	{
+		throw Exceptions::ExSDLError( "SDL_image could not initialize", IMG_GetError() );
+	}
+
+	/// Initialize SDL_ttf
+	if( TTF_Init() == -1 )
+	{
+		throw Exceptions::ExSDLError( "SDL_ttf could not initialize", TTF_GetError() );
+	}
+
+
+	pWindow = SDL_CreateWindow(rTitle.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, _window.x, _window.y, SDL_WINDOW_SHOWN);
 	if( pWindow == NULL )
 	{
 		throw Exceptions::ExSDLError( "Window could not be created", SDL_GetError() );
@@ -36,7 +50,7 @@ bool Globals::WindowIsOpen = false;
 SDL_Renderer* Globals::Renderer() { return pRenderer.get(); }
 
 /// Current Screen
-Screen* Globals::gpCurrentScreen = NULL;
+// Screen* Globals::gpCurrentScreen = NULL;
 
 SDL_Window* Globals::pWindow = NULL;
 std::shared_ptr<SDL_Renderer> Globals::pRenderer = NULL;

@@ -10,7 +10,7 @@ namespace SDL2
 {
 
 template <typename T>
-Sprite<T>::Sprite(OO::OObject* const _pParent) :
+Sprite<T>::Sprite(OObject* const _pParent) :
 	SDL_Rectangle<T>(_pParent)
 { }
 

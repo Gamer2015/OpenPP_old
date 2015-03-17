@@ -26,12 +26,12 @@ namespace Game
             mBackground = SDL::Texture::Get(mPaths[0]);
 
             mMouse.set(mPaths[1]);
-            mMouse.position.set(GG::WINDOW_X * 9 / 16, 5);
+			mMouse.position.set(GG::WINDOW.x * 9 / 16, 5);
             mMouse.size.set(21, 21);
             mMouse.origin.set(0, -1);
 
             mWhiteBox.set(mPaths[2]);
-            mWhiteBox.size.set(GG::WINDOW_X / 8, GG::WINDOW_Y);
+			mWhiteBox.size.set(GG::WINDOW.x / 8, GG::WINDOW.y);
             mWhiteBox.origin.set(-1, -1);
 
             mGameData.Init();
@@ -45,24 +45,24 @@ namespace Game
             if( CI::KeyIsPressed(CI::BUTTON_RIGHT) )
             {
                 mMouse.position.x += MOUSE_SPEED * SPEED_FACTOR;
-                if(mMouse.rect().x + mMouse.rect().w > GG::WINDOW_X - 5)
+				if(mMouse.rect().x + mMouse.rect().w > GG::WINDOW.x - 5)
                 {
                     mMouse.origin.set(1, -1);
-                    mMouse.position.set(GG::WINDOW_X - 5, 5);
+					mMouse.position.set(GG::WINDOW.x - 5, 5);
                 }
             }
             if( CI::KeyIsPressed(CI::BUTTON_LEFT) )
             {
                 mMouse.position.x -= MOUSE_SPEED * SPEED_FACTOR;
-                if(mMouse.rect().x < GG::WINDOW_X / 8 + 5)
+				if(mMouse.rect().x < GG::WINDOW.x / 8 + 5)
                 {
                     mMouse.origin.set(-1, -1);
-                    mMouse.position.set(GG::WINDOW_X / 8 + 5, 5);
+					mMouse.position.set(GG::WINDOW.x / 8 + 5, 5);
                 }
             }
 
             if( CI::KeyDown(CI::BUTTON_START) )
-                SDLG::gpCurrentScreen = &(GG::gLevelScreen);
+				GG::gpCurrentScreen = &(GG::gLevelScreen);
         }
 
         void GameScreen::Update()
@@ -111,12 +111,12 @@ namespace Game
 				GG::gLevelScreen.SetHighestLevel(atoi(this->GetCurrentLevel().c_str()) + 1);
 			}
 			mGameRunning = false;
-            SDLG::gpCurrentScreen = &(GG::gWinScreen);
+			GG::gpCurrentScreen = &(GG::gWinScreen);
 		}
 		void GameScreen::LostLevel()
 		{
 			mGameRunning = false;
-            SDLG::gpCurrentScreen = &(GG::gLostScreen);
+			GG::gpCurrentScreen = &(GG::gLostScreen);
 		}
     }
 }

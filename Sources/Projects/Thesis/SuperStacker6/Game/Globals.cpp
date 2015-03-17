@@ -6,11 +6,7 @@ namespace Game
 {
     // Window Dimewnsions
     const char GG::TITLE[16] = "Test 2";
-    const int GG::WINDOW_X = 640;
-    const int GG::WINDOW_Y = WINDOW_X * 3.0 / 4.0; // 4:3 Screen
-
-    const int GG::SCREEN_WIDTH = WINDOW_X;
-    const int GG::SCREEN_HEIGHT = WINDOW_Y;
+	const O2D::Vector2<int> GG::WINDOW(640, 640 * 3.0 / 4.0);
 
     // Game Spezification
     int GG::FPS = 50;
@@ -26,4 +22,6 @@ namespace Game
     GS::GameScreen GG::gGameScreen;
 	GS::WinScreen GG::gWinScreen;
 	GS::LostScreen GG::gLostScreen;
+
+	OO::ScreenPointer GG::gpCurrentScreen;
 }

@@ -14,7 +14,7 @@ namespace Game
         {
             void BTN_START()
 			{
-                SDLG::gpCurrentScreen = &(GG::gLevelScreen);
+				GG::gpCurrentScreen = &(GG::gLevelScreen);
             }
             void BTN_QUIT()
             {
@@ -63,7 +63,7 @@ namespace Game
             mButtonDummy.text.height.set(48);
 
             mButtonDummy.position.set(0, 20);
-            mButtonDummy.SetFunction(&(BUTTONS::BTN_START));
+			mButtonDummy.SetFunction(&(BUTTONS::BTN_START));
             mButtonDummy.text.set("Start");
             mButtons.push_back(mButtonDummy);
 

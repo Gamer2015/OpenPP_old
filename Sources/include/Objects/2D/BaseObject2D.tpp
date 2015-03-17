@@ -12,7 +12,7 @@
  *
 \********************************************/
 
-#include <Objects/OObject.hpp>
+#include "../OObject.hpp"
 
 #include "Vector2.tpp"
 

@@ -56,4 +56,6 @@ private:
 } // Objects
 } // Openpp
 
+namespace OO = Openpp::Objects;
+
 #endif // OPENPP_OBJECTS_LOBJECT_HPP_

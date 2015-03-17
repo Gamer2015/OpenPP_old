@@ -5,31 +5,35 @@
 #include <vector>
 #include <memory>
 #include "../../Core/Input.h"
+#include <Objects/IScreen.hpp>
 #include <Objects/2D/SDL2/Globals.hpp>
-#include <Objects/2D/SDL2/Screen.hpp>
 #include <Objects/2D/SDL2/Button.hpp>
 #include <Objects/2D/SDL2/Text.hpp>
 
-namespace SDL = Openpp::Objects::Objects2D::SDL2;
+namespace OO = Openpp::Objects;
+namespace OO2 = OO::Objects2D;
+namespace SDL = OO2::SDL2;
 typedef SDL::Globals SDLG;
 
 namespace Game
 {
     namespace Screens
     {
-        class WinScreen : public SDL::Screen
+		class WinScreen : public OO::IScreen
         {
         public:
 			WinScreen();
             void Init();
 
-            void HandleInputs();
+			void HandleInputs();
 
             void Update();
 
 			void Render();
 
-        protected:
+		protected:
+			void Leave() {}
+			void Enter() {}
 
 		private:
             std::vector< std::string > mPaths;

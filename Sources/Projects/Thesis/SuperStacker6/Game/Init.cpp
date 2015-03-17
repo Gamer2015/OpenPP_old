@@ -14,22 +14,9 @@ namespace Init
 /// Initializes SDL2
 void InitSDL2()
 {
-    SDLG::Init(GG::TITLE, GG::WINDOW_X, GG::WINDOW_Y);
+	SDLG::Init(GG::TITLE, GG::WINDOW, IMG_INIT_PNG | IMG_INIT_JPG);
 
-    /// Initialize SDL_image
-    int imgFlags = IMG_INIT_PNG | IMG_INIT_JPG;
-    if( !(IMG_Init(imgFlags) & imgFlags) )
-    {
-        throw SDLE::ExSDLError( "SDL_image could not initialize", IMG_GetError() );
-    }
-
-    /// Initialize SDL_ttf
-    if( TTF_Init() == -1 )
-    {
-        throw SDLE::ExSDLError( "SDL_ttf could not initialize", TTF_GetError() );
-    }
-
-	SDL::Texture::LoadFont("Media/Font.ttf");
+	SDL::Texture::LoadFont("Media/Font.ttf", 128);
 }
 
 /// Set the Loading Screen
