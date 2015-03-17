@@ -15,15 +15,24 @@ class Tree : public std::map<_identifier, Tree<_identifier, _datatype>>
 {
 public:
 	Tree() {}
-	Tree(const _datatype& val) { mValue = val; }
+    Tree(const _datatype& val) { _mValue = val; }
 
-	_datatype operator=(const _datatype& rhs) { return mValue = rhs; }
+    _datatype operator=(const _datatype& rhs) { return _mValue = rhs; }
 	using std::map<_identifier, Tree<_identifier, _datatype>>::operator=;
-	_datatype value() const { return mValue; }
+
+    _datatype* operator->() { return &_mValue; }
+    _datatype get() const {return _mValue; }
 
 private:
-	_datatype mValue;
+    _datatype _mValue;
 };
+
+template <typename _id, typename _type>
+std::ostream& operator<<(std::ostream& cout, const Tree<_id, _type>& _rcTree)
+{
+    cout << _rcTree.get();
+    return cout;
+}
 
 } // Container
 } // Types
