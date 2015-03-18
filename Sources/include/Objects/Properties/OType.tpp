@@ -15,7 +15,6 @@
 
 #include "../OObject.hpp"
 #include <iostream>
-#include <utility>
 #include <stdexcept>
 
 namespace Openpp
@@ -32,9 +31,7 @@ public:
 	///// constructors
     OType(OObject* const _pParent=nullptr) noexcept;
     OType(const T&, OObject* const _pParent=nullptr) noexcept;
-    OType(const T&&, OObject* const _pParent=nullptr) noexcept;
     OType(const OType<T>&, OObject* const _pParent=nullptr) noexcept;
-    OType(const OType<T>&&, OObject* const _pParent=nullptr) noexcept;
 
 
 	///// template type

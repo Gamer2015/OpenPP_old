@@ -52,7 +52,10 @@ bool OTypeAndPropertyTest(std::string& rString)
 	rString = "OTypeAndPropertyTest: ";
 	std::cout << rString << std::endl;
 	bool success = true;
-	Object<int> obj;
+    Object<int> obj;
+
+    OType<int> value = 5;
+    Test(success, "move", value == 5, obj, false);
 
 	/// set
     obj.property.set(5, false);

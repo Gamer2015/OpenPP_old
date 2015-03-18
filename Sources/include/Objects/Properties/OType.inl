@@ -21,19 +21,9 @@ OType<T>::OType(const T& _rcValue, OObject* const _pParent) noexcept :
     _mValue(_rcValue)
 {}
 template <typename T>
-OType<T>::OType(const T&& _rrcValue, OObject* const _pParent) noexcept :
-    OObject(_pParent),
-    _mValue(std::move(_rrcValue))
-{}
-template <typename T>
 OType<T>::OType(const OType<T>& _rcType, OObject* const _pParent) noexcept :
     OObject(_pParent),
     _mValue((T)_rcType)
-{}
-template <typename T>
-OType<T>::OType(const OType<T>&& _rrcType, OObject* const _pParent) noexcept :
-    OObject(_pParent),
-    _mValue(std::move((T)_rrcType))
 {}
 
 
@@ -138,22 +128,22 @@ std::ostream& operator<<(std::ostream& cout, const OType<T>& _rcType)
 template <typename T>
 T operator++(OType<T>& _rcType)
 {
-	return _rcType.add(1) - 1;
+    return _rcType.add(1);
 }
 template <typename T>
 T operator++(OType<T>& _rcType, int)
 {
-	return _rcType.add(1);
+    return _rcType.add(1) - 1;
 }
 template <typename T>
 T operator--(OType<T>& _rcType)
 {
-	return _rcType.subtract(1) + 1;
+    return _rcType.subtract(1);
 }
 template <typename T>
 T operator--(OType<T>& _rcType, int)
 {
-	return _rcType.subtract(1);
+    return _rcType.subtract(1) + 1;
 }
 
 ///
