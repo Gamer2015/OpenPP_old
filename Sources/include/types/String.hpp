@@ -116,6 +116,15 @@ public:
 	{
 		return (this->substr(this->length() - _string.length()) == _string);
 	}
+
+	bool hasOnlyLetters() const
+	{
+		for(const char* _character = this->c_str(); *_character != 0; ++_character)
+			if(!isdigit(*_character))
+				return false;
+
+		return true;
+	}
 };
 
 }
