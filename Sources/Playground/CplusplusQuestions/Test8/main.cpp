@@ -1,6 +1,11 @@
 #include <iostream>
 #include <cmath>
 #include <vector>
+#include <fstream>
+
+#define MAX_ARRAY_SIZE 100000000
+int primes[MAX_ARRAY_SIZE];
+int cnt = 0;
 
 bool isDivisable(int number, int divisor)
 {
@@ -8,12 +13,21 @@ bool isDivisable(int number, int divisor)
 }
 bool isPrime (int number)
 {
-	if(number < 2)
-		return false;
-
 	int max = sqrt(number);
+	for (int i = 0; i < cnt && primes[i] <= max; ++i)
+	{
+		if (isDivisable( number, primes[i] ))
+		{
+			return false;
+		}
+	}
+	return true;
+}
 
-	for (int i = 2; i <= max; ++i) // no need to go further than sqrt(number)
+bool isSlowPrime(int number)
+{
+	int max = sqrt(number);
+	for (int i = 2; i <= max; ++i)
 	{
 		if (isDivisable( number, i ))
 		{
@@ -22,66 +36,37 @@ bool isPrime (int number)
 	}
 	return true;
 }
-std::vector<int> getPrimeFactors(int number)
-{
-	int max = sqrt(number);
-	std::vector<int> primes;
-
-	for(int i = 2; i <= max; ++i) // loop through same numbers as isPrime to get prime factors
-	{
-		if(isPrime(number)) // check if the number is a prime Factor
-		{
-			primes.push_back(number); // add element to container
-			break; // break for-loop
-		}
-
-		if(isPrime(i)) // if it is a prime
-		{
-			if(isDivisable(number, i)) // and divisable, then it is a prime factor of number
-			{
-				number /= i;
-				primes.push_back(i); // add element to container
-
-				i--; // check same factor again
-			}
-		}
-	}
-	return primes;
-}
 
 int main(void)
 {
-	for(int i = 0; i <= 1000; ++i)
+	std::ifstream ifile("primes.txt");
+	std::string line;
+
+	if (ifile.is_open())
 	{
-		std::cout << i;
-		if(isPrime(i))
+		while ( std::getline(ifile, line) )
 		{
-			std::cout << " -> is a Prime." << std::endl;
-		}
-		else
-		{
-			std::vector<int> factors;
-			factors = getPrimeFactors(i);
-
-// do the printing work
-			int sum = 0;
-
-			std::cout << ": ";
-			for(int i = 0; i < factors.size(); ++i)
-			{
-				std::cout << factors[i] << ' '; // print the factors
-				sum += factors[i]; // add the factors up
-			}
-			std::cout << " = " << sum << " -> ";
-
-			if(isPrime(sum))
-				std::cout << "sum of factors is a Prime";
-			else
-				std::cout << "sum of factors is not a Prime";
-
-			std::cout << std::endl;
+			primes[cnt] = std::stoi(line);
+			cnt++;
 		}
 	}
+	ifile.close();
+
+	std::ofstream ofile("primes.txt", std::ios::out | std::ios::app);
+	if (ofile.is_open())
+	{
+		for(int i = primes[cnt - 1] + 1; i <= 1000000000; ++i)
+		{
+			if(isPrime(i))
+			{
+				primes[cnt] = i;
+				cnt++;
+				ofile << i << "\n";
+				ofile.flush();
+			}
+		}
+	}
+	ofile.close();
 }
 /*#include <iostream>
 #include <cmath>

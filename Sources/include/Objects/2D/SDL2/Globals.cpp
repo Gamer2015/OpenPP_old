@@ -12,6 +12,11 @@ namespace SDL2
 void Globals::Init(const std::string &rTitle, Vector2<int> _window, unsigned int _image_flags)
 {
 	/// Initialize SDL2
+	SDL_Init(0);
+
+	/// Initialize SDL2
+	SDL_InitSubSystem(SDL_INIT_VIDEO | SDL_INIT_AUDIO);
+
 	if( SDL_Init(SDL_INIT_VIDEO) < 0 )
 	{
 		throw Exceptions::ExSDLError( "SDL could not initialize", SDL_GetError() );

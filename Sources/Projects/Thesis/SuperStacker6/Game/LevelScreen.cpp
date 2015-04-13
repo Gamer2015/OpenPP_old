@@ -123,7 +123,7 @@ namespace Game
             mButtonDummy.size.set(48, 48);
             mButtonDummy.text.height.set(36);
             mButtonDummy.origin.set(-1, -1);
-            mButtonDummy.SetFunction(&(BUTTONS::StartLevel));
+			mButtonDummy.function = std::bind(BUTTONS::StartLevel);
 
 			for(int i = 1; i < mPaths.size(); ++i)
 				mButtonDummy.textures[i-1].set(SDL::Texture::Get(mPaths[i]));
@@ -171,7 +171,7 @@ namespace Game
         void LevelScreen::HandleInputs()
         {
             if( CI::KeyDown(CI::BUTTON_A) )
-				mButtons[mCurrentButton.y][mCurrentButton.x].call();
+				mButtons[mCurrentButton.y][mCurrentButton.x].function();
 
             if( CI::KeyDown(CI::BUTTON_UP) )
                 BUTTON_Up();
@@ -239,7 +239,6 @@ namespace Game
 									std::cout << "New Level unlocked!" << std::endl;
 									sprintf(mBuffer, "%d", Level);
 									mButtons[mRows_System*Y+y][mButtons_Row_System*X+x].text.set(mBuffer);
-									mButtons[mRows_System*Y+y][mButtons_Row_System*X+x].Refresh();
 								}
 								else
 									break;

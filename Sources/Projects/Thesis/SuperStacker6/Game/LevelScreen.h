@@ -23,6 +23,7 @@
 #include <Objects/2D/SDL2/Text.hpp>
 #include <Objects/2D/Vector2.tpp>
 #include <vector>
+#include <functional>
 
 namespace OO = Openpp::Objects;
 namespace OO2 = OO::Objects2D;

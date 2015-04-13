@@ -60,20 +60,20 @@ namespace Game
             mButtonDummy.size.set(320, 64);
             mButtonDummy.origin.set(-1, -1);
             mButtonDummy.text.origin.set(-1, 0);
-            mButtonDummy.text.height.set(48);
+			mButtonDummy.text.height.set(48);
 
             mButtonDummy.position.set(0, 20);
-			mButtonDummy.SetFunction(&(BUTTONS::BTN_START));
+			mButtonDummy.function = ((BUTTONS::BTN_START));
             mButtonDummy.text.set("Start");
-            mButtons.push_back(mButtonDummy);
+			mButtons.push_back(mButtonDummy);
+
+			mButtonDummy.position.add(0, 64);
+			mButtonDummy.function = std::function<void()>();
+			mButtonDummy.text.set("Options");
+			mButtons.push_back(mButtonDummy);
 
             mButtonDummy.position.add(0, 64);
-            mButtonDummy.SetFunction();
-            mButtonDummy.text.set("Options");
-            mButtons.push_back(mButtonDummy);
-
-            mButtonDummy.position.add(0, 64);
-            mButtonDummy.SetFunction(&(BUTTONS::BTN_QUIT));
+			mButtonDummy.function = ((BUTTONS::BTN_QUIT));
             mButtonDummy.text.set("Quit");
             mButtons.push_back(mButtonDummy);
         }
@@ -81,7 +81,7 @@ namespace Game
         void StartScreen::HandleInputs()
         {
             if( CI::KeyDown(CI::BUTTON_A) )
-				mButtons[mCurrentButton].call();
+				mButtons[mCurrentButton].function();
 
             if( CI::KeyDown(CI::BUTTON_UP) )
                 BUTTON_UP();

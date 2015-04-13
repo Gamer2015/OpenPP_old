@@ -1,23 +1,29 @@
 #include <iostream>
-#include <cstring>
 
-double *upperTriangular(const double* Mtrx, int n)
+class Int
 {
-    double* matrix = new double[n];
+public:
+	Int() : data() {}
+	Int(int var) : data(var) {}
 
-    memcpy(matrix, Mtrx, n*sizeof(double));
+	operator int() const
+	{
+		return data;
+	}
+	Int operator=(const Int& rhs)
+	{
+		data = rhs.data;
+		return *this;
+	}
 
-    return matrix;
-}
+private:
+	int data;
+};
 
 int main(void)
 {
-    double matrix[3][3] = {{1,2,3},{4,5,6},{7,8,9}};
-
-    double* upper = upperTriangular(&(matrix[0][2]), 5);
-
-    for(int i = 0; i < 3; ++i)
-        std::cout << upper[i] << std::endl;
+	const Int& x = Int(3);
+	std::cout << x << std::endl;
 
     return 0;
 }

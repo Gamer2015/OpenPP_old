@@ -55,19 +55,19 @@ namespace Game
 
 			mButtonDummy.position.set(GG::WINDOW.x / 2.0, GG::WINDOW.y * 3/7.0);
 			mButtonDummy.text.set("Next Level");
-			mButtonDummy.SetFunction(&(WinScreenButtons::NextLevel));
+			mButtonDummy.function = ((WinScreenButtons::NextLevel));
 			mButtons.push_back(mButtonDummy);
 
 			mButtonDummy.position.add(0, GG::WINDOW.y / 4.0);
 			mButtonDummy.text.set("Back");
-			mButtonDummy.SetFunction(&(WinScreenButtons::ChangeLevel));
+			mButtonDummy.function = ((WinScreenButtons::ChangeLevel));
 			mButtons.push_back(mButtonDummy);
 		}
 
 		void WinScreen::HandleInputs()
 		{
 			if( CI::KeyDown(CI::BUTTON_A) )
-				mButtons[mCurrentButton].call();
+				mButtons[mCurrentButton].function();
 
 			if( CI::KeyDown(CI::BUTTON_UP) )
 				BUTTON_Up();

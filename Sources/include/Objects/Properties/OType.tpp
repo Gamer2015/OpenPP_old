@@ -14,6 +14,7 @@
 \********************************************/
 
 #include "../OObject.hpp"
+#include <string>
 #include <iostream>
 #include <stdexcept>
 
@@ -44,7 +45,7 @@ public:
 	T add(const T&, bool _notifyParent=true);
 	T subtract(const T&, bool _notifyParent=true);
 	T multiply(const T&, bool _notifyParent=true);
-	T divide(const T&, bool _notifyParent=true, const char* const _file=__FILE__, int _line=__LINE__);
+	T divide(const T&, bool _notifyParent=true);
 
 
     ///// operators

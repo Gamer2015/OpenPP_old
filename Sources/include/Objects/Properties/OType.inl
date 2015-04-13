@@ -1,5 +1,3 @@
-#include "OType.tpp"
-
 namespace Openpp
 {
 namespace Objects
@@ -72,11 +70,8 @@ T OType<T>::multiply(const T& _rcValue, bool _notifyParent)
 	return _mValue;
 }
 template <typename T>
-T OType<T>::divide(const T& _rcValue, bool _notifyParent, const char* const _file, int _line)
+T OType<T>::divide(const T& _rcValue, bool _notifyParent)
 {
-	if(_rcValue == 0)
-		throw std::overflow_error(std::string("zero_division in File ") + _file + " in line " + std::to_string(_line).c_str());
-
 	_mValue /= _rcValue;
 
 	if(_notifyParent == true)

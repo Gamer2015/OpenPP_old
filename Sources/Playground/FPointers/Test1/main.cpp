@@ -20,9 +20,7 @@ public:
 
 	std::function<void()> func;
 };
-
-
-int main(void)
+void Test1()
 {
 	A a;
 	B b;
@@ -31,6 +29,23 @@ int main(void)
 
 	b.func = std::bind(&print);
 	b.func();
+}
 
-    return 0;
+namespace n1
+{
+
+void test() { std::cout << "n1::Test" << std::endl; }
+
+}
+void Test2()
+{
+	void (*pTest)();
+	pTest = n1::test;
+	pTest();
+}
+
+int main(void)
+{
+	Test2();
+	return 0;
 }

@@ -55,19 +55,19 @@ namespace Game
 
 			mButtonDummy.position.set(GG::WINDOW.x / 2.0, GG::WINDOW.y * 3 / 7.0);
 			mButtonDummy.text.set("Retry");
-			mButtonDummy.SetFunction(&(LostScreenButtons::Retry));
+			mButtonDummy.function = std::bind(LostScreenButtons::Retry);
 			mButtons.push_back(mButtonDummy);
 
 			mButtonDummy.position.add(0, GG::WINDOW.y / 4.0);
 			mButtonDummy.text.set("Back");
-			mButtonDummy.SetFunction(&(LostScreenButtons::ChangeLevel));
+			mButtonDummy.function = std::bind((LostScreenButtons::ChangeLevel));
 			mButtons.push_back(mButtonDummy);
         }
 
 		void LostScreen::HandleInputs()
 		{
 			if( CI::KeyDown(CI::BUTTON_A) )
-				mButtons[mCurrentButton].call();
+				mButtons[mCurrentButton].function();
 
 			if( CI::KeyDown(CI::BUTTON_UP) )
 				BUTTON_Up();

@@ -1,26 +1,3 @@
-#ifndef OPENPP_OBJECTS_2D_VECTOR2_H_
-#define OPENPP_OBJECTS_2D_VECTOR2_H_
-
-/******************************************
- *  Usage: 2D vector property for LObjects
- *  Date: 20th of February 2015
- *  Author: Stefan Kreiner
- * _______________________________________________
- *
- * Notes:
- *  - Not Tested
- *
- * Warnings:
- *  - Do not set _notifyParent to false unless you know what you are doing
- *  - Use set(x, y) instead of vector.x = x; vector.y = y; for better performance
- *    (the Parent will be updated only once unstead of twice)
- *
- *******************************************/
-
-#include "../OObject.hpp"
-#include "../Properties/OType.tpp"
-#include <cmath>
-
 namespace Openpp
 {
 namespace Objects
@@ -28,86 +5,241 @@ namespace Objects
 namespace Objects2D
 {
 
+
+/////
+///// constructors
+/////
 template <typename T>
-class Vector2 : public OObject
+Vector2<T>::Vector2(OObject* const _pParent) :
+	Vector2(0, 0, _pParent)
+{}
+template <typename T>
+Vector2<T>::Vector2(T _x, T _y, OObject* const _pParent) :
+	OObject(_pParent),
+	x(_x, this),
+	y(_y, this),
+	angle(this)
+{}
+template <typename T>
+Vector2<T>::Vector2(const Vector2<T>& _rcVector, OObject* const _pParent) :
+	Vector2(_rcVector.x, _rcVector.y, _pParent)
+{}
+
+
+/////
+///// setter
+/////
+template <typename T>
+void Vector2<T>::set(T _x, T _y, bool _notifyParent)
 {
-public:
-	/// constructors
-	Vector2(OObject* const _pParent = nullptr);
-	Vector2(T _x, T _y, OObject* const _pParent = nullptr);
-	Vector2(const Vector2<T>& _rcVector, OObject* const _pParent = nullptr);
+	x.set(_x, false);
+	y.set(_y, false);
+	angle.set(atan2(y, x), false);
+
+	if(_notifyParent == true)
+		OObject::ChildChanged();
+}
+template <typename T>
+void Vector2<T>::set(const Vector2<T>& _rcVector, bool _notifyParent)
+{
+	set(_rcVector.x, _rcVector.y, _notifyParent);
+}
+template <typename T>
+void Vector2<T>::add(T _x, T _y, bool _notifyParent)
+{
+	x.add(_x, false);
+	y.add(_y, false);
+	angle.set(atan2(y, x), false);
+
+	if(_notifyParent == true)
+		OObject::ChildChanged();
+}
+template <typename T>
+void Vector2<T>::add(const Vector2<T>& _rcVector, bool _notifyParent)
+{
+	add(_rcVector.x, _rcVector.y, _notifyParent);
+}
+
+/////
+///// other methods
+/////
+template <typename T>
+float Vector2<T>::length() const
+{
+	return sqrt(length2());
+}
+template <typename T>
+float Vector2<T>::length2() const
+{
+	return x*x + y*y;
+}
+template <typename T>
+Vector2<T> Vector2<T>::normalize() const
+{
+	float _length = length();
+	return Vector2<T>(x / _length, y / _length);
+}
+
+/////
+///// operators
+/////
+///
+/// assignment
+///
+template <typename T>
+Vector2<T> Vector2<T>::operator=(const Vector2<T>& _rcVector)
+{
+	set(_rcVector);
+	return *this;
+}
+
+///
+/// conversion
+///
+template <typename T>
+template <typename U>
+Vector2<T>::operator Vector2<U>() const
+{
+	return Vector2<U>((U)x, (U)y);
+}
+
+///
+/// arithmetic
+///
+template <typename T>
+Vector2<T> Vector2<T>::operator-() const
+{
+	return Vector2<T>(-x, -y);
+}
+template <typename T>
+Vector2<T> Vector2<T>::operator+(const Vector2<T> _rcVector) const
+{
+	return _rcVector += *this;
+}
+template <typename T>
+Vector2<T> Vector2<T>::operator-(const Vector2<T> _rcVector) const
+{
+	return _rcVector -= *this;
+}
+template <typename T>
+template <typename FT>
+Vector2<T> Vector2<T>::operator*(FT _factor) const
+{
+	return Vector2<T>(x * _factor,
+					  y * _factor);
+}
+template <typename T>
+Vector2<T> Vector2<T>::operator*(const Vector2<T> _rcVector) const
+{
+	return Vector2<T>(x * _rcVector.x - y * _rcVector.y,
+					  x * _rcVector.y + y * _rcVector.x);
+}
+template <typename T>
+template <typename D>
+Vector2<T> Vector2<T>::operator/(D _divisor) const
+{
+	return Vector2<T>(x / _divisor,
+					  y / _divisor);
+}
+template <typename T>
+Vector2<T> Vector2<T>::operator/(const Vector2<T> _rcVector) const
+{
+	return Vector2<T>((x * _rcVector.x + y * _rcVector.y)/(_rcVector.length2()),
+					  (y * _rcVector.x - x * _rcVector.y)/(_rcVector.length2()));
+}
+
+///
+/// comparison
+///
+template <typename T>
+bool Vector2<T>::operator==(const Vector2<T>& _rcVector) const
+{
+	return ((x == _rcVector.x)&&
+			(y == _rcVector.y));
+}
+template <typename T>
+bool Vector2<T>::operator!=(const Vector2<T>& _rcVector) const
+{
+	return (!(*this == _rcVector));
+}
+template <typename T>
+bool Vector2<T>::operator>(const Vector2<T>& _rcVector) const
+{
+	return ((x > _rcVector.x)&&
+			(y > _rcVector.y));
+}
+template <typename T>
+bool Vector2<T>::operator<(const Vector2<T>& _rcVector) const
+{
+	return ((x < _rcVector.x) &&
+			(y < _rcVector.y));
+}
+template <typename T>
+bool Vector2<T>::operator>=(const Vector2<T>& _rcVector) const
+{
+	return (!(*this < _rcVector));
+}
+template <typename T>
+bool Vector2<T>::operator<=(const Vector2<T>& _rcVector) const
+{
+	return (!(*this > _rcVector));
+}
 
 
-	/// properties
-	Objects::Properties::OType<T> x;
-	Objects::Properties::OType<T> y;
-	Objects::Properties::OType<float> angle;
+///
+/// compound assignment
+///
+template <typename T>
+Vector2<T>& Vector2<T>::operator+=(const Vector2<T>& _rcVector)
+{
+	add(_rcVector);
+	return *this;
+}
+template <typename T>
+Vector2<T>& Vector2<T>::operator-=(const Vector2<T>& _rcVector)
+{
+	add(-_rcVector);
+	return *this;
+}
+template <typename T>
+template <typename FT>
+Vector2<T>& Vector2<T>::operator*=(FT _factor)
+{
+	set(*this * _factor);
+	return *this;
+}
+template <typename T>
+Vector2<T>& Vector2<T>::operator*=(const Vector2<T>& _rcVector)
+{
+	set(*this * _rcVector);
+	return *this;
+}
+template <typename T>
+template <typename DT>
+Vector2<T>& Vector2<T>::operator/=(DT _divisor)
+{
+	set(*this / _divisor);
+	return *this;
+}
+template <typename T>
+Vector2<T>& Vector2<T>::operator/=(const Vector2<T>& _rcVector)
+{
+	set(*this / _rcVector);
+	return *this;
+}
 
-	/// setter
-	void set(T _x, T _y, bool _notifyParent=true);
-	void set(const Vector2<T>& _rcVector, bool _notifyParent=true);
+template <typename T>
+void Vector2<T>::ChildChanged(int _childId)
+{
+	if(_childId == angle.id())
+	{
+		float _length = length();
+		set(_length * cos(angle), _length * sin(angle));
+	}
 
-	void add(T _x, T _y, bool _notifyParent=true);
-	void add(const Vector2<T>& _rcVector, bool _notifyParent=true);
-	void subtract(T _x, T _y, bool _notifyParent=true);
-	void subtract(const Vector2<T>& _rcVector, bool _notifyParent=true);
-	void multiply(T _x, T _y, bool _notifyParent=true);
-	void multiply(const Vector2<T>& _rcVector, bool _notifyParent=true);
-	void divide(T _x, T _y, bool _notifyParent=true);
-	void divide(const Vector2<T>& _rcVector, bool _notifyParent=true);
-
-
-	/// other methods
-	float length() const;
-	float length2() const; // length squared
-	Vector2<T> normalize() const;
-
-
-	///// operators
-	/// assignment
-	Vector2<T> operator=(const Vector2<T>& _rcVector);
-
-	/// conversion
-	template <typename U>
-	operator Vector2<U>() const;
-
-	/// arithmetic
-	Vector2<T> operator-() const;
-	Vector2<T> operator+(const Vector2<T> _rcVector) const;
-	Vector2<T> operator-(const Vector2<T> _rcVector) const;
-	template <typename FT>
-	Vector2<T> operator*(FT _factor) const;
-	Vector2<T> operator*(const Vector2<T> _rcVector) const;
-	template <typename DT>
-	Vector2<T> operator/(DT _divisor) const;
-	Vector2<T> operator/(const Vector2<T> _rcVector) const;
-
-	/// comparison
-	bool operator==(const Vector2<T>& _rcVector) const;
-	bool operator!=(const Vector2<T>& _rcVector) const;
-	bool operator>(const Vector2<T>& _rcVector) const;
-	bool operator<(const Vector2<T>& _rcVector) const;
-	bool operator>=(const Vector2<T>& _rcVector) const;
-	bool operator<=(const Vector2<T>& _rcVector) const;
-
-	/// compound assignment
-	Vector2<T> &operator+=(const Vector2<T>& _rcVector);
-	Vector2<T> &operator-=(const Vector2<T>& _rcVector);
-	template <typename FT>
-	Vector2<T> &operator*=(FT factor);
-	Vector2<T> &operator*=(const Vector2<T>& _rcVector);
-	template <typename DT>
-	Vector2<T> &operator/=(DT divisor);
-	Vector2<T> &operator/=(const Vector2<T>& _rcVector);
-
-protected:
-	virtual void ChildChanged(int _childId);
-};
+	OObject::ChildChanged();
+}
 
 } // Objects2D
 } // Objects
 } // Openpp
-
-#include "Vector2.inl"
-
-#endif // OPENPP_OBJECTS_2D_VECTOR2_H_

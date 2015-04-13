@@ -34,7 +34,7 @@ public:
 protected:
     OObject* const parent() const { return _mpParent; }
 	int selfId() const { return 0; }
-    int GenerateChildId() { return ++_mChildrenCount; }
+    int GenerateChildId() const { return ++_mChildrenCount; }
 
 	virtual void ChildChanged(int _childId)
 	{
@@ -50,7 +50,7 @@ protected:
 private:
     OObject* const _mpParent;
 	int _mChildId;
-    int _mChildrenCount;
+    mutable int _mChildrenCount;
 };
 
 } // Objects
