@@ -3,6 +3,9 @@
 #include <Types/string>
 #include "IntString.hpp"
 #include <cmath>
+#include <cstdint>
+
+#include <Timer/Timer.hpp>
 
 
 bool addTest(int num1, int num2)
@@ -242,40 +245,56 @@ bool isPrime (IntString number)
 	return true;
 }
 
+template <int _bytes>
+class Int
+{
+    char ints[_bytes];
+};
+
+std::vector<int> primes;
 bool isDivisable(int number, int divisor)
 {
-	return number % divisor == 0;
+    return !(number %= divisor);
 }
 bool isPrime (int number)
 {
-	if(number < 2)
-		return false;
+    int max = sqrt(number);
 
-	int max = sqrt(number);
-
-	for (int i = 2; i <= max; ++i) // no need to go further than sqrt(number)
-	{
-		if (isDivisable( number, i ))
-		{
-			return false;
-		}
-	}
-	return true;
+    for(int i = 0; i < primes.size() && primes[i] <= max; ++i)
+    {
+        if (isDivisable( number, primes[i]))
+        {
+            return false;
+        }
+    }
+    return true;
 }
-void PrimeTest()
+void PrintPrimes(int max)
 {
-    int maxi = 1000000000;
-    for(int i = 0; i < maxi; i+=1)
+    primes.push_back(2);
+    for(int i = 3; i < max; i += 2)
     {
         if(isPrime(i))
         {
-            std::cout << i << std::endl;
+            primes.push_back(i);
         }
     }
+    std::cout << "primes found: " << primes.size() << std::endl;
+    std::cout << "largest prime: " << primes.back() << std::endl;
 }
+
 
 int main(void)
 {
-    Test();
+    int Tests = 1;
+    int max = 99999999;
+    Timer t1;
+    t1.start();
+    for(int i = 0; i < Tests; ++i)
+        PrintPrimes(max);
+    t1.stop();
+    std::cout << "time: " << t1.getElapsedTime()/Tests << " sec/Tests" << std::endl;
+    primes.clear();
+
     return 0;
 }

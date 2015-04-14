@@ -46,7 +46,7 @@ public:
 	///////////////////////////////////////////////////////////////////////////////
 	// distructor
 	///////////////////////////////////////////////////////////////////////////////
-	Timer::~Timer()
+    ~Timer()
 	{
 	}
 
@@ -55,7 +55,7 @@ public:
 	// start timer.
 	// startCount will be set at this point.
 	///////////////////////////////////////////////////////////////////////////////
-	void Timer::start()
+    void start()
 	{
 		stopped = 0; // reset stop flag
 	#ifdef _WIN32
@@ -69,7 +69,7 @@ public:
 	// stop the timer.
 	// endCount will be set at this point.
 	///////////////////////////////////////////////////////////////////////////////
-	void Timer::stop()
+    void stop()
 	{
 		stopped = 1; // set timer stopped flag
 
@@ -85,7 +85,7 @@ public:
 	// compute elapsed time in micro-second resolution.
 	// other getElapsedTime will call this first, then convert to correspond resolution.
 	///////////////////////////////////////////////////////////////////////////////
-	double Timer::getElapsedTimeInMicroSec()
+    double getElapsedTimeInMicroSec()
 	{
 	#ifdef _WIN32
 		if(!stopped)
@@ -107,7 +107,7 @@ public:
 	///////////////////////////////////////////////////////////////////////////////
 	// divide elapsedTimeInMicroSec by 1000
 	///////////////////////////////////////////////////////////////////////////////
-	double Timer::getElapsedTimeInMilliSec()
+    double getElapsedTimeInMilliSec()
 	{
 		return this->getElapsedTimeInMicroSec() * 0.001;
 	}
@@ -115,7 +115,7 @@ public:
 	///////////////////////////////////////////////////////////////////////////////
 	// divide elapsedTimeInMicroSec by 1000000
 	///////////////////////////////////////////////////////////////////////////////
-	double Timer::getElapsedTimeInSec()
+    double getElapsedTimeInSec()
 	{
 		return this->getElapsedTimeInMicroSec() * 0.000001;
 	}
@@ -123,7 +123,7 @@ public:
 	///////////////////////////////////////////////////////////////////////////////
 	// same as getElapsedTimeInSec()
 	///////////////////////////////////////////////////////////////////////////////
-	double Timer::getElapsedTime()
+    double getElapsedTime()
 	{
 		return this->getElapsedTimeInSec();
 	}

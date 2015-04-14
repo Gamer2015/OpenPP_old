@@ -1,0 +1,62 @@
+#-------------------------------------
+# Currently used CMake Version
+#-------------------------------------
+cmake_minimum_required(VERSION 3.0)
+
+#-------------------------------------
+# Subdirectories (please add in alphabetical Order)
+#-------------------------------------
+MACRO(SUBDIRLIST result curdir)
+  FILE(GLOB children RELATIVE ${curdir} ${curdir}/*)
+  SET(dirlist "")
+  FOREACH(child ${children})
+    IF(IS_DIRECTORY ${curdir}/${child})
+	LIST(APPEND dirlist ${child})
+    ENDIF()
+  ENDFOREACH()
+  SET(${result} ${dirlist})
+ENDMACRO()
+
+SUBDIRLIST(SUBDIRS ${CMAKE_CURRENT_SOURCE_DIR})
+
+FOREACH(subdir ${SUBDIRS})
+    ADD_SUBDIRECTORY(${subdir})
+ENDFOREACH()
+
+#-------------------------------------
+# Information about the Project
+#-------------------------------------
+string(REPLACE "/" "" ProjectName ${CMAKE_CURRENT_SOURCE_DIR})
+string(REPLACE ":" "" ProjectName ${ProjectName})
+string(REPLACE "." "" ProjectName ${ProjectName})
+string(REPLACE "_" "" ProjectName ${ProjectName})
+string(REPLACE "CUsersStefanDocumentsGitHubOpenppSources" "" ProjectName ${ProjectName})
+
+project(${ProjectName})
+SET(VERSION_MAJOR "1")
+SET(VERSION_MINOR "0")
+SET(VERSION_PATCH "0")
+SET(VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH})
+
+#-------------------------------------
+# Get Compiler Paths
+#-------------------------------------
+INCLUDE(${CMAKE_CURRENT_SOURCE_DIR}/../../../OpenppConfig.txt)
+
+#-------------------------------------
+# Get Files in Project Hirachie
+#-------------------------------------
+FILE(GLOB ${ProjectName}_FOLDER "*.c" "*.cpp" "*.h" "*.hpp" "*.inl" "*.dll" "*.a" "*.pc" "*.cmake" "*.txt")
+
+#-------------------------------------
+# Create Binary
+#-------------------------------------
+add_executable(${PROJECT_NAME} ${${ProjectName}_FOLDER})
+
+#-------------------------------------
+# Configure install
+#-------------------------------------
+install(TARGETS ${PROJECT_NAME}
+	RUNTIME DESTINATION bin
+	LIBRARY DESTINATION lib
+	ARCHIVE DESTINATION lib/static)
