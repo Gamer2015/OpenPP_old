@@ -1,8 +1,5 @@
-#include <iostream>
-#include <vector>
-#include <fstream>
-#include <sstream>
-#include <algorithm>
+#ifndef TREE_H_
+#define TREE_H_
 
 #include <iostream>
 #include <vector>
@@ -75,53 +72,4 @@ std::istream& operator>>(std::istream& is, Tree<T>& tree)
 	return is;
 }
 
-template <typename T>
-void merge(Tree<T>& tree, const std::vector<T>& vector)
-{
-	Tree<T>* current = &tree;
-	bool move_exists;
-
-	for(typename std::vector<T>::const_iterator iter = vector.begin(); iter != vector.end(); ++iter) {
-		move_exists = false;
-		for(int i = 0; i < current->size(); ++i) {
-			if(*iter == (*current)[i].data) {
-				move_exists = true;
-				current = &(*current)[i];
-				break;
-			}
-		}
-
-		if(move_exists == false) {
-			current->push_back(Tree<T>(*iter));
-			current = &current->back();
-		}
-	}
-}
-
-
-int main(void)
-{
-	Tree<int> tree;
-
-	std::vector<int> moves = { 1, 2, 3 };
-	merge(tree, moves);
-	merge(tree, moves);
-	merge(tree, moves);
-
-	std::vector<int> moves2 = { 1, 3, 4 };
-	merge(tree, moves2);
-	merge(tree, moves2);
-
-	std::ofstream os("test.txt");
-	os << tree;
-	os.close();
-	std::cout << tree << "\n\n\n" << std::endl;
-
-	Tree<int> tree1;
-	std::ifstream is("test.txt");
-	is >> tree1;
-	is.close();
-	std::cout << tree1 << std::endl;
-
-    return 0;
-}
+#endif // TREE_H_

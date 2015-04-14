@@ -7,7 +7,7 @@ cmake_minimum_required(VERSION 3.0)
 # Information about the Project
 #-------------------------------------
 SET(VERSION_MAJOR "1")
-SET(VERSION_MINOR "0")
+SET(VERSION_MINOR "1")
 SET(VERSION_PATCH "0")
 SET(VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH})
 PROJECT(TicTacToe_AI_${VERSION})
@@ -42,13 +42,16 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${Qt5Widgets_EXECUTABLE_COMPILE_FLAGS}")
 SET(${PROJECT_NAME}_SOURCES
 
     main.cpp
-    TicTacToe.cpp
+    Game.cpp
+    AI.cpp
     Gui/mainwindow.cpp
     Gui/GameWidget.cpp
 )
 SET(${PROJECT_NAME}_HEADERS
 
-    TicTacToe.h
+    Game.h
+    Tree.h
+    AI.h
     Gui/mainwindow.h
     Gui/GameWidget.h
 )
