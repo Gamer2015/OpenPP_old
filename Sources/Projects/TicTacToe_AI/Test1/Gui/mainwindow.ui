@@ -66,6 +66,7 @@
     <property name="title">
      <string>Game</string>
     </property>
+    <addaction name="actionRestart"/>
    </widget>
    <widget class="QMenu" name="menuAI">
     <property name="title">
@@ -75,6 +76,11 @@
    <addaction name="menuGame"/>
    <addaction name="menuAI"/>
   </widget>
+  <action name="actionRestart">
+   <property name="text">
+    <string>Restart</string>
+   </property>
+  </action>
  </widget>
  <customwidgets>
   <customwidget>
