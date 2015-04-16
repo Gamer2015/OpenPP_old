@@ -17,7 +17,7 @@
 #include <SDL_image.h>
 #include <SDL_ttf.h>
 #include <memory>
-#include "../Vector2.tpp"
+#include "../Vector2.hpp"
 #include "Exceptions/ExSDLError.hpp"
 #include "Globals.hpp"
 
@@ -36,25 +36,27 @@ private:
 	Texture() = delete;
 
 public:
-	/// Load a Texture from a File
-	static std::shared_ptr<SDL_Texture> Get(SDL_Surface* pSurface, SDL_Renderer* pRenderer = Globals::Renderer());
+    struct Info {
+        std::shared_ptr<SDL_Texture> texture;
+        Vector2<int> size;
+    };
 
 	/// Load a Texture from a File
-	static std::shared_ptr<SDL_Texture> Get(const std::string& rcPath, SDL_Renderer* pRenderer = Globals::Renderer());
+    static Info Get(SDL_Surface* pSurface, SDL_Renderer* pRenderer = Globals::Renderer());
+
+	/// Load a Texture from a File
+    static Info Get(const std::string& rcPath, SDL_Renderer* pRenderer = Globals::Renderer());
 
 	/// Make a Texture from a Text
-	static std::shared_ptr<SDL_Texture> GetText(const std::string& rcText, SDL_Renderer* pRenderer = Globals::Renderer(), const SDL_Color = Color);
-
-	/// Returns the Text Size of the Texture
-	static Vector2<int> GetSize(const std::string& Text);
+    static Info GetText(const std::string& rcText, int height, SDL_Renderer* pRenderer = Globals::Renderer(), const SDL_Color = Color);
 
 	/// Set the Font used by LoadText
-	static void LoadFont(const std::string Path, size_t _height);
+    static void SetFont(const std::string& Path);
 
 private:
-	static std::shared_ptr< TTF_Font > pFont;
-	static std::shared_ptr< SDL_Surface > pLoadedSurface;
-	static std::shared_ptr< SDL_Texture > pTexture;
+    static std::string strFont;
+    static std::shared_ptr< TTF_Font > pFont;
+    static int text_height;
 	static SDL_Color Color;
 };
 

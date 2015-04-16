@@ -9,87 +9,92 @@ namespace Objects2D
 namespace SDL2
 {
 
-std::shared_ptr<SDL_Texture> Texture::Get(SDL_Surface* pSurface, SDL_Renderer* pRenderer)
+Texture::Info Texture::Get(SDL_Surface* pSurface, SDL_Renderer* pRenderer)
 {
-	pLoadedSurface.reset( pSurface, SDL_FreeSurface );
-
-	pTexture.reset( SDL_CreateTextureFromSurface (pRenderer, pLoadedSurface.get()), SDL_DestroyTexture );
-	if( pTexture == nullptr )
-	{
+    Info info;
+    info.texture.reset( SDL_CreateTextureFromSurface (pRenderer, pSurface), SDL_DestroyTexture );
+    if( info.texture == nullptr )	{
 		throw Exceptions::ExSDLError( std::string("Unable to create texture from Surface"), SDL_GetError() );
 	}
+    int w, h;
+    if( SDL_QueryTexture(info.texture.get(), NULL, NULL, &w, &h)) {
+        throw Exceptions::ExSDLError( std::string("Unable to Query Texture"), SDL_GetError() );
+    }
+    info.size.x = w;
+    info.size.y = h;
 
-	return pTexture;
+    return info;
 }
 
-std::shared_ptr<SDL_Texture> Texture::Get(const std::string& rcPath, SDL_Renderer* pRenderer)
+Texture::Info Texture::Get(const std::string& rcPath, SDL_Renderer* pRenderer)
 {
-	pLoadedSurface.reset( IMG_Load(rcPath.c_str()), SDL_FreeSurface );
+    std::shared_ptr<SDL_Surface> pLoadedSurface( IMG_Load(rcPath.c_str()), SDL_FreeSurface );
 	if( pLoadedSurface == nullptr )
 	{
 		throw Exceptions::ExSDLError( std::string("Unable to Load Image " + rcPath), IMG_GetError() );
 	}
 
-	pTexture.reset( SDL_CreateTextureFromSurface (pRenderer, pLoadedSurface.get()), SDL_DestroyTexture );
-	if( pTexture == nullptr )
+    Info info;
+    info.texture.reset( SDL_CreateTextureFromSurface (pRenderer, pLoadedSurface.get()), SDL_DestroyTexture );
+    if( info.texture == nullptr )
 	{
 		throw Exceptions::ExSDLError( std::string("Unable to create texture from " + rcPath), SDL_GetError() );
 	}
 
-	return pTexture;
+    int w, h;
+    if( SDL_QueryTexture(info.texture.get(), NULL, NULL, &w, &h)) {
+        throw Exceptions::ExSDLError( std::string("Unable to Query Texture"), SDL_GetError() );
+    }
+    info.size.x = w;
+    info.size.y = h;
+
+    return info;
 }
 
-std::shared_ptr<SDL_Texture> Texture::GetText(const std::string& rcText, SDL_Renderer* pRenderer, const SDL_Color Color)
+Texture::Info Texture::GetText(const std::string& rcText, int _height, SDL_Renderer* pRenderer, const SDL_Color Color)
 {
-	pTexture.reset();
+    text_height = _height;
+    pFont.reset( TTF_OpenFont( strFont.c_str(), text_height ), TTF_CloseFont );
+    if( pFont == nullptr )
+    {
+        throw Exceptions::ExSDLError( std::string("Unable to load Font " + strFont), SDL_GetError() );
+    }
 
 	if(rcText.length() == 0)
-		return pTexture;
+        return Texture::Info();
 
-	pLoadedSurface.reset( TTF_RenderText_Solid(Texture::pFont.get(), rcText.c_str(), Color), SDL_FreeSurface );
+    std::shared_ptr< SDL_Surface > pLoadedSurface( TTF_RenderText_Solid(Texture::pFont.get(), rcText.c_str(), Color), SDL_FreeSurface );
 	if( pLoadedSurface == nullptr )
 	{
 		throw Exceptions::ExSDLError( std::string("Unable to render text surface " + rcText), TTF_GetError() );
 	}
 
-	pTexture.reset( SDL_CreateTextureFromSurface (pRenderer, pLoadedSurface.get()), SDL_DestroyTexture );
-	if( pTexture == nullptr )
+    Texture::Info info;
+    info.texture.reset( SDL_CreateTextureFromSurface (pRenderer, pLoadedSurface.get()), SDL_DestroyTexture );
+    if( info.texture == nullptr )
 	{
 		throw Exceptions::ExSDLError( "Unable to create texture from from rendered text", SDL_GetError() );
 	}
+    int w, h;
+    if( TTF_SizeText(pFont.get(), rcText.c_str(), &w, &h) != 0 )
+    {
+        throw Exceptions::ExSDLError( std::string("Unable to get Size of Text " + rcText), TTF_GetError() );
+    }
+    info.size.x = w;
+    info.size.y = h;
 
-	return pTexture;
+
+    return info;
 }
 
-Vector2<int> Texture::GetSize(const std::string& Text)
+void Texture::SetFont(const std::string& Path)
 {
-	Vector2<int> Size;
-
-	int x;
-	int y;
-
-	if( TTF_SizeText(pFont.get(), Text.c_str(), (&x), (&y)) != 0 )
-	{
-		throw Exceptions::ExSDLError( std::string("Unable to get Size of Text " + Text), TTF_GetError() );
-	}
-
-	Size.set(x, y);
-
-	return Size;
+    strFont = Path;
 }
 
-void Texture::LoadFont(const std::string Path, size_t _height)
-{
-	pFont.reset( TTF_OpenFont( Path.c_str(), _height ), TTF_CloseFont );
-	if( pFont == nullptr )
-	{
-		throw Exceptions::ExSDLError( std::string("Unable to load Font " + Path), SDL_GetError() );
-	}
-}
-
+std::string Texture::strFont;
 std::shared_ptr< TTF_Font > Texture::pFont(nullptr);
-std::shared_ptr< SDL_Surface > Texture::pLoadedSurface(nullptr);
-std::shared_ptr< SDL_Texture > Texture::pTexture(nullptr);
+int Texture::text_height(32);
 SDL_Color Texture::Color = {0, 0, 0};
 
 } // SDL2

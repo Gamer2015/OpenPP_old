@@ -40,7 +40,7 @@ namespace Game
         }
 		void LostScreen::Init()
         {
-			mBackground = SDL::Texture::Get( mPaths[0] );
+            mBackground = SDL::Texture::Get( mPaths[0] ).texture;
 
 			mText.set("You Lost! :(");
 			mText.position.set(GG::WINDOW.x / 2.0, GG::WINDOW.y / 4.0);

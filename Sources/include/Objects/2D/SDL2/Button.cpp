@@ -48,9 +48,9 @@ void Button::Render(int Index) const
 {
 	if(Index < textures.size())
 	{
-		if(textures[Index]() != nullptr)
+        if(textures[Index].get() != nullptr)
 		{
-			SDL_RenderCopyEx(Globals::Renderer(), textures[Index](), NULL, &rect(), RAD_GRAD(angle), &rectOrigin(), SDL_FLIP_NONE);
+            SDL_RenderCopyEx(Globals::Renderer(), textures[Index].get(), NULL, &rect(), RAD_GRAD(angle), &rectOrigin(), SDL_FLIP_NONE);
 		}
 	}
 

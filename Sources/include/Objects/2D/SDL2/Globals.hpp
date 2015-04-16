@@ -18,7 +18,7 @@
 #include <memory>
 #include "Exceptions/ExSDLError.hpp"
 #include "../../IScreen.hpp"
-#include "../Vector2.tpp"
+#include "../Vector2.hpp"
 
 namespace Openpp
 {

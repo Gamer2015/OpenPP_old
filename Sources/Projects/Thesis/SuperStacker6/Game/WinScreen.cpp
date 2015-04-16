@@ -40,7 +40,7 @@ namespace Game
 		}
 		void WinScreen::Init()
 		{
-			mBackground = SDL::Texture::Get( mPaths[0] );
+            mBackground = SDL::Texture::Get( mPaths[0] ).texture;
 
 			mText.set("You Win! :D");
 			mText.position.set(GG::WINDOW.x / 2.0, GG::WINDOW.y / 4.0);

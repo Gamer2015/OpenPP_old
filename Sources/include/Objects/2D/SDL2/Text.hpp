@@ -23,7 +23,7 @@
 #include "Properties/Text.hpp"
 
 #include "../../Properties/OType.tpp"
-#include "../Vector2.tpp"
+#include "../Vector2.hpp"
 #include <cmath>
 
 

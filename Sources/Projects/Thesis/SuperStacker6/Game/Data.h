@@ -4,8 +4,9 @@
 #include <SDL.h>
 #include <Box2D/Box2D.h>
 #include <vector>
+#include <map>
 #include <string>
-#include <Objects/2D/Vector2.tpp>
+#include <Objects/2D/Vector2.hpp>
 #include <Objects/2D/SDL2/Globals.hpp>
 #include <Objects/2D/SDL2/Text.hpp>
 #include <Objects/2D/SDL2/Sprite.tpp>
@@ -88,7 +89,7 @@ namespace Game
         int mIndex;
         std::vector< std::string > mPaths;
 
-        std::vector< std::shared_ptr< SDL_Texture > > mTextures;
+        std::vector< std::shared_ptr<SDL_Texture> > mTextures;
 
         SDL::Sprite<float> mObject;
 		float mDiameter;

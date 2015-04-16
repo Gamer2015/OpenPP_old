@@ -39,15 +39,15 @@ public:
 
 	/// set the text
 	void set(const std::string& _rcPath);
-	void set(const std::shared_ptr<SDL_Texture> _pTexture);
+    void set(const SDL2::Texture::Info _pTexture);
 
-	/// get the text
-	SDL_Texture* const operator()() const;
+    /// get the text
+    SDL_Texture* get() const;
 
 	void operator=(const Texture& _rcTexture);
 
 private:
-	std::shared_ptr< SDL_Texture > _mpTexture;
+    SDL2::Texture::Info _mpTexture;
 };
 
 } // Properties

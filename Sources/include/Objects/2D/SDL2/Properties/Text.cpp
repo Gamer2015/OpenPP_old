@@ -18,8 +18,7 @@ Text::Text(const std::string& _rctext, OObject* const _pParent) :
 	OObject(_pParent),
 	_mText(_rctext),
 	height(this),
-	origin(this),
-	Size(this)
+    origin(this)
 {}
 
 void Text::set(const std::string& _rcText)
@@ -30,18 +29,16 @@ void Text::set(const std::string& _rcText)
 }
 void Text::set(const Text& _rcText)
 {
-	_mText = _rcText;
-
-	ChildChanged(selfId());
+    _mText = _rcText;
 }
 
 const Vector2<int>& Text::size() const
 {
-	return Size;
+    return mpTexture.size;
 }
 SDL_Texture* Text::texture() const
 {
-	return mpTexture.get();
+    return mpTexture.texture.get();
 }
 
 Text::operator std::string() const
@@ -52,19 +49,14 @@ Text::operator std::string() const
 void Text::ChildChanged(int _childId)
 {
 	if(_childId == selfId())
-	{
-		Size.set(Texture::GetSize((*this)));
-		mpTexture = Texture::GetText((*this));
-
-		ChildChanged(height.id());
-		return;
+    {
+        if(height != 0)
+            mpTexture = Texture::GetText(*this, height);
 	}
 	else if(_childId == height.id())
-	{
-        if(height != 0 && size().x != 0 && size().y != 0)
-		{
-            Size.set(size().x * height / size().y, height);
-		}
+    {
+        if((std::string)*this != "")
+            mpTexture = Texture::GetText(*this, height);
 	}
 	OObject::ChildChanged();
 }

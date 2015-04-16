@@ -82,7 +82,7 @@ namespace Game
         }
         void LevelScreen::Init()
         {
-            mpBackground = SDL::Texture::Get( mPaths[0] );
+            mpBackground = SDL::Texture::Get( mPaths[0] ).texture;
 
 /// Get Highest Level Reached
 

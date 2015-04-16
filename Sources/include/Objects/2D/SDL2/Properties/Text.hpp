@@ -14,7 +14,7 @@
 
 #include "../../../OObject.hpp"
 #include "../../../Properties/OType.tpp"
-#include "../../Vector2.tpp"
+#include "../../Vector2.hpp"
 
 #include "../Texture.hpp"
 #include <string>
@@ -60,8 +60,7 @@ protected:
 	virtual void ChildChanged(int _childId);
 
 private:
-	std::shared_ptr< SDL_Texture > mpTexture;
-	Vector2<int> Size;
+    SDL2::Texture::Info mpTexture;
 
 	std::string _mText;
 };

@@ -22,7 +22,7 @@ void Sprite<T>::set(const std::shared_ptr<SDL_Texture> pTexture)
 template <typename T>
 void Sprite<T>::set(const std::string& Path)
 {
-	mpTexture = Texture::Get(Path);
+    mpTexture = Texture::Get(Path).texture;
 }
 
 template <typename T>

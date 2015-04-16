@@ -52,7 +52,7 @@ namespace Game
         }
         void StartScreen::Init()
         {
-			mpBackground = SDL::Texture::Get( mPaths[0] );
+            mpBackground = SDL::Texture::Get( mPaths[0] ).texture;
 
 			for(int i = 1; i < mPaths.size(); ++i)
 				mButtonDummy.textures[i-1].set(SDL::Texture::Get(mPaths[i]));

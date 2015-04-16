@@ -16,13 +16,13 @@ void InitSDL2()
 {
 	SDLG::Init(GG::TITLE, GG::WINDOW, IMG_INIT_PNG | IMG_INIT_JPG);
 
-	SDL::Texture::LoadFont("Media/Font.ttf", 128);
+    SDL::Texture::SetFont("Media/Font.ttf");
 }
 
 /// Set the Loading Screen
 void SetLoadingScreen()
 {
-    GG::gpLoadingTexture = SDL::Texture::Get( "Media/Loading.jpg" );
+    GG::gpLoadingTexture = SDL::Texture::Get( "Media/Loading.jpg" ).texture;
 
     SDL_RenderClear( SDLG::Renderer() );
     SDL_RenderCopy( SDLG::Renderer(), GG::gpLoadingTexture.get(), NULL, NULL);

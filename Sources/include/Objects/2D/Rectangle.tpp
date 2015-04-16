@@ -13,7 +13,7 @@
 \********************************************/
 
 #include "BaseRectangle.tpp"
-#include "Vector2.tpp"
+#include "Vector2.hpp"
 
 namespace Openpp
 {

@@ -54,21 +54,21 @@ namespace Game
 		mTextObjectInfo.height = 18;
 		mTextObjectInfo.origin.set(0, -1);
 
-		mPaths.push_back("Media/Red.png");
-		mPaths.push_back("Media/Circle.png");
-		mPaths.push_back("Media/Triangle.png");
-		mPaths.push_back("Media/Clock.png");
+        mPaths.push_back("Media/Red.png");
+        mPaths.push_back("Media/Circle.png");
+        mPaths.push_back("Media/Triangle.png");
+        mPaths.push_back("Media/Clock.png");
     }
 
     void Data::Init()
     {
-        mTextures.push_back(SDL::Texture::Get(mPaths[0]));
-        mTextures.push_back(SDL::Texture::Get(mPaths[1]));
-        mTextures.push_back(SDL::Texture::Get(mPaths[2]));
+        mTextures.push_back(SDL::Texture::Get(mPaths[0]).texture);
+        mTextures.push_back(SDL::Texture::Get(mPaths[1]).texture);
+        mTextures.push_back(SDL::Texture::Get(mPaths[2]).texture);
 
         mClock.set(mPaths[3]);
         mClock.position.set(40, 40);
-        mClock.size.set(70, 70);
+        mClock.size.set(64, 64);
     }
 
     void Data::ThrowObject(int PositionX, int PositionY)
@@ -177,10 +177,10 @@ namespace Game
         for (mpBody = mWorld->GetBodyList(); mpBody != NULL; mpBody = mpBody->GetNext())
 		{
 			count++;
-			static b2Vec2 b2Pos;
+            b2Vec2 b2Pos;
 			b2Pos = mpBody->GetPosition();
 
-            static OO2::Vector2<float> position;
+            OO2::Vector2<float> position;
 			position.x = SCALE(b2Pos.x);
 			position.y = SCALE(b2Pos.y);
 

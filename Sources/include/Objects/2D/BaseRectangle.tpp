@@ -13,7 +13,7 @@
 \********************************************/
 
 #include "BaseObject2D.tpp"
-#include "Vector2.tpp"
+#include "Vector2.hpp"
 
 namespace Openpp
 {

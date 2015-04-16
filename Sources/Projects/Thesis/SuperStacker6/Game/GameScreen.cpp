@@ -23,7 +23,7 @@ namespace Game
         }
         void GameScreen::Init()
         {
-            mBackground = SDL::Texture::Get(mPaths[0]);
+            mBackground = SDL::Texture::Get(mPaths[0]).texture;
 
             mMouse.set(mPaths[1]);
 			mMouse.position.set(GG::WINDOW.x * 9 / 16, 5);
