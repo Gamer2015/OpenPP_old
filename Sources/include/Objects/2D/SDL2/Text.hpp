@@ -13,7 +13,7 @@
  *
 \********************************************/
 
-#include <Objects/OObject.hpp>
+#include "../../OObject.hpp"
 
 #include <SDL.h>
 #include <memory>
@@ -22,7 +22,7 @@
 #include "Globals.hpp"
 #include "Properties/Text.hpp"
 
-#include "../../Properties/OType.tpp"
+#include "../../Properties/OType.hpp"
 #include "../Vector2.hpp"
 #include <cmath>
 

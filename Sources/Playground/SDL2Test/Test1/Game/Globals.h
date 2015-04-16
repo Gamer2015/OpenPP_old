@@ -5,7 +5,7 @@
 #include <memory>
 #include <Objects/2D/SDL2/Globals.hpp>
 #include <Objects/2D/SDL2/AScreen.hpp>
-#include <Objects/2D/Vector2.tpp>
+#include <Objects/2D/Vector2.hpp>
 
 namespace OO = Openpp::Objects;
 namespace O2D = OO::Objects2D;

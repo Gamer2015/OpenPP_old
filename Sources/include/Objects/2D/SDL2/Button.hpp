@@ -18,7 +18,7 @@
 #include <memory>
 #include <vector>
 #include "Globals.hpp"
-#include "SDL_Rectangle.tpp"
+#include "SDL_Rectangle.hpp"
 
 #include "Properties/Texture.hpp"
 #include "Properties/Text.hpp"

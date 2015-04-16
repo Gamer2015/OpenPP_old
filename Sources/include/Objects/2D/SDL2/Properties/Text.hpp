@@ -13,7 +13,7 @@
 \********************************************/
 
 #include "../../../OObject.hpp"
-#include "../../../Properties/OType.tpp"
+#include "../../../Properties/OType.hpp"
 #include "../../Vector2.hpp"
 
 #include "../Texture.hpp"

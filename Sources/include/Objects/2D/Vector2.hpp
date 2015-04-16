@@ -18,7 +18,7 @@
  *******************************************/
 
 #include "../OObject.hpp"
-#include "../Properties/OType.tpp"
+#include "../Properties/OType.hpp"
 #include <cmath>
 
 namespace Openpp

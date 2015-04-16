@@ -1,21 +1,3 @@
-#ifndef OPENPP_OBJECTS_2D_SDL2_SDL_RECTANGLE_H_
-#define OPENPP_OBJECTS_2D_SDL2_SDL_RECTANGLE_H_
-
-/********************************************\
- * Usage: base class for renderable SDLObjects
- * Date: 20th of February 2015
- * Author: Stefan Kreiner
- * _______________________________________________
- *
- * NOTES:
- *  - Not Tested
- *
-\********************************************/
-
-#include <SDL.h>
-#include "../Rectangle.tpp"
-#include <cmath>
-
 namespace Openpp
 {
 namespace Objects
@@ -26,28 +8,40 @@ namespace SDL2
 {
 
 template <typename T>
-class SDL_Rectangle : public Rectangle<T>
+SDL_Rectangle<T>::SDL_Rectangle(OObject* const _pParent) :
+	Rectangle<T>(_pParent)
+{ }
+
+template <typename T>
+const SDL_Rect& SDL_Rectangle<T>::rect() const
 {
-public:
-	SDL_Rectangle(OObject* const _pParent = nullptr);
+	return mRect;
+}
+template <typename T>
+const SDL_Point& SDL_Rectangle<T>::rectOrigin() const
+{
+	return mRectOrigin;
+}
 
-	/// rendered rect
-	const SDL_Rect& rect() const;
+template <typename T>
+void SDL_Rectangle<T>::ChildChanged(int _childId)
+{
+	Rectangle<T>::ChildChanged();
 
-protected:
-	virtual void ChildChanged(int _childId);
+	if(_childId != Rectangle<T>::angle.id());
+	{
+        mRect.w = this->size.x;
+        mRect.h = this->size.y;
 
-	SDL_Point mRectOrigin;
-	const SDL_Point& rectOrigin() const;
+        mRectOrigin.x = ceil(mRect.w / 2.0 * (this->origin.x + 1));
+        mRectOrigin.y = ceil(mRect.h / 2.0 * (this->origin.y + 1));
 
-	SDL_Rect mRect;
-};
+        mRect.x = this->position.x - mRectOrigin.x;
+        mRect.y = this->position.y - mRectOrigin.y;
+	}
+}
 
 } // SDL2
 } // Objects2D
 } // Objects
 } // Openpp
-
-#include "SDL_Rectangle.inl"
-
-#endif // OPENPP_OBJECTS_2D_SDL2_SDL_RECTANGLE_H_

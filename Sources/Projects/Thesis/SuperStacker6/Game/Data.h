@@ -9,7 +9,7 @@
 #include <Objects/2D/Vector2.hpp>
 #include <Objects/2D/SDL2/Globals.hpp>
 #include <Objects/2D/SDL2/Text.hpp>
-#include <Objects/2D/SDL2/Sprite.tpp>
+#include <Objects/2D/SDL2/Sprite.hpp>
 
 namespace OO2 = Openpp::Objects::Objects2D;
 namespace SDL = OO2::SDL2;

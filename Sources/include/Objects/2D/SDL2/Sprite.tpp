@@ -1,26 +1,3 @@
-#ifndef OPENPP_OBJECTS_2D_SDL2_SPRITE_H_
-#define OPENPP_OBJECTS_2D_SDL2_SPRITE_H_
-
-/********************************************\
- * Date: 18.01.2015
- * Author: Stefan Kreiner
- * Usage: Sprite Class for Games with SDL
- *
- * --------------------------------------------------
- * NOTES:
- *  - Not Tested
- *  -
- *
-\********************************************/
-
-#include <SDL.h>
-#include <memory>
-#include <string>
-#include "SDL_Rectangle.tpp"
-#include "Texture.hpp"
-#include "Globals.hpp"
-#include <cmath>
-
 namespace Openpp
 {
 namespace Objects
@@ -31,32 +8,35 @@ namespace SDL2
 {
 
 template <typename T>
-class Sprite : public SDL_Rectangle<T>
+Sprite<T>::Sprite(OObject* const _pParent) :
+	SDL_Rectangle<T>(_pParent)
+{ }
+
+template <typename T>
+void Sprite<T>::set(const std::shared_ptr<SDL_Texture> pTexture)
 {
-public:
-	Sprite(OObject* const _pParent = nullptr);
+	mpTexture = pTexture;
+}
+template <typename T>
+void Sprite<T>::set(const std::string& Path)
+{
+    mpTexture = Texture::Get(Path).texture;
+}
 
-	/// Set Texture
-	void set(const std::shared_ptr<SDL_Texture> pTexture);
+template <typename T>
+std::shared_ptr<SDL_Texture> Sprite<T>::operator()() const
+{
+	return mpTexture;
+}
 
-	/// Set Texture
-	void set(const std::string& Path);
-
-	/// Get Texture
-	std::shared_ptr<SDL_Texture> operator()() const;
-
-	/// Render Sprite
-    void Render() const;
-
-protected:
-	std::shared_ptr< SDL_Texture > mpTexture;
-};
+template <typename T>
+void Sprite<T>::Render() const
+{
+	if(mpTexture != nullptr)
+        SDL_RenderCopyEx( Globals::Renderer(), mpTexture.get(), NULL, &(this->rect()), 180 / M_PI * (this->angle), &(this->rectOrigin()), SDL_FLIP_NONE);
+}
 
 } // SDL2
 } // Objects2D
 } // Objects
 } // Openpp
-
-#include "Sprite.inl"
-
-#endif // OPENPP_OBJECTS_2D_SDL2_SPRITE_H_
