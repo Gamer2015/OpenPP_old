@@ -20,14 +20,10 @@
 #include "../../IScreen.hpp"
 #include "../Vector2.hpp"
 
-namespace Openpp
-{
-namespace Objects
-{
-namespace Objects2D
-{
-namespace SDL2
-{
+namespace Openpp {
+namespace Objects {
+namespace Objects2D {
+namespace SDL2 {
 
 class Globals
 {

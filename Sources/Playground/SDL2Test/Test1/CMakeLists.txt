@@ -60,6 +60,7 @@ add_executable(${PROJECT_NAME} ${${PROJECT_NAME}_headers} ${${PROJECT_NAME}_FILE
 #-------------------------------------
 target_link_libraries(${PROJECT_NAME} openpp_sdl2 SDL2 SDL2main SDL2_image SDL2_ttf)
 
+
 #-------------------------------------
 # Configure install
 #-------------------------------------

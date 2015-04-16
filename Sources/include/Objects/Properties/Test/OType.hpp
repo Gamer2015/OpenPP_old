@@ -1,19 +1,15 @@
 #ifndef OPENPP_OBJECTS_PROPERTIES_TEST_LTYPE_HPP_
 #define OPENPP_OBJECTS_PROPERTIES_TEST_LTYPE_HPP_
 
-#include "../OType.tpp"
+#include "../OType.hpp"
 #include <string>
 #include <vector>
 #include <iostream>
 
-namespace Openpp
-{
-namespace Objects
-{
-namespace Properties
-{
-namespace Test
-{
+namespace Openpp {
+namespace Objects {
+namespace Properties {
+namespace Test {
 
 template <typename T>
 class Object : public OObject

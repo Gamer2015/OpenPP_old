@@ -1,13 +1,9 @@
 #include "Text.hpp"
 
-namespace Openpp
-{
-namespace Objects
-{
-namespace Objects2D
-{
-namespace SDL2
-{
+namespace Openpp {
+namespace Objects {
+namespace Objects2D {
+namespace SDL2 {
 
 inline float RAD_GRAD(float _radiant)
 {

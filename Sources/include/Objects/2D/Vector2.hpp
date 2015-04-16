@@ -21,12 +21,9 @@
 #include "../Properties/OType.hpp"
 #include <cmath>
 
-namespace Openpp
-{
-namespace Objects
-{
-namespace Objects2D
-{
+namespace Openpp {
+namespace Objects {
+namespace Objects2D {
 
 template <typename T>
 class Vector2 : public OObject

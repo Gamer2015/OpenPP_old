@@ -4,7 +4,7 @@
 #include <boost/filesystem.hpp>
 #include <Utility/String.hpp>
 
-namespace LUS = Openpp::Utility::String;
+namespace LU = Openpp::Utility;
 namespace BF = boost::filesystem;
 
 enum TestState
@@ -139,7 +139,7 @@ std::vector<TesterThread::Test> TesterThread::ScanTests(const std::string& rRoot
             return Tests;
 
         /// If it is a Directory
-		if(BF::is_directory(itr->path()) && !(LUS::EndsWith(itr->path().string(), "3rdParty")))
+		if(BF::is_directory(itr->path()) && !(LU::EndsWith(itr->path().string(), "3rdParty")))
         {
             FolderTests = ScanTests(itr->path().string()); /// recursivly search all Folders for Tests
 
@@ -148,7 +148,7 @@ std::vector<TesterThread::Test> TesterThread::ScanTests(const std::string& rRoot
         /// If it is a regular File
         else if(BF::is_regular_file(itr->path()))
         {
-            if(LUS::EndsWith(itr->path().string(), "Test.exe"))
+			if(LU::EndsWith(itr->path().string(), "Test.exe"))
             {
                 mDummyTest.SetPath(itr->path().string());
 

@@ -18,12 +18,9 @@
 #include <iostream>
 #include <stdexcept>
 
-namespace Openpp
-{
-namespace Objects
-{
-namespace Properties
-{
+namespace Openpp {
+namespace Objects {
+namespace Properties {
 
 template <typename T>
 class OType : public OObject

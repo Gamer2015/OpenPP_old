@@ -27,14 +27,10 @@
 #include <cmath>
 
 
-namespace Openpp
-{
-namespace Objects
-{
-namespace Objects2D
-{
-namespace SDL2
-{
+namespace Openpp {
+namespace Objects {
+namespace Objects2D {
+namespace SDL2 {
 
 class Text : public Properties::Text
 {

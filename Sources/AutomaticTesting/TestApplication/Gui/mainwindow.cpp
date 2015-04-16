@@ -7,7 +7,7 @@
 
 #include <Utility/String.hpp>
 
-namespace LUS = Openpp::Utility::String;
+namespace LU = Openpp::Utility;
 
 MainWindow::MainWindow(QWidget *parent) :
 	QMainWindow(parent),
@@ -38,7 +38,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 	connect(this, SIGNAL(SendCommand(int,int,int)), mpTester, SLOT(GetCommand(int,int,int)));
 
-    emit SendCommand(READ_FILE);
+	emit SendCommand(READ_FILE);
 }
 
 MainWindow::~MainWindow()
@@ -51,9 +51,9 @@ void MainWindow::FoundTest(QString Name)
     std::string ItemName = Name.toStdString();
 
 #if defined(_WIN16)||defined(_WIN32)||defined(_WIN64)
-	LUS::ReplacePattern(ItemName, "..\\..\\", "");
+	LU::ReplacePattern(ItemName, "..\\..\\", "");
 #else
-	LUS::ReplacePattern(ItemName, "../../", "");
+	LU::ReplacePattern(ItemName, "../../", "");
 #endif
 
 	ui->lstTests->addItem(QString(QString::number(ui->lstTests->count() + 1) + ": " + ItemName.c_str()));

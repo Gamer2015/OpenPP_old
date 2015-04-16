@@ -1,11 +1,7 @@
-namespace Openpp
-{
-namespace Objects
-{
-namespace Objects2D
-{
-namespace SDL2
-{
+namespace Openpp {
+namespace Objects {
+namespace Objects2D {
+namespace SDL2 {
 
 template <typename T>
 SDL_Rectangle<T>::SDL_Rectangle(OObject* const _pParent) :

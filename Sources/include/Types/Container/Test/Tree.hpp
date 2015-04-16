@@ -2,7 +2,7 @@
 #define OPENPP_INCLUDE_UTILITY_TEST_STRING_H_
 
 #include "../Tree.hpp"
-#include "../../../Objects/Properties/OType.tpp"
+#include "../../../Objects/Properties/OType.hpp"
 #include <iostream>
 #include <std/string>
 #include <vector>
@@ -60,8 +60,6 @@ bool IteratorTest(std::string& rString)
 	std::cout << rString << std::endl;
     bool success = true;
 
-    Openpp::Objects::Properties::OType<std::string> sf("Hallo");
-    std::cout << sf << std::endl;
 /*
 	Tree<std::string, std::string> tree;
 	tree = "Manager";
@@ -81,22 +79,16 @@ bool IteratorTest(std::string& rString)
 */
     Tree<std::string, SomeObject> tree2;
     tree2->name = "Manager";
-    tree2["branch1"]["Leaf1"] = SomeObject("Manager", "Herbert");
-    tree2["branch1"]["Leaf1"].get().print();
+	tree2["branch1"]["Leaf1"] = SomeObject("Manager", "Herbert");
     tree2["branch1"]["Leaf2"]->name = "John";
-    tree2["branch1"]["Leaf3"]->position = "Christian";
-    tree2["branch1"]["Leaf3"]->print();
+	tree2["branch1"]["Leaf3"]->position = "Christian";
     tree2["branch2"]["Leaf1"]->name = "Stefan";
     tree2["branch2"]["Leaf2"]->name = "Martin";
     tree2["branch2"]["Leaf3"]->name = "Daniel";
     tree2["branch3"]["Leaf1"]->name = "David";
     tree2["branch3"]["Leaf2"]->name = "Marco";
     tree2["branch3"]["Leaf3"]->name = "Deen";
-    tree2["super"]["mega"]["large"]["branch"]["Leaf1"]->position = "Deen";
-
-    Tree<std::string, SomeObject> tree3;
-    tree3 = SomeObject("Manager", "Bert");
-    tree3->print();
+	tree2["super"]["mega"]["large"]["branch"]["Leaf1"]->position = "Deen";
 
 	return true;
 }
@@ -127,7 +119,7 @@ bool TreeTest(std::string& rString)
 	{
 		std::cout << Names[i] << ": " << Results[i] << std::endl;
 	}
-	return !(success);
+	return success;
 }
 
 } // Test

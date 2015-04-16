@@ -60,5 +60,7 @@ Sources/3rdParty/*/
 # Automatic Test Tests.txt File 
 Sources/AutomaticTesting/Tests.txt
 
-# Applications
+# Binary Files
 *.exe
+*.dll
+*.a

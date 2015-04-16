@@ -1,15 +1,10 @@
 #include "Text.hpp"
 
-namespace Openpp
-{
-namespace Objects
-{
-namespace Objects2D
-{
-namespace SDL2
-{
-namespace Properties
-{
+namespace Openpp {
+namespace Objects {
+namespace Objects2D {
+namespace SDL2 {
+namespace Properties {
 
 Text::Text(OObject* const _pParent) :
 	Text("", _pParent)

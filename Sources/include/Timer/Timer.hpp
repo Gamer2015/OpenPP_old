@@ -20,6 +20,7 @@
 #else          // Unix based system specific
 #include <sys/time.h>
 #endif
+namespace Openpp {
 
 class Timer
 {
@@ -141,5 +142,7 @@ private:
     timeval endCount;                           //
 #endif
 };
+
+} // Openpp
 
 #endif // TIMER_H_DEF

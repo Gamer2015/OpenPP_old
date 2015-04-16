@@ -12,10 +12,8 @@
  *
 \********************************************/
 
-namespace Openpp
-{
-namespace Objects
-{
+namespace Openpp {
+namespace Objects {
 
 class OObject
 {
@@ -55,7 +53,5 @@ private:
 
 } // Objects
 } // Openpp
-
-namespace OO = Openpp::Objects;
 
 #endif // OPENPP_OBJECTS_LOBJECT_HPP_

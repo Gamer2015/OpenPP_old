@@ -10,8 +10,7 @@ namespace Utility
 {
 
 /// Public Static Methods
-
-std::vector< std::string > String::Split(const std::string& rString, unsigned int Length, const std::string& rEnding)
+std::vector< std::string > Split(const std::string& rString, unsigned int Length, const std::string& rEnding)
 {
     std::vector<std::string> vStringResult;
 
@@ -26,7 +25,7 @@ std::vector< std::string > String::Split(const std::string& rString, unsigned in
 
 	return vStringResult;
 }
-std::vector<std::string> String::Explode(const std::string& rString, const std::string& rDelimiter, int SearchStart)
+std::vector<std::string> Explode(const std::string& rString, const std::string& rDelimiter, int SearchStart)
 {
     std::vector<std::string> vStringResult;
 
@@ -42,7 +41,7 @@ std::vector<std::string> String::Explode(const std::string& rString, const std::
 
 	return vStringResult;
 }
-std::vector<std::string> String::SoftExplode(const std::string& rString, const std::string& rDelimiter, int SearchStart)
+std::vector<std::string> SoftExplode(const std::string& rString, const std::string& rDelimiter, int SearchStart)
 {
     std::vector<std::string> vStringResult;
 
@@ -58,7 +57,7 @@ std::vector<std::string> String::SoftExplode(const std::string& rString, const s
 
 	return vStringResult;
 }
-std::string String::Implode(const std::vector<std::string>& rvString, const std::string& rDelimiter)
+std::string Implode(const std::vector<std::string>& rvString, const std::string& rDelimiter)
 {
     std::string StringResult;
 
@@ -74,7 +73,7 @@ std::string String::Implode(const std::vector<std::string>& rvString, const std:
 	return StringResult;
 }
 
-std::string String::Repeat(const std::string& rString, unsigned int RepeatCount)
+std::string Repeat(const std::string& rString, unsigned int RepeatCount)
 {
     std::string StringResult;
 
@@ -83,7 +82,7 @@ std::string String::Repeat(const std::string& rString, unsigned int RepeatCount)
 
 	return StringResult;
 }
-void String::Trim(std::string& rString, const std::string& rTrimChars)
+void Trim(std::string& rString, const std::string& rTrimChars)
 {
     std::string::iterator StringIter;
     for(StringIter = rString.begin(); StringIter != rString.end(); ++StringIter)
@@ -104,7 +103,7 @@ void String::Trim(std::string& rString, const std::string& rTrimChars)
 		}
 	}
 }
-std::string String::Reverse(const std::string& rString)
+std::string Reverse(const std::string& rString)
 {
     std::string StringResult;
 
@@ -116,7 +115,7 @@ std::string String::Reverse(const std::string& rString)
 	return StringResult;
 }
 
-void String::InsertBeforePattern(std::string& rString, const std::string& rPattern, const std::string& rSequence)
+void InsertBeforePattern(std::string& rString, const std::string& rPattern, const std::string& rSequence)
 {
 	int SequenceLength = rSequence.length();
 
@@ -126,7 +125,7 @@ void String::InsertBeforePattern(std::string& rString, const std::string& rPatte
 		found += SequenceLength;
 	}
 }
-void String::HaveBeforePattern(std::string& rString, const std::string& rPattern, const std::string& rSequence)
+void HaveBeforePattern(std::string& rString, const std::string& rPattern, const std::string& rSequence)
 {
 	int SequenceLength = rSequence.length();
 
@@ -139,7 +138,7 @@ void String::HaveBeforePattern(std::string& rString, const std::string& rPattern
 		}
 	}
 }
-void String::HaveCharsBeforePattern(std::string &rString, const std::string &rPattern, const std::string &rChars, char rInsert)
+void HaveCharsBeforePattern(std::string &rString, const std::string &rPattern, const std::string &rChars, char rInsert)
 {
 	for(std::size_t found = rString.find(rPattern); found != std::string::npos; found = rString.find(rPattern,found+1))
 	{
@@ -159,14 +158,14 @@ void String::HaveCharsBeforePattern(std::string &rString, const std::string &rPa
 	}
 }
 
-void String::ReplaceChar(std::string& rString, char Char, char Replace)
+void ReplaceChar(std::string& rString, char Char, char Replace)
 {
 	for(std::size_t found = rString.find_first_of(Char); found != std::string::npos; found = rString.find_first_of(Char, found + 1))
 	{
 		rString[found] = Replace;
 	}
 }
-void String::ReplaceChars(std::string& rString, const std::string& rChars, const std::string& rReplaces)
+void ReplaceChars(std::string& rString, const std::string& rChars, const std::string& rReplaces)
 {
 	if(rChars.length() > rReplaces.length())
 	{
@@ -185,14 +184,14 @@ void String::ReplaceChars(std::string& rString, const std::string& rChars, const
 		rString[found] = rReplaces[foundCharPos];
 	}
 }
-void String::ReplaceChars(std::string& rString, const std::string& rChars, std::string& rReplaces)
+void ReplaceChars(std::string& rString, const std::string& rChars, std::string& rReplaces)
 {
 	while(rChars.length() > rReplaces.length())
 		rReplaces.append(" ");
 
 	ReplaceChars(rString, rChars, rReplaces);
 }
-void String::ReplacePattern(std::string& rString, const std::string& rPattern, const std::string& rReplace)
+void ReplacePattern(std::string& rString, const std::string& rPattern, const std::string& rReplace)
 {
 	int PatternSize = rPattern.length();
 	int ReplaceSize = rReplace.length();
@@ -205,7 +204,7 @@ void String::ReplacePattern(std::string& rString, const std::string& rPattern, c
 	}
 }
 
-unsigned int String::CountChar(const std::string& rString, char Char)
+unsigned int CountChar(const std::string& rString, char Char)
 {
 	unsigned int count = 0;
 
@@ -218,7 +217,7 @@ unsigned int String::CountChar(const std::string& rString, char Char)
 
 	return count;
 }
-unsigned int String::CountChars(const std::string& rString, const std::string& rChars)
+unsigned int CountChars(const std::string& rString, const std::string& rChars)
 {
 	unsigned int count = 0;
 	std::size_t found = rString.find_first_of(rChars);
@@ -231,7 +230,7 @@ unsigned int String::CountChars(const std::string& rString, const std::string& r
 
 	return count;
 }
-unsigned int String::CountPattern(const std::string& rString, const std::string& rPattern)
+unsigned int CountPattern(const std::string& rString, const std::string& rPattern)
 {
 	unsigned int count = 0;
 
@@ -245,15 +244,15 @@ unsigned int String::CountPattern(const std::string& rString, const std::string&
 	return count;
 }
 
-bool String::EndsWith(const std::string& rString, const std::string& rEnd)
+bool EndsWith(const std::string& rString, const std::string& rEnd)
 {
 	return (rString.substr(rString.length() - rEnd.length(), rEnd.length()).compare(rEnd) == 0);
 }
-bool String::StartsWith(const std::string& rString, const std::string& rStart)
+bool StartsWith(const std::string& rString, const std::string& rStart)
 {
 	return (rString.substr(0, rStart.length()).compare(rStart) == 0);
 }
-bool String::HasPatternAtPosition(const std::string& rString, const std::string& rPattern, unsigned int position)
+bool HasPatternAtPosition(const std::string& rString, const std::string& rPattern, unsigned int position)
 {
 	if(position + rPattern.length() > rString.size())
 		return false;
@@ -262,7 +261,7 @@ bool String::HasPatternAtPosition(const std::string& rString, const std::string&
 }
 
 
-bool String::HasOnlyLetters(const std::string& rString)
+bool HasOnlyLetters(const std::string& rString)
 {
 	if(rString.find_first_not_of("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ") != std::string::npos)
 	{
@@ -270,7 +269,7 @@ bool String::HasOnlyLetters(const std::string& rString)
 	}
 	return true;
 }
-bool String::HasOnlyNumbers(const std::string& rString)
+bool HasOnlyNumbers(const std::string& rString)
 {
 	if(rString.find_first_not_of("0123456789") != std::string::npos)
 	{
@@ -278,7 +277,7 @@ bool String::HasOnlyNumbers(const std::string& rString)
 	}
 	return true;
 }
-bool String::HasLetters(const std::string& rString)
+bool HasLetters(const std::string& rString)
 {
 	if(rString.find_first_of("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ") != std::string::npos)
 	{
@@ -286,7 +285,7 @@ bool String::HasLetters(const std::string& rString)
 	}
 	return false;
 }
-bool String::HasNumbers(const std::string& rString)
+bool HasNumbers(const std::string& rString)
 {
 	if(rString.find_first_of("0123456789") != std::string::npos)
 	{

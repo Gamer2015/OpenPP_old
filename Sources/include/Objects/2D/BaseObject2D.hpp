@@ -16,12 +16,9 @@
 
 #include "Vector2.hpp"
 
-namespace Openpp
-{
-namespace Objects
-{
-namespace Objects2D
-{
+namespace Openpp {
+namespace Objects {
+namespace Objects2D {
 
 template <typename T>
 class BaseObject2 : public OObject

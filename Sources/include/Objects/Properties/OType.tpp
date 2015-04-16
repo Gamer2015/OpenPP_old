@@ -1,9 +1,6 @@
-namespace Openpp
-{
-namespace Objects
-{
-namespace Properties
-{
+namespace Openpp {
+namespace Objects {
+namespace Properties {
 
 /////
 ///// constructors

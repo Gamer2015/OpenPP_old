@@ -15,12 +15,9 @@
 #include "BaseRectangle.hpp"
 #include "Vector2.hpp"
 
-namespace Openpp
-{
-namespace Objects
-{
-namespace Objects2D
-{
+namespace Openpp {
+namespace Objects {
+namespace Objects2D {
 
 template <typename T>
 class Rectangle : public BaseRectangle<T>

@@ -4,7 +4,7 @@
 cmake_minimum_required(VERSION 3.0)
 
 #-------------------------------------
-# Subdirectories (please add in alphabetical Order)
+# Add Subdirectories
 #-------------------------------------
 MACRO(SUBDIRLIST result curdir)
   FILE(GLOB children RELATIVE ${curdir} ${curdir}/*)

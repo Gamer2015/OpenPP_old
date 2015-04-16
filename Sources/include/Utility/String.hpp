@@ -19,8 +19,6 @@ namespace Openpp
 {
 namespace Utility
 {
-namespace String
-{
 
 
 //// Splits the String into a Vector of Strings with a defined Length
@@ -110,7 +108,6 @@ static bool HasLetters(const std::string& rString);
 //// Returns true if there is at least 1 Number in the String
 static bool HasNumbers(const std::string& rString);
 
-} // namespace String
 } // namespace Types
 } // namespace Openpp
 

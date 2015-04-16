@@ -21,16 +21,11 @@
 #include <SDL.h>
 
 
-namespace Openpp
-{
-namespace Objects
-{
-namespace Objects2D
-{
-namespace SDL2
-{
-namespace Properties
-{
+namespace Openpp {
+namespace Objects {
+namespace Objects2D {
+namespace SDL2 {
+namespace Properties {
 
 class Text : public OObject
 {

@@ -2,14 +2,14 @@
 #include <vector>
 #include <iostream>
 
-namespace LOT = Openpp::Objects::Test;
+namespace OT = Openpp::Test;
 
 int main(void)
 {
 	bool success = true;
 	std::cout << "Testing: Sources/include/Objects" << std::endl;
 	std::vector< bool (*)(std::string&) > functions;
-	functions.push_back(&LOT::Test);
+	functions.push_back(&OT::Test);
 
 	std::vector<std::string> Names;
 	std::string Name;

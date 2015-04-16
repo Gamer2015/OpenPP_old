@@ -1,105 +1,219 @@
-#ifndef OPENPP_OBJECTS_3D_VECTOR3_H_
-#define OPENPP_OBJECTS_3D_VECTOR3_H_
+#include "Vector3.hpp"
 
-/******************************************
- *  Usage: 3D vector property for LObjects
- *  Date: 20th of February 2015
- *  Author: Stefan Kreiner
- * _______________________________________________
- *
- * Notes:
- *  - Not Tested
- *
- * Warnings:
- *  - Do not set _notifyParent to false unless you know what you are doing
- *  - Use set(x, y) instead of vector.x = x; vector.y = y; for better performance
- *    (the Parent will be updated only once unstead of twice)
- *
- * To-Do:
- *  - add some operators
- *
- *******************************************/
+namespace Openpp {
+namespace Objects {
+namespace Objects3D {
 
-#include "../OObject.hpp"
-#include "../Properties/OType.tpp"
 
-namespace OO = Openpp::Objects;
-namespace LOP = OO::Properties;
-
-#include <cmath>
-
-namespace Openpp
-{
-namespace Objects
-{
-namespace Objects3D
-{
-
+/////
+///// constructors
+/////
 template <typename T>
-class Vector3 : public OObject
+Vector3<T>::Vector3(OObject* const _pParent) :
+	OObject(_pParent),
+	x(this),
+	y(this),
+	z(this)
+{}
+template <typename T>
+Vector3<T>::Vector3(T _x, T _y, T _z, OObject* const _pParent) :
+	OObject(_pParent),
+	x(_x, this),
+	y(_y, this),
+	z(_z, this)
+{}
+template <typename T>
+Vector3<T>::Vector3(const Vector3<T>& _rcVector, OObject* const _pParent) :
+	Vector3(_rcVector.x(), _rcVector.y(), _rcVector.z(), _pParent)
+{}
+
+
+/////
+///// setter
+/////
+template <typename T>
+void Vector3<T>::set(T _x, T _y, T _z, bool _notifyParent)
 {
-public:
-	/// constructors
-	Vector3(OObject* const _pParent);
-	Vector3(T _x, T _y, T _z, OObject* const _pParent);
-	Vector3(const Vector3<T>& _rcVector, OObject* const _pParent);
+	x.set(_x, false);
+	y.set(_y, false);
+	z.set(_z, false);
+
+	if(_notifyParent == true)
+		LObject::ChildChanged();
+}
+template <typename T>
+void Vector3<T>::set(const Vector3<T>& _vector, bool _notifyParent)
+{
+	set(_rcVector.x(), _rcVector.y(), _rcVector.z(), _notifyParent);
+}
+template <typename T>
+void Vector3<T>::add(T _x, T _y, T _z, bool _notifyParent)
+{
+	set(x() + _x, y() + _y, z() + _z, _notifyParent);
+}
+template <typename T>
+void Vector3<T>::add(const Vector3<T>& _rcVector, bool _notifyParent)
+{
+	set(x() + _rcVector.x(), y() + _rcVector.y(), z() + _rcVector.z(), _notifyParent);
+}
 
 
-	/// properties
-	LOP::OType<T> x;
-	LOP::OType<T> y;
-	LOP::OType<T> z;
+/////
+///// operators
+/////
+///
+/// assignment
+///
+template <typename T>
+Vector3<T> Vector3<T>::operator=(const Vector3<T>& _rcVector)
+{
+	set(_rcVector);
+	return *this;
+}
 
+///
+/// conversion
+///
+template <typename T>
+template <typename U>
+Vector3<T>::operator Vector3<U>() const
+{
+	return Vector3<U>((U)x(), (U)y(), (U)z());
+}
 
-	/// setter
-	void set(T _x, T _y, T _z, bool _notifyParent=true);
-	void set(const Vector3<T>& _rcVector, bool _notifyParent=true);
-	void add(T _x, T _y, T _z, bool _notifyParent=true);
-	void add(const Vector3<T>& _rcVector, bool _notifyParent=true);
+///
+/// arithmetic
+///
+template <typename T>
+Vector3<T> Vector3<T>::operator-() const
+{
+	return Vector3<T>(-x(), -y(), -z());
+}
+template <typename T>
+Vector3<T> Vector3<T>::operator+(const Vector3<T>& _rcVector) const
+{
+	return Vector3<T>(x() + _rcVector.x(),
+					  y() + _rcVector.y(),
+					  z() + _rcVector.z());
+}
+template <typename T>
+Vector3<T> Vector3<T>::operator-(const Vector3<T>& _rcVector) const
+{
+	return Vector3<T>(x() - _rcVector.x(),
+					  y() - _rcVector.y(),
+					  z() - _rcVector.z());
+}
+template <typename T>
+template <typename FT>
+Vector3<T> Vector3<T>::operator*(FT _factor) const
+{
+	return Vector3<T>(x() * _factor,
+					  y() * _factor,
+					  z() * _factor);
+}
+//template <typename T>
+//Vector3<T> Vector3<T>::operator*(const Vector3<T>& _rcVector) const
+//{
+//	return Vector3<T>(x() * _rcVector.x() - y() * _rcVector.y(),
+//					  x() * _rcVector.y() + y() * _rcVector.x());
+//}
+template <typename T>
+template <typename D>
+Vector3<T> Vector3<T>::operator/(D _divisor) const
+{
+	return Vector3<T>(x() / _divisor,
+					  y() / _divisor,
+					  z() / _divisor);
+}
+//template <typename T>
+//Vector3<T> Vector3<T>::operator/(const Vector3<T>& _rcVector) const
+//{
+//	return Vector3<T>((x() * _rcVector.x() + y() * _rcVector.y())/(_rcVector.lengthSquared()),
+//					  (y() * _rcVector.x() - x() * _rcVector.y())/(_rcVector.lengthSquared()));
+//}
 
+///
+/// comparison
+///
+template <typename T>
+bool Vector3<T>::operator==(const Vector3<T>& _rcVector) const
+{
+	return ((x() == _rcVector.x()) &&
+			(y() == _rcVector.y()) &&
+			(z() == _rcVector.z()));
+}
+template <typename T>
+bool Vector3<T>::operator!=(const Vector3<T>& _rcVector) const
+{
+	return (!(*this == _rcVector));
+}
+template <typename T>
+bool Vector3<T>::operator>(const Vector3<T>& _rcVector) const
+{
+	return ((x() > _rcVector.x()) &&
+			(y() > _rcVector.y()) &&
+			(z() > _rcVector.z()));
+}
+template <typename T>
+bool Vector3<T>::operator<(const Vector3<T>& _rcVector) const
+{
+	return ((x() < _rcVector.x()) &&
+			(y() < _rcVector.y()) &&
+			(z() < _rcVector.z()));
+}
+template <typename T>
+bool Vector3<T>::operator>=(const Vector3<T>& _rcVector) const
+{
+	return (!(*this < _rcVector));
+}
+template <typename T>
+bool Vector3<T>::operator<=(const Vector3<T>& _rcVector) const
+{
+	return (!(*this > _rcVector));
+}
 
-	///// operators
-	/// assignment
-	Vector3<T> operator=(const Vector3<T>& _rcVector);
-
-	/// conversion
-	template <typename U>
-	operator Vector3<U>() const;
-
-	/// arithmetic
-	Vector3<T> operator-() const;
-	Vector3<T> operator+(const Vector3<T>& _rcVector) const;
-	Vector3<T> operator-(const Vector3<T>& _rcVector) const;
-	template <typename FT>
-	Vector3<T> operator*(FT _factor) const;
-	//Vector3<T> operator*(const Vector3<T>& _rcVector) const;
-	template <typename DT>
-	Vector3<T> operator/(DT _divisor) const;
-	//Vector3<T> operator/(const Vector3<T>& _rcVector) const;
-
-	/// comparison
-	bool operator==(const Vector3<T>& _rcVector) const;
-	bool operator!=(const Vector3<T>& _rcVector) const;
-	bool operator>(const Vector3<T>& _rcVector) const;
-	bool operator<(const Vector3<T>& _rcVector) const;
-	bool operator>=(const Vector3<T>& _rcVector) const;
-	bool operator<=(const Vector3<T>& _rcVector) const;
-
-	/// compound assignment
-	Vector3<T> &operator+=(const Vector3<T>& _rcVector);
-	Vector3<T> &operator-=(const Vector3<T>& _rcVector);
-	template <typename FT>
-	Vector3<T> &operator*=(FT factor);
-	//Vector3<T> &operator*=(const Vector3<T>& _rcVector);
-	template <typename DT>
-	Vector3<T> &operator/=(DT divisor);
-	//Vector3<T> &operator/=(const Vector3<T>& _rcVector);
-};
+///
+/// compound assignment
+///
+template <typename T>
+Vector3<T>& Vector3<T>::operator+=(const Vector3<T>& _rcVector)
+{
+	set(*this + _rcVector);
+	return *this;
+}
+template <typename T>
+Vector3<T>& Vector3<T>::operator-=(const Vector3<T>& _rcVector)
+{
+	set(*this - _rcVector);
+	return *this;
+}
+template <typename T>
+template <typename FT>
+Vector3<T>& Vector3<T>::operator*=(FT _factor)
+{
+	set(*this * _factor);
+	return *this;
+}
+//template <typename T>
+//Vector3<T>& Vector3<T>::operator*=(const Vector3<T>& _rcVector)
+//{
+//	set(*this * _rcVector);
+//	return *this;
+//}
+template <typename T>
+template <typename DT>
+Vector3<T>& Vector3<T>::operator/=(DT _divisor)
+{
+	set(*this / _divisor);
+	return *this;
+}
+//template <typename T>
+//Vector3<T>& Vector3<T>::operator/=(const Vector3<T>& _rcVector)
+//{
+//	set(*this / _rcVector);
+//	return *this;
+//}
 
 } // Objects3D
 } // Objects
 } // Openpp
-
-#include "Vector3.inl"
-
-#endif // OPENPP_OBJECTS_3D_VECTOR3_H_

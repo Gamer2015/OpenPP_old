@@ -1,9 +1,6 @@
-namespace Openpp
-{
-namespace Objects
-{
-namespace Objects2D
-{
+namespace Openpp {
+namespace Objects {
+namespace Objects2D {
 
 template <typename T>
 BaseRectangle<T>::BaseRectangle(OObject* const _pParent) :

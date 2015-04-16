@@ -6,12 +6,8 @@
 #include <string>
 #include <vector>
 
-namespace Openpp
-{
-namespace Objects
-{
-namespace Test
-{
+namespace Openpp {
+namespace Test {
 
 class Object : public OObject
 {
@@ -137,7 +133,6 @@ bool Test(std::string& rString)
 }
 
 } // Test
-} // Objects
 } // Openpp
 
 

@@ -12,8 +12,6 @@ namespace Openpp
 {
 namespace Utility
 {
-namespace String
-{
 namespace Test
 {
 

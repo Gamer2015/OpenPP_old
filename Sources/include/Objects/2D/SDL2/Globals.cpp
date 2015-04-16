@@ -1,13 +1,9 @@
 #include "Globals.hpp"
 
-namespace Openpp
-{
-namespace Objects
-{
-namespace Objects2D
-{
-namespace SDL2
-{
+namespace Openpp {
+namespace Objects {
+namespace Objects2D {
+namespace SDL2 {
 
 void Globals::Init(const std::string &rTitle, Vector2<int> _window, unsigned int _image_flags)
 {
@@ -19,33 +15,33 @@ void Globals::Init(const std::string &rTitle, Vector2<int> _window, unsigned int
 
 	if( SDL_Init(SDL_INIT_VIDEO) < 0 )
 	{
-		throw Exceptions::ExSDLError( "SDL could not initialize", SDL_GetError() );
+		throw ExSDLError( "SDL could not initialize", SDL_GetError() );
 	}
 
 	/// Initialize SDL_image
 	if( !(IMG_Init(_image_flags) ))
 	{
-		throw Exceptions::ExSDLError( "SDL_image could not initialize", IMG_GetError() );
+		throw ExSDLError( "SDL_image could not initialize", IMG_GetError() );
 	}
 
 	/// Initialize SDL_ttf
 	if( TTF_Init() == -1 )
 	{
-		throw Exceptions::ExSDLError( "SDL_ttf could not initialize", TTF_GetError() );
+		throw ExSDLError( "SDL_ttf could not initialize", TTF_GetError() );
 	}
 
 
 	pWindow = SDL_CreateWindow(rTitle.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, _window.x, _window.y, SDL_WINDOW_SHOWN);
 	if( pWindow == NULL )
 	{
-		throw Exceptions::ExSDLError( "Window could not be created", SDL_GetError() );
+		throw ExSDLError( "Window could not be created", SDL_GetError() );
 	}
 	WindowIsOpen = true;
 
 	pRenderer.reset(SDL_CreateRenderer( pWindow, -1, SDL_RENDERER_ACCELERATED ), SDL_DestroyRenderer);
 	if( pRenderer == NULL )
 	{
-		throw Exceptions::ExSDLError( "Renderer could not be created", SDL_GetError() );
+		throw ExSDLError( "Renderer could not be created", SDL_GetError() );
 	}
 	SDL_SetRenderDrawColor( pRenderer.get(), 0xFF, 0xFF, 0xFF, 0xFF );
 }
