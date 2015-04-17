@@ -1,6 +1,6 @@
 #include "Init.h"
 
-namespace LSDL2 = Openpp::Objects::Objects2D::SDL2;
+namespace SDL = Openpp::Objects::SDL2;
 typedef Game::Globals GG;
 
 namespace Game
@@ -11,9 +11,9 @@ namespace Init
 /// Initializes SDL2
 void InitSDL2()
 {
-	LSDL2::Globals::Init(GG::TITLE, GG::Window, IMG_INIT_PNG | IMG_INIT_JPG);
+    SDL::Globals::Init(GG::TITLE, GG::Window, IMG_INIT_PNG | IMG_INIT_JPG);
 
-    LSDL2::Texture::SetFont("Media/Font.ttf");
+    SDL::Texture::SetFont("Media/Font.ttf");
 }
 
 /// Set the Loading Screen

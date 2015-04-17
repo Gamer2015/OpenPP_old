@@ -13,6 +13,7 @@
 \********************************************/
 
 namespace Openpp {
+namespace Objects {
 
 class IScreen
 {
@@ -60,6 +61,7 @@ private:
 	IScreen* _mpCurrent;
 };
 
+} // Objects
 } // Openpp
 
 #endif // OPENPP_OBJECTS_ISCREEN_H_

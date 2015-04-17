@@ -6,7 +6,7 @@ namespace Game
 {
     // Window Dimewnsions
     const char GG::TITLE[16] = "Test 2";
-	const O2D::Vector2<int> GG::WINDOW(640, 640 * 3.0 / 4.0);
+    const OO::Vector2<int> GG::WINDOW(640, 640 * 3.0 / 4.0);
 
     // Game Spezification
     int GG::FPS = 50;
@@ -23,5 +23,5 @@ namespace Game
 	GS::WinScreen GG::gWinScreen;
 	GS::LostScreen GG::gLostScreen;
 
-	OO::ScreenPointer GG::gpCurrentScreen;
+    Openpp::ScreenPointer GG::gpCurrentScreen;
 }

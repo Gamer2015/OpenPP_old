@@ -23,7 +23,7 @@
 #include <vector>
 
 namespace OO = Openpp::Objects;
-namespace SDL = OO::Objects2D::SDL2;
+namespace SDL = OO::SDL2;
 typedef SDL::Globals SDLG;
 
 namespace Game
@@ -36,7 +36,7 @@ namespace Game
             void BTN_QUIT();
         }
 
-		class StartScreen : public OO::IScreen
+        class StartScreen : public Openpp::IScreen
         {
         public:
             StartScreen();

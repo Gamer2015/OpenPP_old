@@ -8,8 +8,7 @@
 #include <Objects/2D/Vector2.hpp>
 
 namespace OO = Openpp::Objects;
-namespace O2D = OO::Objects2D;
-namespace SDL = O2D::SDL2;
+namespace SDL = OO::SDL2;
 
 namespace Game
 {
@@ -18,7 +17,7 @@ namespace Game
         // Window Dimensions
     public:
 		static const char TITLE[32];
-		static const O2D::Vector2<int> Window;
+        static const OO::Vector2<int> Window;
 
         // Game Spezification
     public:

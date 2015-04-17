@@ -18,7 +18,6 @@
 
 namespace Openpp {
 namespace Objects {
-namespace Objects2D {
 
 template <typename T>
 class BaseObject2 : public OObject
@@ -30,7 +29,6 @@ public:
 	Vector2<T> position;
 };
 
-} // Objects2D
 } // Objects
 } // Openpp
 

@@ -4,7 +4,6 @@
 
 namespace Openpp {
 namespace Objects {
-namespace Objects2D {
 namespace SDL2 {
 
 inline float RAD_GRAD(float _radiant)
@@ -58,7 +57,7 @@ void Button::Render(int Index) const
 
 void Button::ChildChanged(int _childId)
 {
-	SDL_Rectangle::ChildChanged(_childId);
+    SDL_Rectangle::ChildChanged(_childId);
 
     mTextRect.w = text.size().x;
     mTextRect.h = text.size().y;
@@ -71,6 +70,6 @@ void Button::ChildChanged(int _childId)
 }
 
 } // SDL2
-} // Objects2D
+
 } // Objects
 } // Openpp

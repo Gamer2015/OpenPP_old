@@ -23,7 +23,6 @@
 
 namespace Openpp {
 namespace Objects {
-namespace Objects2D {
 
 template <typename T>
 class Vector2 : public OObject
@@ -101,7 +100,7 @@ protected:
 	virtual void ChildChanged(int _childId);
 };
 
-} // Objects2D
+
 } // Objects
 } // Openpp
 

@@ -2,7 +2,6 @@
 
 namespace Openpp {
 namespace Objects {
-namespace Objects2D {
 namespace SDL2 {
 
 Texture::Info Texture::Get(SDL_Surface* pSurface, SDL_Renderer* pRenderer)
@@ -94,6 +93,6 @@ int Texture::text_height(32);
 SDL_Color Texture::Color = {0, 0, 0};
 
 } // SDL2
-} // Objects2D
+
 } // Objects
 } // Openpp

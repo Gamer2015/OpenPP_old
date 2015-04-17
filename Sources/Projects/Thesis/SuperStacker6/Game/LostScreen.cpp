@@ -1,8 +1,7 @@
 #include "LostScreen.h"
 #include "Globals.h"
 
-namespace SDL = Openpp::Objects::Objects2D::SDL2;
-namespace SDLE = SDL::Exceptions;
+namespace SDL = Openpp::Objects::SDL2;
 typedef SDL::Globals SDLG;
 
 typedef Game::Globals GG;

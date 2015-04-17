@@ -1,6 +1,5 @@
 namespace Openpp {
 namespace Objects {
-namespace Objects2D {
 
 template <typename T>
 Rectangle<T>::Rectangle(OObject* const _pParent) :
@@ -9,6 +8,6 @@ Rectangle<T>::Rectangle(OObject* const _pParent) :
 	angle(this)
 { }
 
-} // Objects2D
+
 } // Objects
 } // Openpp

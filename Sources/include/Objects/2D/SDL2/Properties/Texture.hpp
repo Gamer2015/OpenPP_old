@@ -23,7 +23,6 @@ namespace OO = Openpp::Objects;
 
 namespace Openpp {
 namespace Objects {
-namespace Objects2D {
 namespace SDL2 {
 namespace Properties {
 
@@ -47,7 +46,7 @@ private:
 
 } // Properties
 } // SDL2
-} // Objects2D
+
 } // Objects
 } // Openpp
 

@@ -17,7 +17,6 @@
 
 namespace Openpp {
 namespace Objects {
-namespace Objects2D {
 
 template <typename T>
 class BaseRectangle : public BaseObject2<T>
@@ -28,7 +27,7 @@ public:
 	Vector2<T> size;
 };
 
-} // Objects2D
+
 } // Objects
 } // Openpp
 

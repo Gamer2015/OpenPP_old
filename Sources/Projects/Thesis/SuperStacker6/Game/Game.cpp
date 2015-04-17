@@ -1,6 +1,6 @@
 #include "Game.h"
 
-namespace SDL = Openpp::Objects::Objects2D::SDL2;
+namespace SDL = Openpp::Objects::SDL2;
 typedef SDL::Globals SDLG;
 typedef Game::Globals GG;
 typedef Core::Input CI;

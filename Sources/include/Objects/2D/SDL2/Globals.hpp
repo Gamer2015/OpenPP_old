@@ -22,7 +22,6 @@
 
 namespace Openpp {
 namespace Objects {
-namespace Objects2D {
 namespace SDL2 {
 
 class Globals
@@ -46,7 +45,7 @@ private:
 };
 
 } // SDL2
-} // Objects2D
+
 } // Objects
 } // Openpp
 

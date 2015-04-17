@@ -5,8 +5,7 @@
 #include <fstream>
 #include <stdlib.h>
 
-namespace SDL = Openpp::Objects::Objects2D::SDL2;
-namespace SDLE = SDL::Exceptions;
+namespace SDL = Openpp::Objects::SDL2;
 typedef SDL::Globals SDLG;
 
 typedef Game::Globals GG;
@@ -213,7 +212,8 @@ namespace Game
 
 		void LevelScreen::SetHighestLevel(int Level)
 		{
-			mHighestLevel = Level;
+            mHighestLevel = Level;
+            std::string lvl = std::to_string(mHighestLevel);
 			sprintf(mBuffer, "%d", Level);
 
 			std::ofstream HighscoreFile("Levels/HighestLevel.txt", std::ofstream::out | std::ofstream::trunc );
@@ -236,9 +236,9 @@ namespace Game
 								Level = mButtons_Row_System*mRows_System*mSystems.x*Y + mButtons_Row_System*mRows_System*X + mButtons_Row_System*y + x + 1;
 								if(Level <= mHighestLevel)
 								{
-									std::cout << "New Level unlocked!" << std::endl;
-									sprintf(mBuffer, "%d", Level);
-									mButtons[mRows_System*Y+y][mButtons_Row_System*X+x].text.set(mBuffer);
+                                    std::cout << "New Level unlocked!" << std::endl;
+                                    lvl = std::to_string(mHighestLevel);
+                                    mButtons[mRows_System*Y+y][mButtons_Row_System*X+x].text.set(lvl);
 								}
 								else
 									break;

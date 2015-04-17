@@ -1,6 +1,5 @@
 namespace Openpp {
 namespace Objects {
-namespace Objects2D {
 namespace SDL2 {
 
 template <typename T>
@@ -38,6 +37,5 @@ void SDL_Rectangle<T>::ChildChanged(int _childId)
 }
 
 } // SDL2
-} // Objects2D
 } // Objects
 } // Openpp

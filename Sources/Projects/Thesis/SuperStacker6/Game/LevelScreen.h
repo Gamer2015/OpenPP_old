@@ -26,8 +26,7 @@
 #include <functional>
 
 namespace OO = Openpp::Objects;
-namespace OO2 = OO::Objects2D;
-namespace SDL = OO2::SDL2;
+namespace SDL = OO::SDL2;
 typedef SDL::Globals SDLG;
 
 namespace Game
@@ -40,7 +39,7 @@ namespace Game
             void BTN_QUIT();
         }
 
-		class LevelScreen : public OO::IScreen
+        class LevelScreen : public Openpp::IScreen
         {
         public:
             LevelScreen();
@@ -69,12 +68,12 @@ namespace Game
             std::vector< std::vector< SDL::Button > > mButtons;
             std::vector< SDL::Button > mButtonRow;
             SDL::Button mButtonDummy;
-            OO2::Vector2<int> mCurrentButton;
+            OO::Vector2<int> mCurrentButton;
             int mSpace;
 
             int mButtons_Row_System;
             int mRows_System;
-            OO2::Vector2<int> mSystems;
+            OO::Vector2<int> mSystems;
 
             std::vector< SDL::Text > mTexts;
             SDL::Text mTextDummy;

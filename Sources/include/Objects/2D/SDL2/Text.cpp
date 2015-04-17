@@ -2,7 +2,6 @@
 
 namespace Openpp {
 namespace Objects {
-namespace Objects2D {
 namespace SDL2 {
 
 inline float RAD_GRAD(float _radiant)
@@ -54,6 +53,6 @@ void Text::ChildChanged(int _childId)
 
 
 } // SDL2
-} // Objects2D
+
 } // Objects
 } // Openpp

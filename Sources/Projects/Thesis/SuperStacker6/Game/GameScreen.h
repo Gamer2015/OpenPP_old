@@ -12,15 +12,14 @@
 #include <Objects/2D/SDL2/Texture.hpp>
 
 namespace OO = Openpp::Objects;
-namespace OO2 = OO::Objects2D;
-namespace SDL = OO2::SDL2;
+namespace SDL = OO::SDL2;
 typedef SDL::Globals SDLG;
 
 namespace Game
 {
     namespace Screens
     {
-		class GameScreen : public OO::IScreen
+		class GameScreen : public Openpp::IScreen
         {
         public:
             GameScreen();

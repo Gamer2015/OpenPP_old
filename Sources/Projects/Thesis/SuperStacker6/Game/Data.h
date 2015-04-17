@@ -11,8 +11,8 @@
 #include <Objects/2D/SDL2/Text.hpp>
 #include <Objects/2D/SDL2/Sprite.hpp>
 
-namespace OO2 = Openpp::Objects::Objects2D;
-namespace SDL = OO2::SDL2;
+namespace OO = Openpp::Objects;
+namespace SDL = OO::SDL2;
 typedef SDL::Globals SDLG;
 
 namespace Game
@@ -105,8 +105,8 @@ namespace Game
         unsigned int mNoMoveClock;
         SDL::Sprite<int> mClock;
 
-        std::vector< OO2::Vector2<float> > NewPositions;
-        std::vector< OO2::Vector2<float> > OldPositions;
+        std::vector< OO::Vector2<float> > NewPositions;
+        std::vector< OO::Vector2<float> > OldPositions;
         bool NoBodyMoves();
 /*
         sf::ConvexShape mPolygon;

@@ -21,7 +21,7 @@
  *******************************************/
 
 #include "../OObject.hpp"
-#include "../Properties/OType.tpp"
+#include "../Properties/OType.hpp"
 
 namespace OO = Openpp::Objects;
 namespace LOP = OO::Properties;
@@ -30,7 +30,6 @@ namespace LOP = OO::Properties;
 
 namespace Openpp {
 namespace Objects {
-namespace Objects3D {
 
 template <typename T>
 class Vector3 : public OObject
@@ -93,7 +92,7 @@ public:
 	//Vector3<T> &operator/=(const Vector3<T>& _rcVector);
 };
 
-} // Objects3D
+
 } // Objects
 } // Openpp
 

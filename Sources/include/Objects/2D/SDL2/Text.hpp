@@ -29,7 +29,6 @@
 
 namespace Openpp {
 namespace Objects {
-namespace Objects2D {
 namespace SDL2 {
 
 class Text : public Properties::Text
@@ -60,7 +59,7 @@ private:
 };
 
 } // SDL2
-} // Objects2D
+
 } // Objects
 } // Openpp
 

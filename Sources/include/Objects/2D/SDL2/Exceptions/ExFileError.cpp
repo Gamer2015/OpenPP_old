@@ -1,8 +1,8 @@
 #include "ExFileError.hpp"
 
 namespace Openpp {
+
 namespace Objects {
-namespace Objects2D {
 namespace SDL2 {
 
 ExFileError::ExFileError(const std::string& FileName)
@@ -23,6 +23,6 @@ const char* ExFileError::what() const noexcept
 }
 
 } // SDL2
-} // Objects2D
+
 } // Objects
 } // Openpp

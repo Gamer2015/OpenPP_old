@@ -23,7 +23,6 @@
 
 namespace Openpp {
 namespace Objects {
-namespace Objects2D {
 namespace SDL2 {
 namespace Properties {
 
@@ -31,7 +30,7 @@ class Text : public OObject
 {
 public:
 	Text(OObject* const _pParent = nullptr);
-	Text(const std::string& _rctext, OObject* const _pParent = nullptr);
+    explicit Text(const std::string& _rctext, OObject* const _pParent = nullptr);
 
 
 	/// properties
@@ -61,7 +60,7 @@ private:
 };
 
 } // Properties
-} // Objects2D
+
 } // Objects
 } // SDL2
 } // Openpp

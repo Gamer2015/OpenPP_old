@@ -1,6 +1,5 @@
 namespace Openpp {
 namespace Objects {
-namespace Objects2D {
 
 
 /////
@@ -237,6 +236,6 @@ void Vector2<T>::ChildChanged(int _childId)
 	OObject::ChildChanged();
 }
 
-} // Objects2D
+
 } // Objects
 } // Openpp

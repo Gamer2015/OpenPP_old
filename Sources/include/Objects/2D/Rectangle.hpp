@@ -17,7 +17,6 @@
 
 namespace Openpp {
 namespace Objects {
-namespace Objects2D {
 
 template <typename T>
 class Rectangle : public BaseRectangle<T>
@@ -29,7 +28,7 @@ public:
 	Objects::Properties::OType<float> angle;
 };
 
-} // Objects2D
+
 } // Objects
 } // Openpp
 

@@ -1,6 +1,5 @@
 namespace Openpp {
 namespace Objects {
-namespace Objects2D {
 
 template <typename T>
 BaseRectangle<T>::BaseRectangle(OObject* const _pParent) :
@@ -8,6 +7,6 @@ BaseRectangle<T>::BaseRectangle(OObject* const _pParent) :
 	size(this)
 { }
 
-} // Objects2D
+
 } // Objects
 } // Openpp

@@ -2,7 +2,6 @@
 
 namespace Openpp {
 namespace Objects {
-namespace Objects2D {
 namespace SDL2 {
 
 void Globals::Init(const std::string &rTitle, Vector2<int> _window, unsigned int _image_flags)
@@ -57,6 +56,6 @@ SDL_Window* Globals::pWindow = NULL;
 std::shared_ptr<SDL_Renderer> Globals::pRenderer = NULL;
 
 } // SDL2
-} // Objects2D
+
 } // Objects
 } // Openpp

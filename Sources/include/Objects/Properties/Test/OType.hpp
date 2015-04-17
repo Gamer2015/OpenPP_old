@@ -7,7 +7,7 @@
 #include <iostream>
 
 namespace Openpp {
-namespace Objects {
+
 namespace Properties {
 namespace Test {
 

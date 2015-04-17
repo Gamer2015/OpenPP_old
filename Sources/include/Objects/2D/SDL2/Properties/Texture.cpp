@@ -2,7 +2,6 @@
 
 namespace Openpp {
 namespace Objects {
-namespace Objects2D {
 namespace SDL2 {
 namespace Properties {
 
@@ -12,7 +11,7 @@ Texture::Texture(OObject* const _pParent) :
 
 void Texture::set(const std::string& _rcPath)
 {
-    _mpTexture = Openpp::Objects::Objects2D::SDL2::Texture::Get(_rcPath);
+    _mpTexture = Openpp::Objects::SDL2::Texture::Get(_rcPath);
 
     OO::OObject::ChildChanged();
 }
@@ -32,6 +31,6 @@ void Texture::operator=(const Texture& _rcTexture)
 
 } // Properties
 } // SDL2
-} // Objects2D
+
 } // Objects
 } // Openpp

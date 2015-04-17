@@ -2,7 +2,6 @@
 
 namespace Openpp {
 namespace Objects {
-namespace Objects2D {
 namespace SDL2 {
 namespace Properties {
 
@@ -18,13 +17,15 @@ Text::Text(const std::string& _rctext, OObject* const _pParent) :
 
 void Text::set(const std::string& _rcText)
 {
-	_mText = _rcText;
+    _mText = _rcText;
 
-	ChildChanged(selfId());
+    ChildChanged(selfId());
 }
 void Text::set(const Text& _rcText)
 {
     _mText = _rcText;
+
+    ChildChanged(selfId());
 }
 
 const Vector2<int>& Text::size() const
@@ -52,12 +53,12 @@ void Text::ChildChanged(int _childId)
     {
         if((std::string)*this != "")
             mpTexture = Texture::GetText(*this, height);
-	}
+    }
 	OObject::ChildChanged();
 }
 
 } // Properties
 } // SDL2
-} // Objects2D
+
 } // Objects
 } // Openpp

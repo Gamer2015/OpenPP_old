@@ -1,8 +1,8 @@
 #include "ExSDLError.hpp"
 
 namespace Openpp {
+
 namespace Objects {
-namespace Objects2D {
 namespace SDL2 {
 
 ExSDLError::ExSDLError(const std::string Problem, const std::string Error)
@@ -16,6 +16,6 @@ const char* ExSDLError::what() const noexcept
 }
 
 } // SDL2
-} // Objects2D
+
 } // Objects
 } // Openpp

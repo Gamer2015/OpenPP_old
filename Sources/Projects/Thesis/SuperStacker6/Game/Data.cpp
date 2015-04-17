@@ -123,8 +123,8 @@ namespace Game
 
     void Data::Render()
     {
-		OO2::Vector2<int> Position(OffsetX / 2, OffsetX / 2 - 8);
-		OO2::Vector2<int> HalfSize(OffsetX / 2 - 16, OffsetX / 2 - 16);
+        OO::Vector2<int> Position(OffsetX / 2, OffsetX / 2 - 8);
+        OO::Vector2<int> HalfSize(OffsetX / 2 - 16, OffsetX / 2 - 16);
 
         for(mIndex = 0; mIndex < mData.size(); ++mIndex)
         {
@@ -180,7 +180,7 @@ namespace Game
             b2Vec2 b2Pos;
 			b2Pos = mpBody->GetPosition();
 
-            OO2::Vector2<float> position;
+            OO::Vector2<float> position;
 			position.x = SCALE(b2Pos.x);
 			position.y = SCALE(b2Pos.y);
 

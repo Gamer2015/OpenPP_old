@@ -1,8 +1,8 @@
 #include "Vector3.hpp"
 
 namespace Openpp {
-namespace Objects {
-namespace Objects3D {
+
+
 
 
 /////
@@ -214,6 +214,6 @@ Vector3<T>& Vector3<T>::operator/=(DT _divisor)
 //	return *this;
 //}
 
-} // Objects3D
+
 } // Objects
 } // Openpp
