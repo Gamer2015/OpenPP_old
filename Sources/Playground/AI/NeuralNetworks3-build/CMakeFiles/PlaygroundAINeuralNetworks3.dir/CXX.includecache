@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/Stefan/Documents/GitHub/Openpp/Sources/Playground/AI/NeuralNetworks3/main.cpp
+iostream
+-
+vector
+-
+memory
+-
+cmath
+-
+
