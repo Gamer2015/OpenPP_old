@@ -8,12 +8,10 @@ typedef Core::Input CI;
 namespace Game
 {
     void GameRoutine()
-    {
-        unsigned int Time;
-
+	{
         while( SDLG::WindowIsOpen )
         {
-            Time = SDL_GetTicks();
+			unsigned int Time(SDL_GetTicks());
 
             CI::Read();
 			GG::gpCurrentScreen->HandleInputs();
@@ -24,7 +22,8 @@ namespace Game
 			GG::gpCurrentScreen->Render();
             SDL_RenderPresent( SDLG::Renderer() );
 
-            while(SDL_GetTicks() - Time < 1000.0/GG::FPS);
+			if(SDL_GetTicks() - Time < 1000.0/Globals::FPS)
+				SDL_Delay(1000.0/Globals::FPS - (SDL_GetTicks() - Time));
         }
     }
 

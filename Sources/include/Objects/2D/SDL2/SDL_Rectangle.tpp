@@ -17,6 +17,28 @@ const SDL_Point& SDL_Rectangle<T>::rectOrigin() const
 {
 	return mRectOrigin;
 }
+template <typename T>
+bool SDL_Rectangle<T>::isInside(T X, T Y) const
+{
+	Vector2<float> mouse(X, Y);
+	Vector2<float> origin(rect().x + rectOrigin().x, rect().y + rectOrigin().y);
+
+	mouse -= origin;
+	mouse.angle -= this->angle;
+	mouse += origin;
+
+	if(mouse.x < rect().x)
+		return false;
+	if(mouse.x > rect().x + rect().w)
+		return false;
+
+	if(mouse.y < rect().y)
+		return false;
+	if(mouse.y > rect().y + rect().h)
+		return false;
+
+	return true;
+}
 
 template <typename T>
 void SDL_Rectangle<T>::ChildChanged(int _childId)

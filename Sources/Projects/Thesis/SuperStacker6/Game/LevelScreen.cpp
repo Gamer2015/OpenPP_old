@@ -1,4 +1,5 @@
 #include "LevelScreen.h"
+#include <string>
 #include <stdio.h>
 #include <iostream>
 #include "Globals.h"
@@ -213,7 +214,7 @@ namespace Game
 		void LevelScreen::SetHighestLevel(int Level)
 		{
             mHighestLevel = Level;
-            std::string lvl = std::to_string(mHighestLevel);
+			std::string lvl = std::to_string(Level);
 			sprintf(mBuffer, "%d", Level);
 
 			std::ofstream HighscoreFile("Levels/HighestLevel.txt", std::ofstream::out | std::ofstream::trunc );

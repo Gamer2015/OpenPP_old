@@ -1,0 +1,57 @@
+#-------------------------------------
+# Currently used CMake Version
+#-------------------------------------
+cmake_minimum_required(VERSION 3.0)
+
+#-------------------------------------
+# Subdirectories (please add in alphabetical Order)
+#-------------------------------------
+MACRO(SUBDIRLIST result curdir)
+  FILE(GLOB children RELATIVE ${curdir} ${curdir}/*)
+  SET(dirlist "")
+  FOREACH(child ${children})
+    IF(IS_DIRECTORY ${curdir}/${child})
+	LIST(APPEND dirlist ${child})
+    ENDIF()
+  ENDFOREACH()
+  SET(${result} ${dirlist})
+ENDMACRO()
+
+SUBDIRLIST(SUBDIRS ${CMAKE_CURRENT_SOURCE_DIR})
+
+FOREACH(subdir ${SUBDIRS})
+    ADD_SUBDIRECTORY(${subdir})
+ENDFOREACH()
+
+#-------------------------------------
+# Information about the Project
+#-------------------------------------
+PROJECT(NeuralNetworks)
+SET(VERSION_MAJOR "5")
+SET(VERSION_MINOR "2")
+SET(VERSION_PATCH "0")
+SET(VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH})
+PROJECT(${PROJECT_NAME}_${VERSION})
+
+#-------------------------------------
+# Get Compiler Paths
+#-------------------------------------
+INCLUDE(${CMAKE_CURRENT_SOURCE_DIR}/../../../OpenppConfig.txt)
+
+#-------------------------------------
+# Sources and Headers
+#-------------------------------------
+AUX_SOURCE_DIRECTORY(${CMAKE_CURRENT_SOURCE_DIR} ${PROJECT_NAME}_FILES)
+
+#-------------------------------------
+# Create Binary
+#-------------------------------------
+add_executable(${PROJECT_NAME} ${${PROJECT_NAME}_headers} ${${PROJECT_NAME}_FILES})
+
+#-------------------------------------
+# Configure install
+#-------------------------------------
+install(TARGETS ${PROJECT_NAME}
+	RUNTIME DESTINATION bin
+	LIBRARY DESTINATION lib
+	ARCHIVE DESTINATION lib/static)

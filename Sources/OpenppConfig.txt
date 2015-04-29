@@ -24,8 +24,7 @@ LINK_DIRECTORIES(${BASE_PATH}/lib)
 #-------------------------------------
 # 3rdParty Compiler Paths
 #-------------------------------------
-set(3RD_PARTY_PATH ${BASE_PATH}/3rdParty)
-include(${3RD_PARTY_PATH}/3rdParties.txt)
+include(${BASE_PATH}/3rdParty/3rdParties.txt)
 
 
 #-------------------------------------

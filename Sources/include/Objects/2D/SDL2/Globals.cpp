@@ -1,10 +1,11 @@
 #include "Globals.hpp"
+#include "Texture.hpp"
 
 namespace Openpp {
 namespace Objects {
 namespace SDL2 {
 
-void Globals::Init(const std::string &rTitle, Vector2<int> _window, unsigned int _image_flags)
+void Globals::Init(const std::string &_title, Vector2<int> _window, const std::string& _font, unsigned int _image_flags)
 {
 	/// Initialize SDL2
 	SDL_Init(0);
@@ -30,7 +31,7 @@ void Globals::Init(const std::string &rTitle, Vector2<int> _window, unsigned int
 	}
 
 
-	pWindow = SDL_CreateWindow(rTitle.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, _window.x, _window.y, SDL_WINDOW_SHOWN);
+	pWindow = SDL_CreateWindow(_title.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, _window.x, _window.y, SDL_WINDOW_SHOWN);
 	if( pWindow == NULL )
 	{
 		throw ExSDLError( "Window could not be created", SDL_GetError() );
@@ -43,6 +44,9 @@ void Globals::Init(const std::string &rTitle, Vector2<int> _window, unsigned int
 		throw ExSDLError( "Renderer could not be created", SDL_GetError() );
 	}
 	SDL_SetRenderDrawColor( pRenderer.get(), 0xFF, 0xFF, 0xFF, 0xFF );
+
+	if(_font != "")
+		Texture::SetFont(_font);
 }
 bool Globals::WindowIsOpen = false;
 

@@ -40,10 +40,6 @@ public:
 	std::function<void()> function;
 
 
-	/// Checks if the Point (X, Y) is inside the Button
-	bool isInside(float X, float Y) const;
-
-
 	/// Render the Button
 	void Render(int Index = 0) const;
 

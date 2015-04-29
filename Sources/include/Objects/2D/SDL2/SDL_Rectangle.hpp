@@ -29,6 +29,9 @@ public:
 	/// rendered rect
 	const SDL_Rect& rect() const;
 
+	/// checks if the point (X, Y) is inside the rectangle
+	bool isInside(T X, T Y) const;
+
 protected:
 	virtual void ChildChanged(int _childId);
 

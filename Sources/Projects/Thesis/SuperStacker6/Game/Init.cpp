@@ -13,9 +13,7 @@ namespace Init
 /// Initializes SDL2
 void InitSDL2()
 {
-	SDLG::Init(GG::TITLE, GG::WINDOW, IMG_INIT_PNG | IMG_INIT_JPG);
-
-    SDL::Texture::SetFont("Media/Font.ttf");
+	SDLG::Init(GG::TITLE, GG::WINDOW, "Media/Font.ttf");
 }
 
 /// Set the Loading Screen

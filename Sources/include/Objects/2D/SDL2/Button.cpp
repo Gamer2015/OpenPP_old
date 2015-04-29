@@ -17,27 +17,6 @@ Button::Button(OObject* const _pParent) :
 	textures(2, this)
 {}
 
-bool Button::isInside(float X, float Y) const
-{
-	Vector2<float> mouse(X, Y);
-	Vector2<float> origin(rect().x + rectOrigin().x, rect().y + rectOrigin().y);
-
-	mouse -= origin;
-	mouse.angle -= this->angle;
-	mouse += origin;
-
-	if(mouse.x < SDL_Rectangle<float>::rect().x)
-		return false;
-	if(mouse.x > SDL_Rectangle<float>::rect().x + SDL_Rectangle<float>::rect().w)
-		return false;
-
-	if(mouse.y < SDL_Rectangle<float>::rect().y)
-		return false;
-	if(mouse.y > SDL_Rectangle<float>::rect().y + SDL_Rectangle<float>::rect().h)
-		return false;
-
-	return true;
-}
 
 void Button::Render(int Index) const
 {

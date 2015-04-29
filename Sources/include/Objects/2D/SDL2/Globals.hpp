@@ -30,7 +30,7 @@ private:
 	Globals() = delete;
 
 public:
-	static void Init(const std::string& rTitle, Vector2<int> _window, unsigned int _image_flags = IMG_INIT_PNG | IMG_INIT_JPG);
+	static void Init(const std::string& _title, Vector2<int> _window, const std::string& _font, unsigned int _image_flags = IMG_INIT_PNG | IMG_INIT_JPG);
 	static bool WindowIsOpen;
 
     /// Global Renderer
